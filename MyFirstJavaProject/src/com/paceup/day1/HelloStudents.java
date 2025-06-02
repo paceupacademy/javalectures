@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.paceup.myapp;
+package com.paceup.day1;
 
 /**
  * 
