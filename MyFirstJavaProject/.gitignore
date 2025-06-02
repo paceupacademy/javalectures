@@ -1,0 +1,15 @@
+#Ignore Eclipse specific files
+.classpath
+.project
+.settings/
+
+#Ignore compiles class files
+*.class
+
+#Ignore build output directories
+/bin/
+/build/
+
+#Ignore OS specific files
+.DS_Store
+Thumbs.db
