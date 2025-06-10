@@ -4,16 +4,16 @@ public class SwitchExample {
 	public static void main (String[] args) {
 	      
 	      //assigning n as integer value
-	      int n = 1;
+	      char n = 'z';
 	      
 	      //passing n to switch
 	      // it will check n and display output accordingly
 	      switch(n) {
 	          
-	        case 1: 
+	        case 'a': 
 	          System.out.println("India");
 	          break;
-	        case 2:
+	        case 'b':
 	          System.out.println("Second Case");
 	          break;
 	        default:

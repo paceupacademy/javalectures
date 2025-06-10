@@ -16,7 +16,7 @@ public class WhileExample {
 		}
 		System.out.println("Summation: " + s);
 
-		int c = 1;
+		int c = 6;
 
 		// Using do-while loop
 		do {
