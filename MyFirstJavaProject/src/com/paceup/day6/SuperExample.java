@@ -1,8 +1,8 @@
 package com.paceup.day6;
 
 class Parent {
-	Parent(int a){
-		System.out.println(a);
+	Parent(){
+		System.out.println("Inside SuperClass Constructor");
 	}
 	void display() {
         System.out.println("Parent method");
@@ -10,9 +10,9 @@ class Parent {
 }
 
 class Child extends Parent {
-	
-	  Child(){ super(10); }
-	 
+	Child(){
+		super();
+	}
     void display() {
         super.display(); // Calls Parent's display method
         System.out.println("Child method");
