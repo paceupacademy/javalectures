@@ -10,9 +10,18 @@ public class CallByReferenceExample {
         person.name = "Alice";
         modifyObject(person);
         System.out.println("Name after modification: " + person.name); // Output: Bob
+        
+        modify(person);
+        System.out.println("Name"+person.name);
     }
 
     public static void modifyObject(Person p) {
         p.name = "Bob"; // Modifies the object's field
+    }
+    
+    static void modify(Person p) {
+    	p.name="Shraddha";
+    	p = new Person(); //Reassignment reference
+    	p.name = "Aishwarya";
     }
 }
