@@ -5,6 +5,7 @@ public class MultipleCatchExample {
         try {
             int[] numbers = {1, 2, 3};
             System.out.println(numbers[5]); // ArrayIndexOutOfBoundsException
+            int sum = numbers[1]/0;
         } catch (ArithmeticException e) {
             System.out.println("Arithmetic Exception occurred.");
         } catch (ArrayIndexOutOfBoundsException e) {

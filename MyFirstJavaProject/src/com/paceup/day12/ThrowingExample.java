@@ -6,6 +6,7 @@ public class ThrowingExample {
             validateNumber(-5);
         } catch (IllegalArgumentException e) {
             System.out.println("Exception caught: " + e.getMessage());
+            validateNumber(90);
         }
     }
 
