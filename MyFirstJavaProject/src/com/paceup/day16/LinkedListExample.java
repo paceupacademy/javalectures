@@ -29,11 +29,11 @@ public class LinkedListExample {
         System.out.println("After removing first: " + list);
 
         list.remove(1); //  Removes the element at the specified index.
-        System.out.println(list);
+        System.out.println("Removing 1st index element: "+ list);
         
         //Checking Elements
-        System.out.println(list.contains(10)); //Checks if the list contains the specified element.
-        System.out.println(list.isEmpty()); //Checks if the list is empty.
+        System.out.println("List contains 10? "+list.contains(10)); //Checks if the list contains the specified element.
+        System.out.println("Is list empty:"+list.isEmpty()); //Checks if the list is empty.
         
         // Iterating Through the List
         // Using for-each loop
@@ -42,7 +42,7 @@ public class LinkedListExample {
         }
 
         // Using Iterator
-        list.iterator().forEachRemaining(System.out::println);
+        list.iterator().forEachRemaining(System.out::println); //creates Iterator object: to traverse through collection one element at a time
         
         // Useful Methods
         System.out.println(list.peek()); // Retrieves the first element without removing it.

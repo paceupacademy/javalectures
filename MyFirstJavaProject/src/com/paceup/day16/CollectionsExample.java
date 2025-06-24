@@ -4,8 +4,9 @@ import java.util.*;
 
 public class CollectionsExample {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("Zara", "Mohan", "Aditi", "Ravi");
+        List<String> names = Arrays.asList("Zara", "Mohan", "Aditi", "Ravi","Zara");
         System.out.println("List: " + names);
+        
         Collections.sort(names); // Sort in natural order
         System.out.println("Sorted List: " + names);
         
@@ -15,8 +16,8 @@ public class CollectionsExample {
         Collections.shuffle(names); // Shuffle the list
         System.out.println("Shuffled List: " + names);
         
-        List<Integer> numbers = Arrays.asList(10, 20, 5, 15, 30);
-        int min = Collections.min(numbers);
+        List<Integer> numbers = Arrays.asList(10, 20, 5, 15, 30); //Autoboxing= converts primitive types in wrapper class object
+        int min = Collections.min(numbers); //Unboxing: converting Integer back to int
         int max = Collections.max(numbers);
         System.out.println("List: " + numbers);
         System.out.println("Min: " + min + ", Max: " + max);
@@ -35,6 +36,7 @@ public class CollectionsExample {
         System.out.println("Filled List: " + source);
         
         List<String> destination = new ArrayList<>(Arrays.asList("X", "Y", "Z"));
+        System.out.println("Destination List: " + destination);
         Collections.copy(destination, source); // Copy source to destination
         System.out.println("Destination List: " + destination);
     }
