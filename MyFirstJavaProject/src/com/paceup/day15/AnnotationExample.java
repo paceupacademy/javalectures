@@ -4,6 +4,7 @@ package com.paceup.day15;
 import java.lang.annotation.*;
 import java.lang.reflect.Method;
 
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @interface MyAnnotation {
@@ -22,7 +23,8 @@ public class AnnotationExample {
 
      if (method.isAnnotationPresent(MyAnnotation.class)) {
          MyAnnotation annotation = method.getAnnotation(MyAnnotation.class);
-         System.out.println("Annotation Value: " + annotation.value());
+         //System.out.println("Annotation Value: " + annotation.value());
+         
      }
  }
 }
