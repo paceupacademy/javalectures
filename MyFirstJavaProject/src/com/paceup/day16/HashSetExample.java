@@ -24,16 +24,19 @@ public class HashSetExample {
         
         System.out.println("Set is Empty: "+set.isEmpty()); // Checks if the set is empty.
         
+        set.add("Apple");
         set.add("Lemon");
         set.add("Mango");
         
         Iterator<String> iterator = set.iterator(); //Returns an iterator over the elements in the set.
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            System.out.print(" "+iterator.next());
+            System.out.println("\n HashCode of "+ iterator+" is "+iterator.hashCode());
         }
         
         set.clear(); //Removes all elements from the set.
-        System.out.println(set); // Output: []
+        System.out.println("\nEmpty Set:"+set); // Output: []
     }
+    
 }
 

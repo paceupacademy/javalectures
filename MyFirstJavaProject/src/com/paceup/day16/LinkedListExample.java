@@ -1,6 +1,7 @@
 package com.paceup.day16;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class LinkedListExample {
     public static void main(String[] args) {
@@ -50,6 +51,27 @@ public class LinkedListExample {
         System.out.println(list);        
         list.clear(); //Removes all elements.
         System.out.println(list);
+        
+        /*
+         * LinkedList with Queue Interface
+         * 
+         */
+        Queue<String> q = new LinkedList<>();
+        q.add("Alice");
+        q.add("Bob");
+        q.add("Demon");
+        
+        System.out.println("First Element: "+q.peek());
+        LinkedList<String> list5 = (LinkedList<String>) q;
+        for(String item:q) {
+        	int index = list5.indexOf(item);
+        	System.out.println("Index: "+ index +" Value: "+ item);        	
+        }
+        System.out.println("Removed: "+q.poll());
+        LinkedList<String> list6 = (LinkedList<String>) q;
+        System.out.println(" "+ list6.indexOf("Demon"));
+        
+        System.out.println("Queue: "+q);
     }
 }
 

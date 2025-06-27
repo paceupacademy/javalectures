@@ -4,9 +4,11 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 public class LinkedHashSetExample {
+	
     public static void main(String[] args) {
         LinkedHashSet<String> set = new LinkedHashSet<>();
         System.out.println("Set is Empty: "+set.isEmpty()); //Checks if the set is empty.
+       
         
         set.add("Apple");
         set.add("Banana");
@@ -28,11 +30,11 @@ public class LinkedHashSetExample {
         
         Iterator<String> iterator = set.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            System.out.print(iterator.next() + " ");
         }
         
         set.clear(); //Removes all elements from the set.
-        System.out.println(set); // Output: []
+        System.out.println("\n"+set); // Output: []
     }
 }
 
