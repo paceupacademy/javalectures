@@ -1,4 +1,4 @@
-package com.paceup.day17;
+package com.paceup.day19;
 
 class PrintNumbers implements Runnable {
     private int number;

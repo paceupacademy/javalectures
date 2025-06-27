@@ -1,4 +1,4 @@
-package com.paceup.day17;
+package com.paceup.day19;
 
 public class ThreadWithLambda {
     public static void main(String[] args) {
