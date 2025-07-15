@@ -8,11 +8,13 @@ class LogicalOperatorsExample
 		// Logical operators
         boolean x = true;
         boolean y = true;
+        boolean z = false;
       
-        System.out.println("x && y: " + (x && y));
-        System.out.println("x || y: " + (x || y));
-        System.out.println("!x: " + (!x));
-        System.out.println("x"+x);
+        System.out.println("x && y: " + (x && y)); //true
+        System.out.println("x && z: "+ (x && z)); //false
+        System.out.println("x || z: " + (x || z)); //true
+        System.out.println("!x: " + (!x)); //false
+        System.out.println("x: "+x); //true
 
 	}
 }

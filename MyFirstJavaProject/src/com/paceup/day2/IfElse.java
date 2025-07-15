@@ -9,6 +9,7 @@ public class IfElse {
             System.out.println("The number is greater than 5.");
         } else {
             System.out.println("The number is 5 or less.");
+            
         }
     }
 }

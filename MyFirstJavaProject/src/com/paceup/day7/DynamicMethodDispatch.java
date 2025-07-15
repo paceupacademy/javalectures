@@ -2,7 +2,7 @@ package com.paceup.day7;
 
 class Parent {
     void show() {
-        System.out.println("Parent class method");
+        System.out.println("Parent class method called");
     }
 }
 

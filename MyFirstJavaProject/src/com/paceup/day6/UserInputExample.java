@@ -1,14 +1,14 @@
 package com.paceup.day6;
 
-import java.util.Scanner;
+import java.util.Scanner; //Needed for reading input from the user via keyboard
 
 public class UserInputExample {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); //tells to read input from the keyboard
 
         // Prompt the user to enter a value
         System.out.println("Enter a number (1-3): ");
-        int choice = scanner.nextInt();
+        int choice = scanner.nextInt(); //Read the integer input from the user and store it in the variable
 
         // Switch statement to handle user input
         switch (choice) {

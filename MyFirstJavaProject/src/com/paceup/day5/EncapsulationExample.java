@@ -4,28 +4,51 @@ package com.paceup.day5;
 class Account {
 
 	// Private data members (encapsulated)
-	private long accNo; // Account number 
+	private long accNo; // Account number
 	private String name;
 	private String email;
 	private float amount;
 
 	// Public getter and setter methods (controlled access)
-	public long getAccNo() { return accNo; }
-	public void setAccNo(long accNo) { this.accNo = accNo; }
-	public String getName() { return name; }
-	public void setName(String name) { this.name = name; }
-	public String getEmail() { return email; }
-	public void setEmail(String email) { this.email = email; }
-	public float getAmount() { return amount; }
-	public void setAmount(float amount) { this.amount = amount; }
+	public long getAccNo() {
+		return accNo;
+	}
+
+	public void setAccNo(long accNo) {
+		this.accNo = accNo;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public float getAmount() {
+		return amount;
+	}
+
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
 }
+
 public class EncapsulationExample {
-	//protected int salary =7000;
-	//int id =1;
-	public static void main(String[] args) 
-	{
+	// protected int salary =7000;
+	// int id =1;
+	public static void main(String[] args) {
 		// Create an Account object
-		Account acc = new Account(); 
+		Account acc = new Account();
 
 		// Set values using setter methods (controlled access)
 		acc.setAccNo(90482098491L);

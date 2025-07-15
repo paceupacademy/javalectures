@@ -4,7 +4,7 @@ public class SwitchExample {
 	public static void main (String[] args) {
 	      
 	      //assigning n as integer value
-	      char n = 'z';
+	      char n = 'b';
 	      
 	      //passing n to switch
 	      // it will check n and display output accordingly
@@ -19,5 +19,6 @@ public class SwitchExample {
 	        default:
 	          System.out.println("default case");
 	      }
+	      System.out.println("Outside Switch!!!");
 	    }
 }

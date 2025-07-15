@@ -1,12 +1,12 @@
-package com.paceup.day3;
+package com.paceup.day3;	
 
 class Student {
 	  
     // data member (also instance variable)
-    int id;
+    int id =1;
   
     // data member (also instance variable)
-    String n;
+    String n ="Neha";
   
     public static void main(String args[]) {
       

@@ -5,7 +5,7 @@ class Animal {
 	// field and method of the parent class
 	String name;
 	void eat() {
-		System.out.println("I can eat");
+		System.out.println(name+" can eat");
 	}
 }
 
@@ -17,11 +17,11 @@ class Dog extends Animal {
 		System.out.println("My name is " + name);
 	}
 	
-	@Override
+	/*@Override
 	void eat()
 	{
 		System.out.println("Eating Fruits!!!");
-	}
+	}*/
 	//System.out.printlin("Message:")
 }
 public class JavaInheritance {

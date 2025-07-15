@@ -10,14 +10,14 @@ public class UnaryOperators {
 	public static void main(String[] args)
 	{
 		// Interger declared
-		int a = 10;
+		int a = -10;
 		int b = 10;
 
 		// Using unary operators
-		System.out.println("Postincrement : " + (a++));
-		System.out.println("Preincrement : " + (++a));
-
-		System.out.println("Postdecrement : " + (b--));
-		System.out.println("Predecrement : " + (--b));
+		System.out.println("Postincrement : " + (a++)); //10//a=10+1=11
+		System.out.println("Preincrement : " + (++a));  //12
+		
+		System.out.println("Postdecrement : " + (b--)); //10//b=b-1=9
+		System.out.println("Predecrement : " + (--b)); //9-1=8
 	}
 }

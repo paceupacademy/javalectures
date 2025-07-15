@@ -12,7 +12,7 @@ class Student {
     // Constructor 2: Parameterized constructor
     Student(String name) {
         this.name = name;
-        this.age = 0;
+        this.age = 5;
     }
 
     // Constructor 3: Parameterized constructor with two arguments

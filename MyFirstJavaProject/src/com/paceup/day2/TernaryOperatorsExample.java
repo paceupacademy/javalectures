@@ -13,3 +13,6 @@ class TernaryOperatorsExample
 		System.out.println("Max of three numbers = "+ result);
 	}
 }
+/*
+ * (a>b -> true)?(a>c) -> false :c=30:(b>c->false) :c =30
+ */

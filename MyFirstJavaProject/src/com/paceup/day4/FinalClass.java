@@ -11,6 +11,4 @@ final class FinalClass {
         final int localVar = 50;
         //localVar = 60; // Compilation error
     }
-
-
 }

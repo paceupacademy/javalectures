@@ -6,7 +6,7 @@ public class ForLoop {
         // for loop to print numbers from 1 to 5
         for (int i = 1; i <= 5; i++) {
           
-            System.out.println("" + i);
+            System.out.println("Count: " + i);
         }
         
         System.out.println("Loop has ended.");
@@ -16,7 +16,7 @@ public class ForLoop {
         // for loop begins
         // and runs till x <= 20
         for (int x = 1; x <= 20; x++) {
-            s = s + x;
+            s = s + x; 
         }
         System.out.println("Sum: " + s);
     }

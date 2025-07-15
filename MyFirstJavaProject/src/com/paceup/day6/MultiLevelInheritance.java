@@ -1,5 +1,5 @@
 package com.paceup.day6;
-
+//Multilevel Inheritance (One -> Two -> Three)
 //Parent class One
 class One {
 	// Method to print 
@@ -15,6 +15,7 @@ class One {
 class Two extends One {
 	
 	public void demo2() {
+		System.out.println("Class 2 demo method called");
 		super.demo();
 	}
 	// Method to print
