@@ -1,4 +1,7 @@
 package com.paceup.day10;
+
+import java.util.Arrays;
+
 //Print all elements of 3d array Using for-each loop
 public class MultiDimensionalArrayExample4 {
 	public static void main(String[] args) {
@@ -26,5 +29,9 @@ public class MultiDimensionalArrayExample4 {
 			}
 			System.out.println(",\n");
 		}
+		
+		System.out.println("\n3D Array Representation:");
+		
+		System.out.println(Arrays.deepToString(test));
 	}
 }

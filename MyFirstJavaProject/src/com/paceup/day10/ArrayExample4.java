@@ -22,7 +22,9 @@ public class ArrayExample4 {
 		// convert the average from int to double
 		average =  ((double)sum / (double)arrayLength);
 
+		int avg1 = sum/arrayLength;
 		System.out.println("Sum = " + sum);
 		System.out.println("Average = " + average);
+		System.out.println("Average without typecasting: "+avg1);
 	}
 }
