@@ -20,7 +20,7 @@ class Employee1 {
     }
     
     public void show() {
-        System.out.println("Id=" + ID + "\nName=" + name + "\nAge=" + age);
+        System.out.println("Id=" + ID + "\tName=" + name + "\tAge=" + age);
     }
 
     public static void showNextId() {
@@ -46,7 +46,9 @@ public class WithGarbageCollection {
         Employee1.showNextId();
         
         System.gc();
-        System.runFinalization();
+        
+        e1.show();
+        //System.runFinalization();
     }
 
     private static void manageInterns() {
@@ -55,7 +57,7 @@ public class WithGarbageCollection {
 
         x.show();
         y.show();
-        Employee1.showNextId();
+       // Employee1.showNextId();
 
         // Explicit cleanup without relying on GC
         x = null;

@@ -12,14 +12,14 @@ class ObjectStreamExample {
         String data2 = "This is Java Program";
 
         try {
-            FileOutputStream file = new FileOutputStream("file.txt");
+            FileOutputStream file = new FileOutputStream("file2.txt");
             ObjectOutputStream output = new ObjectOutputStream(file);
 
             // Writing to the file using ObjectOutputStream
-            output.writeInt(data1);
-            output.writeObject(data2);
+            output.writeInt(data1); //writes primitive datatype
+            output.writeObject(data2); //writes  StringObject
 
-            FileInputStream fileStream = new FileInputStream("file.txt");
+            FileInputStream fileStream = new FileInputStream("file2.txt");
             // Creating an object input stream
             ObjectInputStream objStream = new ObjectInputStream(fileStream);
 

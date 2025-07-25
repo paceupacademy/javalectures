@@ -21,7 +21,7 @@ public class ReflectionExample {
         System.out.println("All fields");
         for (Field f : fields) {
         	f.setAccessible(true); //allow access to private variable
-        	System.out.print(f.getName() + " ");
+        	System.out.print(f.getName() + ", ");
         	System.out.print("Value: "+f.get(p) +" "); //gets value of variable for p(Person) object
         }
         

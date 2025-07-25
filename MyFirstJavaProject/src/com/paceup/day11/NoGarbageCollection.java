@@ -22,8 +22,8 @@ class Employee {
 
  public void show()
  {
-     System.out.println("Id=" + ID + "\nName=" + name
-                        + "\nAge=" + age);
+     System.out.println("Id=" + ID + "  Name=" + name
+                        + "  Age=" + age);
  }
 
  public void showNextId()

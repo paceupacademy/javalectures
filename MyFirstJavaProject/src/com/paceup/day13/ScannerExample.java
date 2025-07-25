@@ -2,6 +2,11 @@ package com.paceup.day13;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+/*
+ * Read input from console
+ * Read lines from file
+ */
 public class ScannerExample {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
