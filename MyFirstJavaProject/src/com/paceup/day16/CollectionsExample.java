@@ -1,10 +1,10 @@
 package com.paceup.day16;
 
-import java.util.*;
+import java.util.*; //Importing all utility classes(List,ArrayList,Collections,Arrays,etc)
 
 public class CollectionsExample {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("Zara", "Mohan", "Aditi", "Ravi","Zara");
+    	List<String> names = Arrays.asList("Zara", "Mohan", "Aditi", "Ravi","Zara");
         System.out.println("List: " + names);
         
         Collections.sort(names); // Sort in natural order

@@ -18,6 +18,7 @@ public class AnnotationProcessor {
             if (method.isAnnotationPresent(MyAnnotationExample.class)) {
             	MyAnnotationExample annotation = method.getAnnotation(MyAnnotationExample.class);
                 System.out.println("Method: " + method.getName() + ", Value: " + annotation.value() + ", Priority: " + annotation.priority());
+                
                AnnotatedClass obj1 = new AnnotatedClass();
                obj1.annotatedMethod();
             }
