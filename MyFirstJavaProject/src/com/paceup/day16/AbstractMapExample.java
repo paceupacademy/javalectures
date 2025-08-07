@@ -14,6 +14,7 @@ public class AbstractMapExample<K, V> extends AbstractMap<K, V> {
 
     @Override
     public V put(K key, V value) {
+    	remove(key);
         entrySet.add(new SimpleEntry<>(key, value));
         return value;
     }
@@ -22,6 +23,7 @@ public class AbstractMapExample<K, V> extends AbstractMap<K, V> {
         AbstractMapExample<String, Integer> map = new AbstractMapExample<>();
         map.put("One", 1);
         map.put("Two", 2);
+        map.put("Three", null);
 
         System.out.println(map); // Output: {One=1, Two=2}
     }

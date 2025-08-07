@@ -36,7 +36,7 @@ public class DataTypesExamples {
 
 		// need to hold big range of numbers then we need
 		// this data type
-		long l = 12121;
+		long l = 12121L;
 		
 		boolean remark = true;
 

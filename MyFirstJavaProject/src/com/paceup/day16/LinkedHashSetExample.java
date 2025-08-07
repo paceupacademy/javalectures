@@ -19,13 +19,12 @@ public class LinkedHashSetExample {
         System.out.println(set);
         
         System.out.println(set.contains("Dog")); 
-        
+        set.add("Apple");
         set.add("Lemons");
         set.add("Watermelon");
         set.add("Cherry");
         
-        System.out.println(set.size());
-        
+        System.out.println("Size of set is : "+set.size());
         System.out.println("Set is Empty: "+set.isEmpty()); //Checks if the set is empty.
         
         Iterator<String> iterator = set.iterator();

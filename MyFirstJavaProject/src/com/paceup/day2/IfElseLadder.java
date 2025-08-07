@@ -4,7 +4,7 @@ public class IfElseLadder {
 	public static void main(String[] args) {
 	      
         // initializing expression
-        int i = 15;
+        int i = 18;
 
         // condition 1
         if (i == 10)

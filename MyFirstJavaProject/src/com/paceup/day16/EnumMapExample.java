@@ -21,7 +21,9 @@ public class EnumMapExample {
 
      // Access values
      System.out.println("Activity on Monday: " + schedule.get(Day.MONDAY));
-
+     
+     System.out.println(schedule);
+     
      // Iterate through the EnumMap
      for (Day day : schedule.keySet()) {
          System.out.println(day + ": " + schedule.get(day));

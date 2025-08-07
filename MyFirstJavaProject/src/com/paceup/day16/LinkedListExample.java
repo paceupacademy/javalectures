@@ -17,6 +17,7 @@ public class LinkedListExample {
         // Accessing elements
         System.out.println("First Element: " + list.getFirst()); //Retrieves the first element.
         System.out.println("Last Element: " + list.getLast()); //Retrieves the last element.
+        System.out.println("Element at 2 Index is : "+ list.get(2));
 
         System.out.println(list);
         // Checking size
@@ -39,18 +40,20 @@ public class LinkedListExample {
         // Iterating Through the List
         // Using for-each loop
         for (String item : list) {
-            System.out.println(item);
+            System.out.print(item+ " ");
         }
+        
+        System.out.println();
 
         // Using Iterator
         list.iterator().forEachRemaining(System.out::println); //creates Iterator object: to traverse through collection one element at a time
         
         // Useful Methods
-        System.out.println(list.peek()); // Retrieves the first element without removing it.
-        System.out.println(list.poll()); // Retrieves and removes the first element.
+        System.out.println("Retrieving first element using peek(): "+list.peek()); // Retrieves the first element without removing it.
+        System.out.println("Retrieving first element using poll(): "+list.poll()); // Retrieves and removes the first element.
         System.out.println(list);        
         list.clear(); //Removes all elements.
-        System.out.println(list);
+        System.out.println(list+ "Is Empty? "+list.isEmpty());
         
         /*
          * LinkedList with Queue Interface

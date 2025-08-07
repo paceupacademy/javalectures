@@ -21,7 +21,9 @@ public class HashSetExample {
         
         System.out.println(set.contains("Apple")); // Checks if the set contains the specified element.
         System.out.println(set.contains("Mango")); // Output: false
-        
+        set.add("Apple");
+        set.add("Mango");
+        System.out.println(set); // Output: [Apple, Banana]
         System.out.println("Set is Empty: "+set.isEmpty()); // Checks if the set is empty.
         
         set.add("Apple");
@@ -30,8 +32,8 @@ public class HashSetExample {
         
         Iterator<String> iterator = set.iterator(); //Returns an iterator over the elements in the set.
         while (iterator.hasNext()) {
-            System.out.print(" "+iterator.next());
-            System.out.println("\n HashCode of "+ iterator+" is "+iterator.hashCode());
+            System.out.print(iterator.next()+" ");
+            System.out.print("HashCode of "+ iterator+" is "+iterator.hashCode()+"\n");
         }
         
         set.clear(); //Removes all elements from the set.

@@ -3,7 +3,7 @@ package com.paceup.day2;
 public class ReturnExample {
 	// Method to calculate average
     double avg(double x, double y) {
-        double res = (x + y) / 2.0;
+        double res = (x * y) / 2.0;
         return res;    // Return the calculated result
     }
 

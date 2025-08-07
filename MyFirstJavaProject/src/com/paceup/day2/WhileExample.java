@@ -21,7 +21,7 @@ public class WhileExample {
 		// Using do-while loop
 		do {
 			System.out.println("PaceupAcademy: " + c);
-			c++;
-		} while (c <= 5);
+			c--;
+		} while (c <= 5 && c>0);
 	}
 }

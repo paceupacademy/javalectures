@@ -10,7 +10,11 @@ class MyThread extends Thread {
 public class CreatingThread {
     public static void main(String[] args) {
     	MyThread thread = new MyThread(); //new state
+    	MyThread t1 = new MyThread();
+    	MyThread t2 = new MyThread();
         thread.start(); // Starts the thread //Runnable
+        t1.start();
+        t2.start();
     }
 }
 

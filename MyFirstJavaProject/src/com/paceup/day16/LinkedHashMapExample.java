@@ -11,6 +11,8 @@ public class LinkedHashMapExample {
         map.put(1, "Apple");
         map.put(2, "Banana");
         map.put(3, "Cherry");
+        
+        //1->2->3
 
         // Print the map (insertion order is maintained)
         System.out.println("LinkedHashMap: " + map);
@@ -26,7 +28,10 @@ public class LinkedHashMapExample {
         map.put(6, "Watermelon");
         map.put(7, null);
         map.put(null, "Lemons");
+        map.put(null, null);
 
+        System.out.println(map);
+        
         // Iterate through the map
         for (Integer key : map.keySet()) {
             System.out.println("Key: " + key + ", Value: " + map.get(key));

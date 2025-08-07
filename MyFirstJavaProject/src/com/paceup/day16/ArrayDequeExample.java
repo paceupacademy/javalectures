@@ -8,6 +8,8 @@ public class ArrayDequeExample {
 
         deque.add("P");
         deque.add("Q");
+        deque.add("O");
+        deque.add("a");
         System.out.println(deque);
         // Adding elements
         deque.addFirst("A");
@@ -25,14 +27,18 @@ public class ArrayDequeExample {
 
         // Removing elements
         deque.removeFirst();
+        System.out.println("Deque after removals: " + deque);
+        deque.removeLast();
+        System.out.println("Deque after removals: " + deque);
         deque.pollLast();
+        System.out.println("Deque after removals: " + deque);
         
         deque.remove("P");
 
         System.out.println("Deque after removals: " + deque);
         
         deque.clear();
-        deque.offerFirst("C");
+        deque.offerFirst("");
         deque.offerLast("D");
         
         System.out.println(deque);

@@ -21,8 +21,12 @@ public class SynchronizedBlocked {
     	SharedResource1 resource = new SharedResource1();
     	for(int i=1;i<=5;i++) {
     	String message = "Hello "+i;
-        Thread t = new Thread(() -> resource.display(message));
-        t.start();
+        Thread t1 = new Thread(() -> resource.display(message));
+        t1.start();
+        t1.setPriority(1);
+        Thread t2 = new Thread(()-> resource.display("World"));
+        t2.start();
+        System.out.println(t2.getPriority());
     	}        
     }
 }

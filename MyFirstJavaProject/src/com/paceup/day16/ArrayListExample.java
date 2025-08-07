@@ -3,6 +3,7 @@ package com.paceup.day16;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ArrayListExample {
     public static void main(String[] args) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
@@ -48,6 +49,8 @@ public class ArrayListExample {
         Object[] internalArray = (Object[]) field.get(list);
         
         System.out.println("Capacity: "+internalArray.length);
+        
+        Collections.synchronizedList(list);
     }
 }
 

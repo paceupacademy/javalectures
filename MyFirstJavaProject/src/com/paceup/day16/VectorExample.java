@@ -11,6 +11,8 @@ public class VectorExample {
         vector.add("Apple");
         vector.add("Banana");
         vector.add("Cherry");
+        vector.add("Orange");
+        vector.add("Lemons");
 
         // Access elements
         System.out.println("First Element: " + vector.get(0));
@@ -19,10 +21,14 @@ public class VectorExample {
         for (String fruit : vector) {
             System.out.print(fruit+", ");
         }
+        
+        System.out.println("size of vector is : " +vector.size() );
+        System.out.println("Capacity of vector is: "+ vector.capacity());
 
         // Remove an element
         vector.remove("Banana");
         System.out.println("After Removal: " + vector);
+        
     }
 }
 

@@ -18,7 +18,7 @@ public class HashMapExample {
         System.out.println("Value for key 2: " + map.get(2)); // Output: Banana
 
         // Iterate through the HashMap
-        /*for (Integer key : map.keySet()) {
+       /* for (Integer key : map.keySet()) {
             System.out.println("Key: " + key + ", Value: " + map.get(key));
         }*/
         
@@ -26,11 +26,18 @@ public class HashMapExample {
         while(it.hasNext()) {
         	Map.Entry<Integer, String> entry = it.next();
         	System.out.println("Key: "+entry.getKey()+" Value:"+entry.getValue());
+        	
+        	if(entry.getValue().equals("Apple")) {
+        		System.out.println("Removing Apple from Hashmap");
+        		it.remove();
+        		System.out.println(map);
+        	}
         }
 
         // Remove an entry
-        map.remove(1);
-        System.out.println("After removal: " + map);
+		/*
+		 * map.remove(1); System.out.println("After removal: " + map);
+		 */
     }
 }
 
