@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -64,9 +65,38 @@ class IntermediateExample {
 
 class TerminalExample{
 	public void collectorDemo() {
+		List<Integer> number = Arrays.asList(2,3,-4,5,6);
 		Set<String> name = Stream.of("Aishwarya", "Paul", "Dev", "Jay")
 								.collect(Collectors.toSet());
 		System.out.println(" Through Collectors Names:"+name.toString());
+		
+		//Reduces elements to a single value
+		int sum = number.stream().reduce(0, Integer::sum);
+		
+		System.out.println("Summation of numer list : "+sum);
+		
+		//Count number of elements 
+		long count = number.stream().count();
+		System.out.println("\n Count of element: "+count);
+		
+		//Check if any element matches predicate
+		boolean anyMatch = number.stream().anyMatch(x-> x>10);
+		System.out.println("AnyMatch for x>10: "+anyMatch);
+		
+		//Check if all matches
+		boolean allMatch = number.stream().allMatch(x->x>0);
+		System.out.println("All matches (x>0): "+ allMatch);
+		
+		//Check if none matches
+		boolean noneMatch = number.stream().noneMatch(x-> x<0);
+		System.out.println("None matches (x<0): "+noneMatch);
+		
+		Optional<Integer> first = number.stream().findFirst();
+		System.out.println("First value is: "+first.orElse(null));
+		
+		Optional<Integer> findAny = number.stream().findAny();
+		System.out.println("Find any value returns: "+findAny.orElse(null));
+		
 	}
 }
 

@@ -17,14 +17,14 @@ public class StaticVariableExample {
     
     // static method
     static int m1() { //non-static variable are not accessible
-        System.out.println("from m1");
+    	System.out.println("from m1");
         return 20;
     }
     
     // static method(main !!)
     public static void main(String[] args)
     {
-       System.out.println("Value of a : "+a);
+       System.out.println("Static Value of a : "+a);
        System.out.println("from main");
        StaticVariableExample s = new StaticVariableExample();
        System.out.println(" Value of a: "+s.a+" Num: "+s.num);

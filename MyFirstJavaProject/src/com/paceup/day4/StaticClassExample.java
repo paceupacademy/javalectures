@@ -8,6 +8,7 @@ public class StaticClassExample {
     public StaticClassExample() {
         count++;
         id = count;
+        outerstaticVariable++;
     }
 
     public static void printCount() {
@@ -20,7 +21,7 @@ public class StaticClassExample {
     
     static class Example{
     	void display() {
-    		System.out.println("Outer static variable"+outerstaticVariable);
+    		System.out.println("Outer static variable: "+outerstaticVariable);
     	}
     }
 

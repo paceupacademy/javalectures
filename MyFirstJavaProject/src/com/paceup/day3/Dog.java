@@ -13,7 +13,7 @@ public class Dog { //public - accessible from other packages as well
 	String color;
 
 	public Dog() {
-		System.out.println("Normal Constructor called");
+		System.out.println("Default Constructor called");
 		this.name = "ABC";
 		this.breed = "Lab";
 		this.age = 5;
@@ -29,30 +29,43 @@ public class Dog { //public - accessible from other packages as well
 		this.age = age;
 		this.color = color;
 	}
-
-	// method 1
-	public String getName() { 
-		return name; 
+	
+	public Dog(String name) {
+		this.name=name;
 	}
 
-	// method 2
-	public String getBreed() { 
-		return breed; 
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return this.name;
 	}
 
-	// method 3
-	public int getAge() { 
-		return age; 
+	/**
+	 * @return the breed
+	 */
+	public String getBreed() {
+		return this.breed;
 	}
 
-	// method 4
-	public String getColor() { 
-		return color; 
+	/**
+	 * @return the age
+	 */
+	public int getAge() {
+		return this.age;
+	}
+
+	/**
+	 * @return the color
+	 */
+	public String getColor() {
+		return this.color;
 	}
 
 	@Override public String toString()
 	{
-		return ("Name is: " + this.getName()
+		return ("Dog Name is: " + this.getName()
 		+ "\nBreed, age, and color are: "
 		+ this.getBreed() + "," + this.getAge()
 		+ "," + this.getColor());
@@ -61,10 +74,11 @@ public class Dog { //public - accessible from other packages as well
 	public static void main(String[] args)
 	{
 		Dog tuffy = new Dog("tuffy", "papillon", 5, "white");
-		Dog max = new Dog("max", "german shephard", 7, "brown");
+		Dog max = new Dog("Papillion", "german shephard", 7, "brown");
 		Dog abc = new Dog();
 		System.out.println(tuffy.toString());
 		System.out.println(max.toString());
+		//System.out.println(abc.toString());
 		System.out.println("Name: "+abc.name+" Age: "+abc.age+" Breed: "+abc.breed+" Color: "+abc.color);
 	}
 }

@@ -2,15 +2,17 @@ package com.paceup.day4;
 
 class CopyConstructorExample {
 	int x;
+	int y=25;
 
 	CopyConstructorExample(int value) { //Parameterized Constructor
 		x = 30;
+		y=value;
 		System.out.println("Prmeterized Constructor Called!! X value is "+x);
 	}
 
 	CopyConstructorExample(CopyConstructorExample obj) { // Copy constructor
 		x = obj.x;
-		System.out.println(" Copy Constructor called!!! X value is "+x);
+		System.out.println(" Copy Constructor called!!! X value is "+x+" Y value is: "+y);
 	}
 }
 
