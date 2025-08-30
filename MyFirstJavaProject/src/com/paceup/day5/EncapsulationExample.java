@@ -8,39 +8,59 @@ class Account {
 	private String name;
 	private String email;
 	private float amount;
-
+	
 	// Public getter and setter methods (controlled access)
+	/**
+	 * @return the accNo
+	 */
 	public long getAccNo() {
-		return accNo;
+		return this.accNo;
 	}
-
+	/**
+	 * @param accNo the accNo to set
+	 */
 	public void setAccNo(long accNo) {
 		this.accNo = accNo;
 	}
-
+	/**
+	 * @return the name
+	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
-
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	/**
+	 * @return the email
+	 */
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
-
+	/**
+	 * @param email the email to set
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	/**
+	 * @return the amount
+	 */
 	public float getAmount() {
-		return amount;
+		return this.amount;
 	}
-
+	/**
+	 * @param amount the amount to set
+	 */
 	public void setAmount(float amount) {
 		this.amount = amount;
 	}
+
+	
+	
 }
 
 public class EncapsulationExample {

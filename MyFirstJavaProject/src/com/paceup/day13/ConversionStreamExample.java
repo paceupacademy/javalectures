@@ -18,6 +18,19 @@ public class ConversionStreamExample {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        System.out.println("InputStream Writer");
+        
+        try(OutputStream os = new FileOutputStream("output4.txt");
+        		Writer writerObj =  new OutputStreamWriter(os,"UTF-8")){
+        		writerObj.write("Hello Aishwarya :-)\n");
+        		writerObj.write("This is written by Aishwarya using OutputStreamWriter");
+        		writerObj.flush();
+        		
+        		System.out.println("Data written to file successfully");
+        }catch(IOException e) {
+        	e.printStackTrace();
+        }
     }
 }
 

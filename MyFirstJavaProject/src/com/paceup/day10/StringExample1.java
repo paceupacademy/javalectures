@@ -6,13 +6,13 @@ public class StringExample1 {
 
         String original = "  Hello Java Developers!  ";
         String test = "Java";
-        String test2 = "java";
+        String test2 = new String("java1");
 
-        // contains()
+        // contains() -> case-sensitve
         System.out.println("Contains 'Java': " + original.contains("Java"));
 
         // substring()
-        System.out.println("Substring (6, 10): " + original.substring(6, 10));
+        System.out.println("Substring (6, 10): " + original.substring(8, 12));
 
         // join()
         String joined = String.join("-", "2025", "07", "15");
@@ -40,6 +40,8 @@ public class StringExample1 {
 
         // indexOf()
         System.out.println("Index of 'Java': " + original.indexOf("Java"));
+        
+        System.out.println("Concated String: "+ original.trim().concat(" Good Morning!  "));
   
         // compareTo()
         System.out.println("CompareTo 'Java': " + test.compareTo(test2));

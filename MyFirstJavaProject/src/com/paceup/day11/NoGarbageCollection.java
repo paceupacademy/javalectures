@@ -29,7 +29,7 @@ class Employee {
  public void showNextId()
  {
      System.out.println("Next employee id will be="
-                        + ID);
+                        + nextId);
  }
 }
 
@@ -40,9 +40,9 @@ class NoGarbageCollection {
      Employee F = new Employee("GFG2", 45);
      Employee G = new Employee("GFG3", 25);
      E.show();
-     E.showNextId();
+     //E.showNextId();
      F.show();
-     F.showNextId();
+     //F.showNextId();
      G.show();
      G.showNextId();
 
@@ -52,7 +52,7 @@ class NoGarbageCollection {
          Employee X = new Employee("GFG4", 23);
          Employee Y = new Employee("GFG5", 21);
          X.show();
-         X.showNextId();
+         //X.showNextId();
          Y.show();         
          Y.showNextId();
      }

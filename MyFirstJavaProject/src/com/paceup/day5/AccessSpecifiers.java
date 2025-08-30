@@ -11,9 +11,11 @@ class ProtectedExample{
 }
 
 class ChildClass extends ProtectedExample{
+	private int instanceVar = 20;
 	public void accessMethod() {
-		System.out.println("Protected Variable value: "+var);
+		System.out.println("\nProtected Variable value: "+var);
 		showInteger();
+		
 	}
 }
 
@@ -38,6 +40,7 @@ public class AccessSpecifiers {
         // Parameter Scope 
         // using 'this' to refer to instance variable
         this.instanceVar = instanceVar;
+        staticVar = staticVar +35;
     }
 
     // Method to demonstrate local, parameter, and block scope
@@ -63,15 +66,22 @@ public class AccessSpecifiers {
     }
 
     public static void main(String[] args) {
+    	System.out.println("With Parameterized Constructor!!");
     	AccessSpecifiers obj = new AccessSpecifiers(50);
         obj.showScopes(30);
+        
+        System.out.println("\nWith Default Constructor");
+        AccessSpecifiers as = new AccessSpecifiers();
+        as.showScopes(65);
         ChildClass cc = new ChildClass();
         cc.accessMethod();
+        DemoClass dc = new DemoClass();
+        dc.displayVar();
     }
 }
 
 class DemoClass extends AccessSpecifiers{
 	public void displayVar() {
-		System.out.println(" Local Variable: "+localVar2);
+		System.out.println("\nLocal Variable value of Parent Class: "+localVar2);
 	}
 }

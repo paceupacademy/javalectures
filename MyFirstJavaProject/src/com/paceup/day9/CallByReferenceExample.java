@@ -1,5 +1,11 @@
 package com.paceup.day9;
 
+/*
+ * Primitive -> copy the value -> original value not affected
+ * Object -> Copy reference and pass -> object can be modified but reference is not change
+ */
+
+
 class Person {
     String name;
 }

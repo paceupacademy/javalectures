@@ -10,7 +10,7 @@ public class ArrayExample3 {
 		// using for loop
 		System.out.println("Using for-each Loop:");
 		for(int a : age) {
-			System.out.println(a);
+			System.out.print(a+ " ");
 		}
 	}
 }

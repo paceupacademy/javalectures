@@ -13,6 +13,7 @@ public class UserInputExample {
 		// Prompt the user to enter a value
 		System.out.println("Enter a number (1-3): ");
 		int choice = scanner.nextInt(); //Read the integer input from the user and store it in the variable
+		int data = scanner.nextInt();
 		// Switch statement to handle user input
 		switch (choice) {
 		case 1:
@@ -27,6 +28,7 @@ public class UserInputExample {
 		default:
 			System.out.println("Invalid choice. Please enter a number between 1 and 3.");
 		}
+		System.out.println("data: "+data);
 		//scanner.close();
 	}
 }

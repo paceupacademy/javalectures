@@ -4,7 +4,7 @@ public class JavaBeansExample implements java.io.Serializable{
 	private int id;
 	private String name;
 	
-	public JavaBeansExample() {}
+	//public JavaBeansExample() {}
 
 	public int getId() {
 		return this.id;

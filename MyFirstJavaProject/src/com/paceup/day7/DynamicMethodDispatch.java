@@ -15,11 +15,13 @@ class Child extends Parent {
 
 public class DynamicMethodDispatch {
     public static void main(String[] args) {
+    	int a= 3;
         Parent p1 = new Parent();
         p1.show();  // Outputs: Parent class method
 
         Parent p2 = new Child();  // Superclass reference holding a subclass object
         p2.show();  // Outputs: Child class method (Polymorphism in action)
+        System.out.println("Double "+ (double)a);
     }
 }
 

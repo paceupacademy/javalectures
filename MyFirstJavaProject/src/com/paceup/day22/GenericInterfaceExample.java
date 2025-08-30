@@ -8,8 +8,8 @@ interface Pair<K, V> {
 
 //Implementation of Generic Interface
 class KeyValuePair<K, V> implements Pair<K, V> {
- private K key;
- private V value;
+ private K key;  //Type of key
+ private V value;  //Type of Value
 
  public KeyValuePair(K key, V value) { //accepts any key-value pair and stores it 
      this.key = key;

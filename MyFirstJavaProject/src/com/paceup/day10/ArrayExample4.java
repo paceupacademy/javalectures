@@ -10,7 +10,7 @@ public class ArrayExample4 {
 		// access all elements using for each loop
 		// add each element in sum
 		for (int number: numbers) {
-			sum += number;
+			sum += number; // sum = sum +number 2
 			
 			System.out.print(" "+sum);
 		}

@@ -37,7 +37,9 @@ class ObjectInputStreamExample {
             // Creates an ObjectInputStream
             ObjectInputStream input = new ObjectInputStream(fileStream);
 
-            // Reads the objects
+			/*
+			 * System.out.println(input.readObject()); input.reset();
+			 */// Reads the objects
             Dog newDog = (Dog) input.readObject(); //Typecasting
             System.out.println(" Dog Object "+newDog);
             System.out.println("Dog Name: " + newDog.name);

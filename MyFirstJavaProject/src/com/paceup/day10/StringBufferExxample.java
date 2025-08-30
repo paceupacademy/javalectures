@@ -23,5 +23,6 @@ public class StringBufferExxample {
 		// Reverse
 		sb.reverse();
 		System.out.println("After reverse: " + sb);
+		
 	}
 }

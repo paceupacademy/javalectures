@@ -11,7 +11,7 @@ public class JDBCExample {
 
 	// Method to establish a connection
 	public static Connection connect() throws SQLException {
-		String url = "jdbc:mysql://localhost:3306/student";
+		String url = "jdbc:mysql://localhost:3306/student_data";
 		String user = "root";
 		String password = "root";
 		Connection conn = DriverManager.getConnection(url, user, password); 
@@ -74,7 +74,7 @@ public class JDBCExample {
 			pstmt.setInt(2, id);
 			pstmt.executeUpdate();
 			System.out.println("Student updated successfully");
-			readStudents();
+			//readStudents();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -99,6 +99,10 @@ public class JDBCExample {
 		// TODO Auto-generated method stub
 		createStudent(1, "Aishwarya");
 		createStudent(2, "Diya");
+		createStudent(3, "Neha");
+		createStudent(4, "SNeha");
+		createStudent(5, "sNehal");
+		createStudent(6, "Heena");
 		readStudents();
 		updateStudent(1, "Aishwarya Jadhav");
 		deleteStudent(1);

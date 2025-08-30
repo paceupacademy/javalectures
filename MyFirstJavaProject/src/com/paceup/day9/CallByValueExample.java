@@ -7,8 +7,8 @@ public class CallByValueExample {
         System.out.println("Original value: " + num); // Output: 10
     }
 
-    public static void modifyValue(int value) {
-        value = 20; // Changes only the local copy
-        System.out.println("After modification: "+value);
+    public static void modifyValue(int num) { 
+        num = 20; // Changes only the local copy
+        System.out.println("After modification: "+num);
     }
 }

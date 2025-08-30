@@ -8,11 +8,11 @@ import java.io.*;
 public class ByteStreamExample {
     public static void main(String[] args) { 
         try (FileInputStream fis = new FileInputStream("input.txt");
-             FileOutputStream fos = new FileOutputStream("output2.txt")) { 
-            int data;
+             FileOutputStream fos = new FileOutputStream("output.txt")) { 
+            int data; //counter variable
             while ((data = fis.read()) != -1) { // read() reads 1 byte at a time return it as an integer
                 fos.write(data);
-                System.out.println(" "+data);
+                System.out.println(" "+(char)data+ " "+data);
             }
             fis.close();
             fos.close();

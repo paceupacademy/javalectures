@@ -3,7 +3,7 @@ import java.lang.Math;
 
 public class PackageExample {
     public static void main(String[] args) {
-        int result = Math.addExact(30, 49);
+        int result = Math.addExact(999999999, 999999999);
         System.out.println("Result: " + result);
     }
 }

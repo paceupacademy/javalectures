@@ -15,9 +15,15 @@ class Dog3 extends Animal3 {
 	}
 }
 
-class ProtectedMethod {
+public class ProtectedMethod {
+	protected String color = "Brown";
+	
+	protected void displayColor() {
+		System.out.println("Color is "+color);
+	}
 	public static void main(String[] args) {
-
+	    
+		
 		// create an object of the subclass
 		Dog3 labrador = new Dog3();
 
@@ -27,5 +33,10 @@ class ProtectedMethod {
 		labrador.display();
 
 		labrador.getInfo();
+		
+		Dog3 gS = new Dog3();
+		gS.name = "Tom";
+		gS.display();
+		gS.getInfo();
 	}
 }

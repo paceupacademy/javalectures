@@ -2,7 +2,7 @@ package com.paceup.day4;
 
 import com.paceup.day4.FinalVariable;
 
-class FinalStaticVariable {
+public class FinalStaticVariable {
 	// a final variable
     // direct initialize
     final int THRESHOLD = 5;
@@ -41,5 +41,13 @@ class FinalStaticVariable {
         MINIMUM = -1;
     }
     
+    public static void main(String[] args) {
+    	FinalStaticVariable fsv =  new FinalStaticVariable();
+    	System.out.println("Threshold Value: "+fsv.THRESHOLD);
+    	System.out.println("Capacity is: "+fsv.CAPACITY);
+    	System.out.println("Minimum Capacity is: "+fsv.MINIMUM);
+    	System.out.println("Euler's Constant is: "+EULERCONSTANT);
+    	System.out.println("PI value is: "+PI);
+    }
 }
 

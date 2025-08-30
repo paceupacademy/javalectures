@@ -14,10 +14,10 @@ public class CustomExceptionExample {
 			} catch (InvalidAgeException e) {
 				System.out.println("Exception caught: " + e.getMessage());
 			}
-			checkAge(24);
+			checkAge(10);
 		}
 		catch(Exception e) {
-
+			System.out.println("Exception occurred "+e.getMessage());
 		}
 	}
 

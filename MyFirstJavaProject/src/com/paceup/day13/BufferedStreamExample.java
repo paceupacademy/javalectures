@@ -5,11 +5,13 @@ import java.io.*;
 public class BufferedStreamExample {
     public static void main(String[] args) {
     	try (BufferedReader br = new BufferedReader(new FileReader("input.txt"));
-             BufferedWriter bw = new BufferedWriter(new FileWriter("output1.txt"))) {
+             BufferedWriter bw = new BufferedWriter(new FileWriter("output1.txt", true))) {
             String line;
             while ((line = br.readLine()) != null) {
-                bw.write(line); // Hello Students...
-                bw.newLine(); //to insert a line separator based on the system (Linux,Windows, MacOS)
+            	
+            	bw.newLine(); //to insert a line separator based on the system (Linux,Windows, MacOS)
+                bw.append(line); // Hello Students...  
+                System.out.println("Line Added: "+line);
             }
             bw.append(" June");
             br.close();

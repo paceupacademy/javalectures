@@ -33,22 +33,32 @@ public class UpperBoundWildcardExample {
         List<Integer> intList = List.of(1, 2, 3);
         List<Double> doubleList = List.of(1.1, 2.2, 3.3);
 
+        System.out.println("Printing using UpperBound");
         printNumbers(intList);
         printNumbers(doubleList);
         
+        
+        System.out.println("\nPrinting using Unbound");
         //Unbound Wildcard
         List<String> strList = Arrays.asList("Apple", "Banana", "Cherry");
         printList(strList);
         
         printList(intList);
         
+        System.out.println("\n Printing using LowerBound");
         //LowerBoundWildcard
         List<Number> numList = new ArrayList<>(); //type Number(superclass of Integer)
         
         addNumbers(numList);
+        if(numList.getFirst() instanceof Number) {
+        	System.out.println("numList has Number elements\n");
+        }
         
         List<Object> objList = new ArrayList<>(); //type Object <superclass)
         addNumbers(objList);
+        if(objList.getFirst() instanceof Object) {
+        	System.out.println("objList had Object elements");
+        }
     }
        
 }

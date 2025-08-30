@@ -19,7 +19,7 @@ public class CopyingArrayExample2 {
 
 		//Copying 2d Arrays Using Loop
 		int[][] source2 = {
-				{1, 2, 3, 4}, 
+				{1,2,3,4}, 
 				{5, 6},
 				{0, 2, 42, -4, 5}
 		};
@@ -29,10 +29,10 @@ public class CopyingArrayExample2 {
 		for (int i = 0; i < destination2.length; ++i) { //row
 
 			// allocating space for each row of destination array
-			destination2[i] = new int[source2[i].length];
+			destination2[i] = new int[source2[i].length]; //destination[0] = new int[4]
 
 			for (int j = 0; j < destination2[i].length; ++j) { //column
-				destination2[i][j] = source2[i][j];
+				destination2[i][j] = source2[i][j]; //destination[2][2] = source[2][2]
 			}
 		}
 

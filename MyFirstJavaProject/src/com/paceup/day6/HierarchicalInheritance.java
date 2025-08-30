@@ -26,13 +26,20 @@ class E extends B{
 	}
 }
 
+class F extends D{
+	public void print_F() {
+		System.out.println("Class F method called");
+	}
+}
+
 //Driver Class
 public class HierarchicalInheritance {
 	public static void main(String[] args)
 	{
-		B obj_B = new B();
+		E obj_B = new E();
 		obj_B.print_A();
 		obj_B.print_B();
+		obj_B.print_E();
 
 		System.out.println("\n");
 		C obj_C = new C();
@@ -40,8 +47,9 @@ public class HierarchicalInheritance {
 		obj_C.print_C();
 
 		System.out.println("\n");
-		D obj_D = new D();
+		F obj_D = new F();
 		obj_D.print_A();
 		obj_D.print_D();
+		obj_D.print_F();
 	}
 }

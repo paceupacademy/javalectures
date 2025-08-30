@@ -5,17 +5,17 @@ import java.util.Arrays;
 //Program to Add Two Matrices
 public class SumOfMatrices {
 	public static void main(String[] args) {
-		int rows = 2, columns = 3;
 		int[][] firstMatrix = { {2, 3, 4}, {5, 2, 3} };
 		int[][] secondMatrix = { {-4, 5, 3}, {5, 6, 3} };
-
+		int rows = firstMatrix.length, columns = firstMatrix[0].length;
+		
 		
 		// Adding Two matrices using for loop
 		int[][] sum = new int[rows][columns];
 		
 		for(int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				sum[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
+				sum[i][j] = firstMatrix[i][j] + secondMatrix[i][j]; //firstMatrix[0][2]+secondMatrix[0][2] = 4+3
 			}
 		}
 		

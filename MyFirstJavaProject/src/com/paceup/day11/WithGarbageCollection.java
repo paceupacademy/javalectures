@@ -57,12 +57,13 @@ public class WithGarbageCollection {
 
         x.show();
         y.show();
-       // Employee1.showNextId();
+       Employee1.showNextId();
 
         // Explicit cleanup without relying on GC
         x = null;
         y = null;
 
+        
         // Suggesting manual cleanup but avoiding deprecated finalization
         System.out.println("Intern objects are no longer needed.");
     }

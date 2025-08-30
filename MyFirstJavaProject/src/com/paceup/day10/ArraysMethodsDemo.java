@@ -1,7 +1,9 @@
 package com.paceup.day10;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Spliterator;
+import java.util.stream.IntStream;
 
 public class ArraysMethodsDemo {
 
@@ -24,7 +26,7 @@ public class ArraysMethodsDemo {
         System.out.println("3. binarySearch with comparator: Index of 'Rahul' is " + idx);
 
         // 4. compare()
-        int[] a = {1, 6, 3};
+        int[] a = {1, 6, 1};
         int[] b = {1, 2, 4};
         System.out.println("4. compare(): " + Arrays.compare(a, b)); // -1 because a < b
 
@@ -37,6 +39,14 @@ public class ArraysMethodsDemo {
         System.out.println("6. copyOfRange(): " + Arrays.toString(rangedCopy));
 
         // 7. deepEquals()
+        /*hashcode =1
+         * hashcode = 31*hashcode + arr1[i]
+         * 
+         * 1,2 => 994
+         * 3,4 => 1058
+         * 31*1+994 =>1025
+         * 31*1025 +1058
+         */
         Integer[][] arr1 = {{1, 2}, {3, 4}};
         Integer[][] arr2 = {{1, 2}, {3, 4}};
         System.out.println("7. deepEquals(): " + Arrays.deepEquals(arr1, arr2));
