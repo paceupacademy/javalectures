@@ -16,7 +16,7 @@ public class CollectionsExample {
         Collections.shuffle(names); // Shuffle the list
         System.out.println("Shuffled List: " + names);
         
-        List<Integer> numbers = Arrays.asList(10, 20, 5, 15, 30); //Autoboxing= converts primitive types in wrapper class object
+        List<Integer> numbers = Arrays.asList(10, 20, 5, 15, 30, 30); //Autoboxing= converts primitive types in wrapper class object
         int min = Collections.min(numbers); //Unboxing: converting Integer back to int
         int max = Collections.max(numbers);
         System.out.println("List: " + numbers);

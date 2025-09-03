@@ -1,5 +1,6 @@
 package com.paceup.day16;
 
+import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -30,8 +31,12 @@ public class LinkedListExample {
         list.remove(); // Removes the first element
         System.out.println("After removing first: " + list);
 
+        System.out.println("Value at 1st index element: "+ list.get(1));
+        
         list.remove(1); //  Removes the element at the specified index.
-        System.out.println("Removing 1st index element: "+ list);
+        
+        
+        System.out.println("After 1st index first: " + list);
         
         //Checking Elements
         System.out.println("List contains 10? "+list.contains(10)); //Checks if the list contains the specified element.
@@ -52,9 +57,9 @@ public class LinkedListExample {
         System.out.println("Retrieving first element using peek(): "+list.peek()); // Retrieves the first element without removing it.
         System.out.println("Retrieving first element using poll(): "+list.poll()); // Retrieves and removes the first element.
         System.out.println(list);        
+        System.out.println(list+ " Is Empty? "+list.isEmpty());
         list.clear(); //Removes all elements.
-        System.out.println(list+ "Is Empty? "+list.isEmpty());
-        
+        System.out.println(list+ " Is Empty? "+list.isEmpty());
         /*
          * LinkedList with Queue Interface
          * 
@@ -75,6 +80,33 @@ public class LinkedListExample {
         System.out.println(" "+ list6.indexOf("Demon"));
         
         System.out.println("Queue: "+q);
+        
+		/*
+		 * Field firstField; try {
+		 * 
+		 * //Get LinkedList class "first" field firstField =
+		 * LinkedList.class.getDeclaredField("first"); firstField.setAccessible(false);
+		 * 
+		 * Object firstNode = firstField.get(list); //firstNode (Apple)
+		 * 
+		 * //Access the nextfield element Field nextfield =
+		 * firstNode.getClass().getDeclaredField("next"); nextfield.setAccessible(true);
+		 * 
+		 * Object secondNode = nextfield.get(firstNode); //node for Banana
+		 * 
+		 * Field itemField = firstNode.getClass().getDeclaredField("item");
+		 * itemField.setAccessible(true);
+		 * 
+		 * System.out.println("First Element: " + itemField.get(firstNode));
+		 * System.out.println("Second Element: "+ itemField.get(secondNode)); } catch
+		 * (NoSuchFieldException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); } catch (SecurityException e) { // TODO Auto-generated
+		 * catch block e.printStackTrace(); } catch (IllegalArgumentException e) { //
+		 * TODO Auto-generated catch block e.printStackTrace(); } catch
+		 * (IllegalAccessException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
+        
     }
 }
 

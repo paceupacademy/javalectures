@@ -17,20 +17,26 @@ public class ArrayListExample {
         list.add("Apple");
         list.add("Banana");
         list.add("Cherry");
+        System.out.println(" Arraylist: "+list);
+        
         list.add(2, "Orange");
+        
 
         System.out.println(" Arraylist: "+list);
         
         // Accessing elements
-        System.out.println("First element: " + list.getFirst());
+        System.out.println("Last element: " + list.get(list.size()-1));
 
         // Removing an element
-        list.remove("Banana");
+        list.remove("Orange");
+        
+        System.out.println(" Arraylist: "+list);
 
         // Iterating through the list
         for (String fruit : list) {
             System.out.print(fruit+" ");
         }
+        
         System.out.println();
         ArrayList<String> extra = new ArrayList<>(Arrays.asList("Watermelon","Lemon","Guava"));
         list.addAll(extra);
@@ -45,12 +51,21 @@ public class ArrayListExample {
         System.out.println("Size of the list: " + list.size());
         
         Field field = ArrayList.class.getDeclaredField("elementData");
+        
         field.setAccessible(true);
         Object[] internalArray = (Object[]) field.get(list);
         
         System.out.println("Capacity: "+internalArray.length);
         
+        //System.out.println(internalArray);
+        
+        for(Object obj:internalArray) {
+        	System.out.print(obj+" ");
+        }
+        
         Collections.synchronizedList(list);
+        
+        System.out.println(list);
     }
 }
 

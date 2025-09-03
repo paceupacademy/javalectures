@@ -15,7 +15,7 @@ class Personn{
 	}
 	
 	@SafeVarargs
-	public static void printAll(List<String>...lists) {
+	public static void printAll(List<String>...lists) { //variable-length argument (varargs parameter
 		for(List<String> l:lists) {
 			System.out.println(" "+l);
 		}
@@ -66,8 +66,13 @@ public class MyAnnotationExampleDemo{
 		List<String> list1 = new ArrayList<String>();
 		list1.add("abc");
 		list1.add("xyz");
+		List<String> list2 = new ArrayList<String>();
+		list2.add(null);
+		list2.add("asjsadkjhd");
 		p.demo();
-		p.printAll(list1);
+		p.printAll(list1,list2);
+		
+		
 		
 		Annotation[] ann = RepeatableExample.class.getAnnotations(); //gets all annotations present inside class
 		for (Annotation a: ann) {

@@ -1,12 +1,13 @@
 package com.paceup.day15;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class AnnotationProcessor {
     public static void main(String[] args) {
         // Access the class
         Class<AnnotatedClass> obj = AnnotatedClass.class;
-
+        
         // Check for class-level annotation
         if (obj.isAnnotationPresent(MyAnnotationExample.class)) { //check if annotation is present
             MyAnnotationExample annotation = obj.getAnnotation(MyAnnotationExample.class);
@@ -20,7 +21,19 @@ public class AnnotationProcessor {
                 System.out.println("Method: " + method.getName() + ", Value: " + annotation.value() + ", Priority: " + annotation.priority());
                 
                AnnotatedClass obj1 = new AnnotatedClass();
-               obj1.annotatedMethod();
+               //obj1.annotatedMethod();
+               try {
+				method.invoke(obj1);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             }
         }
     }
