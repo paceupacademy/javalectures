@@ -29,8 +29,10 @@ public class HashSetExample {
         set.add("Apple");
         set.add("Lemon");
         set.add("Mango");
-        
+        System.out.println(set); 
         Iterator<String> iterator = set.iterator(); //Returns an iterator over the elements in the set.
+        
+        //s[i]*31^(n-1)+ s(i+1)^(n-2) + ....+s(n-1)
         while (iterator.hasNext()) {
             System.out.print(iterator.next()+" ");
             System.out.print("HashCode of "+ iterator+" is "+iterator.hashCode()+"\n");
