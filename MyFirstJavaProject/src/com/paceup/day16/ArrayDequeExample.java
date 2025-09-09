@@ -1,6 +1,7 @@
 package com.paceup.day16;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 
 public class ArrayDequeExample {
     public static void main(String[] args) {
@@ -18,13 +19,27 @@ public class ArrayDequeExample {
         System.out.println(deque);
         
         
-
+        System.out.println("First Element using peek: "+deque.peekFirst());
+        System.out.println("Last Element using peek: "+deque.peekLast());
+        
+        deque.push("K");
+        
         System.out.println("Deque after additions: " + deque);
 
         // Accessing elements
         System.out.println("First Element: " + deque.getFirst());
         System.out.println("Last Element: " + deque.getLast());
 
+        
+        int index = 0;
+        for (String val : deque) {
+        	if(val.equals("a")) {
+        		System.out.println("Index of a" +index);
+        		break;
+        	}
+        	index++;
+        }
+        
         // Removing elements
         deque.removeFirst();
         System.out.println("Deque after removals: " + deque);
@@ -38,7 +53,7 @@ public class ArrayDequeExample {
         System.out.println("Deque after removals: " + deque);
         
         deque.clear();
-        deque.offerFirst("");
+        System.out.println(deque.offerFirst(""));
         deque.offerLast("D");
         
         System.out.println(deque);

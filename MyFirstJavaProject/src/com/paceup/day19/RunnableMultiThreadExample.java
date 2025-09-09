@@ -1,5 +1,8 @@
 package com.paceup.day19;
-
+/*
+ * Using Runnable, we can write one reusable task and let multiple threads execute it concurrently.
+ * So that's why this design is used in enterprise applications
+ */
 class PrintNumbers implements Runnable {
     private int number;
 

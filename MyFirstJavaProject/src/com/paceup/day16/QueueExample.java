@@ -23,6 +23,7 @@ public class QueueExample {
         System.out.println("Removed: " + queue.poll());
         System.out.println("Queue after removal: " + queue);
 
+        queue.clear();
         // Check if the Queue is empty
         System.out.println("Is Queue empty? " + queue.isEmpty());
     }

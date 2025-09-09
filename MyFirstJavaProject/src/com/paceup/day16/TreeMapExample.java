@@ -27,6 +27,17 @@ public class TreeMapExample {
         // Removing an element
         map.remove(1);
         System.out.println("After removal: " + map);
+        System.out.println("Greatest key: "+ map.lowerKey(5)); //Greatest key < given key
+        System.out.println("FloorKey method: "+map.floorKey(5)); //Greatest key =< given key
+        System.out.println("Ceiling method: "+map.ceilingKey(5)); // Smallest key >= given key
+        System.out.println("Higher Key: "+map.higherKey(5)); //smallest key > given key
+        
+        System.out.println("\n Entry Methods: \n");
+        System.out.println("SubMap (2)"+map.subMap(2, true, 7, false));
+        System.out.println("Descending Map: "+map.descendingMap());
+        System.out.println("Polling First Entry: "+map.pollFirstEntry());
+        System.out.println(map);
+        System.out.println("First Entry: "+map.firstEntry());
     }
 }
 

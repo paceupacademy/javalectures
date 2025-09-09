@@ -60,14 +60,20 @@ public class LinkedListExample {
         System.out.println(list+ " Is Empty? "+list.isEmpty());
         list.clear(); //Removes all elements.
         System.out.println(list+ " Is Empty? "+list.isEmpty());
+        
+        
+        
         /*
          * LinkedList with Queue Interface
          * 
          */
+        
+        System.out.println("\n\n *** Queue Examples ***\n");
         Queue<String> q = new LinkedList<>();
         q.add("Alice");
         q.add("Bob");
         q.add("Demon");
+        q.add("Asha");
         
         System.out.println("First Element: "+q.peek());
         LinkedList<String> list5 = (LinkedList<String>) q;
@@ -78,6 +84,8 @@ public class LinkedListExample {
         System.out.println("Removed: "+q.poll());
         LinkedList<String> list6 = (LinkedList<String>) q;
         System.out.println(" "+ list6.indexOf("Demon"));
+        
+        System.out.println("Removed index at "+list5.indexOf("Bob")+": "+list5.get(list5.indexOf("Bob"))+"? "+q.remove("Bob"));
         
         System.out.println("Queue: "+q);
         

@@ -18,3 +18,18 @@ public class CreatingThread {
     }
 }
 
+/*
+ * New -> Created with new Thread()
+ *  |
+ *  |start()
+ *  |
+ * Runnable -> Eligible for CPU, waiting in scheduler's queue
+ *  |
+ *  |(picked by CPU)
+ *  | 
+ * Running -> execute run()
+ *  | |
+ *  | |--> Waiting/Timed-Waiting/Blocked (due to wait(),sleep(),join(),lock)
+ *  | 
+ * Terminated -> run() finished or stopped
+ */

@@ -1,5 +1,9 @@
 package com.paceup.day19;
 
+/*
+ * Thread1 --->-----> [Lock on Object] ----> [Critical Section ] -----> [Release Lock] -----> Thread2
+ */
+
 class SharedResource {
 	synchronized void display(String message) { //only one thread can execute this method on a given object at a time
 		for (int i = 0; i < 2; i++) {
