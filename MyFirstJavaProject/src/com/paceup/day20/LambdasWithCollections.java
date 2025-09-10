@@ -17,7 +17,7 @@ public class LambdasWithCollections {
         List<String> names = Arrays.asList("Alice", "Charlie", "Bob", "David", "Arjun");
 
         //sorting using lambdas
-        names.sort((a, b) -> a.compareTo(b));
+        names.sort((a, b) -> a.compareTo(b)); //Charlie, Bob -> Bob,Charlie
         
         
         System.out.println(names);
