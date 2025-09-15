@@ -21,7 +21,7 @@ class PersonData{
 	
 	@Override
 	public String toString() {
-		return name + " ( " +age+ ", " +(isMale ? " Male " : "Female" ) + ")";
+		return "("+ name + " , " +age+ ", " +(isMale ? " Male " : "Female" )+")" ;
 	}
 }
 
@@ -51,7 +51,7 @@ public class GroupingExample {
 		//groupingBy
 		Map<Integer, List<PersonData>> groupByAge = people.stream().collect(Collectors.groupingBy(p->p.age));
 		
-		System.out.println("Grouped By Age:" +groupByAge);
+		System.out.println("\nGrouped By Age:" +groupByAge);
 		
 		Map<Boolean, List<PersonData>> partitionByGender = people.stream().collect(Collectors.partitioningBy(p->p.isMale));
 		
@@ -71,8 +71,8 @@ public class GroupingExample {
 		
 		System.out.println("\nAge Summary");
 		System.out.println("\n Count " + stats.getCount());
-		System.out.println("\n Average "+stats.getAverage());
-		System.out.println("\n Minimum Age "+stats.getMin());
+		System.out.print("\t Average Age: "+stats.getAverage());
+		System.out.print("\t Minimum Age:"+stats.getMin());
 
 	}
 
