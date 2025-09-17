@@ -16,8 +16,9 @@ public class GenericMethodExample {
 
         System.out.print("Integer Array: ");
         printArray(intArray);
-
+        
         System.out.print("String Array: ");
         printArray(stringArray);
+        
     }
 }

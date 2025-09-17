@@ -3,6 +3,12 @@ package com.paceup.day22;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+/*
+ * PECS Rule (Produce Extends, Consumer Super)
+ * Use <? extends T> when the collection produces values(read-only)
+ * Use <? super T> when the collection consumes values (write/add)
+ */
 //Wildcard means unknown type
 public class UpperBoundWildcardExample {
     public static void printNumbers(List<? extends Number> list) { //UpperBound Wildcard
@@ -36,7 +42,7 @@ public class UpperBoundWildcardExample {
         printNumbers(intList);
         printNumbers(doubleList);
         
-        //Unbound Wildcard
+        //Unbound Wildcard 
         List<String> strList = Arrays.asList("Apple", "Banana", "Cherry");
         printList(strList);
         
