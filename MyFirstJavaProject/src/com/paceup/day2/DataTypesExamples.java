@@ -21,7 +21,7 @@ public class DataTypesExamples {
 		// larger than byte range
 		// byte b1 = 7888888955;
 
-		short s = 56;
+		short s = 576;
 
 		// this will give error as number is
 		// larger than short range
@@ -29,7 +29,7 @@ public class DataTypesExamples {
 
 		// by default fraction value
 		// is double in java
-		double d = 4.355453532;
+		double d = 4.355453532d;
 
 		// for float use 'f' as suffix as standard
 		float f = 4.7333434f;

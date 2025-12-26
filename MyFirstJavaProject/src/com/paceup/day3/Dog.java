@@ -68,7 +68,7 @@ public class Dog { //public - accessible from other packages as well
 		return ("Dog Name is: " + this.getName()
 		+ "\nBreed, age, and color are: "
 		+ this.getBreed() + "," + this.getAge()
-		+ "," + this.getColor());
+		+ "," + this.getColor()+"\n\n");
 	}
 
 	public static void main(String[] args)
@@ -76,9 +76,10 @@ public class Dog { //public - accessible from other packages as well
 		Dog tuffy = new Dog("tuffy", "papillon", 5, "white");
 		Dog max = new Dog("Papillion", "german shephard", 7, "brown");
 		Dog abc = new Dog();
+		Dog xyz = new Dog("Tom");
 		System.out.println(tuffy.toString());
 		System.out.println(max.toString());
-		//System.out.println(abc.toString());
+		System.out.println(xyz.toString());
 		System.out.println("Name: "+abc.name+" Age: "+abc.age+" Breed: "+abc.breed+" Color: "+abc.color);
 	}
 }

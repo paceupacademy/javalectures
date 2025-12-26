@@ -16,6 +16,7 @@ class Student {
       
         // creating an object of
         // Student
+    	String name="Radha";
         Student s1 = new Student();
         s1.n ="Ria";
         //String name="Ria";

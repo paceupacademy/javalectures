@@ -3,8 +3,8 @@ package com.paceup.day2;
 public class NestedIf {
 	public static void main(String[] args) {
 
-		int a = 25;
-		double w = 65.5;
+		int a = 15;
+		double w = 55.5;
 
 		if (a >= 18) {
 			if (w >= 50.0) {
