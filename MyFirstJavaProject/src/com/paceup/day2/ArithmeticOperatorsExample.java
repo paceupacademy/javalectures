@@ -1,5 +1,11 @@
 package com.paceup.day2;
 
+enum Day{
+	Monday,
+	Tuesday,
+	Wednesday
+}
+
 class ArithmeticOperatorsExample
 {
 	public static void main (String[] args) 

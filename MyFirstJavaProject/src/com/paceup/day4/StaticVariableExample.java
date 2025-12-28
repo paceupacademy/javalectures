@@ -6,13 +6,19 @@ public class StaticVariableExample {
     int num =10;
     
     public StaticVariableExample() {
-		a = a+ 15;
-		num++;
+    	System.out.println("num:"+num);
+		a = a+ 15; //a=35
+		num++; //num=11
 	}
     
     // static block run first when the class is loaded even before constructor
     static {
         System.out.println("Inside static block");
+    }
+    
+    void display() {
+    	System.out.println("num:"+this.num);
+    	System.out.println("a:"+this.a);
     }
     
     // static method
@@ -24,13 +30,19 @@ public class StaticVariableExample {
     // static method(main !!)
     public static void main(String[] args)
     {
-       System.out.println("Static Value of a : "+a);
-       System.out.println("from main");
+       System.out.println("Static Value of a : "+a); //20
+       System.out.println("from main method\n");
+       
        StaticVariableExample s = new StaticVariableExample();
-       System.out.println(" Value of a: "+s.a+" Num: "+s.num);
+       System.out.println("Value of a: "+s.a+" Num: "+s.num);
+       s.display();
+       
        StaticVariableExample s1 = new StaticVariableExample();
-       System.out.println("Value of a: "+s1.a+" Num: "+s1.num);
+       System.out.println("\nValue of a: "+s1.a+" Num: "+s1.num);
+       
        int m = m1();
-       System.out.println("Value for static m1(): "+m);
+       System.out.println("\nValue for static m1(): "+m);
+       
+       s1.display();
     }
 }
