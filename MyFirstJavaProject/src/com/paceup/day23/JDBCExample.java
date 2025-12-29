@@ -11,7 +11,7 @@ public class JDBCExample {
 
 	// Method to establish a connection
 	public static Connection connect() throws SQLException {
-		String url = "jdbc:mysql://localhost:3306/student";
+		String url = "jdbc:mysql://localhost:3306/student2";
 		String user = "root";
 		String password = "root";
 		Connection conn = DriverManager.getConnection(url, user, password); 

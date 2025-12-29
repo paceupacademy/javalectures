@@ -1,5 +1,11 @@
 package com.paceup.day2;
 
+/*
+ * while(condition){
+ * 	//code to be iterated
+ * }
+ */
+
 public class WhileExample {
 	public static void main(String args[])
 	{
@@ -16,12 +22,17 @@ public class WhileExample {
 		}
 		System.out.println("Summation of 1-10: " + s);
 
-		int c = 6;
+		int c = -5;
 
 		// Using do-while loop
 		do {
 			System.out.println("PaceupAcademy: " + c);
 			c--;
 		} while (c <= 5 && c>0);
+		
+		/*while(i>0) {
+			i++;
+			System.out.println("Hello");
+		}*/
 	}
 }

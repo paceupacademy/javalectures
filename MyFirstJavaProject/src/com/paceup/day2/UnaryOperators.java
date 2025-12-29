@@ -19,5 +19,11 @@ public class UnaryOperators {
 		
 		System.out.println("Postdecrement : " + (b--)); //10//b=b-1=9
 		System.out.println("Predecrement : " + (--b)); //9-1=8
+		
+		int c = -a;
+		System.out.println("c = "+c);
+		
+		int d = -(c);
+		System.out.println("d = "+d);
 	}
 }

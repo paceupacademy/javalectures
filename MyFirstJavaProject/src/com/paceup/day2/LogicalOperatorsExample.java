@@ -14,7 +14,7 @@ class LogicalOperatorsExample
         System.out.println("x && z: "+ (x && z)); //false
         System.out.println("x || z: " + (x || z)); //true
         System.out.println("!x: " + (!x)); //false
-        System.out.println("x: "+x); //true
+        System.out.println("x: "+x); //true 
 
 	}
 }

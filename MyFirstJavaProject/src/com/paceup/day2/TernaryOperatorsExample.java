@@ -5,7 +5,7 @@ class TernaryOperatorsExample
 	public static void main (String[] args) 
 	{
 
-		int a = 20, b = 10, c = 30, result;
+		int a = 35, b = 10, c = 30, result;
 
 		// result holds max of three
 		// numbers
