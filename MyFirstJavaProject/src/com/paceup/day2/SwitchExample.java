@@ -5,10 +5,10 @@ public class SwitchExample {
 	      
 	      //assigning n as integer value
 	      char n = 'b';
-	      
+	      int i =2;
 	      //passing n to switch
 	      // it will check n and display output accordingly
-	      switch(n) {
+	      switch(i) {
 	          
 	        case 'a': 
 	          System.out.println("India");

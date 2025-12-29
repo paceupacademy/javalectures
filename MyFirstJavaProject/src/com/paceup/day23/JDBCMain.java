@@ -10,7 +10,7 @@ public class JDBCMain {
 
 	// Method to establish a connection
 	public static Connection connect() throws SQLException {
-		String url = "jdbc:mysql://localhost:3306/student";
+		String url = "jdbc:mysql://localhost:3306/student2";
 		String user = "root";
 		String password = "root";
 		Connection conn = DriverManager.getConnection(url, user, password); 
@@ -40,7 +40,7 @@ public class JDBCMain {
 	public static void createStudent(int id, String name) {
 		String sql = "INSERT INTO students (id, name) VALUES (?, ?)";
 		try (Connection conn = connect();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setInt(1, id);
 			pstmt.setString(2, name);
 			pstmt.executeUpdate();
@@ -52,10 +52,11 @@ public class JDBCMain {
 
 	// Method to perform READ operation
 	public static void readStudents() {
-		String sql = "SELECT * FROM students";
+		String sql = "SELECT * FROM students where id=?";
 		try (Connection conn = connect();
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql)) {
+			PreparedStatement stmt = conn.prepareStatement(sql);) {
+			stmt.setInt(1, 2);
+			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				System.out.println("ID: " + rs.getInt("id") + ", Name: " + rs.getString("name"));
 			}

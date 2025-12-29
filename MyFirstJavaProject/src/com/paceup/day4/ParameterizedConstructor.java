@@ -1,11 +1,12 @@
 package com.paceup.day4;
 
 class Example {
-    int x;
+    int x=5;
 
     Example(int value) {
-        x = value;
+        int sum = x + value;
         System.out.println("Parameterized Constructor called! Value: " + x);
+        System.out.println("Sum of variables="+sum);
     }
 }
 

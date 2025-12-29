@@ -1,7 +1,5 @@
 package com.paceup.day4;
 
-import com.paceup.day4.FinalVariable;
-
 class FinalStaticVariable {
 	// a final variable
     // direct initialize
@@ -39,6 +37,14 @@ class FinalStaticVariable {
     public FinalStaticVariable() 
     {
         MINIMUM = -1;
+    }
+    
+    public static void main(String[] args) {
+    	FinalStaticVariable fsv = new FinalStaticVariable();
+    	//fsv.MINIMUM=1;
+    	System.out.println(fsv.MINIMUM);
+    	
+    	StaticVariableExample.m1();
     }
     
 }
