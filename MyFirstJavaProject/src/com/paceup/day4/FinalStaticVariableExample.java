@@ -43,6 +43,8 @@ class FinalStaticVariable {
     	FinalStaticVariable fsv = new FinalStaticVariable();
     	//fsv.MINIMUM=1;
     	System.out.println(fsv.MINIMUM);
+    	
+    	StaticVariableExample.m1();
     }
     
 }
