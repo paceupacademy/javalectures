@@ -1,0 +1,26 @@
+QUE: Explain the difference between static and instance methods.
+ANS: 
+	1. Static Method:
+			class Demo {
+		    static void show() {
+		        System.out.println("Static method");
+		    }
+		}
+		
+		a. Belongs to the class.
+		b. Can be called using class name.
+		c. Cannot access instance variables directly.
+		d. Loaded once when the class is loaded.
+		e. Called after initialization and before the main class.
+		
+		
+	2. Instance Method:
+			class Demo {
+		     void show() {
+		        System.out.println("Instance method");
+		    }
+		}
+		
+		a. Belongs to an object.
+		b. Called using object reference
+		c. Can access both instance and static variables
