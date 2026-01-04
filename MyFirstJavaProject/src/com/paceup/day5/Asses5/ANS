@@ -1,0 +1,106 @@
+Que 1. What are access specifiers in Java? List and explain each.
+ANS:  Access Specifiers are used to set the visibility of classes, methods and variables.
+	List of Access specifiers:
+	A. PUBLIC:
+		It is accessible  anywhere (Inside and outside the package). 
+		From outside package we have to access using the inheritance or using the object creation.
+		
+		public class PubAccess {
+		    public int a;
+		    public void display() {
+		        System.out.println("Public access");
+		    }
+		}
+		
+	B. PROTECTED:
+		It is accessible within class and subclass.
+		
+		class ProAccess {
+		    protected int b;
+		}
+		
+	C. PRIVATE:
+		 It is accessible only within the class.
+			Class PriAccess{
+				private int c;
+				public void display() {
+		        System.out.println("c");
+		    }
+		}
+		
+	
+***********************************************************************************************************	
+
+Que 2. How does encapsulation help in object-oriented programming?
+Ans: Encapsulation is the process of wrapping data (variables) and code (methods) together as a single unit.
+	 Encapsulation helps in below points:
+		a. Data Hiding (Security):
+			Only necessary data will shows to the user. other data is hidden.
+			Public methods are provided to access and update the values of private variables.
+			Data is accessed only through public methods (getters/setters)
+			
+		b. Maintainability:
+			Internal methods can be modify, it won't effect on internal code bcz of external code.
+			
+		c. Modularity:
+			Modularity improves the large system into small, self-contained, well-defined classes (modules) 
+			where each class encapsulates its own data and behavior.
+			
+			
+***********************************************************************************************************	
+
+Que 3. What is the difference between public and protected access modifiers?
+ANS:
+ 	Modifier	Within Class	Within Package	Subclass (other pkg)	Other Packages
+	public			✅				✅					✅					✅
+	protected		✅				✅					✅					❌
+
+***********************************************************************************************************	
+
+Que 4. Can private members of a class be accessed from another class? Explain.
+Ans: No, private members cannot be accessed directly from another class.
+		private restricts access only to the same class. Other classes do not know the private members,
+		
+		Example to private not accessible:
+		class PriAccess {
+    		private int a;
+
+    		void setSalary(int a) {
+        	this.a = a;
+    	}
+	}
+		
+		
+		class Test {
+   			 public static void main(String[] args) {
+        		PriAccess pa = new PriAccess();
+
+        		// pa.a = 50000;   ❌ Compile-time error
+   			 }
+		}
+		
+
+
+***********************************************************************************************************	
+Que 5. What is the default access modifier and how does it work in Java?
+Ans: The default access modifier is used when no access modifier is specified for a class, method, or variable.
+	 Default access modifier accessible within the package,
+	 To use in another package we have create we have to access using the inheritance or using the object creation.
+	 No keyword is used for default access
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

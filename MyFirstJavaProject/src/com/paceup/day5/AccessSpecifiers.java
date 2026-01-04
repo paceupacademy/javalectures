@@ -21,6 +21,8 @@ public class AccessSpecifiers {
 	// Instance Variable (belongs to each object)
     private int instanceVar = 10;
     int localVar2 = 20; //default access specified for variable
+    protected int provar = 100; 
+    public int pubvar = 200; 
 	/*
 	 * FinalVariable f = new FinalVariable(); int demo = f.var; EncapsulationExample
 	 * e = new EncapsulationExample(); int sal= e.id;
