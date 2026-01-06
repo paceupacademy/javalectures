@@ -13,7 +13,7 @@ ANS:  Access Specifiers are used to set the visibility of classes, methods and v
 		}
 		
 	B. PROTECTED:
-		It is accessible within class and subclass.
+		It is accessible within class and subclass(other package).
 		
 		class ProAccess {
 		    protected int b;

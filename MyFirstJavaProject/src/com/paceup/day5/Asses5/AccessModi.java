@@ -24,7 +24,7 @@ public class AccessModi {
 	
 //Que3. Create two packages and demonstrate access control across them.
 
-	static class demonstrate extends AccessSpecifiers {
+	 class Demonstrate extends AccessSpecifiers { //subclass of AccessSpecifiers class also inner class of AccessModi class
 
 		public void access() {
 			System.out.println("Local protected Variable AccessSpecifiers class: " + provar);
@@ -36,9 +36,9 @@ public class AccessModi {
 		AccessModi obj = new AccessModi();
 		obj.display();
 
-		demonstrate obj2 = new demonstrate();
+		AccessModi.Demonstrate obj2 = obj.new Demonstrate(); //non-static inner class must be created using and object of its outer class
 		obj2.access();
 
 	}
-
 }
+

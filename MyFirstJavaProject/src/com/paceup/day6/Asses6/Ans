@@ -1,0 +1,148 @@
+Que 1. What is inheritance in Java and why is it important?
+Ans:  Inheritance allows a derived class  to inherit fields and methods from another parent class.
+		It is important because for reusability code, method overriding, polymorphism.
+		
+***********************************************************************************************************	
+	
+Que 2. Differentiate between single, multilevel, and hierarchical inheritance.
+Ans: 
+	A. Single Inheritance:
+		A single child inherits from one parent class.
+		
+		class Animal {
+		    void eat() {
+		        System.out.println("Animal eats");
+		    }
+		}
+		
+		class Dog extends Animal {
+		    void bark() {
+		        System.out.println("Dog barks");
+		    }
+		}
+	-------------------------------------------------------------	 
+	
+	B. Multilevel Inheritance:
+		 A class inherits from a class that is already a subclass of another class.
+		 
+		 class Animal {
+		    void eat() {
+		        System.out.println("Animal eats");
+		    }
+		}
+		
+		class Dog extends Animal {
+		    void bark() {
+		        System.out.println("Dog barks");
+		    }
+		}
+		
+		class Puppy extends Dog {
+		    void play() {
+		        System.out.println("Puppy plays");
+		    }
+		}
+		 
+	-------------------------------------------------------------	 
+	C. Hierarchical Inheritance:
+		Multiple classes inherit from a single parent class.
+		
+		class Animal {
+		    void eat() {
+		        System.out.println("Animal eats");
+		    }
+		}
+		
+		class Dog extends Animal {
+		    void bark() {
+		        System.out.println("Dog barks");
+		    }
+		}
+		
+		class Cat extends Animal {
+		    void meow() {
+		        System.out.println("Cat meows");
+		    }
+		}
+
+***********************************************************************************************************	
+
+		
+Que 3. Explain the role of the 'super' keyword in inheritance.
+Ans: The super keyword is used call the parent class constructor, methods, or fields from child class.
+		It helps a subclass access parent class members and constructors.
+		
+	A. Call Parent Class
+		
+		class Animal {
+		    void sound() {
+		        System.out.println("Animal makes sound");
+		    }
+		}
+		
+		class Dog extends Animal {
+		    void sound() {
+		        super.sound();                  // parent method
+		        System.out.println("Dog barks");
+		    }
+		}
+	-------------------------------------------------------------	 
+	
+	B. Call Parent constructors
+		class Person {
+		    Person() {
+		        System.out.println("Parent class constructors");
+		    }
+		}
+		
+		class Student extends Person {
+		    Student(String name) {
+		        super();                   
+		        System.out.println("Student class constructors"));
+		    }
+		}
+		
+***********************************************************************************************************	
+		
+Que 4. What is constructor chaining in the context of inheritance?		
+Ans: 	Constructor chaining in inheritance is the process where a child class constructor calls a parent class constructor, 
+		typically using the super() keyword,
+		
+		
+		class A {
+			    A() {
+			        System.out.println("Constructor of A");
+			    }
+			}
+			
+			class B extends A {
+			    B() {
+			        super();   // calls A's constructor (implicit if not written)
+			        System.out.println("Constructor of B");
+			    }
+			}
+			
+			class C extends B {
+			    C() {
+			        super();   // calls B's constructor
+			        System.out.println("Constructor of C");
+			    }
+			}
+			
+			public class Test {
+			    public static void main(String[] args) {
+			        C obj = new C();
+			    }
+			}
+		
+		
+***********************************************************************************************************	
+
+Que 5. Can a subclass inherit private members from a superclass? Why or why not?
+Ans:	No, a subclass cannot directly inherit  private members of a superclass.
+		Why->private members are accessible only within the same class,
+			Subclasses are different classes, even though they extend a superclass.
+		
+***********************************************************************************************************	
+
+		
