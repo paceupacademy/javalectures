@@ -1,6 +1,6 @@
 Que 1. What is inheritance in Java and why is it important?
-Ans:  Inheritance allows a derived class  to inherit fields and methods from another parent class.
-		It is important because for reusability code, method overriding, polymorphism.
+Ans:  Inheritance allows a derived class  to inherit fields and methods from parent class.
+		It is important because for reusability code, polymorphism.
 		
 ***********************************************************************************************************	
 	
@@ -106,7 +106,7 @@ Ans: The super keyword is used call the parent class constructor, methods, or fi
 		
 Que 4. What is constructor chaining in the context of inheritance?		
 Ans: 	Constructor chaining in inheritance is the process where a child class constructor calls a parent class constructor, 
-		typically using the super() keyword,
+		typically using the super(),
 		
 		
 		class A {

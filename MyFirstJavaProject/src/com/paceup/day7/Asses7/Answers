@@ -1,0 +1,242 @@
+Que 1: What is polymorphism in Java?
+Ans: 	Polymorphism means "one name, many forms" it allows same method behaves differently depending on object that call it.
+
+******************************************************************************************************************************
+
+Que 2. Differentiate between compile-time and runtime polymorphism.
+Ans:  
+		A: Compile Time Polymorphism:
+			a. Compile time polymorphism is also called static binding.
+			b. Same method name but differ in parameters.
+			c. Achieved using the method overloading.
+			d. Inheritance not required for compile time polymorphism.
+			e. Decision made on compile time.
+			
+			Class Operation{
+			
+				int sum(int a, int b){
+				return a + b;
+				}
+				
+				double sum (double a, double b, double c){
+				 return a + b + c;
+				}
+			}
+			
+			public static void main(String[] args){
+				Operation op = new Operation();
+				System.out.println(op.sum(10, 20));       // Calls int version
+        		System.out.println(op.sum(20.2, 10.8));  // Calls double version
+			}
+			
+	-------------------------------------------------------------	 
+					
+		B: Runtime Polymorphism:
+			a. Runtime polymorphism is also called as dynamic binding.
+			b. It is exact replica of parent class method into child class.
+			c. Achieved using the method orverriding.
+			d. Inheritance required for runtime polymorphism.
+			e. Decision made on runtime.
+			f. while doing the runtime polymorphism '@override' annotation is required in child class. 
+			
+			class Animal {
+			    void sound() {
+			        System.out.println("Animal sound");
+			    }
+			}
+			
+			class Dog extends Animal {
+			    @Override
+			    void sound() {
+			        System.out.println("Dog barks");
+			    }
+			}
+			
+			public class Test {
+			    public static void main(String[] args) {
+			        Animal obj = new Dog();
+			        obj.sound();  // runtime decision
+			    }
+			}
+
+******************************************************************************************************************************
+
+
+Que 3. What is method overloading? Give an example.
+Ans: 
+		Method overloading is same method names in same class but differ in parameter list.
+		The method to be executed is decided at compile time, so it is also called compile-time polymorphism.
+		Based on parameter pass in object that related particular method will call.
+		
+		class Calculator {
+
+		    int add(int a, int b) {
+		        return a + b;
+		    }
+		
+		    int add(int a, int b, int c) {
+		        return a + b + c;
+		    }
+		
+		    double add(double a, double b) {
+		        return a + b;
+		    }
+		
+		    public static void main(String[] args) {
+		        Calculator obj = new Calculator();
+		
+		        System.out.println(obj.add(10, 20));        // calls add(int, int)
+		        System.out.println(obj.add(10, 20, 30));    // calls add(int, int, int)
+		        System.out.println(obj.add(5.5, 4.5));      // calls add(double, double)
+		    }
+		}
+		
+******************************************************************************************************************************
+
+Que 4. What is method overriding? How does it work in inheritance?
+Ans:
+		Method overriding occurs when a subclass provides own implementation of a method that is already defined in its superclass
+		The method to be executed is decided at runtime time, so it is also called runtime polymorphism.
+		It is only work with inheritance.
+		
+		How does it work in inheritance:
+		a. A child class inherits a method from parent class.
+		b. It is exact method signature of parent class.
+		c.Method call is on actual object type.
+		
+		
+		class Animal {
+		    void sound() {
+		        System.out.println("Animal makes sound");
+		    }
+		}
+		
+		class Dog extends Animal {
+		    @Override
+		    void sound() {
+		        System.out.println("Dog barks");
+		    }
+		}
+		
+		public class Test {
+		    public static void main(String[] args) {
+		        Animal obj = new Dog();  // upcasting
+		        obj.sound();             // runtime decision
+		    }
+		}
+		
+******************************************************************************************************************************
+
+Que 6. What is dynamic method dispatch?
+Ans:  	It is a runtime polymorphism where method call to overridden  is resolved at runtime.
+		while creating object create parent reference to child object.
+		
+				class Animal {
+		    void sound() {
+		        System.out.println("Animal makes sound");
+		    }
+		}
+		
+		class Dog extends Animal {
+		    @Override
+		    void sound() {
+		        System.out.println("Dog barks");
+		    }
+		}
+		
+		public class Test {
+		    public static void main(String[] args) {
+		        Animal obj = new Dog();  //parent reference to child object
+		        obj.sound();             // dog sound method call
+		    }
+		}
+		
+******************************************************************************************************************************
+
+Que 7. How does Java decide which method to call at runtime?
+Ans:	Java decide which method to call at runtime using the process dynamic method dispatch.
+		It is process select overridden method to execute at runtime based on the actual object type, not the reference type.
+		
+		
+		class Animal {
+		    void sound() {
+		        System.out.println("Animal sound");
+		    }
+		}
+		
+		class Dog extends Animal {
+		    @Override
+		    void sound() {
+		        System.out.println("Dog barks");
+		    }
+		}
+		
+		public class Test {
+		    public static void main(String[] args) {
+		        Animal obj = new Dog();  //parent reference to child object
+		        obj.sound();             // runtime decision
+		    }
+		}
+		
+		
+******************************************************************************************************************************
+		
+Que 8. Can you override private or static methods in Java?
+Ans:	No, private and static method cannot be overridden in java.
+		
+		A. For private method:
+			Private method not visible to subclass.
+			They are only accessible within the defining class.
+			Overridden requires method visibility to subclass.
+			
+			class parent{
+				private void display(){
+				 System.out.println("Parent show");
+				}
+			}
+			
+			class Child extends Parent{
+				void display(){} // not overriding
+			}
+		
+		B. For static method:
+			Static method belong to class not the object.
+			overriding requires runtime polymorphism.
+			
+		Private and Static both methods are resolved at compile time polymorphism but overridden requires a runtime polymorphism.			
+
+******************************************************************************************************************************
+
+Que 9. What are some real-world examples of polymorphism?
+Ans: A. Cars:
+		Cars c;
+		s.SportsCars();
+		s.ElectricCars();
+		s.PetrolCars();
+		s.SelfdrivingCars();
+		
+	B. Animal:
+		Animal a;
+		a.Dog();
+		a.Cat();
+		a.Cow();
+		
+	C. Home:
+		Home h;
+		h.RK;
+		h.1BHK;
+		h.2BHK;
+		h.Duplex;
+	
+	D. Tree;
+		Tree t;
+		t.Mango;
+		t.Neem;
+		t.Coconut;
+		t.Gulmohar;
+
+
+
+
+
+
