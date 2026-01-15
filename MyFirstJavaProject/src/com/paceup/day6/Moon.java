@@ -15,8 +15,8 @@ public class Moon extends Earth {
         Moon m1 = new Moon();
 
         System.out.println(e instanceof SolarSystem); //this checks for object's type or inheritance at runtime
-        System.out.println(e instanceof Earth);
+        System.out.println(e instanceof Moon);
         System.out.println(m instanceof SolarSystem);
-        System.out.println(m1 instanceof SolarSystem);
+        System.out.println(m1 instanceof Moon);
     }
 }

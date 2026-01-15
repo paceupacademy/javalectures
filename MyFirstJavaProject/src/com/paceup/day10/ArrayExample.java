@@ -5,6 +5,10 @@ public class ArrayExample {
 
 		// create an array
 		int[] age = {12, 4, 5, 2, 5};
+		
+		int arr[] = {2,5,343,343};
+		
+		int arr1[]= new int[56]; 
 
 		// access each array elements
 		System.out.println("Accessing Elements of Array:");

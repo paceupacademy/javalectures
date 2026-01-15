@@ -18,6 +18,7 @@ public class CopyingArrayExample3 {
 		// copying elements from index 2 on n1 array
 		// copying element to index 1 of n3 array
 		// 2 elements will be copied
+		System.out.println("\nn3 before copying: "+Arrays.toString(n3));
 		System.arraycopy(n1, 2, n3, 1, 2);
 		System.out.println("n3 = " + Arrays.toString(n3));  
 
@@ -35,7 +36,7 @@ public class CopyingArrayExample3 {
 
 			// allocating space for each row of destination array
 			destination[i] = new int[source[i].length]; //destination[2]=source[2].length (5)
-			System.arraycopy(source[i], 0, destination[i], 0, destination[i].length);
+			System.arraycopy(source[i], 1, destination[i], 1, 1);
 		}
 
 		// displaying destination array

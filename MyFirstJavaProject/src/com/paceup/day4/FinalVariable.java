@@ -26,3 +26,8 @@ public class FinalVariable {
 		AccessSpecifiers as = new AccessSpecifiers(fv.pvar);
 	}
 }
+
+/*
+ * class Demo extends AccessSpecifiers{ void display() {
+ * System.out.println(" "+pubvar); } }
+ */

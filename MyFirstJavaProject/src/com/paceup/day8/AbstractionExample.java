@@ -1,6 +1,6 @@
 package com.paceup.day8;
 
-//Abstract class
+//Abstract class cannot be instantiated may contain abstract method(w/o body) as well as concrete method(implementation)
 abstract class Animal {
 	// Abstract method (no body)
 	abstract void sound();

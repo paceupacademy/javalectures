@@ -9,8 +9,8 @@ class ArrayExample2 {
 		// loop through the array
 		// using for loop
 		System.out.println("Using for Loop:");
-		for(int i = 0; i < age.length; i++) { //array.length =3
-			System.out.println(age[i]);
+		for(int i = 0; i < age.length; i++) { //less than array.length  or arrayLength-1
+			System.out.print(age[i]+"\t");
 		}
 		System.out.println("Length of Array:"+age.length);
 	}

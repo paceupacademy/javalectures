@@ -17,7 +17,7 @@ public class MultiDimensionalArrayExample3 {
 			// second for...each loop access each element inside the row
 			//1st iteration data = 1, 2nd iteration data=-2, 3rd Iteration data =3
 			for(int data: innerArray) {
-				System.out.print(data+" ");
+				System.out.print(data+"\t");
 			}
 			System.out.println("\n");
 		}

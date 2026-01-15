@@ -9,6 +9,13 @@ public class ArrayExample3 {
 		// loop through the array
 		// using for loop
 		System.out.println("Using for-each Loop:");
+		/*
+		 * for (type variable: arrayName){
+		 * 
+		 * }
+		 */
+		
+		
 		for(int a : age) {
 			System.out.println(a);
 		}

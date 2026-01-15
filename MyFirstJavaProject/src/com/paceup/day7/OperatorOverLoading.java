@@ -10,8 +10,11 @@ class Complex {
     }
 
     // Simulating operator overloading using a method
-    Complex add(Complex c) {
-        return new Complex(this.real + c.real, this.imag + c.imag); // (4,6)
+    Complex sub(Complex c) {
+        return new Complex(this.real - c.real, this.imag - c.imag); 
+        /*
+         * return new Complex(3 - 1,4 - 2); 
+         */
     }
 
     // Displaying the complex number
@@ -22,13 +25,16 @@ class Complex {
 
 public class OperatorOverLoading {
     public static void main(String[] args) {
-        Complex c1 = new Complex(3, 4);
+        Complex c1 = new Complex(3, 4); //c1.real = 3 and c1.imag=4
         c1.display();
+        System.out.println();
         Complex c2 = new Complex(1, 2);
         c2.display();
-        Complex result = c1.add(c2);  // Using add() instead of "+"
+        System.out.println();
+        Complex result = c1.sub(c2);  // Using add() instead of "+"
         result.display(); // Outputs: 4 + 6i
         
+        System.out.println();
         String s1 = "Hi, ";
         String s2 = "Aishwarya!!";
         System.out.println(" "+(s1+s2)); //concatenation object level
