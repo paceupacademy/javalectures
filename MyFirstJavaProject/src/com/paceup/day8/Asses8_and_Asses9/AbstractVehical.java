@@ -1,5 +1,5 @@
 //2. Write a program to demonstrate abstraction using Vehicle, Car, and Bike classes.
-package com.paceup.day8.Asses8;
+package com.paceup.day8.Asses8_and_Asses9;
 
 abstract class Vehical{
 	abstract void mileage();

@@ -1,5 +1,5 @@
 //1. Create an abstract class Shape with an abstract method area(). Implement it in Circle and Rectangle.
-package com.paceup.day8.Asses8;
+package com.paceup.day8.Asses8_and_Asses9;
 
 abstract class Shape {
 	abstract double area();

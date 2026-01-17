@@ -1,5 +1,5 @@
 //8. Demonstrate both abstract and concrete methods in a real-world example like Appliance with TV and Fridge.
-package com.paceup.day8.Asses8;
+package com.paceup.day8.Asses8_and_Asses9;
 
 abstract class Appliance {
 	abstract void start(); // abstract method

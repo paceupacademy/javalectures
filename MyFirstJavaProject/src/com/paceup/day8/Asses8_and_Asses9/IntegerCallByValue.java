@@ -1,5 +1,5 @@
 //3. Write a method that takes an integer and tries to change its value inside the method. Print original value.
-package com.paceup.day8.Asses8;
+package com.paceup.day8.Asses8_and_Asses9;
 
 public class IntegerCallByValue {
 

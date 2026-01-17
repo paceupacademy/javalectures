@@ -1,6 +1,6 @@
 //4. Write a program that passes an object Student to a method and updates its name.
 
-package com.paceup.day8.Asses8;
+package com.paceup.day8.Asses8_and_Asses9;
 
 class StudentTest {
 	String name;

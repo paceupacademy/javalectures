@@ -1,5 +1,5 @@
 //6. Write an abstract class Employee with abstract method calculateSalary(). Extend it with Manager and Clerk.
-package com.paceup.day8.Asses8;
+package com.paceup.day8.Asses8_and_Asses9;
 
 abstract class Employee { // abstarct class
 	abstract double calculateSalary(); // abstract method
