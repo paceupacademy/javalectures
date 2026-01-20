@@ -1,0 +1,91 @@
+Que 1: What is the role of the JVM in Java application execution?
+Ans:	The JVM is the runtime engine that runs Java programs. It converts bytecode into machine code for execution.
+		The JVM acts as a bridge between Java bytecode and hardware/operating system.
+		Java source code -> compiled to bytecode -> executed by JVM.
+		The process allows "write once, run anywhere" because the same bytecode runs on any machine with a JVM.
+
+******************************************************************************************************************************
+
+
+Que 2: Explain the internal architecture of the JVM with diagram (e.g., class loader, method area, heap, stack, PC register, Native method stack)
+Ans:	The JVM divides memory into runtime data areas.
+		A. Class Loader: It loads class files into memory. divides classes and loads them on demand.
+		B. Method (Class) Area: The method area stores the important information about classes. like class metadata, static variables, and method code.
+		C. Heap: In the heap area, it stores all objects and instance variables. Also garbage collection works in the heap area only. 
+			It's shared all across the thread.
+		D. Stack: In the stack it stores the method call information, local variables, references to objects, method parameters, and return address. 
+			In multithreading scenarios each thread has its own stack. The stack memory is automatically managed.
+		E. PC (Program Counter) register: It stores or holds the address of the current instruction being executed by a thread.
+		F. Native method stack: Native method memory supports execution of native code written in languages like C/C++.
+			The native method area memory is allocated for each thread when it's created, and it can be of a fixed or dynamic nature.
+
+******************************************************************************************************************************
+
+
+Que 3: Describe the life cycle of a Java class from loading to unloading.
+Ans:	The cycle of a java class, managed by the JVM
+		The lifecycle is generally divided into three main phases: loading, linking, and initialization, followed by usage and eventual unloading.
+		Loading: In this phase is the process of finding the class bytecode, typically a .class file, and reading it into memory.
+			This is handled by a ClassLoader JVM process.
+		Linking: The linking phase integrates the newly loaded class into the runtime state of the JVM. 
+			It includes the sub-phases like verification, preparation, and resolution.
+		Initialization: IN this phase class code is executed, the static initializers defined in the java code are run and static fields are assigned their proper initial values.
+		Usage: After initialization, the class is ready for use. Its methods can be called, new instances can be created, and static fields can be accessed throughout the application's runtime.
+		Unloading Phase: This is the process of removing the class object from the JVM's memory. 
+			This only occurs when the class is no longer reachable and the JVM determines that memory needs to be reclaimed.
+
+******************************************************************************************************************************
+
+
+Que 4: What is garbage collection in Java, and why is it necessary?
+Ans: Garbage collection in Java is an automatic memory management process that helps Java programs inefficiently.
+	JVM identifies and removes unused objects from the heap to free memory.
+	It is necessary because it makes Java memory efficient and ensures stable performance by automatically removing "dead" or "unreachable" objects from the heap. It prevents the memory leak. Without GC, unused objects would accumulate, and it would exhaust memory and cause OutOfMemoryError.
+
+	
+******************************************************************************************************************************
+	
+Que 5: Define the roles of the Young Generation, Old Generation, and Permanent/Metaspace in Java memory.
+Ans: Young Generation: 
+		It also called as Minor or Incremental garbage collection.
+		The young generation is stores newly created objects.
+		Its primary purpose is efficient collect short-lived objects.
+		GC is fast and efficient cleanup in young generation.
+		e.g. temporary objects like loop variables, method local objects.
+		
+	Old Generation:
+		It is also called as Major or Full garbage collection.
+		It is store long lived objects that survived multiple garbage collections in the ypung generation.
+		GC is less frequent but more expensive.
+		e.g. Objects like caches, pre-load application data.
+	
+	Permanent/Metaspace Memory:
+		This area of memory handles class metadata rather than application objects.
+	
+	A. Permanent Memory:
+		 In earlier Java version (Java 7 and below) PermGen stored class definitions, string literals, and other metadata.
+		 It has fixed size, which often led to OutOfMemroyError issues if the application loaded too many classes.
+	B. Metaspaces: 
+		 Metaspace replaced PermGen. unlike PermGen, Metaspace typically uses native operating system memory (not part of the java heap).
+		 By default it automatically resizes and only has limit based on the availability of the host machines memory.
+		 It reducing the risk of OutOfMemory exceptions.
+	
+		 
+******************************************************************************************************************************
+		 
+Que: 6. Describe the G1 Garbage Collector and its advantages in server environments.
+Ans: G1 (Garbage-First) GC is a server-oriented garbage collector introduced in Jvava 7 and made the defalut GC java 9 onward.
+	G1 garbage collector divides the heap into regions and collect garbage from regions with most reclaimable first, providing low and predictable pause times ideal for server environments.
+	
+	Advantages in server:
+		Predictable, Low pause times,
+		Scalability on Large heaps,
+		Automatic Tuning,
+		High throughput with concurrency
+		
+	
+	
+	
+	
+	
+	
