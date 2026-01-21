@@ -9,7 +9,7 @@ public class ArraysMethodsDemo {
         // 1. asList() - Convert array to fixed-size List
         String[] strArray = {"Java", "Python", "C++"};
         List<String> strList = Arrays.asList(strArray);
-        System.out.println("1. asList(): " + strList);
+        System.out.println("1. asList(): " + strList.toString());
 
         // 2. binarySearch()
         int[] numArray = {1, 3, 5, 7, 9};
@@ -25,8 +25,8 @@ public class ArraysMethodsDemo {
 
         // 4. compare()
         int[] a = {1, 6, 3};
-        int[] b = {1, 2, 4};
-        System.out.println("4. compare(): " + Arrays.compare(a, b)); // -1 because a < b
+        int[] b = {1, 4, 6};
+        System.out.println("4. compare(): " + Arrays.compare(a, b)); // -1 because a < b & 1 because a > b
 
         // 5. copyOf()
         int[] copied = Arrays.copyOf(a, 5);
@@ -38,7 +38,7 @@ public class ArraysMethodsDemo {
 
         // 7. deepEquals()
         Integer[][] arr1 = {{1, 2}, {3, 4}};
-        Integer[][] arr2 = {{1, 2}, {3, 4}};
+        Integer[][] arr2 = {{1, 2}, {3, 5}};
         System.out.println("7. deepEquals(): " + Arrays.deepEquals(arr1, arr2));
 
         // 8. deepHashCode()
@@ -87,7 +87,7 @@ public class ArraysMethodsDemo {
         System.out.println("18. setAll(): " + Arrays.toString(setAllArray));
 
         // 19. sort()
-        int[] simpleSort = {9, 1, 3};
+        byte[] simpleSort = {9, 1, 3};
         Arrays.sort(simpleSort);
         System.out.println("19. sort(): " + Arrays.toString(simpleSort));
 
@@ -115,7 +115,7 @@ public class ArraysMethodsDemo {
         // 24. spliterator(fromIndex, toIndex)
         Spliterator<String> spliteratorRange = Arrays.spliterator(compSort, 1, 3);
         System.out.print("24. spliterator(range): ");
-        spliteratorRange.forEachRemaining(System.out::print);
+        spliteratorRange.forEachRemaining(System.out::println);
         System.out.println();
 
         // 25. stream()

@@ -16,7 +16,7 @@ class Employee1 {
 
     @Override
     protected void finalize() throws Throwable {
-    	System.out.println("Before cleanup called");
+    	System.out.println("\nBefore cleanup called");
     }
     
     public void show() {
@@ -24,7 +24,7 @@ class Employee1 {
     }
 
     public static void showNextId() {
-        System.out.println("Next employee id will be=" + nextId);
+        System.out.println("Next employee id will be = " + nextId);
     }
 }
 
@@ -38,16 +38,19 @@ public class WithGarbageCollection {
         e1.show();
         e2.show();
         e3.show();
+        System.out.println();
         Employee1.showNextId();
+        
+        System.out.println();
 
         // Managing intern employees using try-with-resources alternative approach
         manageInterns();
 
         Employee1.showNextId();
-        
+        e1 =null;
         System.gc();
-        
         e1.show();
+        e2.show();
         //System.runFinalization();
     }
 
@@ -57,13 +60,23 @@ public class WithGarbageCollection {
 
         x.show();
         y.show();
-       // Employee1.showNextId();
+        System.out.println();
+       Employee1.showNextId();
+       System.out.println();
 
         // Explicit cleanup without relying on GC
         x = null;
-        y = null;
+        y = null;       
+        
 
         // Suggesting manual cleanup but avoiding deprecated finalization
         System.out.println("Intern objects are no longer needed.");
+        
+        Integer i = new Integer(7);
+        //the new Integer object is reachable via reference i
+        i = null; //unreachable
+        //integer object  no longer reachable
+        Runtime.getRuntime().gc();
+        //garbage collection requested
     }
 }

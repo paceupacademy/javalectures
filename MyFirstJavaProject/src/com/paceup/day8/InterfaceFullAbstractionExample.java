@@ -8,6 +8,9 @@ public class InterfaceFullAbstractionExample {
 
      payment = new UpiPayment();
      payment.processPayment(1000.0);
+     
+     payment.dfMethod();
+     Payment.display();
  }
 }
 

@@ -3,13 +3,21 @@ class Animal {
     void sound() {
         System.out.println("Animal makes a sound");
     }
+    void age (int a) {
+    	System.out.println("Age: "+a);
+    }
 }
 
 class Dog extends Animal {
     @Override
     void sound() {
         System.out.println("Dog barks");
+        super.sound();
     }
+    int age() {
+    	return 10;
+    }
+   
 }
 
 public class RunTimePolymorphism {
@@ -27,10 +35,12 @@ public class RunTimePolymorphism {
          * d.sound();
         */
         
-        Dog dg = (Dog) myAnimal; //Downcasting
+        Dog dg = (Dog) myAnimal; //Downcasting //Dog-> Animal -> Dog
         dg.sound();
+        System.out.println("Age of dog is "+dg.age());
         
         Animal an = new Animal();
         an.sound();
+        an.age(5);
     }
 }

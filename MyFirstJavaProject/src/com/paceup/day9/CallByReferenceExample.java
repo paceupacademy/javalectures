@@ -9,11 +9,13 @@ public class CallByReferenceExample {
         Person person = new Person();
         person.name = "Alice";
         System.out.println("Name before modification: "+person.name+"\n");
+        
         modifyObject(person); //Reference(address) to "person" object 
         System.out.println("Name after modification: " + person.name); // Output: Bob
         System.out.println();
-        modify(person);
-        System.out.println("Name: "+person.name);
+        
+        modify(person); //Reference address passed
+        System.out.println("Name after modification: "+person.name);
     }
 
     public static void modifyObject(Person p) {
@@ -24,6 +26,7 @@ public class CallByReferenceExample {
     	p.name="Shraddha"; //->person.name=Shraddha
     	
     	p = new Person(); //Reassignment reference -address update
+    	//System.out.println(" "+p.name);
     	p.name = "Aishwarya"; //p.name = Aishwarya
     	System.out.println("Modified Value of new object: "+p.name);
     }
