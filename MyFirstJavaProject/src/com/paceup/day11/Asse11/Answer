@@ -3,7 +3,9 @@ Ans:	The JVM is the runtime engine that runs Java programs. It converts bytecode
 		The JVM acts as a bridge between Java bytecode and hardware/operating system.
 		Java source code -> compiled to bytecode -> executed by JVM.
 		The process allows "write once, run anywhere" because the same bytecode runs on any machine with a JVM.
-
+		In JVM interpreter reads and executes bytecode line  by line. slower when same code is executed repeatedly.
+		Also JIT (Just-In-Case) Converts repeated bytecode to native code to boost performance. Stores the compiled code for reuse.
+		
 ******************************************************************************************************************************
 
 
@@ -38,7 +40,7 @@ Ans:	The cycle of a java class, managed by the JVM
 
 
 Que 4: What is garbage collection in Java, and why is it necessary?
-Ans: Garbage collection in Java is an automatic memory management process that helps Java programs inefficiently.
+Ans: Garbage collection in Java is an automatic memory management process that helps Java programs run efficiently.
 	JVM identifies and removes unused objects from the heap to free memory.
 	It is necessary because it makes Java memory efficient and ensures stable performance by automatically removing "dead" or "unreachable" objects from the heap. It prevents the memory leak. Without GC, unused objects would accumulate, and it would exhaust memory and cause OutOfMemoryError.
 
@@ -47,7 +49,7 @@ Ans: Garbage collection in Java is an automatic memory management process that h
 	
 Que 5: Define the roles of the Young Generation, Old Generation, and Permanent/Metaspace in Java memory.
 Ans: Young Generation: 
-		It also called as Minor or Incremental garbage collection.
+		Younger generation is where most new objects are allocated and Minor GC usually runs.
 		The young generation is stores newly created objects.
 		Its primary purpose is efficient collect short-lived objects.
 		GC is fast and efficient cleanup in young generation.
