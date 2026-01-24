@@ -14,8 +14,7 @@ public class ArrayExample3 {
 		 * 
 		 * }
 		 */
-		
-		
+				
 		for(int a : age) {
 			System.out.println(a);
 		}

@@ -12,6 +12,6 @@ class ArrayExample2 {
 		for(int i = 0; i < age.length; i++) { //less than array.length  or arrayLength-1
 			System.out.print(age[i]+"\t");
 		}
-		System.out.println("Length of Array:"+age.length);
+		System.out.println("\nLength of Array:"+age.length);
 	}
 }

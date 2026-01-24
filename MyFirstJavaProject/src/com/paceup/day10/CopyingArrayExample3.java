@@ -11,6 +11,7 @@ public class CopyingArrayExample3 {
 		// Creating n2 array of having length of n1 array
 		int[] n2 = new int[n1.length];
 
+		System.out.println("n1 = "+ Arrays.toString(n1));
 		// copying entire n1 array to n2
 		System.arraycopy(n1, 0, n2, 0, n1.length);
 		System.out.println("n2 = " + Arrays.toString(n2));  
@@ -22,7 +23,7 @@ public class CopyingArrayExample3 {
 		System.arraycopy(n1, 2, n3, 1, 2);
 		System.out.println("n3 = " + Arrays.toString(n3));  
 
-		//Copying 2d Arrays using arraycopy()
+		//Copying 2d Jagged Arrays using arraycopy()
 
 		int[][] source = {
 				{1, 2, 3, 4}, 
