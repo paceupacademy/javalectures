@@ -19,7 +19,8 @@ public class DeserializationExample {
             System.out.println("Object deserialized successfully!");
             System.out.println("Name: " + person.name + 
                                ", Age: " + person.age + 
-                               ", Address: " + person.address); 
+                               ", Address: " + person.address +
+                               ", Phone No: " + person.phoneNo); 
             // Note: 'address' will be null because it was marked transient
 
         } catch (Exception e) {
