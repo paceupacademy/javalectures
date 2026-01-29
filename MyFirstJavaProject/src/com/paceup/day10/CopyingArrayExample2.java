@@ -17,27 +17,30 @@ public class CopyingArrayExample2 {
 		// converting array to string
 		System.out.println("Copied Destination Array: "+Arrays.toString(destination));
 
-		//Copying 2d Arrays Using Loop
+		//Copying 2d Arrays Using Loop Jagged Array
 		int[][] source2 = {
 				{1, 2, 3, 4}, 
 				{5, 6},
 				{0, 2, 42, -4, 5}
 		};
 
-		int[][] destination2 = new int[source2.length][]; //destination2 = new int[3][];
+		int[][] destination2 = new int[source2.length][]; //destination2 = new int[3][]; //Declaration of 2D
 
 		for (int i = 0; i < destination2.length; ++i) { //row
 
 			// allocating space for each row of destination array
-			destination2[i] = new int[source2[i].length];
-
+			destination2[i] = new int[source2[i].length]; //destination[i] = new int[4]; //Initialization of row array
+			
+			//Assigning values
 			for (int j = 0; j < destination2[i].length; ++j) { //column
 				destination2[i][j] = source2[i][j];
+
 			}
 		}
 
+		System.out.println("\nSource Array: "+Arrays.deepToString(source2));
 		// displaying destination array
-		System.out.println("\n\nCopied 2D Array\n"+Arrays.deepToString(destination2));
+		System.out.println("\n\nCopied 2D Array: "+Arrays.deepToString(destination2));
 
 	}
 }

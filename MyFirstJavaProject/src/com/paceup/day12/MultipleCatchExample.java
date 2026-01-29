@@ -4,7 +4,7 @@ public class MultipleCatchExample {
     public static void main(String[] args) {
         try {
             int[] numbers = {1, 2, 3};
-            System.out.println(numbers[2]); // ArrayIndexOutOfBoundsException
+            System.out.println(numbers[4]); // ArrayIndexOutOfBoundsException
             int sum = numbers[1]/0;
         } catch (ArithmeticException e) {
             System.out.println("Arithmetic Exception occurred.");

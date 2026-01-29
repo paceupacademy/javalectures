@@ -1,14 +1,21 @@
 package com.paceup.day7;
 
 class Parent {
-    void show() {
+	private void display() {
+		System.out.println("Parent display called");
+	}
+    void showParentdisplay() {
+    	display();
         System.out.println("Parent class method called");
     }
 }
 
 class Child extends Parent {
-    @Override
-    void show() {
+    private void display() {
+    	System.out.println("Child display called");
+    }
+    void showChildDisplay() {
+    	display();
         System.out.println("Child class method (Overridden)");
     }
 }
@@ -16,10 +23,10 @@ class Child extends Parent {
 public class DynamicMethodDispatch {
     public static void main(String[] args) {
         Parent p1 = new Parent();
-        p1.show();  // Outputs: Parent class method
+        p1.showParentdisplay();  // Outputs: Parent class method
 
-        Parent p2 = new Child();  // Superclass reference holding a subclass object
-        p2.show();  // Outputs: Child class method (Polymorphism in action)
+        Child c = new Child();  // Superclass reference holding a subclass object
+        c.showChildDisplay();  // Outputs: Child class method (Polymorphism in action)
     }
 }
 

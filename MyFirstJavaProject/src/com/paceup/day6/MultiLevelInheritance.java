@@ -1,23 +1,24 @@
 package com.paceup.day6;
 //Multilevel Inheritance (One -> Two -> Three)
 //Parent class One
-class One {
+class One { //Base Class 1
 	// Method to print 
 	public void print1() {
 		System.out.println("Week");
 	}
 	public void demo() {
-		System.out.println("Class1 method");
+		System.out.println("Class1 demo method called");
 	}
+	
 }
 
 //Child class Two inherits from class One
-class Two extends One {
-	
+class Two extends One { //Base Class 2
 	public void demo2() {
 		System.out.println("Class 2 demo method called");
 		super.demo();
 	}
+	
 	// Method to print
 	public void print2() {
 		System.out.println("Starts");
@@ -25,10 +26,11 @@ class Two extends One {
 }
 
 //Child class Three inherits from class Two
-class Three extends Two {
+class Three extends Two { //Derived Class
 	// Method to print 
 	public void print3() {
 		System.out.println("Today");
+		//super.demo2();
 	}
 }
 
@@ -48,6 +50,7 @@ public class MultiLevelInheritance {
 		// Calling method from class Three
 		third.print3();
 		
+		System.out.println();
 		third.demo2();
 	}
 }

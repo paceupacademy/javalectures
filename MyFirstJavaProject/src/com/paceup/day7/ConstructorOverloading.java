@@ -5,7 +5,6 @@ class Student {
 
     // Constructor 1: Default constructor
     Student() {
-        this.name = "Unknown";
         this.age = 0;
     }
 
@@ -19,11 +18,13 @@ class Student {
     Student(String name, int age) {
         this.name = name;
         this.age = age;
+        display();
+        
     }
-
     void display() {
-        System.out.println("Name: " + name + ", Age: " + age);
+        System.out.println("Name: " + this.name + ", Age: " + this.age);
     }
+    
 }
 
 public class ConstructorOverloading {

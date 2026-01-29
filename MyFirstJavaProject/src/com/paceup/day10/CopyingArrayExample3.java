@@ -11,6 +11,7 @@ public class CopyingArrayExample3 {
 		// Creating n2 array of having length of n1 array
 		int[] n2 = new int[n1.length];
 
+		System.out.println("n1 = "+ Arrays.toString(n1));
 		// copying entire n1 array to n2
 		System.arraycopy(n1, 0, n2, 0, n1.length);
 		System.out.println("n2 = " + Arrays.toString(n2));  
@@ -18,10 +19,11 @@ public class CopyingArrayExample3 {
 		// copying elements from index 2 on n1 array
 		// copying element to index 1 of n3 array
 		// 2 elements will be copied
+		System.out.println("\nn3 before copying: "+Arrays.toString(n3));
 		System.arraycopy(n1, 2, n3, 1, 2);
 		System.out.println("n3 = " + Arrays.toString(n3));  
 
-		//Copying 2d Arrays using arraycopy()
+		//Copying 2d Jagged Arrays using arraycopy()
 
 		int[][] source = {
 				{1, 2, 3, 4}, 
@@ -35,7 +37,7 @@ public class CopyingArrayExample3 {
 
 			// allocating space for each row of destination array
 			destination[i] = new int[source[i].length]; //destination[2]=source[2].length (5)
-			System.arraycopy(source[i], 0, destination[i], 0, destination[i].length);
+			System.arraycopy(source[i], 1, destination[i], 1, 1);
 		}
 
 		// displaying destination array

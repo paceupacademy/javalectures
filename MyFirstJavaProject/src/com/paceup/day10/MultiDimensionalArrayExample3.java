@@ -13,13 +13,16 @@ public class MultiDimensionalArrayExample3 {
 		// first for...each loop access the individual array
 		// inside the 2d array
 		// 1st iteration innerArray = {1, -2, 3}, 2nd iteration innerArray = {-4, -5, 6, 9}
+		int sum =0;
 		for (int[] innerArray: a) {
 			// second for...each loop access each element inside the row
 			//1st iteration data = 1, 2nd iteration data=-2, 3rd Iteration data =3
 			for(int data: innerArray) {
-				System.out.print(data+" ");
+				System.out.print(data+"\t");
+				sum += data;
 			}
 			System.out.println("\n");
 		}
+		System.out.println("Sum of elements: "+ sum);
 	}
 }

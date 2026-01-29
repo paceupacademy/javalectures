@@ -36,7 +36,7 @@ public class StaticClassExample {
         g2.printId();
         g3.printId();
 
-        StaticClassExample.printCount();
+        printCount();
         
         stobj.display();
     }

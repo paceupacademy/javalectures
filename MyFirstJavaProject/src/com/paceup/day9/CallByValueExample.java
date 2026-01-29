@@ -10,5 +10,6 @@ public class CallByValueExample {
     public static void modifyValue(int value) {
         value = 20; // Changes only the local copy
         System.out.println("After modification: "+value);
+        
     }
 }

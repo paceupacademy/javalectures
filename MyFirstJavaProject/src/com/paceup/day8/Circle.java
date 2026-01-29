@@ -8,6 +8,9 @@ public class Circle implements Shape {
 		this.radius = radius;
 	}
 
+	void display() {
+		System.out.println("Radius is  "+radius+"cm.");
+	}
 	@Override
 	public double calculateArea() {
 		return Math.PI * radius * radius; 

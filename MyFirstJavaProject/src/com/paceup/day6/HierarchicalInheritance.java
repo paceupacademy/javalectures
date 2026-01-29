@@ -1,26 +1,27 @@
+
 package com.paceup.day6;
 
 
 //Java program to illustrate the
 //concept of Hierarchical  inheritance
 
-class A {
+class A { //Vehicle
 	public void print_A() { System.out.println("Class A method called "); }
 }
 
-class B extends A {
+class B extends A { //car
 	public void print_B() { System.out.println("Class B method called"); }
 }
 
-class C extends A {
+class C extends A { //bus
 	public void print_C() { System.out.println("Class C method called"); }
 }
 
-class D extends A {
+class D extends A { //truck
 	public void print_D() { System.out.println("Class D method called"); }
 }
 
-class E extends B{
+class E extends B{ //sedan
 	public void print_E() {
 		System.out.println("Class E method called");
 	}
@@ -33,6 +34,13 @@ public class HierarchicalInheritance {
 		B obj_B = new B();
 		obj_B.print_A();
 		obj_B.print_B();
+
+		System.out.println("\n");
+		E obj = new E();
+		obj.print_E();
+		obj.print_B();
+		obj.print_A();
+		//obj.print_D();
 
 		System.out.println("\n");
 		C obj_C = new C();

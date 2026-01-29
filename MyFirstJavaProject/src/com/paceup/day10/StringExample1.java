@@ -5,14 +5,18 @@ public class StringExample1 {
     public static void main(String[] args) {
 
         String original = "  Hello Java Developers!  ";
-        String test = "Java";
+        String test = "JaVa";
         String test2 = "java";
-
-        // contains()
+        String str = new String("Welcome to Java!!");
+        System.out.println("String: "+str);
+        
+        System.out.println("Length of string is "+str.length());
+        
+        // contains() keyword with string
         System.out.println("Contains 'Java': " + original.contains("Java"));
 
-        // substring()
-        System.out.println("Substring (6, 10): " + original.substring(6, 10));
+        // substring() extracting substring from string
+        System.out.println("Substring (8, 12): " + original.substring(8, 12));
 
         // join()
         String joined = String.join("-", "2025", "07", "15");
@@ -38,16 +42,18 @@ public class StringExample1 {
         }
         System.out.println();
 
+        
         // indexOf()
         System.out.println("Index of 'Java': " + original.indexOf("Java"));
   
+        System.out.println("Test: "+test+" Test2: "+test2);
         // compareTo()
         System.out.println("CompareTo 'Java': " + test.compareTo(test2));
 
         // compareToIgnoreCase()
         System.out.println("CompareToIgnoreCase 'java': " + test.compareToIgnoreCase(test2));
 
-        // trim()
+        // trim() -> trims/removes leading and trailing spaces
         System.out.println("Trimmed: '" + original.trim() + "'");
 
         // format() using format specifier %s-String, %d-Integer(Decimal), %f - float, %n-newline
@@ -57,8 +63,8 @@ public class StringExample1 {
         // split()
         String[] words = original.trim().split(" "); //words={"Hello","Java","Developers!"}
         System.out.print("Split words: ");
-        for (String word : words) {
-            System.out.print(word + " | ");
+        for (String w : words) {
+            System.out.print(w + " | ");
         }
         System.out.println();
 
@@ -81,7 +87,7 @@ public class StringExample1 {
         }
         System.out.println();
 
-        // matches()
+        // matches() 
         System.out.println("Matches regex '.*Java.*': " + original.matches(".*Java.*"));
 
         // startsWith()
@@ -104,5 +110,8 @@ public class StringExample1 {
         // subSequence()
         CharSequence subSeq = original.subSequence(2, 7);
         System.out.println("SubSequence (2, 7): " + subSeq);
+        
+        subSeq = original.subSequence(9, 15);
+        System.out.println(subSeq);
     }
 }

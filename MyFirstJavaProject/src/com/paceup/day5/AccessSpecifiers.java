@@ -18,6 +18,8 @@ class ChildClass extends ProtectedExample{
 }
 
 public class AccessSpecifiers {
+	public int pubvar = 35;
+	protected int pvar=25;
 	// Instance Variable (belongs to each object)
     private int instanceVar = 10;
     int localVar2 = 20; //default access specified for variable
@@ -31,7 +33,7 @@ public class AccessSpecifiers {
     static int staticVar = 100;
     
     public AccessSpecifiers() {
-    	
+    	instanceVar++;
     }
     
     // Constructor demonstrating parameter scope
@@ -39,7 +41,7 @@ public class AccessSpecifiers {
         
         // Parameter Scope 
         // using 'this' to refer to instance variable
-        this.instanceVar = instanceVar;
+    	this.instanceVar = instanceVar;
     }
 
     // Method to demonstrate local, parameter, and block scope
@@ -48,7 +50,10 @@ public class AccessSpecifiers {
         // Local Variable 
         // only accessible in this method
         int localVar = 20; //default access specified for variable
-
+        /*
+         * \n -> new line
+         * \t -> tab
+         */
         System.out.println("Instance Variable: " + instanceVar);
         System.out.println("Static Variable: " + staticVar);
         System.out.println("Method Parameter: " + paramVar);
@@ -67,13 +72,28 @@ public class AccessSpecifiers {
     public static void main(String[] args) {
     	AccessSpecifiers obj = new AccessSpecifiers(50);
         obj.showScopes(30);
+        System.out.println();
+        AccessSpecifiers obj2 = new AccessSpecifiers(51);
+        obj2.showScopes(31);
+        System.out.println();
+        AccessSpecifiers obj3 = new AccessSpecifiers();
+        obj3.showScopes(32);
+        System.out.println();
+        AccessSpecifiers obj4 = new AccessSpecifiers();
+        obj4.showScopes(33);
+        System.out.println();
+        
         ChildClass cc = new ChildClass();
         cc.accessMethod();
+        System.out.println();
+        
+        DemoClass dc = new DemoClass();
+        dc.displayVar();
     }
 }
 
 class DemoClass extends AccessSpecifiers{
 	public void displayVar() {
-		System.out.println(" Local Variable: "+localVar2);
+		System.out.println("Local Variable: "+localVar2);
 	}
 }

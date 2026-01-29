@@ -8,81 +8,103 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-class Personn{
-	@Deprecated
-	public void oldMethod() {
-		System.out.println("Deprecated Method Called!!!");
-	}
-	
-	@SafeVarargs
-	public static void printAll(List<String>...lists) { //variable-length argument (varargs parameter
-		for(List<String> l:lists) {
-			System.out.println(" "+l);
-		}
-	}
-	@SuppressWarnings("deprecation")
-	public void demo() {
-		Personn p =  new Personn();
-		p.oldMethod(); //Warning supressed
-	}
+/**
+ * Demonstrates built-in annotations and custom annotations in Java.
+ */
+class Personn {
+    @Deprecated
+    public void oldMethod() {
+        // @Deprecated marks this method as obsolete.
+        // Compiler will warn if this method is used.
+        System.out.println("Deprecated Method Called!!!");
+    }
 
-	@FunctionalInterface
-	interface Myfunc{
-		void display(); //only one abstract method is allowed
-	}
+    @SafeVarargs
+    public static void printAll(List<String>... lists) {
+        // @SafeVarargs suppresses warnings about using varargs with generics.
+        // It ensures type safety when passing multiple lists.
+        for (List<String> l : lists) {
+            System.out.println(" " + l);
+        }
+    }
 
+    @SuppressWarnings("deprecation")
+    public void demo() {
+        // @SuppressWarnings disables compiler warnings for specific cases.
+        // Here, we suppress the warning for calling a deprecated method.
+        Personn p = new Personn();
+        p.oldMethod(); // Warning suppressed
+    }
+
+    @FunctionalInterface
+    interface Myfunc {
+        // @FunctionalInterface ensures only one abstract method is allowed.
+        // This makes the interface suitable for lambda expressions.
+        void display();
+    }
 }
-//Inherited Annotation Example
-@Inherited
-@interface MyInterface {} //superclass customised annotation automatically inherit
 
-@MyInterface //Reflection
+// ------------------ Inherited Annotation Example ------------------
+
+// @Inherited allows subclasses to inherit annotations from their parent class.
+@Inherited
+@interface MyInterface {} // Custom annotation
+
+@MyInterface // Class A is annotated
 class A {}
 
-class B extends A {} //Inheritance 
+class B extends A {} // Class B inherits annotation from A
 
-//Annotation Example Ended
+// ------------------ Repeatable Annotation Example ------------------
 
-//Repeatable Annotation Example
+// @Repeatable allows multiple annotations of the same type on a single element.
 @Repeatable(Hints.class)
-@interface Hint{ //Repeatable Annotation creation
-	String value();
+@interface Hint {
+    String value();
 }
 
+// Container annotation to hold multiple @Hint annotations.
 @Retention(RetentionPolicy.RUNTIME)
-@interface Hints{ //Container Annotation
-	Hint[] value(); //Array to hold multiple hint annotation
+@interface Hints {
+    Hint[] value();
 }
 
+// Applying repeatable annotations
 @Hint("One")
-@Hint("Two") //Use multiple annotations
-class RepeatableExample{ //@Hints({ @Hint("One"), @Hint("Two")}) //Backend
-}
+@Hint("Two") // Equivalent to @Hints({@Hint("One"), @Hint("Two")})
+class RepeatableExample {}
 
-public class MyAnnotationExampleDemo{
-	public static void main(String[] args) {
-		
-		Personn p = new Personn();
-		List<String> list1 = new ArrayList<String>();
-		list1.add("abc");
-		list1.add("xyz");
-		List<String> list2 = new ArrayList<String>();
-		list2.add(null);
-		list2.add("asjsadkjhd");
-		p.demo();
-		p.printAll(list1,list2);
-		
-		
-		
-		Annotation[] ann = RepeatableExample.class.getAnnotations(); //gets all annotations present inside class
-		for (Annotation a: ann) {
-			System.out.println("Annotation: "+a);
-		}
+// ------------------ Demo Class ------------------
+public class MyAnnotationExampleDemo {
+    public static void main(String[] args) {
+        // Demonstrate built-in annotations
+        Personn p = new Personn();
 
-		Hint[] hints = RepeatableExample.class.getAnnotationsByType(Hint.class); //retrieve each individual @Hint annotation
-		for(Hint h: hints) {
-			System.out.println("Hint: " +h.annotationType());
-			System.out.println("Hint value :" + h.value()); // Hint value : One
-		}
-	}
+        // Create sample lists
+        List<String> list1 = new ArrayList<>();
+        list1.add("abc");
+        list1.add("xyz");
+
+        List<String> list2 = new ArrayList<>();
+        list2.add(null);
+        list2.add("asjsadkjhd");
+
+        // Call methods with annotations
+        p.demo(); // Suppressed warning for deprecated method
+        p.printAll(list1, list2); // Safe varargs usage
+
+        // Reflection: Retrieve annotations at runtime
+        Annotation[] ann = RepeatableExample.class.getAnnotations();
+        System.out.println("\nAnnotations present on RepeatableExample class:");
+        for (Annotation a : ann) {
+            System.out.println("Annotation: " + a);
+        }
+
+        // Retrieve individual repeatable annotations
+        Hint[] hints = RepeatableExample.class.getAnnotationsByType(Hint.class);
+        System.out.println("\nIndividual @Hint annotations:");
+        for (Hint h : hints) {
+            System.out.println("Hint value: " + h.value());
+        }
+    }
 }
