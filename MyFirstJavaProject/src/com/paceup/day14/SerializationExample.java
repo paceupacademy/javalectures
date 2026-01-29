@@ -18,6 +18,18 @@ class Person implements Serializable {
     // 'transient' means this field will NOT be serialized.
     // Useful when you want to skip sensitive or non-essential data.
     static String phoneNo;
+    
+    /*
+     * final -> must be assigned once
+     * transient -> ignored during deserialization
+     * During deserialization constructor isn't called so value may become null/default 
+     * JVM restores field from bytestream
+     * But phoneNo was never serialized
+     * So, JVM assigns default value  -> null
+     * Allowed but dangerous if you expect value after deserialization
+     */
+    //final transient String phoneNo; 
+    
     //is not serialized during serialization
     public Person(String name, int age, String address, String phoneNo) {
         this.name = name;
@@ -42,6 +54,8 @@ public class SerializationExample {
              
             out.writeObject(person); // Convert object into byte stream and write to file
             System.out.println("Object serialized successfully! Stored in person.ser");
+            
+            System.out.println(" "+p.phoneNo);
 
         } catch (IOException e) {
             // Handle any I/O exceptions (e.g., file not found, permission issues)
