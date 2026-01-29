@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 
 public class DatabaseSerializationExample {
     public static void main(String[] args) {
-        Person person = new Person("Bob", 40, "USA");
+        Person person = new Person("Bob", 40, "USA", "8349328402");
 
         try {
             // Convert object to byte array

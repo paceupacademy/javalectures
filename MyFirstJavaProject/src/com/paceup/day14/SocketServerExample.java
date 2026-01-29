@@ -18,7 +18,7 @@ public class SocketServerExample {
             Person person = (Person) in.readObject();
 
             System.out.println("Object received from client:");
-            System.out.println("Name: " + person.name + ", Age: " + person.age + ", Address: " + person.address);
+            System.out.println("Name: " + person.name + ", Age: " + person.age + ", Address: " + person.address + " Phone No: "+ person.phoneNo);
 
             in.close();
             socket.close();

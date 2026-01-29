@@ -17,11 +17,13 @@ class Person implements Serializable {
     transient String address; 
     // 'transient' means this field will NOT be serialized.
     // Useful when you want to skip sensitive or non-essential data.
-
-    public Person(String name, int age, String address) {
+    static String phoneNo;
+    //is not serialized during serialization
+    public Person(String name, int age, String address, String phoneNo) {
         this.name = name;
         this.age = age;
         this.address = address;
+        this.phoneNo = phoneNo;
     }
 }
 
@@ -32,8 +34,8 @@ class Person implements Serializable {
 public class SerializationExample {
     public static void main(String[] args) {
         // Step 1: Create an object of Person
-        Person person = new Person("John", 30, "Canada");
-
+        Person person = new Person("John", 30, "Canada","9876543210");
+        Person p = new Person("Ana", 10, "UK", "98409384098");
         // Step 2: Serialize the object into a file named "person.ser"
         try (FileOutputStream fileOut = new FileOutputStream("person.ser"); // File to store serialized object
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {    // Stream to write object

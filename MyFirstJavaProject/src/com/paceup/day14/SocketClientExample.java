@@ -2,7 +2,7 @@ package com.paceup.day14;
 
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
+//Serialization
 public class SocketClientExample {
     public static void main(String[] args) {
         try {
@@ -11,11 +11,11 @@ public class SocketClientExample {
             System.out.println("Connected to server!");
 
             // Create object to send
-            Person person = new Person("Alice", 25, "India");
+            Person person = new Person("Alice", 25, "India", "7239821928");
 
             // Serialize and send object
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-            out.writeObject(person);
+            out.writeObject(person); //object -> byte stream
             System.out.println("Object sent to server!");
 
             out.close();
