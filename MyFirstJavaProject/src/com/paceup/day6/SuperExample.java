@@ -3,7 +3,8 @@ package com.paceup.day6;
 //Method overriding + Calling Parent class constructor using super()
 class Parent {
 	Parent(){
-		System.out.println("Inside SuperClass Constructor");
+		System.out.println("Inside SuperClass/Parent Class Constructor");
+		display();
 	}
 	void display() {
         System.out.println("This is Parent class method");

@@ -20,14 +20,14 @@ public class MultiDimensionalArrayExample4 {
 		};
 		System.out.println("Printing 3D Array");
 		// for..each loop to iterate through elements of 3d array
-		for (int[][] array2D: test) {
-			for (int[] array1D: array2D) {
-				for(int item: array1D) {
+		for (int[][] array2D: test) {  //2D Array
+			for (int[] array1D: array2D) { //Row of 2D Array
+				for(int item: array1D) {  // Element of row of 2D Array
 					System.out.print(item+"\t");
 				}
 				System.out.println("");
 			}
-			System.out.println(",\n");
+			System.out.println();
 		}
 		
 		System.out.println("\n3D Array Representation:");

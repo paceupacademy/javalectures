@@ -29,7 +29,7 @@ class Employee {
  public void showNextId()
  {
      System.out.println("Next employee id will be="
-                        + ID);
+                        + ID + "\n");
  }
 }
 
@@ -61,7 +61,7 @@ class NoGarbageCollection {
      // now it should show nextId as 4.
         
        // Output of this line
-     E.showNextId(); 
+     G.showNextId(); 
      // should be 4 but it will give 6 as output.
  }
 }

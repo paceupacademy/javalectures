@@ -11,7 +11,7 @@ interface Tester {
 }
 
 //Class implementing both interfaces 
-class DevOpsEngineer implements Coder, Tester {
+class DevOpsEngineer extends A implements Coder, Tester {
 	@Override
 	public void writeCode() {
 		System.out.println("DevOps Engineer writes automation scripts.");
@@ -28,6 +28,23 @@ class DevOpsEngineer implements Coder, Tester {
 	}
 }
 
+class Engineer extends A implements Coder, Tester {
+	@Override
+	public void writeCode() {
+		System.out.println("Engineer writes automation scripts.");
+	}
+
+	@Override
+	public void testCode() {
+		System.out.println("Engineer tests deployment pipelines.");
+	}
+
+	// Additional method specific to DevOpsEngineer
+	public void deploy() {
+		System.out.println("Engineer deploys code to cloud.");
+	}
+}
+
 //Driver class
 public class MultipleInheritance {
 	public static void main(String[] args) {
@@ -35,6 +52,10 @@ public class MultipleInheritance {
 
 		devOps.writeCode();  
 		devOps.testCode(); 
-		devOps.deploy();    
+		devOps.deploy();  
+		
+		System.out.println();
+		Engineer e =  new Engineer();
+		e.writeCode();
 	}
 }

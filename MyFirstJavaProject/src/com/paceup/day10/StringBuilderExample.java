@@ -3,6 +3,9 @@ package com.paceup.day10;
 public class StringBuilderExample {
 	public static void main(String[] args) {
 		StringBuilder sb = new StringBuilder("Welcome");
+		StringBuilder sb2 =  new StringBuilder(50);
+		CharSequence cs =  "Java";
+		StringBuilder sb1 =  new StringBuilder(cs);
 
 		// Append
 		sb.append(" to Java");
@@ -23,6 +26,9 @@ public class StringBuilderExample {
 		// Reverse
 		sb.reverse();
 		System.out.println(sb); // Output: avaJ ot emocleW
+		
+		System.out.println(sb.capacity());
+		
 	}
 }
 

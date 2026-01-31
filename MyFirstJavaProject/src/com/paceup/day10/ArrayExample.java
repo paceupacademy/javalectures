@@ -2,9 +2,13 @@ package com.paceup.day10;
 
 public class ArrayExample {
 	public static void main(String[] args) {
-
+		Integer i = 78;
 		// create an array
 		int[] age = {12, 4, 5, 2, 5};
+		
+		int arr[] = {2,5,343,343};
+		
+		int arr1[]= new int[56]; //size
 
 		// access each array elements
 		System.out.println("Accessing Elements of Array:");
