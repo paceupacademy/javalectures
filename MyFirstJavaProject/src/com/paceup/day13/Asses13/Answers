@@ -1,0 +1,155 @@
+Que: 1. What is the difference between byte streams and character streams in Java?
+Ans: A. Byte Stream:
+		It is mainly used for read and write binary data like image, audio etc.
+		It work with in byte format data only.
+		It has two main classes InputStrean and OutputStream with including with sub classes as well.
+		e.g. FileInputStream, FileOutputStream
+		
+	B. Character Stream:
+		It is used for text data means character format data.
+		It is work with Unicode character.
+		It has two main abstract classes Reader and Writer with there subclasses.
+		e.g. FileReader, FileWriter
+		
+***********************************************************************************************************************************************************************************************************************************
+		
+Que:2. Explain the working of InputStream and OutputStream.
+Ans: In java Inputstream and Outputstream are base classes for byte format I/O operations. 
+	A. InputStream:
+		InputStream reads data from source like from file, network, keyboard, memory etc.
+		Working: 
+			WE have creates a stream connected to data source.
+			It reads one byte or multiple bytes at a time.
+			When reached to end of stream its returns -1.
+	
+	B. OutputStream:
+		OutputStream writes byte format data to destination like file, console etc.
+		Working:
+			WE have creates a stream connected to destination.
+			Write bytes data to the OutputStream.
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 3. How does FileInputStream differ from BufferedInputStream?
+Ans: FileINputStream and BufferedINputStream both are used to read byte data but differ in how data is read.
+	Main difference is FileInputStream read data directly from file.
+	But BufferInputstream wrapped around another input stream, it need another InputStream object to reading data.
+	FileInoutStream no need buffering to read data but BufferInoutStream uses the buffering to read data for better efficiency.
+
+***********************************************************************************************************************************************************************************************************************************
+	
+Que 4. What are the advantages of using buffered streams?
+Ans: Buffered Stream improve the I/O performance.
+	 They read or write the data in large batches to a memory buffer rather than byte-by-byte.
+	 Its improve the faster file processing.
+	 Its reduce overhead on system resources.
+	 It is handle the large data like chunk efficiently.
+	 Because of this happened the smooth data transfer.
+	 Using Buffered can reduce file write/read times from seconds to milliseconds, compared to unbuffered alternatives.
+	 
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 5. What is the use of DataInputStream and DataOutputStream?
+Ans: DataInputStream use for to read the primitive data types.
+	And using DataOutputStream we can writes the primitive data types to destination.
+	Primitive data type is int, float, long, boolean, char
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 6. Explain how Reader and Writer classes differ from stream classes.
+Ans: Reader and Writer classes are used to read and write the character format data from source and destination. 
+	And streams (InputStream and OutputStream) are use to handle to bytes format data.
+	Character and Byte Stream purpose is one to handle the I/O operations.
+	Character stream work the unicode character, It automatically handle the character encoding.
+	But ByteStreams does not support the encoding.
+	Character Stream e.g.- FileReader, FileWriter,
+	Byte Stream e.g. - FileInputStream, FileOutputStream
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 7. What is the purpose of FileReader and FileWriter?
+Ans: FileReader:
+		FileReader id subclass of Character Stream Reader class.
+		It is used to read character format data from text files.
+		
+	FileWriter:
+		FileWriter is also subclass of Character Stream Writer class.
+		It is used to write character format data to text files.
+		It will create a new file or override the existing file while writing.
+		
+***********************************************************************************************************************************************************************************************************************************
+
+Que 8. What exception must be handled when working with file I/O in Java?
+Ans: The exception must be handled when working with file I/O in java that IOException.
+		IOException occurs due to File not found, File access denied etc. 
+		All file related exception includes in IOException.
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 9. What are the differences between File, FileInputStream, and Scanner?
+Ans: File: 
+		It is represent the file or directory path.
+		File does not read or write data.
+
+	FileInputStream: 
+		Its read the byte data from file. it is used for binary files.
+
+	Scanner: 
+		Scanner read the data from keyboard or file.
+		Its also parse data into int, double, String etc.
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 10. What is the role of the flush() method?
+Ans: Flush() method main role is flush buffered data to ensure it's written to the file.
+	In other words flush() method makes sure that all written data is actually saved or shown right away, not kept in memory.
+	
+***********************************************************************************************************************************************************************************************************************************
+
+Que: 11. How can we copy contents from one file to another using streams?
+Ans: We can copy contents from one file to another by reading data from source file using an input stream and 
+	 writing it to the destination file using an output stream.
+	 
+	 	import java.io.FileInputStream;
+		import java.io.FileOutputStream;
+		import java.io.IOException;
+		
+		public class FileCopyDemo {
+		
+		    public static void main(String[] args) {
+		
+		        try {
+		            FileInputStream fis = new FileInputStream("source.txt"); //object to reading data from source.txt
+		            FileOutputStream fos = new FileOutputStream("destination.txt"); //object for writing data to destination.txt 
+		
+		            int data;
+		            while ((data = fis.read()) != -1) { //read data till -1
+		                fos.write(data); //write using output stream object (Fos)
+		            }
+		
+		            fis.close();
+		            fos.close();
+		
+		            System.out.println("File copied successfully");
+		
+		        } catch (IOException e) {
+		            System.out.println("File error occurred: " + e.getMessage());
+		        }
+		    }
+		}
+	 	
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 12. What are the best practices when working with I/O streams in Java?
+Ans: 
+
+
+
+
+
+
+

@@ -18,7 +18,7 @@ class ChildClass extends ProtectedExample{
 }
 
 public class AccessSpecifiers {
-	public int pubvar = 35;
+	public int pubvar1 = 35;
 	protected int pvar=25;
 	// Instance Variable (belongs to each object)
     private int instanceVar = 10;
