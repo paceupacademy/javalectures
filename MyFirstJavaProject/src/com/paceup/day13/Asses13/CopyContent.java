@@ -11,7 +11,7 @@ public class CopyContent {
 
 	public static void main(String[] args) {
 		System.out.println((System.getProperty("user.dir")));
-		try (FileInputStream Fi = new FileInputStream("src/Source.txt");
+		try (FileInputStream Fi = new FileInputStream("C://Users/suraj/git/javalectures/MyFirstJavaProject/src/Source.txt");
 				FileOutputStream Fo = new FileOutputStream("src/Destination.txt")) {
 
 			int data;
