@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 }
 
 class Person{
-	private String name;
+	protected String name;
 	public int age;
 	
 	Person(String name,int age){
@@ -35,12 +35,13 @@ public class ReflectionExample {
         
         Person p = new Person("Aishwarya",30);
         Person p1 = new Person("Neha",35);
-        Class<?> c=p.getClass();
-        Field[] fields = c.getDeclaredFields(); // All declared fields (private and public)
+        
+        Class<?> c=p.getClass(); //Returns at runtime the class of object p i.e. Person
+        Field[] fields = c.getDeclaredFields(); // All declared fields (private and public) [name,age]
         
         System.out.println("All fields of Person Class are: ");
-        for (Field f : fields) {
-        	f.setAccessible(true); //allow access to private variable
+        for (Field f : fields) { //f-> name
+        	f.setAccessible(true); //allow access to private variable at runtime name changed to public from private
         	System.out.print("Name of field: "+f.getName());
         	System.out.print("\tValue for field: "+f.get(p) +"\n"); //gets value of variable for p(Person) object
         }
@@ -59,13 +60,19 @@ public class ReflectionExample {
         for (Method method : methods) {
             System.out.print(method.getName()+ ", ");
         }
-        System.out.println("\nPublic Methods: ");
+        System.out.println("\n\nPublic Methods: ");
         for(Method method1 : methods1) {
         	System.out.print(method1.getName() +", ");
+        	
+        	if(method1.getName().equals("compareTo")) {
+        		Object result = method1.invoke(p.name, p1.name); //=> p.name.compareTo(p1.name)
+        		
+        		//System.out.println("\nResult: " +result);
+        	}
         }
         
         Class<?> cls =  Class.forName("com.paceup.day15.Person");
-        System.out.println("\n Constructors:");
+        System.out.println("\n\n Constructors:");
         for(var constructor : cls.getDeclaredConstructors()) {
         	System.out.println(" "+constructor);
         }
