@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.METHOD})
 @interface MyJavaDoc{
 	String author();
 	String version();
@@ -16,6 +16,9 @@ import java.lang.annotation.*;
 
 @MyJavaDoc(author = "Aishwarya", version = "1.0")
 public class JavaDocExample {
+	/**
+	 * Displays a sample message
+	 */
 	public void show() {
 		System.out.println("Inside JavaDocExample");
 	}
