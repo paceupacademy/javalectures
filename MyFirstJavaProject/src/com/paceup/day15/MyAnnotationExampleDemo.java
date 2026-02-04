@@ -16,6 +16,7 @@ class Personn {
     public void oldMethod() {
         // @Deprecated marks this method as obsolete.
         // Compiler will warn if this method is used.
+    	//for runtime reflection
         System.out.println("Deprecated Method Called!!!");
     }
 
@@ -28,12 +29,14 @@ class Personn {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"checked","deprecation"})
     public void demo() {
         // @SuppressWarnings disables compiler warnings for specific cases.
         // Here, we suppress the warning for calling a deprecated method.
         Personn p = new Personn();
         p.oldMethod(); // Warning suppressed
+        
+        new Thread(()-> System.out.println("New Thread created")).start();
     }
 
     @FunctionalInterface
