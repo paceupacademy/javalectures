@@ -2,6 +2,7 @@
 
 package com.paceup.day13.Asses13;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,9 +11,11 @@ import java.io.IOException;
 public class CopyContent {
 
 	public static void main(String[] args) {
-		System.out.println((System.getProperty("user.dir")));
-		try (FileInputStream Fi = new FileInputStream("C://Users/suraj/git/javalectures/MyFirstJavaProject/src/Source.txt");
-				FileOutputStream Fo = new FileOutputStream("src/Destination.txt")) {
+		// System.out.println((System.getProperty("user.dir")));
+		// System.out.println("Expected Location: " + new
+		// File("Source.txt").getAbsolutePath());
+		try (FileInputStream Fi = new FileInputStream("Source.txt");
+				FileOutputStream Fo = new FileOutputStream("Destination.txt")) {
 
 			int data;
 			while ((data = Fi.read()) != -1) {
