@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 
 // Define the annotation
 @Retention(RetentionPolicy.RUNTIME) // Retention policy: runtime
-@Target({ElementType.METHOD, ElementType.TYPE}) // Applicable to methods and classes
+@Target({ElementType.METHOD, ElementType.TYPE}) // Applicable to methods and classes/interfaces/enums
 public @interface MyAnnotationExample {
     String value() default "Default Value"; // Element with a default value
     int priority() default 1;              // Another element
