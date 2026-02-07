@@ -2,26 +2,30 @@ package com.paceup.day10;
 
 public class StringBufferExxample {
 	public static void main(String[] args) {
-		StringBuffer sb = new StringBuffer("Welcome");
+		StringBuffer sb = new StringBuffer("Everyone ");
 
+		StringBuffer sb1 =  new StringBuffer(50);
+		System.out.println(sb1.append(sb));
+		sb1.append("World");
+		System.out.println(sb1+" "+sb1.capacity());
 		// Append
-		sb.append(" to Java");
-		System.out.println("After append: " + sb);
+		sb1.append(" to Java");
+		System.out.println("After append: " + sb1);
 
 		// Insert
-		sb.insert(7, " Everyone");
-		System.out.println("After insert: " + sb); //Welcome Everyone to Java
+		sb1.insert(8, " Everyone");
+		System.out.println("After insert: " + sb1); //Welcome Everyone to Java
 
 		// Replace
-		sb.replace(7, 16, " All");
-		System.out.println("After replace: " + sb); 
+		sb1.replace(8, 17, " All");
+		System.out.println("After replace: " + sb1); 
 
 		// Delete
-		sb.delete(7, 11);
-		System.out.println("After delete: " + sb); //Welcome to Java
+		sb1.delete(8, 12);
+		System.out.println("After delete: " + sb1); //Welcome to Java
 
 		// Reverse
-		sb.reverse();
-		System.out.println("After reverse: " + sb);
+		sb1.reverse();
+		System.out.println("After reverse: " + sb1);
 	}
 }

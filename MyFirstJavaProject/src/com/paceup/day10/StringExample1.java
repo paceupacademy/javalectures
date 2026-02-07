@@ -4,13 +4,22 @@ public class StringExample1 {
 
     public static void main(String[] args) {
 
+    	String s = "Data Recovered";
+    	
+    	s = s.concat(" but corrupted");
+    	
+    	System.out.println(s);
+    	
         String original = "  Hello Java Developers!  ";
-        String test = "JaVa";
+        String test = " JaVa";
         String test2 = "java";
         String str = new String("Welcome to Java!!");
-        System.out.println("String: "+str);
         
-        System.out.println("Length of string is "+str.length());
+        str ="World";
+        String str1 = str.concat(" Universe");
+        System.out.println("String: "+str1);
+        
+        System.out.println("Length of string is "+str1.length());
         
         // contains() keyword with string
         System.out.println("Contains 'Java': " + original.contains("Java"));
@@ -32,7 +41,7 @@ public class StringExample1 {
         System.out.println("ReplaceFirst whitespace with '*': " + original.replaceFirst("\\s", "*"));
 
         // charAt()
-        System.out.println("Character at index 6: " + original.charAt(6));
+        System.out.println("Character at index 6: " + original.charAt(5));
 
         // getBytes()
         byte[] byteArray = original.getBytes();
@@ -44,11 +53,12 @@ public class StringExample1 {
 
         
         // indexOf()
-        System.out.println("Index of 'Java': " + original.indexOf("Java"));
-  
+        //System.out.println("Index of 'India': " + original.indexOf("India"));
+        System.out.println("Index of 'Java' "+original.indexOf("Java"));
+        
         System.out.println("Test: "+test+" Test2: "+test2);
         // compareTo()
-        System.out.println("CompareTo 'Java': " + test.compareTo(test2));
+        System.out.println("CompareTo 'Java': " + test2.compareTo(test));
 
         // compareToIgnoreCase()
         System.out.println("CompareToIgnoreCase 'java': " + test.compareToIgnoreCase(test2));
@@ -68,8 +78,11 @@ public class StringExample1 {
         }
         System.out.println();
 
-        // toLowerCase()
-        System.out.println("To Lower Case: " + original.toLowerCase());
+        /*
+         * original = original.trim
+         * original = original.toLowerCase()
+         */
+        System.out.println("To Lower Case: " + original.trim().toLowerCase());
 
         // toUpperCase()
         System.out.println("To Upper Case: " + original.toUpperCase());
@@ -91,10 +104,10 @@ public class StringExample1 {
         System.out.println("Matches regex '.*Java.*': " + original.matches(".*Java.*"));
 
         // startsWith()
-        System.out.println("StartsWith '  Hello': " + original.startsWith("  Hello"));
+        System.out.println("StartsWith 'Hello': " + original.trim().startsWith("Hello"));
 
         // endsWith()
-        System.out.println("EndsWith 'Developers!  ': " + original.endsWith("Developers!  "));
+        System.out.println("EndsWith 'Developers!': " + original.trim().endsWith("Developers!"));
 
         // isEmpty()
         String emptyStr = "";
