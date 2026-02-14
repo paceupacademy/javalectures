@@ -1,0 +1,144 @@
+Que 1. What is serialization in Java and why is it used?
+Ans: Serialization is a mechanism of converting the state of an object into a byte stream. 
+	 Using serialization, we can save the object into file format and retrieve it later.
+	 
+******************************************************************************************************************************************************
+
+Que 2. What is the role of the Serializable interface?
+Ans: The serializable interface is a marker interface that allows an object to be converted into a byte stream so it can be stored.
+	 It signals to the JVM that the class is eligible for conversion into a byte stream.
+	 'Serializable' is an empty interface; it has no methods.
+	 
+******************************************************************************************************************************************************
+	 
+Que 3. Explain the process of deserialization with an example.
+Ans: deserialization is the reverse process where the byte stream is used to recreate the actual java object in the memory.
+Example:
+
+import java.io.*;
+
+class Dog implements Serializable {
+
+int i = 10;
+transient int j = 20;
+}
+
+public class Deserilazation {
+public static void main(String[] args) {
+System.out.println("Serialzation started");
+Dog d = new Dog();
+try (FileOutputStream fs = new FileOutputStream("dog.ser");
+ObjectOutputStream os = new ObjectOutputStream(fs)) {
+
+os.writeObject(d);
+
+System.out.println("Serialzation Ended");
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+System.out.println("Deserialzation started");
+try (FileInputStream fo = new FileInputStream("dog.ser");
+ObjectInputStream oi = new ObjectInputStream(fo)) {
+
+Dog d1 = (Dog) oi.readObject();
+
+System.out.print("Dog object data: ");
+System.out.println("i - " + d1.i + ", j - " + d1.j);
+System.out.println("Deserialzation ended");
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+}
+}
+
+
+******************************************************************************************************************************************************
+
+Que 4. What is the purpose of serialVersionUID?
+Ans: SerialVersionUID acts as a version identifier for a serializable class. It ensures the compatibility during deserialization.
+	The main purpose of serialVersionUID is to act as a version number for a serializable class. When we serialize an object, this version number is 	stored along with it. During deserialization, the JVM checks whether the serialVersionUID of the saved object matches the serialVersionUID of the 	current class. If they match, the object is loaded successfully. If not, an error occurs.
+			 
+			 
+******************************************************************************************************************************************************
+
+Que 5. What happens if serialVersionUID is not declared?
+Ans: If the SerialVersionUID is not declared while serialization of class then Java automatically creates one. But when we try to deserialize an old 	object, then the version won't match. Then Java throws InvalidClassException.			 
+
+
+*****************************************************************************************************************************************************
+
+Que 6: What is the difference between transient and static fields in serialization?
+Ans: transient – Used for the marked fields to skip the serialization.
+	After deserialization get that particular field's values as null, 0 or false.
+	That field is part of serialization class but not a serialization process.
+	
+	class User implements Serializable {
+	String name;
+	transient String password;
+	}
+	In the above example, the password field will not be saved when the object is serialized.
+	After deserialization, the password value will be null.
+	
+	
+	Static fields- These fields belong to the class, not the object. serialization only saves the object data, not the class. So static fields are not serialized.
+	
+	class User implements Serializable {
+	String name;
+	static String company = "ABC";
+	}
+	
+	In the above example, the company is not saved with the object. After deserialization, it keeps the current class value.
+	
+	
+	transient → You explicitly tell Java not to save it in serialization
+	static → Java never saves it because it’s not part of the object.
+				 
+*****************************************************************************************************************************************************
+
+Que 7. Can a superclass be serialized if it doesn’t implement Serializable?
+Ans: Yes, a superclass can still be part of serialization even if id does not implement serializable
+
+*****************************************************************************************************************************************************
+
+Que 9. How can you customize serialization in Java?
+Ans: The customisation serialization can be implemented using the two methods:
+	 private void writeObject(objectOutputStream obj):
+	 This method will be executed at the time of serialization to write the object into a bytestream.
+	
+	 private void readObject(OutputStreamStream obj):
+	 This method will be executed at the time of deserialization to read bytestream object format data into actual object data.
+	
+	 And these above methods are executed by the JVM.
+			 
+			 
+*****************************************************************************************************************************************************
+
+Que 10. What happens if the structure of a serialized class changes after serialization?
+Ans: When the structure of a serialized class changes after serialization, and you try to deserialize the older version of the object with the newer 	version, if the serialVersionUID is not the same as the class, it will typically result in a runtime exception.
+	If we keep the same serialVersionUID and then try to deserialize, in that case, behaviour depends on the change.
+			 
+
+*****************************************************************************************************************************************************
+
+Que 11. How can we prevent sensitive data from being serialized?
+Ans: Using the transient keyword we can prevent the data being serialized,
+	We can declared the particular field with transient keyword.
+
+*****************************************************************************************************************************************************
+
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
