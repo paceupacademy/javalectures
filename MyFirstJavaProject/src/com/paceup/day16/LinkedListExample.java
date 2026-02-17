@@ -2,119 +2,149 @@ package com.paceup.day16;
 
 import java.lang.reflect.Field;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
+/**
+ * 
+ * LinkedList implements List, Deque, and Queue interfaces:
+ * - Stores elements in a doubly-linked list structure.
+ * - Allows fast insertions/removals at both ends.
+ * - Can be used as a List or Queue.
+ */
 public class LinkedListExample {
     public static void main(String[] args) {
-        LinkedList<String> list = new LinkedList<>();
+
+        // Create LinkedList instances
+        List<String> list1 = new LinkedList<>(); // Using List reference
+        LinkedList<String> list = new LinkedList<>(); // Using LinkedList directly
 
         // Adding elements
         list.add("Apple");
         list.add("Banana");
-        list.add(1, "Mango"); // Inserts the element at the specified position.
-        list.addFirst("Orange"); //Adds the element at the beginning.
-        list.addLast("Grapes"); // Adds the element at the end.
-        
-        // Accessing elements
-        System.out.println("First Element: " + list.getFirst()); //Retrieves the first element.
-        System.out.println("Last Element: " + list.getLast()); //Retrieves the last element.
-        System.out.println("Element at 2 Index is : "+ list.get(2));
+        list.add(1, "Mango");       // Insert at index 1
+        list.addFirst("Orange");    // Insert at beginning
+        list.addLast("Grapes");     // Insert at end
+        list.add(3, "Berry");       // Insert at index 3
 
-        System.out.println(list);
+        // Accessing elements
+        System.out.println("First Element: " + list.getFirst());
+        System.out.println("Last Element: " + list.getLast());
+        System.out.println("Element at index 2: " + list.get(2));
+        System.out.println("List: " + list);
+
+        // Updating element at index 0
+        list.set(0, "Guava");
+        System.out.println("After update: " + list);
+
         // Checking size
         System.out.println("Size: " + list.size());
-        
+
         // Removing elements
         list.add("X");
         list.add("Y");
         list.add("Z");
-        list.remove(); // Removes the first element
-        System.out.println("After removing first: " + list);
+        list.remove(); // Removes first element
+        System.out.println("After remove(): " + list);
 
-        System.out.println("Value at 1st index element: "+ list.get(1));
-        
-        list.remove(1); //  Removes the element at the specified index.
-        
-        
-        System.out.println("After 1st index first: " + list);
-        
-        //Checking Elements
-        System.out.println("List contains 10? "+list.contains(10)); //Checks if the list contains the specified element.
-        System.out.println("Is list empty:"+list.isEmpty()); //Checks if the list is empty.
-        
-        // Iterating Through the List
-        // Using for-each loop
-        for (String item : list) {
-            System.out.print(item+ " ");
+        System.out.println("Element at index 1: " + list.get(1));
+
+        list.remove(5); // Removes element at index 5
+        list.remove("A"); // Removes element by value (no effect if not found)
+        System.out.println("After removals: " + list);
+
+        // Checking elements
+        System.out.println("Contains 10? " + list.contains(10)); // false
+        System.out.println("Is list empty? " + list.isEmpty());
+
+        // Iterating using for loop
+        System.out.print("Using for loop: ");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
         }
-        
+
+        // Iterating using for-each loop
+        System.out.println("\nUsing for-each:");
+        for (String item : list) {
+            System.out.print(item + " ");
+        }
         System.out.println();
 
-        // Using Iterator
-        list.iterator().forEachRemaining(System.out::println); //creates Iterator object: to traverse through collection one element at a time
-        
-        // Useful Methods
-        System.out.println("Retrieving first element using peek(): "+list.peek()); // Retrieves the first element without removing it.
-        System.out.println("Retrieving first element using poll(): "+list.poll()); // Retrieves and removes the first element.
-        System.out.println(list);        
-        System.out.println(list+ " Is Empty? "+list.isEmpty());
-        list.clear(); //Removes all elements.
-        System.out.println(list+ " Is Empty? "+list.isEmpty());
-        
-        
-        
+        // Iterating using Iterator with forEachRemaining
+        System.out.println("Using Iterator:");
+        list.iterator().forEachRemaining(System.out::println);
+
+        // Iterating using lambda expression
+        System.out.print("Using lambda: ");
+        list.forEach(l -> System.out.print(" " + l));
+        System.out.println();
+
+        // Useful methods
+        System.out.println("Peek Last (no removal): " + list.peekLast());
+        System.out.println("Poll Last (removes last): " + list.pollLast());
+        System.out.println("List after pollLast: " + list);
+
         /*
-         * LinkedList with Queue Interface
-         * 
+         * Reflection Example (Advanced)
+         * Accessing internal fields of LinkedList nodes.
+         * NOTE: This is for demonstration only and not recommended in practice.
+         * IMPORTANT: Only works if list is NOT empty.
          */
-        
-        System.out.println("\n\n *** Queue Examples ***\n");
+        if (!list.isEmpty()) {
+            try {
+                // Access private field "first" of LinkedList
+                Field firstField = LinkedList.class.getDeclaredField("first");
+                firstField.setAccessible(true);
+
+                Object firstNode = firstField.get(list); // First node object
+
+                // Access "next" field of node
+                Field nextField = firstNode.getClass().getDeclaredField("next");
+                nextField.setAccessible(true);
+                Object secondNode = nextField.get(firstNode);
+
+                // Access "item" field of node
+                Field itemField = firstNode.getClass().getDeclaredField("item");
+                itemField.setAccessible(true);
+
+                System.out.println("First Element via reflection: " + itemField.get(firstNode));
+                System.out.println("Second Element via reflection: " + itemField.get(secondNode));
+
+            } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("List is empty, skipping reflection access.");
+        }
+
+        // Clear list AFTER reflection to avoid NullPointerException
+        list.clear();
+        System.out.println("After clear: " + list + " | Is Empty? " + list.isEmpty());
+
+        /*
+         * LinkedList as Queue
+         */
+        System.out.println("\n*** Queue Examples ***");
         Queue<String> q = new LinkedList<>();
         q.add("Alice");
         q.add("Bob");
         q.add("Demon");
         q.add("Asha");
-        
-        System.out.println("First Element: "+q.peek());
+
+        System.out.println("First Element (peek): " + q.peek());
+
+        // Casting back to LinkedList to access indexOf
         LinkedList<String> list5 = (LinkedList<String>) q;
-        for(String item:q) {
-        	int index = list5.indexOf(item);
-        	System.out.println("Index: "+ index +" Value: "+ item);        	
+        for (String item : q) {
+            int index = list5.indexOf(item);
+            System.out.println("Index: " + index + " | Value: " + item);
         }
-        System.out.println("Removed: "+q.poll());
+
+        System.out.println("Removed (poll): " + q.poll());
         LinkedList<String> list6 = (LinkedList<String>) q;
-        System.out.println(" "+ list6.indexOf("Demon"));
-        
-        System.out.println("Removed index at "+list5.indexOf("Bob")+": "+list5.get(list5.indexOf("Bob"))+"? "+q.remove("Bob"));
-        
-        System.out.println("Queue: "+q);
-        
-		/*
-		 * Field firstField; try {
-		 * 
-		 * //Get LinkedList class "first" field firstField =
-		 * LinkedList.class.getDeclaredField("first"); firstField.setAccessible(false);
-		 * 
-		 * Object firstNode = firstField.get(list); //firstNode (Apple)
-		 * 
-		 * //Access the nextfield element Field nextfield =
-		 * firstNode.getClass().getDeclaredField("next"); nextfield.setAccessible(true);
-		 * 
-		 * Object secondNode = nextfield.get(firstNode); //node for Banana
-		 * 
-		 * Field itemField = firstNode.getClass().getDeclaredField("item");
-		 * itemField.setAccessible(true);
-		 * 
-		 * System.out.println("First Element: " + itemField.get(firstNode));
-		 * System.out.println("Second Element: "+ itemField.get(secondNode)); } catch
-		 * (NoSuchFieldException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } catch (SecurityException e) { // TODO Auto-generated
-		 * catch block e.printStackTrace(); } catch (IllegalArgumentException e) { //
-		 * TODO Auto-generated catch block e.printStackTrace(); } catch
-		 * (IllegalAccessException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 */
-        
+        System.out.println("Index of Demon: " + list6.indexOf("Demon"));
+
+        System.out.println("Removed Bob? " + q.remove("Bob"));
+        System.out.println("Queue after removals: " + q);
     }
 }
-

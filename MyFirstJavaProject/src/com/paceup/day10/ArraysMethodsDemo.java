@@ -11,7 +11,7 @@ public class ArraysMethodsDemo {
 		System.out.println("Length "+strArray.length);
 		List<String> strList = Arrays.asList(strArray);
 		System.out.println("1. asList(): " + strList.toString()+ "  Length:"+strList.size());
-
+		
 		boolean isFlag = isFixedSize(strList);
 		System.out.println(isFlag);
 

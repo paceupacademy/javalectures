@@ -2,70 +2,97 @@ package com.paceup.day16;
 
 import java.util.TreeSet;
 
+/**
+ * 
+ * TreeSet:
+ * - Implements Set interface.
+ * - Stores elements in sorted order (natural ordering or custom comparator).
+ * - Does not allow duplicates.
+ * - Backed internally by a TreeMap (Red-Black Tree).
+ * 
+ * Representation:
+ * - Each element is stored as a key in TreeMap with a dummy constant value.
+ * - TreeMap maintains a balanced binary search tree.
+ * - After each insertion, the tree rebalances to maintain O(log n) operations.
+ */
 class Employee implements Comparable<Employee> {
+    int id;
+    String name;
 
-	int id;
-	String name;
-	
-	Employee (int id, String name){
-		this.id=id;
-		this.name=name;
-	}
-	
-	@Override
-	public int compareTo(Employee e) {
-		
-		return Integer.compare(this.id,e.id);
-	}
-	
-	@Override
-	public String toString() {
-		return "Employee [ID: " +id+" NAME: "+name+" ]";
-	}
-	
+    Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(Employee e) {
+        return Integer.compare(this.id, e.id); // sort by id
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{id=" + id + ", name='" + name + "'}";
+    }
 }
 
 public class TreeSetExample {
     public static void main(String[] args) {
-        // Create a TreeSet
-        TreeSet<Integer> numbers = new TreeSet<>();
-
-        // Add elements
-        numbers.add(10);
-        numbers.add(5);
-        numbers.add(20);
-        numbers.add(15);
-        numbers.add(25);
-        numbers.add(30);
-        numbers.add(1);
-        numbers.add(21);
-
-        // Display elements (sorted order)
-        System.out.println("TreeSet: " + numbers);
-
-        // Access specific elements
-        System.out.println("First Element: " + numbers.first());
-        System.out.println("Last Element: " + numbers.last());
-
-        // NavigableSet methods Provides methods to navigate through set
-        System.out.println("Higher than 10: " + numbers.higher(10));
-        System.out.println("Lower than 10: " + numbers.lower(15));
-
-        // Remove an element
-        numbers.remove(15);
-        System.out.println("After Removal: " + numbers);
         
-        //Sorting Employee Object using treeset
-        
-        TreeSet<Employee> emp = new TreeSet<>();
-        emp.add(new Employee(1,"Akash"));
-        emp.add(new Employee(2,"Bharat"));
-        emp.add(new Employee(7,"Omkar"));
-        emp.add(new Employee(5, "Kamlesh"));
-        emp.add(new Employee(6,"Kumar"));
-        
-        System.out.println(emp.toString());
-        
+        TreeSet<Employee> employees = new TreeSet<>();
+
+        // Add Employee with id=103
+        employees.add(new Employee(103, "Alice"));
+        // Representation:
+        // TreeMap:
+        //   (103, DUMMY)
+        System.out.println("After adding Alice: " + employees);
+
+        // Add Employee with id=101
+        employees.add(new Employee(101, "Bob"));
+        // Representation:
+        //       (101, DUMMY)
+        //             \
+        //             (103, DUMMY)
+        System.out.println("After adding Bob: " + employees);
+
+        // Add Employee with id=105
+        employees.add(new Employee(105, "Charlie"));
+        // Representation:
+        //       (101, DUMMY)
+        //             \
+        //             (103, DUMMY)
+        //                   \
+        //                   (105, DUMMY)
+        System.out.println("After adding Charlie: " + employees);
+
+        // Add Employee with id=102
+        employees.add(new Employee(102, "Demon"));
+        // Representation:
+        //       (101, DUMMY)
+        //             \
+        //             (103, DUMMY)
+        //            /       \
+        //   (102, DUMMY)   (105, DUMMY)
+        System.out.println("After adding Demon: " + employees);
+
+        // Add Employee with id=104
+        employees.add(new Employee(104, "Eva"));
+        // Representation:
+        //       (101, DUMMY)
+        //             \
+        //             (103, DUMMY)
+        //            /       \
+        //   (102, DUMMY)   (105, DUMMY)
+        //                  /
+        //           (104, DUMMY)
+        System.out.println("After adding Eva: " + employees);
+
+        // Attempt to add duplicate id=101
+        employees.add(new Employee(101, "DuplicateBob"));
+        // Representation unchanged (duplicate ignored)
+        System.out.println("After adding DuplicateBob: " + employees);
+
+        // Final TreeSet (sorted by id)
+        System.out.println("Final Employees (sorted): " + employees);
     }
 }
-
