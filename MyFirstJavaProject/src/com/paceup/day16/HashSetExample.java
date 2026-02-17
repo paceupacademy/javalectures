@@ -1,6 +1,7 @@
 package com.paceup.day16;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * - Stores unique elements (no duplicates).
  * - No guaranteed order of elements.
  * - Backed internally by a HashMap (hashtable).
+ * - hashtable  is specifically a hashmap instance 
  * 
  * Hashtable basics:
  * - Formula for bucket index:
@@ -100,5 +102,7 @@ public class HashSetExample {
         List<String> list = Arrays.asList("C", "Q", "A");
         HashSet<String> hs = new HashSet<>(list);
         System.out.println("HashSet created from List: " + hs);
+        
+        Collections.synchronizedSet(hs);
     }
 }
