@@ -1,8 +1,13 @@
 package com.paceup.day16;
 
 import java.util.TreeSet;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
+ * TreeSet->NavigableSet=>SortedSet=>Set=>Collection=>Iterable
+ * NavigableSet Interface : Navigation methods higher(), lower(), ceiling() and floor()
+ * Performs operations like getting a closest match for a given element,descending order iteration
  * 
  * TreeSet:
  * - Implements Set interface.
@@ -18,6 +23,10 @@ import java.util.TreeSet;
 class Employee implements Comparable<Employee> {
     int id;
     String name;
+    
+    public int getId() {
+    	return this.id;
+    }
 
     Employee(int id, String name) {
         this.id = id;
@@ -39,6 +48,13 @@ public class TreeSetExample {
     public static void main(String[] args) {
         
         TreeSet<Employee> employees = new TreeSet<>();
+        
+        //TreeSet<Employee> emp2 = new TreeSet<>(SortedSet s);
+        
+        //TreeSet<Employee> emp1 = new TreeSet<>(Comparator.comparingInt(Employee::getId));
+        
+        //TreeSet<E> ts = new TreeSet<>(Collection o);
+        TreeSet<Employee> emp3 = new TreeSet<>(Arrays.asList(new Employee(110,"Ram"), new Employee(111,"Sita")));
 
         // Add Employee with id=103
         employees.add(new Employee(103, "Alice"));
@@ -88,10 +104,20 @@ public class TreeSetExample {
         System.out.println("After adding Eva: " + employees);
 
         // Attempt to add duplicate id=101
-        employees.add(new Employee(101, "DuplicateBob"));
+        employees.add(new Employee(106, "Bob"));
         // Representation unchanged (duplicate ignored)
         System.out.println("After adding DuplicateBob: " + employees);
+        
+        Employee e = new Employee(106, "Bob");
+        boolean b = employees.contains(new Employee(106, "Bob"));
+        System.out.println(b);
 
+        employees.remove(e);
+        
+        //ceiling(),floor(), higher(),lower()
+        
+        
+        
         // Final TreeSet (sorted by id)
         System.out.println("Final Employees (sorted): " + employees);
     }
