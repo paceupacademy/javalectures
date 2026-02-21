@@ -1,4 +1,4 @@
-package com.paceup.collections;
+package com.paceup.Collections;
 
 import java.util.LinkedList;
 import java.util.Queue;

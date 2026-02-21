@@ -1,4 +1,4 @@
-package com.paceup.collections;
+package com.paceup.Collections;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.paceup.collections;
+package com.paceup.Collections;
 
 import java.util.*; //Importing all utility classes(List,ArrayList,Collections,Arrays,etc)
 
