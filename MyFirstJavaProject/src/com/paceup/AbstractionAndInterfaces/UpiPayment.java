@@ -1,4 +1,4 @@
-package com.paceup.day8;
+package com.paceup.AbstractionAndInterfaces;
 
 //Implementation 2: UPI Payment
 public class UpiPayment implements Payment {

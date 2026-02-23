@@ -1,4 +1,4 @@
-package com.paceup.day6;
+package com.paceup.Inheritance;
 
 //Interface 1 that defines coding behavior
 interface Coder {

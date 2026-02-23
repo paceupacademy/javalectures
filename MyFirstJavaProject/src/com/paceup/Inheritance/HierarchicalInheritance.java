@@ -1,5 +1,5 @@
 
-package com.paceup.day6;
+package com.paceup.Inheritance;
 
 
 //Java program to illustrate the

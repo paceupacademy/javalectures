@@ -1,4 +1,4 @@
-package com.paceup.day8;
+package com.paceup.AbstractionAndInterfaces;
 
 public class InterfaceFullAbstractionExample2 {
     public static void main(String[] args) {

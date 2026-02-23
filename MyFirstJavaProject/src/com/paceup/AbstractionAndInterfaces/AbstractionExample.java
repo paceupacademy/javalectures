@@ -1,4 +1,4 @@
-package com.paceup.day8;
+package com.paceup.AbstractionAndInterfaces;
 
 //Abstract class cannot be instantiated may contain abstract method(w/o body) as well as concrete method(implementation)
 abstract class Animal {

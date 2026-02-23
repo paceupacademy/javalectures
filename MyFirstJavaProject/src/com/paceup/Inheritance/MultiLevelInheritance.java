@@ -1,4 +1,4 @@
-package com.paceup.day6;
+package com.paceup.Inheritance;
 //Multilevel Inheritance (One -> Two -> Three)
 //Parent class One
 class One { //Base Class 1

@@ -1,4 +1,4 @@
-package com.paceup.day8;
+package com.paceup.AbstractionAndInterfaces;
 
 //Implementation 1: Credit Card Payment
 public class CreditCardPayment implements Payment {

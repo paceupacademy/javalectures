@@ -1,4 +1,4 @@
-package com.paceup.day6;
+package com.paceup.Inheritance;
 
 class Animal2 {
 

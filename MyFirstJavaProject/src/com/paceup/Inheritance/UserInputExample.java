@@ -1,4 +1,4 @@
-package com.paceup.day6;
+package com.paceup.Inheritance;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner; //Needed for reading input from the user via keyboard
