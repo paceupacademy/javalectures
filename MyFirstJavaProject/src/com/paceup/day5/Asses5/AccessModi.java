@@ -1,7 +1,7 @@
 //2. Write a program demonstrating the use of all four access specifiers.
 package com.paceup.day5.Asses5;
 
-import com.paceup.day5.AccessSpecifiers;
+import com.paceup.Encapsulation.AccessSpecifiers;
 
 public class AccessModi {
 
@@ -27,7 +27,7 @@ public class AccessModi {
 	 class Demonstrate extends AccessSpecifiers { //subclass of AccessSpecifiers class also inner class of AccessModi class
 
 		public void access() {
-			System.out.println("Local protected Variable AccessSpecifiers class: " + provar);
+			System.out.println("Local protected Variable AccessSpecifiers class: " + pvar);
 			System.out.println("Local public Variable AccessSpecifiers classs: " + pubvar);
 		}
 	}
