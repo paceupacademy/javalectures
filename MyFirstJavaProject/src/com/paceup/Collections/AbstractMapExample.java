@@ -27,6 +27,10 @@ public class AbstractMapExample<K, V> extends AbstractMap<K, V> {
     private Set<Entry<K, V>> entrySet = new HashSet<>();
 
     // Must override entrySet() method
+    /*
+     * public Set<T> entrySet()
+     * T->Entry<K,V>
+     */
     @Override
     public Set<Entry<K, V>> entrySet() {
         return entrySet;

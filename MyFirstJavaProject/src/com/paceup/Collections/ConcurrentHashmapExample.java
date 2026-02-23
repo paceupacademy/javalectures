@@ -1,8 +1,14 @@
 package com.paceup.Collections;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * ConcurrentHashMap->ConcurrentMap=>Map
+ * 		||
+ * 	AbstractMap->Map
  * 
  * ConcurrentHashMap:
  * - Part of java.util.concurrent package.
@@ -30,6 +36,10 @@ public class ConcurrentHashmapExample {
         // Create a ConcurrentHashMap
         ConcurrentHashMap<Integer, String> cmap = new ConcurrentHashMap<>();
         
+        Map<Integer,String> map2 =  new HashMap<>();
+        map2.put(35, "Charlie");
+        map2.put(40, "Bob");
+        
         // Add key-value pairs
         cmap.put(1, "Java");
         cmap.put(2, "Spring");
@@ -37,18 +47,32 @@ public class ConcurrentHashmapExample {
         cmap.put(4, "Database");
         System.out.println("ConcurrentHashMap entries: " + cmap);
         
+        cmap.putAll(map2);
+        
+        System.out.println("ConcurrentHashMap entries: " + cmap);
+        
         // Iteration (safe in concurrent environment)
         cmap.forEach((k, v) -> System.out.println(k + " : " + v));
         
+        for(Map.Entry<Integer, String> entry: cmap.entrySet()) {
+        	System.out.println(entry.getKey()+" : "+entry.getValue());
+        }
+        
         // Safe concurrent update using compute()
         cmap.compute(2, (key, value) -> value + " Boot"); // updates value for key 2
-        System.out.println("Updated ConcurrentHashMap entries: " + cmap);
+        System.out.println("Updated ConcurrentHashMap entries: " + cmap+"\n");
         
         // Null keys/values not allowed
         try {
             cmap.put(null, "Test"); // throws NullPointerException
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
+        }
+        
+        Iterator<ConcurrentHashMap.Entry<Integer,String>> i = cmap.entrySet().iterator();
+        while(i.hasNext()) {
+        	ConcurrentHashMap.Entry<Integer,String> entry = i.next();
+        	System.out.println(entry.getKey()+" : "+entry.getValue());
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.paceup.Collections;
 
+import java.util.Comparator;
 import java.util.TreeMap;
 
 /**
@@ -32,6 +33,30 @@ import java.util.TreeMap;
  *           /           \
  *   (1, Banana)       (3, Apple)
  */
+
+class StudentMap{
+	int rollno;
+	String name, address;
+	
+	public StudentMap(int rollno, String name, String address) {
+		this.rollno =  rollno;
+		this.name =  name;
+		this.address =  address;
+	}
+	
+	public String toString() {
+		return this.rollno+" "+this.name+" "+this.address;
+	}
+	
+}
+//Comparator class
+class SortByRollNo implements Comparator<StudentMap>{
+	
+	public int compare (StudentMap a, StudentMap b) {
+		return Integer.compare(a.rollno, b.rollno);
+	}
+}
+
 public class TreeMapExample {
     public static void main(String[] args) {
         TreeMap<Integer, String> map = new TreeMap<>();
@@ -54,8 +79,16 @@ public class TreeMapExample {
         map.put(5, "Lemons");
         
         System.out.println("After adding more entries: " + map);
+        
+        //TreeMap using Comparator
+        TreeMap<StudentMap, Integer> tm = new TreeMap<>(new SortByRollNo());
+        tm.put(new StudentMap(111, "Aishwarya", "Pune"), 1);
+        tm.put(new StudentMap(110, "Shraddha", "Mumbai"), 3);
+        tm.put(new StudentMap(112, "Raj", "Delhi"), 2);
+        System.out.println("TreeMap of Students by rollNo:\n"+tm);
+        
 
-        // Removing an element
+        // Removing an element using corresponding key
         map.remove(1);
         System.out.println("After removal: " + map);
 
@@ -71,6 +104,7 @@ public class TreeMapExample {
         System.out.println("Descending Map: " + map.descendingMap());
         System.out.println("Polling First Entry: " + map.pollFirstEntry());
         System.out.println("Map after pollFirstEntry: " + map);
-        System.out.println("First Entry: " + map.firstEntry());
+        System.out.println("First Entry: " + map.firstEntry()); //lowest
+        System.out.println("Head Map: "+map.headMap(6));
     }
 }

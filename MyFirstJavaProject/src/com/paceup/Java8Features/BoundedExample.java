@@ -1,4 +1,4 @@
-package com.paceup.Collections;
+package com.paceup.Java8Features;
 
 import java.util.concurrent.LinkedBlockingDeque;
 
