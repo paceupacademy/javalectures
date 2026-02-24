@@ -1,0 +1,248 @@
+Que 1: What is the Java collection framework and what are its main interfaces
+Ans:	Java collection framework an architecture to store and manipulate a group of objects.
+			It allows performing various operations such searching, sorting, insertion, manipulation and deletion of data.
+			It includes multiple interfaces and classes that represent different types of collections.
+		Collection has below main interfaces,
+			1- LIST -> ArrayList, LinkedList, Vector
+			2-SET -> HashSet, LinkedHashSet, TreeSet
+			3-MAP -> Hashmap, TreeMap, EnumMap
+			4-QUEUE -> PriorityQueue
+			5- DEQUE -> ArrayDeque
+
+***********************************************************************************************************	
+
+Que 2: Differentiate between List, Set and Map
+Ans: 
+
+***********************************************************************************************************	
+
+Que 3:What is the difference between ArrayList and LinkedList?
+Ans:ArrayList:
+		It maintains the insertion order.
+		ArrayList allows the duplicates elements.
+		While insertion it does not maintain the sorted order.
+		ArrayList is not a Thread safe. Multiple operations we can do at a time.
+		It has fast random access but slower in insertion and deletion.
+		
+	LinkedList:
+		It maintains the insertion order but in FIFO(First In First Out order).
+		LinkedList allows the duplicates elements.
+		While insertion it does not maintain the sorted order.
+		LinkedList is not a Thread safe. Multiple operations we can do at a time.
+		LinkedList is good in insertion and deletion because it needs to update only node references.
+
+
+***********************************************************************************************************	
+
+Que 4:What is the use of HashSet and how does it ensure uniqueness?
+Ans:Usage: 
+	HashSet does not allow the duplicate entries in set.
+	Fast lookup when you need to quickly check if an element exists.
+	It supports addAll(), retainAll() and removeAll() operations.
+
+ 	How does it ensure uniqueness:
+	It ensures uniqueness by preventing duplicates. Duplicates prevent below steps,
+
+***********************************************************************************************************	
+
+Que 5:How is HashMap implemented internally?
+Ans:	It is implemented using Hashing. 
+		The object hashcode() is calculated, using the hashcode formula in the backend.
+		The hash determines the bucket location in a hashtable.
+		If the bucket is empty then an element is added.
+		If bucket contains the element 
+			equals() is used to check if the object already exists
+		If equal then not added the element
+		If not equal then added the element.
+		
+
+***********************************************************************************************************	
+
+Que 6:What is the difference between Hashmap and TreeMap?
+Ans:Both Hashmap and TreeMap are classes of java collection framework.
+	But Hashmap extends the Map interface through the Abstract Map and TreeMap Implementing Map interface through the SortedMap and NavigableMap.
+	HashMap does not maintain insertion order. But TreeMap maintains the sorted insertion order by keys. 
+	HashMap and TreeMap does not allow the null entry for keys, but it allows the null value.
+
+
+***********************************************************************************************************	
+
+Que 7:What is the difference between Iterator and ListIterator? 
+Ans:	Iterator:
+			Iterator used in java for traversing the java collection.
+			Iterators move only forward direction.
+			Iterator works with List, Set and Map Interfaces.
+			Iterator only allows removing the elements.
+			Iterator only start initialization from the beginning element.
+			
+		ListIterator:
+			ListIterator is also used for traversing the java collection.
+			ListIterator moves forward and backward.
+			ListIterator works with only List collection.
+			ListIterator allows the adding, setting and removing the elements.
+			ListIterator start the initialization from a specific index.
+			ListIterator returns the current indexes (nextIndex() and previousIndex()).
+
+***********************************************************************************************************	
+
+Que 8: What is the significance of fail-fast vs fail-safe iterators? 
+Ans: 
+
+
+***********************************************************************************************************	
+
+Que 9: What is the purpose of the collections utility class?
+Ans: The java.util.collections class is utility class that provides static methods to perform operations on collections.
+	 It helps in manipulating and processing collections easily.
+	 The purpose and methods are below:
+	 	1. Collections.sort(list)  			-> Sorts a list
+	 	2. Collections.reverse(list)   		-> Reverse list
+	 	3. Collections.shuffle(list)		-> Randomly shuffle
+	 	4. Collections.max(list)			-> Finds maximum
+	 	5. Collections.min(list)			-> Finds minimum
+	 	6. Collections.binarySearch(list, key) -> searches element
+	 	7. Collections.frequency(list, obj)	-> count occurrences
+
+
+***********************************************************************************************************	
+
+Que 10. How do PriorityQueue and Deque work in Java?
+Ans: Both PriorityQueue and Deque are part of the Java collections Framework, but they work differently.
+	 A PriorityQueue is a queue that orders elements based on priority, not insertion order.
+	  How it works:
+	  	Elements are stored in a heap data structures.
+	  	The highest priority element is always at the head.
+
+		public class PriorityQueueDemo {
+		    public static void main(String[] args) {
+		
+		        PriorityQueue<Integer> pq = new PriorityQueue<>();
+		
+		        pq.add(30);
+		        pq.add(10);
+		        pq.add(20);
+		
+		        System.out.println(pq);      // Not sorted order
+		        System.out.println(pq.poll());  // 10 (smallest)
+		        System.out.println(pq.poll());  // 20
+		    }
+		}
+
+
+	Deque (Double-Ended Queue): A Deque allow insertion and removal from both ends.
+	It acts as Queue and Stack.
+
+	public class DequeDemo {
+	    public static void main(String[] args) {
+	
+	        Deque<Integer> dq = new ArrayDeque<>();
+	
+	        dq.addFirst(10);
+	        dq.addLast(20);
+	        dq.addFirst(5);
+	
+	        System.out.println(dq);      // [5, 10, 20]
+	
+	        dq.removeLast();
+	        System.out.println(dq);      // [5, 10]
+	    }
+	}
+		 
+
+***********************************************************************************************************	
+
+Que 11. Explain sorting of custom objects using Comparator and Comparable.
+Ans:A. Sorting Using Comparable(Natural ordering)
+			Usage = When class has one default sorting logic
+				e.g. sort by ID or name
+			class Employee implements Comparable<Employee>{ //implement Comparable<T>
+				int id;
+				String name:
+				
+				Employee(int id, String name){
+				 this.id = id;
+				 this.name = name;
+				}
+				
+				@override
+				public int compareTo(Employee e){ 			//override compareTo method
+				return this. id - e.id  					//sort by ID
+				}
+				
+				@override
+				public String toString(){
+				return id + " " + name;
+				}
+			}
+			
+			public class ComparableDemo{
+				public static void main(String[] args){
+				List<Employee> list = new ArrayList<>();
+				list.add(new Employee(3, "Rahul"));
+				list.add(new Employee(2, "Anita"));
+				list.add(new Employee(1, "Karan"));
+				
+				Collections.sort(list);
+				System.out.println(llist);
+				}
+			}
+			
+	-----------------------------------------------------------------------------------------------------		
+	
+	B. Sorting using Comparator (Custom ordering)
+	 Usage = When we want multiple sorting logics.
+	 	e.g. Sort by name, salary, age etc.
+	
+		class Employee{ 
+				int id;
+				String name:
+				
+				Employee(int id, String name){
+				 this.id = id;
+				 this.name = name;
+				}
+				
+				@override
+				public String toString(){
+				return id + " " + name;
+				}
+			}
+		
+		class NameComparator implements Comparator<Employee>{
+			@override 
+			public int compare(Employee e1, Employee e2){
+				return e1.name.compareTo(e2.name);  //sort by name
+			}
+		}
+		
+		
+		public class ComparatorDemo{
+			public static void main(String[] args){
+			 List<Employee> list = new ArrayList<>();
+			 list.add(new Employee(3, "Rahul"));
+			 list.add(new Employee(2, "Anita"));
+			 list.add(new Employee(1, "Karan"));
+			 
+			 Collection.sort(list, new NameComparator());
+			 System.out.println(list);
+			}
+		}
+		
+		
+***********************************************************************************************************	
+
+Que 12. How can you synchronize a collection in Java?
+Ans: The collections utility class provides the synchronized method to make collection thread safe.
+	 Collections.synchronizedList() 	-> thread-safe list
+	 Collections.synchronizedSet() 		-> thread-safe set
+	 Collections.synchronizedMap()		-> thread-safe Map
+
+***********************************************************************************************************	
+
+
+
+
+
+
+
+	
