@@ -14,9 +14,10 @@ public class CollectionExample2 {
 		list.add(1);
 		list.add(2);
 		list.add(4);
+		System.out.println("List before the Duplicate removes: " + list);
 		// HasSet does not allowed the duplicate elements.
 		HashSet<Integer> set = new HashSet<>(list);
-		System.out.println("HashSet without: " + set);
+		System.out.println("HashSet after removes duplicate: " + set);
 
 	}
 

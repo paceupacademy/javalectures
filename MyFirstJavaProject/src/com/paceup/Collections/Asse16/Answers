@@ -3,16 +3,36 @@ Ans:	Java collection framework an architecture to store and manipulate a group o
 			It allows performing various operations such searching, sorting, insertion, manipulation and deletion of data.
 			It includes multiple interfaces and classes that represent different types of collections.
 		Collection has below main interfaces,
-			1- LIST -> ArrayList, LinkedList, Vector
+			1-LIST -> ArrayList, LinkedList, Vector
 			2-SET -> HashSet, LinkedHashSet, TreeSet
-			3-MAP -> Hashmap, TreeMap, EnumMap
+			3-MAP -> Hashmap, TreeMap, EnumMap (Map not part of collection framework it is separate interface in Java.)
 			4-QUEUE -> PriorityQueue
-			5- DEQUE -> ArrayDeque
+			5-DEQUE -> ArrayDeque
 
 ***********************************************************************************************************	
 
 Que 2: Differentiate between List, Set and Map
-Ans: 
+Ans: List:
+	 	In list insertion is ordered.
+	 	List allows the duplicate elements.
+	 	In List we can any number of null value.
+	 	List interface implemented by the ArrayList, LinkedList classes.
+	 	List is accessible through the index (e.g. get(i))
+	 	
+	 Set:
+	 	In set insertion ordered is not maintain.
+	 	Set does not allow the duplicate key element.
+	 	Set allow only one null value.
+	 	Set interface implemented by the HashSet, LinkedHashSet and TreeSet classes.
+	 	Using Iterator or for each loop we can access the set elements.
+	 	
+	 Map:
+	 	Map also do not maintain any ordered.
+	 	Map also does not allow the duplicate element.
+	 	Map allow the single null value and any number of null value.
+	 	Map interface implemented by the HashMap, LinkedHashMap, TreeMap and ConcurrentHashMap.
+	 	Using key we can access the map value (e.g get(key)).
+	 
 
 ***********************************************************************************************************	
 
@@ -25,7 +45,7 @@ Ans:ArrayList:
 		It has fast random access but slower in insertion and deletion.
 		
 	LinkedList:
-		It maintains the insertion order but in FIFO(First In First Out order).
+		It maintains the insertion order but in queue maintain the FIFO (First In First Out order) order.
 		LinkedList allows the duplicates elements.
 		While insertion it does not maintain the sorted order.
 		LinkedList is not a Thread safe. Multiple operations we can do at a time.
@@ -41,7 +61,7 @@ Ans:Usage:
 	It supports addAll(), retainAll() and removeAll() operations.
 
  	How does it ensure uniqueness:
-	It ensures uniqueness by preventing duplicates. Duplicates prevent below steps,
+	It ensures uniqueness by preventing duplicates.
 
 ***********************************************************************************************************	
 
@@ -52,8 +72,8 @@ Ans:	It is implemented using Hashing.
 		If the bucket is empty then an element is added.
 		If bucket contains the element 
 			equals() is used to check if the object already exists
-		If equal then not added the element
-		If not equal then added the element.
+		If hashcode equal existing bucket index then not added the element
+		If hashcode equal existing bucket index not equal then added the element.
 		
 
 ***********************************************************************************************************	
@@ -62,8 +82,8 @@ Que 6:What is the difference between Hashmap and TreeMap?
 Ans:Both Hashmap and TreeMap are classes of java collection framework.
 	But Hashmap extends the Map interface through the Abstract Map and TreeMap Implementing Map interface through the SortedMap and NavigableMap.
 	HashMap does not maintain insertion order. But TreeMap maintains the sorted insertion order by keys. 
-	HashMap and TreeMap does not allow the null entry for keys, but it allows the null value.
-
+	HashMap and TreeMap does not allow the null entry for keys, but it allows the null value for HashMap.
+	HashMap backed by hashtable and TreeMap backed by a Red-Black Tree.
 
 ***********************************************************************************************************	
 
@@ -108,7 +128,8 @@ Ans: The java.util.collections class is utility class that provides static metho
 
 Que 10. How do PriorityQueue and Deque work in Java?
 Ans: Both PriorityQueue and Deque are part of the Java collections Framework, but they work differently.
-	 A PriorityQueue is a queue that orders elements based on priority, not insertion order.
+	 A PriorityQueue is a queue that orders elements based on priority or custom comparator, not insertion order.
+	 
 	  How it works:
 	  	Elements are stored in a heap data structures.
 	  	The highest priority element is always at the head.
@@ -130,7 +151,7 @@ Ans: Both PriorityQueue and Deque are part of the Java collections Framework, bu
 
 
 	Deque (Double-Ended Queue): A Deque allow insertion and removal from both ends.
-	It acts as Queue and Stack.
+	It acts as Queue and Stack also as doubly LinkedList.
 
 	public class DequeDemo {
 	    public static void main(String[] args) {
