@@ -1,0 +1,9 @@
+Que: Explain the difference between heap and stack.
+Ans: Heap: 
+        Heap memory stores the object and instance variables.        
+        It is managed by the garbage collector.        
+        The lifetime of a heap is until the object is unused.     
+      Stack:         
+        Stack memory stores the local variables and object memory address.        
+        Its follows the LIFO (Last in, First out) procedures.        
+        The lifetime of the stack is till the method executions

@@ -1,0 +1,146 @@
+Que 1. What is an array in Java? How is it different from a regular variable?
+Ans: Array is collection in java that help to store the same types values in contiguous memory locations.
+	 How it is different from regular variable:
+	 1. Array store the multiple values but regular variable stores single value.
+	 2. We can access the array using the index but in regular variable we can access only using variable name.
+	 3. Array stores in contiguous memory location. regular variable required the separate memory allocation.
+
+	 
+******************************************************************************************************************************
+
+Que 2. Explain the difference between single-dimensional and multi-dimensional arrays.
+Ans: Single-Dimensional:
+	 In single-dimensional array store element in linear structure.
+	 Single dimensional has single index.
+	 e.g.
+	 int a[] = {1,2,3,4};
+	 
+	 Multi-dimensional:
+	 In multi-dimensional arrays store elements in row and columns (in matrix format).
+	 Multi dimensional array has 2 or more indices.
+	 e.g.
+	 int b[][] = {{2,3,4}, {4,5,7}};
+	 
+	 
+******************************************************************************************************************************
+
+Que 3. How is memory allocated for arrays in Java?
+Ans: When we create array in java allocates the memory for its as object in heap memory.
+	 But actual array elements are stored in heap memory.
+	 THe array name is stored in stack memory. it points to array object in heap.
+	 Once an array created its size cannot be changed.
+	 
+
+******************************************************************************************************************************
+
+Que 4. What happens when you access an array index out of bounds?
+Ans: When try to access the array element using invalid index, java throws a runtime exception called ArrayIndexOutOfBoundException.
+	 When this happens:
+	 Example:
+	 int num[] = {10,20,30};
+	 System.out.println(arr[3]);
+	  
+	 Result: Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 3
+	 
+	 Array has 3 elements and valid indices are 0, 1, 2. Index 3 does not exist. 
+	
+******************************************************************************************************************************
+
+Que 5. How are arrays initialized by default in Java?
+Ans:  When array is created using 'new' keyboard, all elements are automatically initialized default values.
+	 	e.g. int a[] = new int[3];
+	 	
+	  Default initialization happens only when arrays are created using 'new' keyword.
+
+******************************************************************************************************************************
+Que 6. What is a String in Java and how is it different from an array of characters?
+Ans: 	String is object in java it represent the sequence of characters.
+		Strings in Java are immutable, meaning their value cannot be changed once created.
+		Any modification string creates a new object.
+		e.g.
+		String s = "Hello";
+		
+		In array of characters is collection of characters stores in array. It is mutable (It can be modified) we can change the same array.
+		e.g.
+		char[] ch = {'H', 'e', 'l', 'l', 'o'};
+		
+		
+******************************************************************************************************************************
+
+Que 7. What is string immutability and why are Strings immutable in Java?
+Ans: String Immutability means that once object created that value cannot be changed.
+	 Any modification on string creates a new string object.
+	 
+	  e.g.
+	  String s = "Hello";
+	  s = s + " World";   // creates a new String object old one still be available in heap after program execution it will be deleted.
+	  
+	  Java makes java immutable for security, performance, thread safety and reliability.
+	 
+******************************************************************************************************************************
+
+Que 8. Differentiate between String, StringBuilder, and StringBuffer.
+Ans: String:
+		String are immutable means its create new objects on modification.
+		String is thread safe.
+		It is slow because it creates an object each time.
+		String is usable in because its fixed and unchanging strings.
+	  
+	  StringBuilder:
+	  	StringBUilder are mutable.
+	  	It is not thread safe.
+	  	It is faster.
+	  	It used in single threaded string manipulation.
+	  	
+	  StringBuffer:
+	  	StringBuffer are mutable like StringBuilder.
+	  	It is thread-safe.
+	  	It is slower due to synchronization overhead.
+	  	It used in multi-threaded string manipulation.
+	  	
+******************************************************************************************************************************
+
+Que 9. What is the role of the equals() method vs == operator when comparing strings?
+Ans:  == Operator:
+		It compares memory addresses(references)
+		Its checks whether both variables points to same object.
+		
+		String s1 = new String("Java");
+		String s2 = new String("Java");
+		
+		System.out.println(s1 == s2); 
+		result will be false because s1 and s2 are different objects.
+		
+		
+	equals() method:
+		Its compare the actual contents of string, it compare character by character.
+		System.out.println(s1.equals(s2)); 
+		
+	 
+******************************************************************************************************************************
+
+Que 10. How does Java store string literals in the String Pool?
+Ans: 	Java uses a special memory area called the String Constant Pool (String Pool) to stores string literals efficiently.
+		String s1 = "Java"; // created S1 object to stores java string in the pool,
+		String s2 = "Java"; //Now java already available in pool then s2 is made to reference the same object.
+		
+		Java stores string literals in the String Pool by reusing existing strings with the same value, ensuring memory efficiency and faster access.
+				
+
+******************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+	 
+	 
