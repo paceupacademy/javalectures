@@ -7,36 +7,37 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 class ConcurrentSharedResource {
     // ReentrantLock:
     // --------------
-    // A lock that allows the same thread to acquire it multiple times (reentrancy).
+    // - A lock that supports reentrancy → the same thread can acquire it multiple times.
+    // - Ensures only one thread executes the locked section at a time.
     private final Lock lock = new ReentrantLock();
 
     // Method demonstrating exclusive locking
     void display(String message) {
-        lock.lock(); // acquires lock → only one thread can enter this block at a time
+        lock.lock(); // acquire lock → only one thread allowed inside
         try {
             for (int i = 1; i <= 2; i++) {
-                System.out.println(message + " - " + i + " Thread: " + Thread.currentThread().getName());
+                System.out.println(message + " called " + i + " times");
                 try {
-                    Thread.sleep(1000); // pauses for 1 second
+                    Thread.sleep(1000); // simulate work → pause for 1 second
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         } finally {
-            lock.unlock(); // releases lock → allows other threads to enter
+            lock.unlock(); // release lock → other threads can enter
         }
     }
 
     /*
      * ReentrantReadWriteLock:
      * -----------------------
-     * - Writer Lock → exclusive, blocks all readers and writers.
-     * - Read Lock → shared, multiple readers allowed simultaneously.
+     * - Write Lock → exclusive, blocks all readers and writers.
+     * - Read Lock → shared, multiple readers can hold it simultaneously.
      *
      * Rules:
-     * - Many readers can run in parallel.
+     * - Multiple readers can run in parallel.
      * - Only one writer at a time.
-     * - Writer blocks all readers.
+     * - Writer blocks all readers until it finishes.
      */
 
     int value = 0; // shared resource
@@ -47,7 +48,7 @@ class ConcurrentSharedResource {
         rwLock.writeLock().lock(); // acquire exclusive write lock
         try {
             value = newvalue;
-            System.out.println("Written " + value);
+            System.out.println("Written " + value + " Thread: " + Thread.currentThread().getName());
         } finally {
             rwLock.writeLock().unlock(); // release write lock
         }
@@ -57,7 +58,7 @@ class ConcurrentSharedResource {
     public void read() {
         rwLock.readLock().lock(); // acquire shared read lock
         try {
-            System.out.println("Read " + value);
+            System.out.println("Read " + value + " Thread: " + Thread.currentThread().getName());
         } finally {
             rwLock.readLock().unlock(); // release read lock
         }
@@ -69,16 +70,21 @@ public class ConcurrentSynchronization {
         ConcurrentSharedResource resource = new ConcurrentSharedResource();
 
         // Two threads calling display() → only one enters at a time due to ReentrantLock
-        Thread t1 = new Thread(() -> resource.display("Thread 1")); // Lambda Expression
-        Thread t2 = new Thread(() -> resource.display("Thread 2"));
+        Thread t0 = new Thread(() -> resource.display("Thread 1")); // Lambda Expression
+        Thread t1 = new Thread(() -> resource.display("Thread 2"));
 
+        t0.start();
         t1.start();
-        t2.start();
 
-        // One writer thread → exclusive access
-        new Thread(() -> resource.write(42)).start();
+        System.out.println("T1 Name: " + t0.getName());
+        System.out.println("T2 Name: " + t1.getName());
 
-        // Three reader threads → can run in parallel
+        // Writer threads → exclusive access
+        for (int i = 0; i < 3; i++) {
+            new Thread(() -> resource.write(42)).start();
+        }
+
+        // Reader threads → can run in parallel
         for (int i = 0; i < 3; i++) {
             new Thread(resource::read).start();
         }

@@ -40,21 +40,23 @@ class SharedResource1 {
 public class SynchronizedBlocked {
     public static void main(String[] args) {
         SharedResource1 resource = new SharedResource1();
-
+        
         // Creating multiple threads
-        for (int i = 1; i <= 3; i++) {
-            String message = "Hello " + i;
+        //for (int i = 1; i < 3; i++) {
+            String message = "Hello" ;
 
             // Thread t1 → prints "Hello i"
             Thread t1 = new Thread(() -> resource.display(message));
             t1.start();
+            System.out.println("T1 Name is "+t1.getName());
             t1.setPriority(1); // setting priority (hint to scheduler, not guaranteed)
 
             // Thread t2 → prints "World"
             Thread t2 = new Thread(() -> resource.display("World"));
             t2.start();
+            System.out.println("T2 name is: "+t2.getName());
 
             System.out.println("Thread 2 priority " + t2.getPriority());
-        }
+        //}
     }
 }

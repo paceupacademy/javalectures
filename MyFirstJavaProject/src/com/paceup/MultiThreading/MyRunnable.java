@@ -1,51 +1,40 @@
 package com.paceup.MultiThreading;
 
-/*
- * Using Runnable:
- * ---------------
- * - Runnable allows us to define a reusable task (run() method).
- * - Multiple threads can execute the same task concurrently.
- * - This design is widely used in enterprise applications because:
- *   → It separates task logic (Runnable) from thread management (Thread).
- *   → It avoids the limitation of single inheritance (since we don’t extend Thread).
- */
-class PrintNumbers implements Runnable {
-    private int number;
-
-    // Constructor:
-    // ------------
-    // Accepts a number that this thread will print.
-    public PrintNumbers(int number) {
-        this.number = number;
-    }
+// A simple class implementing Runnable
+// ------------------------------------
+// In Java, threads can be created in two ways:
+// 1. By extending the Thread class
+// 2. By implementing the Runnable interface
+//
+// Here we implement Runnable → the class does not itself become a thread,
+// but provides the run() method logic that can be executed by a Thread object.
+class MyRunnable implements Runnable {
 
     // run() method:
     // -------------
-    // - Entry point of the thread when executed.
+    // - This is the entry point of the thread when executed.
     // - When a Thread object is created with this Runnable and start() is called,
-    //   JVM internally invokes run().
+    //   the JVM internally invokes run().
     // - All code inside run() executes in a separate thread.
     @Override
     public void run() {
-        System.out.println("Thread started: " + Thread.currentThread().getName() +
-                           " | Initial State: " + Thread.currentThread().getState());
+        System.out.println("Thread is running: " + Thread.currentThread().getName());
 
-        // Simulating work by printing numbers
-        for (int i = 1; i <= number; i++) {
-            System.out.println("Number " + i + " printed by " + Thread.currentThread().getName());
+        // Simulating work with a loop
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("Iteration " + i + " by " + Thread.currentThread().getName());
             try {
                 // TIMED_WAITING State:
                 // --------------------
                 // sleep() puts thread into TIMED_WAITING for given duration.
                 Thread.sleep(1000);
-                System.out.println(Thread.currentThread().getName() + " Current State: " +
-                                   Thread.currentThread().getState());
+                System.out.println(Thread.currentThread().getName() + " Current State is " + Thread.currentThread().getState());
             } catch (InterruptedException e) {
                 // Interrupted State:
                 // ------------------
                 // If another thread interrupts this thread during sleep/wait,
                 // InterruptedException is thrown.
-                System.out.println("Thread Interrupted: " + Thread.currentThread().getName());
+                System.out.println("Thread Interrupted");
                 Thread.currentThread().interrupt(); // re-set interrupt flag
             }
         }
@@ -53,24 +42,23 @@ class PrintNumbers implements Runnable {
         // TERMINATED State:
         // -----------------
         // Once run() finishes, thread enters TERMINATED (DEAD) state.
-        System.out.println("Thread completed: " + Thread.currentThread().getName() +
-                           " | Final State: " + Thread.currentThread().getState());
+        System.out.println("Thread Execution Completed!! " + Thread.currentThread().getName());
+        System.out.println(Thread.currentThread().getName() + " Current State is " + Thread.currentThread().getState());
     }
 
     // main() method:
     // ---------------
     // Entry point of the program.
     public static void main(String[] args) {
-        // Creating Runnable tasks
-        PrintNumbers task1 = new PrintNumbers(3);
-        PrintNumbers task2 = new PrintNumbers(5);
+        // Creating Runnable object
+        MyRunnable runnable = new MyRunnable();
 
-        // Creating Thread objects with Runnable targets
+        // Creating Thread objects with Runnable target
         // NEW State:
         // ----------
         // When a Thread object is created but start() not yet called → NEW.
-        Thread t1 = new Thread(task1, "Thread-1");
-        Thread t2 = new Thread(task2, "Thread-2");
+        Thread t1 = new Thread(runnable, "Thread-1");
+        Thread t2 = new Thread(runnable, "Thread-2");
 
         // Starting threads
         // ----------------
@@ -83,12 +71,11 @@ class PrintNumbers implements Runnable {
         t2.start();
 
         // Checking states from main thread
-        System.out.println(t1.getName() + " State (main block): " + t1.getState());
-        System.out.println(t2.getName() + " State (main block): " + t2.getState());
+        System.out.println(t1.getName() + " Current State for main block is " + t1.getState());
+        System.out.println(t2.getName() + " Current State for main block is " + t2.getState());
 
         // Main thread continues execution in parallel
-        System.out.println(Thread.currentThread().getName() + " State: " +
-                           Thread.currentThread().getState());
+        System.out.println(Thread.currentThread().getName() + " Current State is " + Thread.currentThread().getState());
     }
 }
 
