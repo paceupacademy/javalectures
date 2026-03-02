@@ -33,7 +33,7 @@ public class NestedTryCatchExample {
             int[] arr = {1, 2, 3};
 
             // This line executes successfully (no ArithmeticException here)
-            int result = 10 / 2; 
+            int result = 10 / 0; 
 
             // Inner try-catch block
             try {
@@ -41,12 +41,22 @@ public class NestedTryCatchExample {
                 System.out.println(arr[5]);
             } catch (ArrayIndexOutOfBoundsException e) {
                 // Handles invalid array index access
-                System.out.println("Inner catch: " + e.getMessage());
+            	ArrayIndexOutOfBoundsException arrEx =  new ArrayIndexOutOfBoundsException("Index out of limit entered");
+            	arrEx.initCause(e);
+                throw arrEx;
+            	//System.out.println("Inner catch: " + e.getMessage());
             }
 
-        } catch (ArithmeticException e) {
+        } catch (Exception e) {
             // Handles divide by zero (if it occurred in outer try block)
-            System.out.println("Outer catch: Cannot divide by zero.");
+        	e.printStackTrace();
+			/*
+			 * ArithmeticException newEx = new
+			 * ArithmeticException("Division failed due to divide by 0");
+			 * newEx.initCause(e); throw newEx;
+			 */
         }
+        
+        System.out.println("TRY-Catch executed");
     }
 }
