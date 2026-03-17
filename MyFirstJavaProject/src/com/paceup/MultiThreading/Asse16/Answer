@@ -1,0 +1,158 @@
+Que 1. What is multithreading in Java and how does it improve application performance?
+Ans: Multithreading is a Java feature that enables a program to run multiple threads concurrently. 
+	 It boosts application performance by efficiently utilizing the CPU. By executing multiple threads simultaneously, 
+	 multithreading minimizes CPU idle time compared to single-threaded synchronization.
+	 
+***********************************************************************************************************************************************************************************************************************************
+
+Que: 2. Differentiate between Thread class and Runnable interface in Java.
+Ans: Thread internally implement the Runnable interface 
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 3: what are the advantages of using lambda expressions in multithreading introduced in java 8?
+Ans: The main advantage of using lambda expressions in multithreading is to implement the function interface (It has only one abstract method). lambda expression makes the code shorter in lines. 
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 4: Explain the concept of mutual exclusion with real world examples?
+Ans: Mutual exclusion is when only one thread can use a thread's shared resources at a time, others must wait for their turn.
+Read-world example: It is like a meeting room is used by A team so other teams must wait until their turn if they want to use the same meeting room as per the booking schedule.
+
+***********************************************************************************************************************************************************************************************************************************
+
+
+Que 5: What is the difference between synchronized method and synchronized block?
+Ans: Synchronized Method is the entire method is synchronized but synchronized block is only specific code of block inside the method is synchronized.
+	It locks the whole synchronized method in thread execution but in synchronized block specific it locks only specific blocks so other threads access the rest code.
+	The synchronized method is slower because it locks the whole method. but the Synchronized block has better performance because only a small part is locked.
+	The synchronized method is less flexible but the synchronized block is more flexible.
+	Syntax:
+	Synchronized Method: synchronized void methodName().
+	Synchronized block: syncronized(object){}.
+
+***********************************************************************************************************************************************************************************************************************************
+
+	
+Que 6: What is ReentrantLock? How is it different from using synchronized?
+Ans: ReentrantLock is a class in Java that provides a manual locking mechanism to control access to shared resources between threads.
+using ReentrantLock the same thread can acquire the lock multiple times without getting blocked.
+Difference:
+	THe lock is automatic in synchronization and also released automatically when blocks end. but in ReentrantLock Lock is manual, we must call lock() and unlock() for locking and unlocking.
+	When an exception occurs automatically release in synchronized, but in ReentrantLock we must use try-catch to ensure the unlock(). Otherwise it can cause deadlock.
+	Synchronized is basic locking only. no extra control,
+	ReentrantLock is more powerful features:
+	tryLock() - don't wait if lock is not available
+	tryLock(time) - wait for a limited time.
+	In synchronized thread waits indefinitely until lock is free. but in ReentrantLock can choose wait, not and wait with timeout.
+
+***********************************************************************************************************************************************************************************************************************************
+
+
+Que 7: Why Thread.sleep() used multithreaded applications? What happens if you don't use it?
+Ans: Thread.sleep pause the execution of a thread for a specified amount of time.
+	It slows down the thread so other threads can run.
+	When one thread sleeps, the CPU can execute the other threads.
+what happened if you don't use it:
+ Then threads may execute continuously without pause.
+ CPU may become overloaded because threads keep running without breaks.
+ Hard to observe the output because output may appear instantly, making it difficult to see how threads work.
+ 
+***********************************************************************************************************************************************************************************************************************************
+ 
+ 
+Que 8: What is the different thread state in java and their transitions?
+Ans: Thread goes through different states during its life cycle.
+
+	1. New: A thread is in the New state it is created but not yet started.
+		Thread t = new Thread();
+		
+	2. Runnable: The thread is ready to run and waiting for CPU time.
+	It moves to this state after calling start().
+	
+	3. Running: Thread scheduler picks thread for execution. The thread is currently executing its task.
+	
+	4. Blocked/Waiting: The thread is temporarily inactive because it is waiting for a resource or another thread.
+	
+	5. Terminated: The thread execution finished or stopped.
+	
+	
+Thread State Transitions:
+1. New -> Runnable
+	when start() method is called.
+2. Runnable -> Running
+	When the CPU scheduler selects the thread.
+3. Running -> Blocked/Waiting
+	When thread waits for resources.
+4. Blocked/Waiting -> Runnable
+	After waiting time finishes.
+5. Running -> Terminated
+	when the run() method finishes.
+ 
+***********************************************************************************************************************************************************************************************************************************
+
+ 
+Que 9: What is thread starvation and how can it be avoided in Java?
+Ans: Thread Starvation means a thread doesn't get a chance to run because other threads keep using the CPU or resources again and again.
+E.g. If 5 people are waiting for food and 1 person keeps taking food repeatedly, the others may never get their turn -  that's starvation.
+ Why it happened:
+	Some threads keep getting priority,
+	One thread holds a lock for too long 
+
+ How can it be avoided:
+	Keep synchronized (locked) code shortly.
+	Use fair locks (ReentrantLock(true))
+	Don't use thread priority too much.
+	
+***********************************************************************************************************************************************************************************************************************************
+	
+
+Que 10: How thread priority works in java? Is it always respected by the JVM?
+Ans: In java every thread has a priority number (1 to 10).
+	Higher priority is a more important thread than less priority thread.
+	Higher priority threads should get CPU time before low-priority ones.
+	Every thread has a priority value between:
+	Thread.MIN_PRIORITY = 1,
+	Thread.NORM_PRIORITY = 5 (by default is normal priority)
+	Thread.MAX_PRIORITY = 10
+	We can set it using:
+	 thread.setPriority(8);
+	 
+	No, thread priority is not always respected by the JVM.
+	When we set a priority, the JVM just passes it as a suggestion to the operating system.
+	The OS decides what to do with it or which one pick-up by the CPU for execution.
+
+***********************************************************************************************************************************************************************************************************************************
+	
+	
+Que 11.What is the difference between lock.lock() and synchronized block in terms of exception handling and flexibility?
+Ans: In Exception handling:
+	A. Synchronized block:
+		The lock is automatically released when the thread exits the block, whether normally or due to an exception.
+		
+	B. lock.lock():
+		The lock is not automatically released. It must be explicitly released using unlock().
+		Therefore, exception handling must be manually managed, typically using a try-catch construct to ensure proper release.
+ Flexibility:
+	A. Synchronized block:
+		It is less flexible, it does not support no timeout,
+		cannot try without waiting.
+		We have to wait until it gets locked.
+		
+	B. lock.lock():
+		Much more flexible and control over locking mechanisms.
+		It supports,
+			Try lock without waiting - lock.tryLock();
+			Try with timeout - lock.tryLock(2, 1000);
+	
+***********************************************************************************************************************************************************************************************************************************
+		
+
+Que 12. Why should locks be released in a finally block when using ReentrantLock?
+Ans: Finally block execution when exceptions occur or not in code.
+	When a thread acquires a lock using lock.lock(), the lock is not automatically released(unlike synchronized).
+	If an exception occurs inside the critical section and the lock is not released, the lock will remain held indefinitely. This may cause a deadlock or the program will freeze.
+	So placing unlock() inside finally ensures the lock is released under all circumstances.
+
+***********************************************************************************************************************************************************************************************************************************
