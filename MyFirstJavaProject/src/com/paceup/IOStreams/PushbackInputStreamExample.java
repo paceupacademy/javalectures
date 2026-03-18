@@ -34,16 +34,22 @@ import java.io.PushbackInputStream;
 public class PushbackInputStreamExample {
 
     public static void main(String[] args) {
-        try (PushbackInputStream pis = new PushbackInputStream(new FileInputStream("input.txt"))) {
+        try (PushbackInputStream pis = new PushbackInputStream(new FileInputStream("C://input.txt"))) {
 
             // Read the first byte
             int ch = pis.read();
             System.out.println("\nFirst Data: " + (char) ch);
+            boolean pushed = false;
+            while ((ch = pis.read()) != -1) {
+            	// If the first character is '#', push it back into the stream
+                if (ch == '#' && !pushed) {
+                	
+                    pis.unread(ch); // unread allows us to "put back" the byte
+                    pushed = true;
+                    System.out.println("Found #, pushed back into stream");
+                }
 
-            // If the first character is '#', push it back into the stream
-            if (ch == '#') {
-                pis.unread(ch); // unread allows us to "put back" the byte
-                System.out.println("Found #, pushed back into stream");
+                System.out.print((char) ch);
             }
 
             // Read remaining data from the file

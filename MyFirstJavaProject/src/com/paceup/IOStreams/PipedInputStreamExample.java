@@ -33,11 +33,14 @@ public class PipedInputStreamExample {
     public static void main(String[] args) throws Exception {
         // Create piped streams and connect them
         final PipedOutputStream pos = new PipedOutputStream();
-        final PipedInputStream pis = new PipedInputStream(pos);
+        
+        //PipedInputStream is piped with PipedOutputStream
+        final PipedInputStream pis = new PipedInputStream(pos); 
 
         // Writer thread: writes data into the PipedOutputStream
         Thread writer = new Thread(() -> {
             try {
+            	System.out.println("Writing data to pipe");
                 pos.write("Hello Students!!!".getBytes()); // write string as bytes
                 pos.close(); // close output stream after writing
             } catch (Exception e) {
@@ -47,9 +50,13 @@ public class PipedInputStreamExample {
 
         // Reader thread: reads data from the PipedInputStream
         Thread reader = new Thread(() -> {
+        	Thread t = new Thread();
+        	t.start();
             try {
+            	System.out.println("Reading data from pipe!!\n");
                 int data;
                 while ((data = pis.read()) != -1) { // read until end of stream
+                	t.sleep(500);
                     System.out.print((char) data); // convert byte to char and print
                 }
                 pis.close(); // close input stream after reading

@@ -7,47 +7,29 @@ import java.util.List;
 /**
  * UpperBoundWildcardExample:
  * --------------------------
- * Demonstrates **Wildcards in Generics** and the **PECS Rule** (Producer Extends, Consumer Super).
- *
- * Key Concepts:
- * -------------
- * 1. **Wildcard (?)**:
+ * Theoretical Notes:
+ * ------------------
+ * 1. Wildcard (?) :
  *    - Represents an unknown type in generics.
  *
- * 2. **Upper Bound Wildcard (<? extends T>)**:
- *    - Used when a collection produces values (read-only).
- *    - Example: List<? extends Number> → can accept List<Integer>, List<Double>, etc.
+ * 2. Upper Bound Wildcard (<? extends T>):
+ *    - Producer (read-only).
+ *    - Example: List<? extends Number> → can accept List<Integer>, List<Double>.
  *    - You can read elements as type Number, but cannot add new elements (except null).
  *
- * 3. **Unbounded Wildcard (<?>)**:
- *    - Used when type is unknown.
+ * 3. Unbounded Wildcard (<?>):
+ *    - Type is unknown.
  *    - Allows reading elements as Object.
  *    - Example: List<?> → can accept any type of list.
  *
- * 4. **Lower Bound Wildcard (<? super T>)**:
- *    - Used when a collection consumes values (write/add).
+ * 4. Lower Bound Wildcard (<? super T>):
+ *    - Consumer (write/add).
  *    - Example: List<? super Integer> → can accept List<Integer>, List<Number>, List<Object>.
  *    - You can safely add Integer values, but reading returns Object.
  *
- * 5. **PECS Rule**:
+ * 5. PECS Rule:
  *    - Producer Extends → use `extends` when you only read.
  *    - Consumer Super → use `super` when you only write.
- *
- * Backend Working:
- * ----------------
- * - Compiler enforces type safety by restricting what can be added/read.
- * - `<? extends Number>` → ensures list elements are subclasses of Number.
- * - `<? super Integer>` → ensures list can accept Integer values.
- * - `<?>` → allows iteration over unknown types as Object.
- *
- * Expected Output:
- * ----------------
- * 1 2 3 
- * 1.1 2.2 3.3 
- * Apple Banana Cherry 
- * 1 2 3 
- * 100 300 205 
- * 100 300 205 
  */
 public class UpperBoundWildcardExample {
     // Upper Bound Wildcard: read-only producer
@@ -76,24 +58,45 @@ public class UpperBoundWildcardExample {
     }
 
     public static void main(String[] args) {
-        // Upper Bound Wildcard
+        // Example 1: Upper Bound Wildcard
+        // Input: List<Integer> [1,2,3]
+        // Output: "1 2 3"
+        // [1,2,3] ---> [List<? extends Number>] ---> printNumbers
         List<Integer> intList = List.of(1, 2, 3);
+        printNumbers(intList);
+
+        // Input: List<Double> [1.1,2.2,3.3]
+        // Output: "1.1 2.2 3.3"
+        // [1.1,2.2,3.3] ---> [List<? extends Number>] ---> printNumbers
         List<Double> doubleList = List.of(1.1, 2.2, 3.3);
+        printNumbers(doubleList);
 
-        printNumbers(intList);    // prints integers
-        printNumbers(doubleList); // prints doubles
-
-        // Unbounded Wildcard
+        // Example 2: Unbounded Wildcard
+        // Input: List<String> ["Apple","Banana","Cherry"]
+        // Output: "Apple Banana Cherry"
+        // ["Apple","Banana","Cherry"] ---> [List<?>] ---> printList
         List<String> strList = Arrays.asList("Apple", "Banana", "Cherry");
-        printList(strList);       // prints strings
-        printList(intList);       // prints integers
+        printList(strList);
 
-        // Lower Bound Wildcard
-        List<Number> numList = new ArrayList<>(); // Number is superclass of Integer
-        addNumbers(numList);      // adds integers
+        // Input: List<Integer> [1,2,3]
+        // Output: "1 2 3"
+        // [1,2,3] ---> [List<?>] ---> printList
+        printList(intList);
 
-        List<Object> objList = new ArrayList<>(); // Object is superclass of Integer
-        addNumbers(objList);      // adds integers
+        // Example 3: Lower Bound Wildcard
+        // Input: Empty List<Number>
+        // Added: 100,300,205
+        // Output: "100 300 205"
+        // [] ---> [List<? super Integer>] ---> addNumbers ---> [100,300,205]
+        List<Number> numList = new ArrayList<>();
+        addNumbers(numList);
+
+        // Input: Empty List<Object>
+        // Added: 100,300,205
+        // Output: "100 300 205"
+        // [] ---> [List<? super Integer>] ---> addNumbers ---> [100,300,205]
+        List<Object> objList = new ArrayList<>();
+        addNumbers(objList);
     }
 }
 

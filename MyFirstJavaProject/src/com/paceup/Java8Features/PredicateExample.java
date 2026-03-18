@@ -31,11 +31,23 @@ public class PredicateExample {
         System.out.println("Is 7 even? " + isEven.test(7)); // false
 
         // Example 2: Predicate to check if a number is greater than 10
+        /*
+         * boolean test(15){
+         * 	number->number>10;
+         * }
+         */
         Predicate<Integer> greaterThan10 = number -> number > 10;
         System.out.println("Is 15 > 10? " + greaterThan10.test(15)); // true
         System.out.println("Is 8 > 10? " + greaterThan10.test(8)); // false
 
         // Example 3: Combining Predicates with AND
+        /*String s1,s2;
+         * s1.concat(s2);
+         * 
+         * boolean test(12){
+         * 	isEven.and(greaterThan10);
+         * }
+         */
         Predicate<Integer> evenAndGreaterThan10 = isEven.and(greaterThan10);
         System.out.println("Is 12 even and > 10? " + evenAndGreaterThan10.test(12)); // true
         System.out.println("Is 8 even and > 10? " + evenAndGreaterThan10.test(8)); // false

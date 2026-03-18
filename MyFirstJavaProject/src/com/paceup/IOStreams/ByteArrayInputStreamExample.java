@@ -46,6 +46,7 @@ public class ByteArrayInputStreamExample {
             // Mark the current position
             if (bais.markSupported()) {
                 bais.mark(buffer.length);
+                
             }
 
             // Skip first 2 bytes
@@ -68,6 +69,25 @@ public class ByteArrayInputStreamExample {
                     System.out.print((char) ch + " ");
                 }
             }
+            
+            bais.reset();
+            
+            System.out.println();
+            bais.mark(1); //n-> read upto n bytes 
+            bais.skip(4);
+         // Read again from the marked position
+            while ((ch = bais.read()) != -1) {
+                System.out.print((char) ch + " ");
+            }
+            System.out.println();
+           
+            
+            bais.reset();
+         // Read again from the marked position
+            while ((ch = bais.read()) != -1) {
+                System.out.print((char) ch + " ");
+            }
+            
         } catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
