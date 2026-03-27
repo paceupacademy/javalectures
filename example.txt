@@ -4,3 +4,25 @@ crystal.vortex@nebula
 whispering_circuits&&echo  
 sunset:binary; horizon=flux  
 Kappa*storm^88|lunar  
+
+
+1. **BufferedReader**:
+ *    - Wraps around a Reader (like FileReader or InputStreamReader).
+ *    - Buffers characters for efficient reading.
+ *    - Provides convenient methods like `readLine()` for line-by-line reading.
+ * 
+ * 2. **FileReader + BufferedReader**:
+ *    - Reads text from a file efficiently.
+ *    - Suitable for reading large text files line by line.
+ * 
+ * 3. **InputStreamReader + BufferedReader**:
+ *    - Converts byte input (System.in) into characters.
+ *    - Allows reading user input from the console.
+ * 
+ * 4. **Thread.sleep()**:
+ *    - Demonstrates a delay between reading lines (1 second per line).
+ * 
+ * In this example:
+ * - Reads lines from "example.txt" using BufferedReader.
+ * - Prints each line with a 1-second delay.
+ * - Then reads user input from the console and greets the user.

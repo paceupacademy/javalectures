@@ -34,7 +34,7 @@ public class DataInputStreamExample {
     public static void main(String[] args) {
         
         // Writing the data to file
-        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("file.dat"))) {
+        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("file1.txt"))) {
             System.out.println("Writing data to file");
             dos.writeDouble(23.45);   // write double
             dos.writeInt(65);         // write integer
@@ -47,7 +47,7 @@ public class DataInputStreamExample {
         }
         
         // Reading the data back
-        try (DataInputStream dis = new DataInputStream(new FileInputStream("file.dat"))) {
+        try (DataInputStream dis = new DataInputStream(new FileInputStream("file1.txt"))) {
             System.out.println("Reading data from file");
             
             // Read values in the same order they were written

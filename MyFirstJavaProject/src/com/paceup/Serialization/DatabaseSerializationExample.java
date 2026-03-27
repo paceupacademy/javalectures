@@ -16,9 +16,18 @@ public class DatabaseSerializationExample {
             ObjectOutputStream out = new ObjectOutputStream(bos);
             out.writeObject(person);
             byte[] personBytes = bos.toByteArray();
+            System.out.println("Serialized byte array length: " + personBytes.length);
+
+            // ✅ Correct driver class
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Store in database (assuming PERSON table with BLOB column 'data')
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "root");
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/testdb?useSSL=false&serverTimezone=UTC",
+                "root",
+                "root"
+            );
+
             PreparedStatement ps = conn.prepareStatement("INSERT INTO PERSON (data) VALUES (?)");
             ps.setBytes(1, personBytes);
             ps.executeUpdate();

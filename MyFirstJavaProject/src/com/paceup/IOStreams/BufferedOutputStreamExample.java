@@ -31,7 +31,7 @@ public class BufferedOutputStreamExample {
 
     public static void main(String[] args) {
         // String data to be written into the file
-        String data = "Buffered Output Stream Java Example !!";
+        String data = "Buffered Output Stream Java Example !! \n Welcome to PAceup \n akjhdkasjdlkjad \n ahdekhasdkjadkj \n wdhakshdksahdksa \n\n";
 
         // try-with-resources ensures streams are closed automatically
         try (FileOutputStream fos = new FileOutputStream("abc.txt");
@@ -43,6 +43,8 @@ public class BufferedOutputStreamExample {
             // Print length of byte array (number of bytes in the string)
             System.out.println("Total bytes: " + bytes.length);
 
+            
+            bos.write(bytes);
             /*
              * Write bytes to file starting from index 5
              * and write (bytes.length - 5) bytes.

@@ -1,1 +1,12 @@
-red Output Stream Java Example !!
+Buffered Output Stream Java Example !! 
+ Welcome to PAceup 
+ akjhdkasjdlkjad 
+ ahdekhasdkjadkj 
+ wdhakshdksahdksa 
+
+red Output Stream Java Example !! 
+ Welcome to PAceup 
+ akjhdkasjdlkjad 
+ ahdekhasdkjadkj 
+ wdhakshdksahdksa 
+

@@ -45,6 +45,11 @@ class StudentData implements Comparable<StudentData> {
     }
 
     // Natural ordering: by age (ascending)
+    /*
+     * -1 -> first element should come before second
+     * 0 -> both elements are equal
+     * 1 -> first element should come after second
+     */
     @Override
     public int compareTo(StudentData o) {
         return this.age - o.age;
@@ -52,7 +57,7 @@ class StudentData implements Comparable<StudentData> {
 
     @Override
     public String toString() {
-        return name + "(ID: " + id + ", Age: " + age + ")";
+        return "(ID: " + id + ", Name: " + name + ", Age: " + age + ")";
     }
 }
 
@@ -84,11 +89,15 @@ public class ComparableComparatorExample {
         System.out.println("Original List:");
         students.forEach(System.out::println);
 
-        // Sorting using Comparable (by age)
+        // Sorting using Comparable (by age) sort the list automatically using natural order defined in compareTo()
         Collections.sort(students);
         System.out.println("\nSorted by Age (Comparable):");
         students.forEach(System.out::println);
 
+        
+        /*
+         * public static<T> void sort(List<T> list, Comparator<? super T> c)
+         */
         // Sorting using Comparator (by name)
         Collections.sort(students, new NameComparator());
         System.out.println("\nSorted by Name (Comparator):");

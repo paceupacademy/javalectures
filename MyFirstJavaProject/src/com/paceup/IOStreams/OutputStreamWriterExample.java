@@ -36,6 +36,9 @@ public class OutputStreamWriterExample {
 
             // Step 2: Write a string message to the output stream.
             osw.write("Hello OutputStreamWriter!");
+            char[] cbuffer = {'a','v','c','n','m'};
+            osw.write("\n");
+            osw.write(cbuffer, 1, cbuffer.length-2);
 
             // Step 3: Flush the stream to ensure all data is written to the console.
             osw.flush();

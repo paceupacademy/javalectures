@@ -31,7 +31,7 @@ import java.io.*;
  * - Prints characters to console while copying.
  */
 public class ByteStreamExample {
-    public static void main(String[] args) throws IOException { 
+    public static void main(String[] args) throws IOException, InterruptedException { 
         // try-with-resources ensures streams are closed automatically
         try (FileInputStream fis = new FileInputStream("input.txt");
              FileOutputStream fos = new FileOutputStream("output2.txt")) { 
@@ -44,6 +44,8 @@ public class ByteStreamExample {
 
                 // Print character representation of byte to console
                 System.out.print(" " + (char) data);
+                
+                Thread.sleep(50);
             }
 
             // Streams are auto-closed by try-with-resources

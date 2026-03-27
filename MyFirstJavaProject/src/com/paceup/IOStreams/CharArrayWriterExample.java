@@ -39,7 +39,7 @@ public class CharArrayWriterExample {
             caw.write("Hello CharArrayWriter!");
 
             // Step 3: Convert buffer contents into a String and print
-            System.out.println(caw.toString());
+            System.out.println(caw);
 
             // Step 4: Close the CharArrayWriter (optional but good practice)
             caw.close();

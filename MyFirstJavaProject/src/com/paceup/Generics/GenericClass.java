@@ -4,173 +4,158 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Generics Examples:
- * ------------------
- * Demonstrates different ways to use Generics in Java:
+ * Generics Examples: ------------------ Theoretical Notes: ------------------
+ * 1. Box1<T>: - Simple generic class with a single type parameter. - Provides
+ * type safety for storing and retrieving values.
  *
- * 1. **Box1<T>**:
- *    - Simple generic class with a single type parameter.
- *    - Provides type safety for storing and retrieving values.
+ * 2. MyMap<K,V>: - Generic class with two type parameters (Key, Value). -
+ * Mimics behavior of a key-value pair (like entries in a Map).
  *
- * 2. **MyMap<K,V>**:
- *    - Generic class with two type parameters (Key, Value).
- *    - Mimics behavior of a key-value pair (like entries in a Map).
+ * 3. MyList<E>: - Generic class wrapping a List<E>. - Allows adding elements of
+ * type E and printing them.
  *
- * 3. **MyList<E>**:
- *    - Generic class wrapping a List<E>.
- *    - Allows adding elements of type E and printing them.
+ * 4. Calculator<N extends Number>: - Bounded generics: restricts type parameter
+ * to subclasses of Number. - Ensures only numeric types can be used.
  *
- * 4. **Calculator<N extends Number>**:
- *    - Bounded generics: restricts type parameter to subclasses of Number.
- *    - Ensures only numeric types can be used.
+ * 5. Pair1<T,U,V>: - Generic class with three type parameters. - Useful for
+ * tuples, triples, or utility methods.
  *
- * 5. **Pair1<T,U,V>**:
- *    - Generic class with three type parameters.
- *    - Useful for tuples, triples, or utility methods.
- *
- * Backend Working:
- * ----------------
- * - Compiler replaces type parameters (T, K, V, E, N, etc.) with actual types at compile time.
- * - Provides type safety: prevents runtime ClassCastException.
- * - Eliminates need for explicit casting when retrieving values.
- *
- * Expected Output:
- * ----------------
- * Box1 Value: Hello
- * MyMap -> Key: 1, Value: One
- * MyList: [Alice, Bob]
- * Square of 5: 25.0
- * Sum of 10 and 20: 30.0
- * Pair1 -> T: Suraj, U: 25, V: Pune
+ * Backend Working: ---------------- - Compiler replaces type parameters (T, K,
+ * V, E, N, etc.) with actual types at compile time. - Provides type safety:
+ * prevents runtime ClassCastException. - Eliminates need for explicit casting
+ * when retrieving values.
  */
-
-// Generic class with single type parameter
 class Box1<T> {
-    private T value;
+	private T value;
 
-    public T getValue() {
-        return this.value;
-    }
+	public T getValue() {
+		return this.value;
+	}
 
-    public void setValue(T value) {
-        this.value = value;
-    }
+	public void setValue(T value) {
+		this.value = value;
+	}
 }
 
-// Generic class with two type parameters
 class MyMap<K, V> {
-    private K key;
-    private V value;
+	private K key;
+	private V value;
 
-    public MyMap(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
+	public MyMap(K key, V value) {
+		this.key = key;
+		this.value = value;
+	}
 
-    public K getKey() {
-        return this.key;
-    }
+	public K getKey() {
+		return this.key;
+	}
 
-    public V getValue() {
-        return this.value;
-    }
+	public V getValue() {
+		return this.value;
+	}
 
-    public void setKey(K key) {
-        this.key = key;
-    }
+	public void setKey(K key) {
+		this.key = key;
+	}
 
-    public void setValue(V value) {
-        this.value = value;
-    }
+	public void setValue(V value) {
+		this.value = value;
+	}
 }
 
-// Generic class wrapping a List
 class MyList<E> {
-    private List<E> names = new ArrayList<>();
+	private List<E> names = new ArrayList<>();
+	/*
+	 * names = {1,2,3,4}
+	 * names = {'A','b','C','1'}
+	 * names = {"alice","bob","charlie","1"}
+	 * names = {Person p1, Person p2, Person p3}
+	 */
 
-    public void add(E item) {
-        names.add(item);
-    }
+	public void add(E item) {
+		names.add(item);
+	}
 
-    @Override
-    public String toString() {
-        return names.toString();
-    }
+	public void print() {
+		System.out.println("MyList: " + names);
+	}
 }
 
-// Bounded generics: restricts type to subclasses of Number
 class Calculator<N extends Number> {
-    public double square(N num) {
-        return num.doubleValue() * num.doubleValue();
-    }
+	public double square(N num) {
+		return num.doubleValue() * num.doubleValue();
+	}
 
-    public double add(N a, N b) {
-        return a.doubleValue() + b.doubleValue();
-    }
+	public int sum(N a, N b) {
+		return a.intValue() + b.intValue();
+	}
 }
 
-// Generic class with three type parameters (like a tuple/triple)
 class Pair1<T, U, V> {
-    private T t;
-    private U u;
-    private V v;
+	private T first;
+	private U second;
+	public V third;
 
-    public Pair1(T first, U second, V third) {
-        this.t = first;
-        this.u = second;
-        this.v = third;
-    }
+	public Pair1(T first, U second, V third) {
+		this.first = first;
+		this.second = second;
+		this.third = third;
+	}
 
-    public T getT() {
-        return this.t;
-    }
-
-    public U getU() {
-        return this.u;
-    }
-
-    public V getV() {
-        return this.v;
-    }
-
-    public void setT(T t) {
-        this.t = t;
-    }
-
-    public void setU(U u) {
-        this.u = u;
-    }
-
-    public void setV(V v) {
-        this.v = v;
-    }
+	public void print() {
+		System.out.println("Pair1 -> T: " + first + ", U: " + second + ", V: " + third);
+	}
 }
 
-// Demo class
 public class GenericClass {
-    public static void main(String[] args) {
-        // Box1 Example
-        Box1<String> box = new Box1<>();
-        box.setValue("Hello");
-        System.out.println("Box1 Value: " + box.getValue());
+	public static void main(String[] args) {
+		// Example 1: Box1<T>
+		// Input: "Hello"
+		// Output: "Hello"
+		// "Hello" ---> [Box1<String>] ---> "Hello"
+		Box1<String> box = new Box1<>();
+		box.setValue("Hello");
+		System.out.println("Box1 Value: " + box.getValue());
 
-        // MyMap Example
-        MyMap<Integer, String> map = new MyMap<>(1, "One");
-        System.out.println("MyMap -> Key: " + map.getKey() + ", Value: " + map.getValue());
+		// Example 2: MyMap<K,V>
+		// Input: (1,"One")
+		// Output: Key=1, Value="One"
+		// (1,"One") ---> [MyMap<Integer,String>] ---> Key:1, Value:One
+		MyMap<Integer, String> map = new MyMap<>(1, "One");
+		System.out.println("MyMap -> Key: " + map.getKey() + ", Value: " + map.getValue());
 
-        // MyList Example
-        MyList<String> list = new MyList<>();
-        list.add("Alice");
-        list.add("Bob");
-        System.out.println("MyList: " + list);
+		// Example 3: MyList<E>
+		// Input: ["Alice","Bob"]
+		// Output: MyList: [Alice, Bob]
+		// ["Alice","Bob"] ---> [MyList<String>] ---> [Alice,Bob]
+		MyList<String> myList = new MyList<>();
+		myList.add("Alice");
+		myList.add("Bob");
+		myList.print();
 
-        // Calculator Example
-        Calculator<Integer> calc = new Calculator<>();
-        System.out.println("Square of 5: " + calc.square(5));
-        System.out.println("Sum of 10 and 20: " + calc.add(10, 20));
+		// Example 4: Calculator<N extends Number>
+		// Input: 5
+		// Output: 25.0
+		// 5 ---> [Calculator.square()] ---> 25.0
+		Calculator<Double> calc = new Calculator<>();
+		System.out.println("Square of 5: " + calc.square(5.0));
 
-        // Pair1 Example
-        Pair1<String, Integer, String> pair = new Pair1<>("Suraj", 25, "Pune");
-        System.out.println("Pair1 -> T: " + pair.getT() + ", U: " + pair.getU() + ", V: " + pair.getV());
-    }
+		// Input: (10,20)
+		// Output: 30.0
+		// (10,20) ---> [Calculator.sum()] ---> 30.0
+		System.out.println("Sum of 10 and 20: " + calc.sum(10.0/8, 20.0));
+
+		// Example 5: Pair1<T,U,V>
+		// Input: ("Suraj",25,"Pune")
+		// Output: Pair1 -> T: Suraj, U: 25, V: Pune
+		// ("Suraj",25,"Pune") ---> [Pair1<String,Integer,String>] ---> Suraj,25,Pune
+		Pair1<String, Integer, String> pair = new Pair1<>("Suraj", 25, "Pune");
+		System.out.println(pair.third.getClass().getName()+" ");
+		
+		pair.print();
+		
+		Pair1<String, Integer, Integer> pair1 = new Pair1<>("Suraj", 25, 56);
+		System.out.println(pair1.third.getClass().getName()+" ");
+		pair1.print();
+	}
 }

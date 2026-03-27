@@ -53,7 +53,7 @@ public class BufferedInputStreamExample {
             }
 
             // Skip first 8 bytes
-            bis.skip(8);
+            bis.skip(6);
             System.out.println("File Data after skipping 8 bytes:\n");
 
             // Read and print characters until end of file

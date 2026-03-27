@@ -38,7 +38,7 @@ public class CharArrayReaderExample {
         try {
             // Step 2: Create a CharArrayReader instance using the char array
             CharArrayReader car = new CharArrayReader(data);
-
+            car.mark(0);
             // Step 3: Skip the first two characters
             car.skip(2);
 
@@ -46,10 +46,10 @@ public class CharArrayReaderExample {
             while ((ch = car.read()) != -1) { // -1 indicates end of stream
                 if ((char) ch == 'H') {
                     // Mark the position when 'H' is encountered
-                    car.mark(0);
+                    
                 }
                 System.out.print((char) ch);  // Print each character
-                Thread.sleep(100);            // Small delay for demonstration
+                Thread.sleep(10);            // Small delay for demonstration
             }
 
             // Step 4: Reset back to the marked position

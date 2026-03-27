@@ -52,7 +52,7 @@ public class ArrayListExample {
         list.addAll(extra);
 
      // Iterating through the list
-        for (String fruit : list) {
+        for (Object fruit : list) {
         	System.out.print(fruit+" ");
         }
         System.out.println();

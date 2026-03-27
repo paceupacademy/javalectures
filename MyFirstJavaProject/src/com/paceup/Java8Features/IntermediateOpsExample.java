@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
  * 1. **Intermediate Operations**:
  *    - Transform or filter elements in a stream.
  *    - Examples: filter(), map(), distinct(), sorted(), limit(), skip(), flatMap(), peek().
- *    - They are lazy and only executed when a terminal operation is invoked.
+ *    - They are *lazy* → they build a pipeline but do not execute until a terminal operation is called.
  *
  * 2. **Terminal Operations**:
  *    - Produce a result or side-effect from the stream.
  *    - Examples: forEach(), reduce(), count(), min(), max(), anyMatch(), allMatch(), noneMatch(), findFirst(), findAny().
- *    - They trigger the execution of the pipeline.
+ *    - They *trigger* the execution of the pipeline.
  *
  * 3. **Parallel Streams**:
  *    - Streams can be processed in parallel using multiple threads.
@@ -30,44 +30,64 @@ public class IntermediateOpsExample {
         List<Integer> nums = new ArrayList<>(Arrays.asList(55, 10, 35, 15, 20, 25, 15, 30));
         nums.add(45);
 
-        // filter(): keep only numbers greater than 12
+        // filter(): keeps only elements that satisfy a condition
+        // Backend visualization:
+        // Stream pipeline: [55,10,35,15,20,25,15,30,45]
+        // Each element flows through filter(x -> x > 12)
+        // Elements failing condition are dropped, others continue downstream.
         List<Integer> result = nums.stream()
-                                   .filter(x -> x > 12)
+                                   .filter(x -> x > 22)
                                    .collect(Collectors.toList());
         System.out.println("Original List: " + nums);
         System.out.println("Filtered List: " + result);
 
-        // map(): transform each element (divide by 5)
+        // map(): transforms each element
+        // Backend visualization:
+        // Each element passes through map(x -> x/5)
+        // Original stream [55,10,35...] → transformed stream [11,2,7...]
         List<Integer> dby5 = nums.stream()
                                  .map(x -> x / 5)
                                  .collect(Collectors.toList());
         System.out.println("Divide by 5 result: " + dby5);
 
-        // distinct(): remove duplicates
+        // distinct(): removes duplicate elements
+        // Backend visualization:
+        // Stream maintains a set of "seen" elements.
+        // If element already exists in set → skipped.
         List<Integer> distinctList = nums.stream()
                                          .distinct()
                                          .collect(Collectors.toList());
         System.out.println("Unique Elements: " + distinctList);
 
-        // sorted(): sort in descending order
+        // sorted(): sorts elements
+        // Backend visualization:
+        // Stream collects all elements → applies Comparator → outputs sorted stream.
         List<Integer> sortedList = nums.stream()
                                        .sorted((a, b) -> b.compareTo(a))
                                        .collect(Collectors.toList());
         System.out.println("Sorted List: " + sortedList);
 
-        // limit(): take first 4 elements
+        // limit(): takes only first N elements
+        // Backend visualization:
+        // Stream counter tracks how many elements passed.
+        // Once N elements are emitted, pipeline stops.
         List<Integer> limitList = nums.stream()
                                       .limit(4)
                                       .collect(Collectors.toList());
         System.out.println("Limit List to 4 has: " + limitList);
 
-        // skip(): skip first 3 elements
+        // skip(): skips first N elements
+        // Backend visualization:
+        // Stream counter discards first N elements, then passes remaining downstream.
         List<Integer> skipList = nums.stream()
                                      .skip(3)
                                      .collect(Collectors.toList());
         System.out.println("Skipped first 3 elements: " + skipList);
 
-        // flatMap(): flatten nested lists
+        // flatMap(): flattens nested structures
+        // Backend visualization:
+        // Each element of outer stream is itself a list.
+        // flatMap(list -> list.stream()) merges all inner streams into one continuous stream.
         List<List<String>> listofLists = Arrays.asList(
             Arrays.asList("Java", "Spring"),
             Arrays.asList("Docker", "Kubernetes")
@@ -77,7 +97,9 @@ public class IntermediateOpsExample {
                                                 .collect(Collectors.toList());
         System.out.println("Converted nested list: " + flatMapResult);
 
-        // peek(): debug/inspect elements during processing
+        // peek(): allows inspection/debugging
+        // Backend visualization:
+        // Each element flows through peek() → executes side-effect (print/log) → continues downstream unchanged.
         List<String> peekList = flatMapResult.stream()
                                              .peek(n -> System.out.println("Learning: " + n))
                                              .map(String::toUpperCase)
@@ -88,23 +110,37 @@ public class IntermediateOpsExample {
         /**** Terminal Operations ********/
         /********************************/
 
-        // forEach(): iterate and print
+        // forEach(): consumes stream elements one by one
+        // Backend visualization:
+        // Terminal operation pulls elements from pipeline → executes action for each.
         flatMapResult.stream().forEach(System.out::println);
 
-        // reduce(): sum of all elements
+        // reduce(): combines elements into a single result
+        // Backend visualization:
+        // Accumulator starts with identity (0).
+        // Each element added sequentially → final sum produced.
         int sum = nums.stream().reduce(0, Integer::sum);
         System.out.println("Sum of addition of all elements is: " + sum);
 
-        // count(): number of elements
+        // count(): counts number of elements
+        // Backend visualization:
+        // Counter increments for each element flowing through pipeline.
         long cnt = nums.stream().count();
         System.out.println("Total number of elements is: " + cnt);
 
         // min() and max(): find smallest and largest values
+        // Backend visualization:
+        // Comparator applied across all elements → keeps track of min/max seen so far.
         int minVal = nums.stream().min(Integer::compare).get();
         int maxVal = nums.stream().max(Integer::compare).get();
         System.out.println("Minimum value: " + minVal + ", Maximum value: " + maxVal);
 
         // anyMatch(), allMatch(), noneMatch(): conditional checks
+        // Backend visualization:
+        // Short-circuiting operations:
+        // - anyMatch → stops once condition true.
+        // - allMatch → stops once condition false.
+        // - noneMatch → stops once condition true.
         boolean any = nums.stream().anyMatch(x -> x > 25);
         boolean all = nums.stream().allMatch(x -> x > 5);
         boolean none = nums.stream().noneMatch(x -> x < 0);
@@ -112,19 +148,29 @@ public class IntermediateOpsExample {
                            "\nValues greater than 5? " + all +
                            "\nNo values less than 0? " + none);
 
-        // findFirst(): get first element
+        // findFirst(): returns first element
+        // Backend visualization:
+        // Stream pulls first element → stops immediately.
         String first = flatMapResult.stream().findFirst().get();
 
-        // findAny(): get any element (parallel stream may return different results)
+        // findAny(): returns any element
+        // Backend visualization:
+        // In sequential stream → behaves like findFirst.
+        // In parallel stream → may return whichever element is found first by any thread.
         String findAny = flatMapResult.parallelStream().findAny().get();
         System.out.println("First element: " + first + " Any Element: " + findAny);
     }
 }
 
 /*
- * Stream -> [1,2,3,4,5,6,7] -> Processed one-by-one -> Final Result
+ * Visualizing Streams Backend:
+ * ----------------------------
+ * Stream -> [1,2,3,4,5,6,7] -> pipeline of operations (filter/map/etc.) -> processed one-by-one -> Final Result
  *
- * ParallelStream -> [1,2,3,4,5,6,7,8] -> [1,2] [3,4] [5,6] [7,8] (Splitting into chunks)
- * Each chunk -> processed using one thread
- * Multi-threading completed -> Final Result
+ * ParallelStream -> [1,2,3,4,5,6,7,8]
+ * Split into chunks: [1,2] [3,4] [5,6] [7,8]
+ * Each chunk processed by separate thread
+ * Results merged → Final Result
+ *
+ * Key: Intermediate ops build pipeline, terminal ops pull data through pipeline.
  */
