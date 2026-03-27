@@ -59,3 +59,15 @@ public class AutoboxingExample {
 		System.out.println("Unboxed First Element: " + firstElement);
 	}
 }
+
+/*
+ * Primitive Type WrapperClass
+ * int 				Integer
+ * float			Float
+ * double			Double
+ * byte				Byte
+ * char				Character
+ * long				Long
+ * short			Short
+ * boolean			Boolean
+ * */

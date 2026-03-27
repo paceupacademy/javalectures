@@ -45,78 +45,74 @@ class PersonData {
 
     @Override
     public String toString() {
-        return name + " (" + age + ", " + (isMale ? "Male" : "Female") + ")";
+        return "["+name + ", " + age + ", " + (isMale ? "Male" : "Female")+"]" ;
     }
 }
 
 public class GroupingExample {
     public static void main(String[] args) {
+
         List<PersonData> people = Arrays.asList(
-            new PersonData("Aishwarya", 25, false),
-            new PersonData("Rahul", 30, true),
-            new PersonData("Sneha", 28, false),
-            new PersonData("Vikram", 35, true),
-            new PersonData("Meera", 40, false)
+            new PersonData("Neha", 25, false),
+            new PersonData("Ananya", 30, false),
+            new PersonData("Puja", 28, false),
+            new PersonData("Akash", 35, true),
+            new PersonData("Ravi", 30, true)
         );
 
-        // Example 1: Filter people older than 30
-        /*
-         * Stream<PersonData> → filter(p.age > 30) → collect(toList)
-         * Result: [Vikram (35, Male), Meera (40, Female)]
-         */
-        List<PersonData> olderThan30 = people.stream()
-                                             .filter(p -> p.age > 30)
-                                             .collect(Collectors.toList());
-        System.out.println("People older than 30: " + olderThan30);
+        /*** 1. Filtering People by Age ***/
+        System.out.println("=== 1. Filtering People (age > 28) ===");
+        List<PersonData> filtered = people.stream()
+                                          .filter(p -> p.age > 28)
+                                          .collect(Collectors.toList());
+        System.out.println("Result: " + filtered);
 
-        // Example 2: Map names into a list
-        /*
-         * Stream<PersonData> → map(p.name) → collect(toList)
-         * Result: [Aishwarya, Rahul, Sneha, Vikram, Meera]
-         */
+        /*** 2. Mapping Names into List ***/
+        System.out.println("\n=== 2. Mapping Names ===");
         List<String> names = people.stream()
                                    .map(p -> p.name)
                                    .collect(Collectors.toList());
-        System.out.println("Names: " + names);
+        System.out.println("Result: " + names);
 
-        // Example 3: Group people by gender
-        /*
-         * Stream<PersonData> → collect(groupingBy(p.isMale))
-         * Result: Map<Boolean, List<PersonData>>
-         *   true → [Rahul, Vikram]
-         *   false → [Aishwarya, Sneha, Meera]
-         */
+        /*** 3. Grouping People by Gender ***/
+        System.out.println("\n=== 3. Grouping by Gender ===");
         Map<Boolean, List<PersonData>> groupedByGender = people.stream()
                                                                .collect(Collectors.groupingBy(p -> p.isMale));
-        System.out.println("Grouped by gender: " + groupedByGender);
+        System.out.println("Result: " + groupedByGender);
 
-        // Example 4: Calculate average age
-        /*
-         * Stream<PersonData> → mapToInt(p.age) → average()
-         * Result: OptionalDouble = 31.6
-         */
-        OptionalDouble avgAge = people.stream()
-                                      .mapToInt(p -> p.age)
-                                      .average();
-        System.out.println("Average age: " + avgAge.orElse(0));
-
-        // Example 5: Summary statistics
-        /*
-         * Stream<PersonData> → mapToInt(p.age) → summaryStatistics()
-         * Result: count=5, min=25, max=40, sum=158, average=31.6
-         */
-        IntSummaryStatistics stats = people.stream()
-                                           .mapToInt(p -> p.age)
-                                           .summaryStatistics();
-        System.out.println("Age statistics: " + stats);
-
-        // Example 6: Find the oldest person
-        /*
-         * Stream<PersonData> → max(Comparator.comparingInt(p.age))
-         * Result: Optional<PersonData> = Meera (40, Female)
-         */
+        /*** 4. Finding Oldest Person ***/
+        System.out.println("\n=== 4. Finding Oldest Person ===");
         Optional<PersonData> oldest = people.stream()
                                             .max(Comparator.comparingInt(p -> p.age));
-        System.out.println("Oldest person: " + oldest.orElse(null));
+        System.out.println("Result: " + oldest.orElse(null));
+
+        /*** 5. Finding Youngest Person ***/
+        System.out.println("\n=== 5. Finding Youngest Person ===");
+        Optional<PersonData> youngest = people.stream()
+                                              .min(Comparator.comparingInt(p -> p.age));
+        System.out.println("Result: " + youngest.orElse(null));
+
+        /*** 6. Calculating Average Age ***/
+        System.out.println("\n=== 6. Calculating Average Age ===");
+        double avgAge = people.stream()
+                              .collect(Collectors.averagingInt(p -> p.age));
+        System.out.println("Result: " + avgAge);
+
+        /*** 7. Summary Statistics of Age ***/
+        System.out.println("\n=== 7. Summary Statistics of Age ===");
+        IntSummaryStatistics stats = people.stream()
+                                           .collect(Collectors.summarizingInt(p -> p.age));
+        System.out.println("Count: " + stats.getCount());
+        System.out.println("Min: " + stats.getMin());
+        System.out.println("Max: " + stats.getMax());
+        System.out.println("Average: " + stats.getAverage());
+        System.out.println("Sum: " + stats.getSum());
+
+        /*** 8. Joining Names into String ***/
+        System.out.println("\n=== 8. Joining Names into String ===");
+        String joinedNames = people.stream()
+                                   .map(p -> p.name)
+                                   .collect(Collectors.joining(", "));
+        System.out.println("Result: " + joinedNames);
     }
 }

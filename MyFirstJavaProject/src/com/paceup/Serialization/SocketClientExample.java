@@ -10,6 +10,7 @@ public class SocketClientExample {
             Socket socket = new Socket("localhost", 5000);
             System.out.println("Connected to server!");
 
+            Thread.sleep(5000);
             // Create object to send
             Person person = new Person("Alice", 25, "India", "7239821928");
 

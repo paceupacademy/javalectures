@@ -76,6 +76,15 @@ public class ReduceVariant {
             new Employee2("Ajay", 3874983),
             new Employee2("Rahul", 49837)
         );
+        
+        /*
+         * acc=0
+         * acc = 0 + 473948 = 473948
+         * acc = 473948 + 3874983 = 4348931
+         * acc = 4348931 + 49837 = 4398768
+         * 
+         * 473948+3874983+ 49837 =  
+         */
         long totalSalary = emp.stream()
                               .reduce(0L,
                                       (acc, e) -> acc + e.salary, // accumulator

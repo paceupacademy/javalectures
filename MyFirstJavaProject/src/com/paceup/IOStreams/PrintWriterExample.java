@@ -49,7 +49,7 @@ public class PrintWriterExample {
         pw.println(); // newline
 
         // Step 3: Append a sequence of characters
-        pw.append(s.subSequence(0, s.length()));
+        pw.append(s.subSequence(0, s.length()-2));
         pw.println();
 
         // Step 4: Use format() with Locale

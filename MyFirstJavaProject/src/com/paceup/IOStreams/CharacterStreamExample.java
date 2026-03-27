@@ -36,15 +36,15 @@ public class CharacterStreamExample {
         try (FileReader fr = new FileReader("input.txt");
              FileWriter fw = new FileWriter("output3.txt")) {
 
-            int data; // variable to hold each character read (Unicode int value)
+            char data; // variable to hold each character read (Unicode int value)
 
             // Step 2: Read characters one by one until end of file (-1).
-            while ((data = fr.read()) != -1) {
+            while ((data = (char)fr.read()) != -1) {
                 // Write the character to the output file.
                 fw.write(data);
-
+                Thread.sleep(50);
                 // Print the Unicode integer value of the character to the console.
-                System.out.println("Data " + data);
+                System.out.print( data);
             }
 
             // Step 3: Streams are auto-closed by try-with-resources.
@@ -53,6 +53,9 @@ public class CharacterStreamExample {
         } catch (IOException e) {
             // Step 4: Handle any I/O exceptions (e.g., file not found, permission issues).
             e.printStackTrace();
-        }
+        } catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

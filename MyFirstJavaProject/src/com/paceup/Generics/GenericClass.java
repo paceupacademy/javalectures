@@ -65,6 +65,12 @@ class MyMap<K, V> {
 
 class MyList<E> {
 	private List<E> names = new ArrayList<>();
+	/*
+	 * names = {1,2,3,4}
+	 * names = {'A','b','C','1'}
+	 * names = {"alice","bob","charlie","1"}
+	 * names = {Person p1, Person p2, Person p3}
+	 */
 
 	public void add(E item) {
 		names.add(item);
@@ -80,15 +86,15 @@ class Calculator<N extends Number> {
 		return num.doubleValue() * num.doubleValue();
 	}
 
-	public double sum(N a, N b) {
-		return a.doubleValue() + b.doubleValue();
+	public int sum(N a, N b) {
+		return a.intValue() + b.intValue();
 	}
 }
 
 class Pair1<T, U, V> {
 	private T first;
 	private U second;
-	private V third;
+	public V third;
 
 	public Pair1(T first, U second, V third) {
 		this.first = first;
@@ -131,19 +137,25 @@ public class GenericClass {
 		// Input: 5
 		// Output: 25.0
 		// 5 ---> [Calculator.square()] ---> 25.0
-		Calculator<Integer> calc = new Calculator<>();
-		System.out.println("Square of 5: " + calc.square(5));
+		Calculator<Double> calc = new Calculator<>();
+		System.out.println("Square of 5: " + calc.square(5.0));
 
 		// Input: (10,20)
 		// Output: 30.0
 		// (10,20) ---> [Calculator.sum()] ---> 30.0
-		System.out.println("Sum of 10 and 20: " + calc.sum(10, 20));
+		System.out.println("Sum of 10 and 20: " + calc.sum(10.0/8, 20.0));
 
 		// Example 5: Pair1<T,U,V>
 		// Input: ("Suraj",25,"Pune")
 		// Output: Pair1 -> T: Suraj, U: 25, V: Pune
 		// ("Suraj",25,"Pune") ---> [Pair1<String,Integer,String>] ---> Suraj,25,Pune
 		Pair1<String, Integer, String> pair = new Pair1<>("Suraj", 25, "Pune");
+		System.out.println(pair.third.getClass().getName()+" ");
+		
 		pair.print();
+		
+		Pair1<String, Integer, Integer> pair1 = new Pair1<>("Suraj", 25, 56);
+		System.out.println(pair1.third.getClass().getName()+" ");
+		pair1.print();
 	}
 }

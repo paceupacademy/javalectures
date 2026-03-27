@@ -41,6 +41,7 @@ public class PrintStreamExample {
         // Step 1: Create a FileOutputStream to write data into "data.txt"
         FileOutputStream fos = new FileOutputStream("data.txt");
         
+        PrintStream fout =  new PrintStream("filePrint.txt");
         // Step 2: Wrap FileOutputStream with PrintStream for convenient printing
         PrintStream out = new PrintStream(fos);
 
@@ -77,7 +78,8 @@ public class PrintStreamExample {
          * format(Locale l, String format, Object... args)
          * format(String format, Object... args)
          */
-        out.format(Locale.UK, "Welcome to India %s", s);
+        float currency = 1234.56f;
+        out.format(Locale.US, "Welcome to India %f", currency);
         out.println();
 
         // Format without specifying locale
@@ -91,7 +93,7 @@ public class PrintStreamExample {
         out.flush();
 
         // Pause for 10 seconds to demonstrate delayed writing
-        Thread.sleep(10000);
+        //Thread.sleep(10000);
 
         // Print after flush
         out.println("Printed after flush");

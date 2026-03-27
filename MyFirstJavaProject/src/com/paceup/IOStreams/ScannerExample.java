@@ -50,11 +50,12 @@ public class ScannerExample {
         File file = new File("input.txt");
 
         try (Scanner fileScanner = new Scanner(file)) {
+        	fileScanner.useDelimiter("\\A"); //to read whole content at once
             System.out.println("\nReading file line by line:");
-            while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                System.out.println(line);
-                Thread.sleep(1000); // 1 second delay
+            if(fileScanner.hasNext()) {
+                String line = fileScanner.next();
+                System.out.print(line);
+                Thread.sleep(10); // 1 second delay
             }
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + file.getAbsolutePath());
@@ -63,6 +64,7 @@ public class ScannerExample {
         }
 
         // ------------------ File Input (Word by Word) ------------------
+        System.out.println();
         try (Scanner wordScanner = new Scanner(file)) {
             System.out.println("\nReading file word by word:");
             while (wordScanner.hasNext()) {
@@ -74,9 +76,9 @@ public class ScannerExample {
         }
 
         // ------------------ Using Custom Delimiter ------------------
-        String data = "apple,banana,grape,orange";
+        String data = "apple,banana-grape;orange";
         Scanner delimiterScanner = new Scanner(data);
-        delimiterScanner.useDelimiter(",");
+        delimiterScanner.useDelimiter("[,-;]");
 
         System.out.println("\nReading with custom delimiter (comma):");
         while (delimiterScanner.hasNext()) {

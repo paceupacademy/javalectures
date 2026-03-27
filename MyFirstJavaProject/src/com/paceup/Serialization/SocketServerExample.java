@@ -11,6 +11,7 @@ public class SocketServerExample {
 
             // Accept client connection
             Socket socket = serverSocket.accept();
+            Thread.sleep(500);
             System.out.println("Client connected!");
 
             // Receive object from client

@@ -1,5 +1,6 @@
 package com.paceup.Java8Features;
 
+import java.util.Comparator;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 
@@ -37,6 +38,11 @@ public class OperatorExample {
         // (7,73) ---> [BinaryOperator: a+b] ---> 80
         BinaryOperator<Integer> add = (a, b) -> a + b;
         System.out.println("Sum of 7 and 73: " + add.apply(7, 73));
+        
+        //String Example BinaryOperator
+        BinaryOperator<String> stringCombine = (str1,str2) -> str1.concat(" "+str2);
+        String result = stringCombine.apply("PaceUp", "Academy");
+        System.out.println("Result is: "+result);
 
         // Example 3: UnaryOperator (increment by 1)
         // Input: 99
@@ -58,5 +64,13 @@ public class OperatorExample {
         // (12,11) ---> [BinaryOperator: a*b] ---> 132
         BinaryOperator<Integer> multiply = (a, b) -> a * b;
         System.out.println("Multiplication of 12 and 11: " + multiply.apply(12, 11));
+        
+        Comparator<String> lengthComparator = Comparator.comparingInt(String::length);
+        BinaryOperator<String> longestString = BinaryOperator.maxBy(lengthComparator);
+        
+        String s1 = "Apple";
+        String s2 = "Banana";
+        String longest = longestString.apply("Pace", s2);
+        System.out.println("Longest String: "+longest);
     }
 }

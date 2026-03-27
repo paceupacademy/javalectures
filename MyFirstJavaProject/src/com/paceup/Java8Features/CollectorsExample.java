@@ -32,99 +32,104 @@ import java.util.stream.Collectors;
  * - Shows filtering, mapping, grouping, finding extremes, and averaging.
  */
 class Employee {
-	String name;
-	int age;
+    String name;
+    int age;
 
-	Employee(String name, int age) {
-		this.name = name;
-		this.age = age;
-	}
+    Employee(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    String getName() {
+    	return this.name;
+    }
+    
+    int getAge() {
+    	return this.age;
+    }
 
-	@Override
-	public String toString() {
-		return name + " (" + age + ")";
-	}
+    @Override
+    public String toString() {
+        return name + " ";
+    }
 }
 
 public class CollectorsExample {
-	public static void main(String[] args) {
-		List<Employee> employees = Arrays.asList(
-				new Employee("Aishwarya", 25),
-				new Employee("Rahul", 30),
-				new Employee("Sneha", 28),
-				new Employee("Vikram", 35),
-				new Employee("Meera", 40)
-				);
+    public static void main(String[] args) {
 
-		// Example 1: Filter employees older than 30
-		/*
-		 * Input: [All employees]
-		 * Output: [Vikram (35), Meera (40)]
-		 *
-		 * employees ---> [filter(age>30)] ---> [Vikram, Meera]
-		 */
-		List<Employee> olderThan30 = employees.stream()
-				.filter(e -> e.age > 30)
-				.collect(Collectors.toList());
-		System.out.println("Employees older than 30: " + olderThan30);
+        List<Employee> employees = Arrays.asList(
+            new Employee("Neha", 25),
+            new Employee("Ananya", 30),
+            new Employee("Puja", 28),
+            new Employee("Akash", 35),
+            new Employee("Ravi", 30),
+            new Employee("Neha", 30),
+            new Employee("Puja", 30)
+        );
 
-		// Example 2: Map employee names into a list
-		/*
-		 * Input: [All employees]
-		 * Output: ["Aishwarya","Rahul","Sneha","Vikram","Meera"]
-		 *
-		 * employees ---> [map(name)] ---> names list
-		 */
-		List<String> names = employees.stream()
-				.map(e -> e.name)
-				.collect(Collectors.toList());
-		System.out.println("Employee Names: " + names);
+        /*** 1. Filtering Employees ***/
+        System.out.println("=== 1. Filtering Employees (age > 28) ===");
+        List<Employee> filtered = employees.stream()
+                                           .filter(e -> e.age > 28)
+                                           .collect(Collectors.toList());
+        System.out.println("Result: " + filtered);
 
-		// Example 3: Group employees by age
-		/*
-		 * Input: [All employees]
-		 * Output: Map<Age,List<Employee>>
-		 *
-		 * employees ---> [groupingBy(age)] ---> {25=[Aishwarya],30=[Rahul],...}
-		 */
-		Map<Integer, List<Employee>> groupedByAge = employees.stream()
-				.collect(Collectors.groupingBy(e -> e.age));
-		System.out.println("Grouped by Age: " + groupedByAge);
+        /*** 2. Mapping Employee Names ***/
+        System.out.println("\n=== 2. Mapping Employee Names ===");
+        List<String> names = employees.stream()
+                                      .map(e -> e.name)
+                                      .collect(Collectors.toList());
+        System.out.println("Result: " + names);
 
-		// Example 4: Find oldest employee
-		/*
-		 * Input: [All employees]
-		 * Output: Optional<Employee> = Meera (40)
-		 *
-		 * employees ---> [max(by age)] ---> Meera
-		 */
-		Optional<Employee> oldest = employees.stream()
-				.max(Comparator.comparingInt(e -> e.age));
-		System.out.println("Oldest Employee: " + oldest.orElse(null));
+        
+        /*** 4. Finding Oldest Employee ***/
+        System.out.println("\n=== 4. Finding Oldest Employee ===");
+        Optional<Employee> oldest = employees.stream()
+                                             .max(Comparator.comparingInt(e -> e.age));
+        System.out.println("Result: " + oldest.orElse(null));
 
-		// Example 5: Calculate average age
-		/*
-		 * Input: [All employees]
-		 * Output: 31.6
-		 *
-		 * employees ---> [averagingInt(age)] ---> 31.6
-		 */
-		double avgAge = employees.stream()
-				.collect(Collectors.averagingInt(e -> e.age));
-		System.out.println("Average Age: " + avgAge);
-	}
+        /*** 5. Finding Youngest Employee ***/
+        System.out.println("\n=== 5. Finding Youngest Employee ===");
+        Optional<Employee> youngest = employees.stream()
+                                               .min(Comparator.comparingInt(e -> e.age));
+        System.out.println("Result: " + youngest.orElse(null));
+
+        /*** 6. Averaging Age of Employees ***/
+        System.out.println("\n=== 6. Averaging Age of Employees ===");
+        double avgAge = employees.stream()
+                                 .collect(Collectors.averagingInt(e -> e.age));
+        System.out.println("Result: " + avgAge);
+
+        /*** 7. Collecting into Set (Unique Names) ***/
+        System.out.println("\n=== 7. Collecting into Set (Unique Names) ===");
+        Set<String> uniqueNames = employees.stream()
+                                           .map(e -> e.name)
+                                           .collect(Collectors.toSet());
+        System.out.println("Result: " + uniqueNames);
+
+        /*** 8. Joining Names into String ***/
+        System.out.println("\n=== 8. Joining Names into String ===");
+        String joinedNames = employees.stream()
+                                      .map(e -> e.name)
+                                      .collect(Collectors.joining(", "));
+        System.out.println("Result: " + joinedNames);
+        
+        /*** 9.Counting ***/
+        long count = employees.stream()
+        		.count();
+        System.out.println("Number of elements: "+count);
+        
+        
+        /*** 3. Grouping Employees by Age ***/
+        System.out.println("\n=== 3. Grouping Employees by Age ===");
+        Map<Integer, List<Employee>> groupedByAge = employees.stream()
+                                                             .collect(Collectors.groupingBy(e -> e.age));
+        System.out.println("Result: " + groupedByAge);
+
+        System.out.println("\n=== 3. Grouping Employees by Name and Mapping by Age ===");
+        Map<String,List<Integer>> nameExtract = employees.stream()
+        		.collect(Collectors.groupingBy(Employee::getName,Collectors.mapping(Employee::getAge, Collectors.toList())));
+        
+        System.out.println(nameExtract);
+    }
 }
-
-/*
-============================================================================================
-Quick Reference: Employee Stream Operations
-============================================================================================
-| Example        | Pipeline                          | Output                               |
-|----------------|-----------------------------------|--------------------------------------|
-| Filter         | employees → filter(age>30)        | [Vikram (35), Meera (40)]            |
-| Map            | employees → map(name)             | [Aishwarya,Rahul,Sneha,Vikram,Meera] |
-| Grouping       | employees → groupingBy(age)       | {25=[Aishwarya],30=[Rahul],...}      |
-| Max            | employees → max(by age)           | Meera (40)                           |
-| Average        | employees → averagingInt(age)     | 31.6                                 |
-=============================================================================================
- */
