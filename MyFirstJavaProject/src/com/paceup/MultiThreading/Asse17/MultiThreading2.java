@@ -1,7 +1,7 @@
 /*
  *  Modify the above program to synchronize the print output using a synchronized block so that the messages don’t overlap.
  */
-package com.paceup.MultiThreading.Asse16;
+package com.paceup.MultiThreading.Asse17;
 
 public class MultiThreading2 implements Runnable {
 

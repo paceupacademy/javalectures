@@ -1,5 +1,5 @@
 //4. Using lambda expressions, start a thread that prints “Learning multithreading with lambda!” 3 times with a delay of 500ms between prints.
-package com.paceup.MultiThreading.Asse16;
+package com.paceup.MultiThreading.Asse17;
 
 public class MultiThreading4 {
 

@@ -1,5 +1,5 @@
 //5. Create a program where three threads are created with MIN, NORM, and MAX priority. Observe and explain the output.
-package com.paceup.MultiThreading.Asse16;
+package com.paceup.MultiThreading.Asse17;
 
 public class MultiThreading5 extends Thread {
 	private String name;

@@ -1,5 +1,5 @@
 //3. Create a Java program where two threads attempt to access a method that is synchronized using ReentrantLock. Demonstrate mutual exclusion.
-package com.paceup.MultiThreading.Asse16;
+package com.paceup.MultiThreading.Asse17;
 
 import java.util.concurrent.locks.ReentrantLock;
 

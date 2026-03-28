@@ -1,0 +1,191 @@
+Que 1-What is an exception in Java? How it is different from error
+Ans: An exception is an unwanted event that disrupts the normal flow of a program. Usually exception causes are invalid input, logic, and program code.
+	 But errors represent the serious problems that occur in the JVM and are usually beyond the control of the program. The main causes of errors are JVM, hardware, and memory issues that are not able to be handled easily.
+	 An exception is different because it is recoverable. It can be handled using a try-catch block. Java has pre-defined some exceptions that we can directly access in code.
+
+***********************************************************************************************************************************************************************************************************************************
+
+
+Que 2: Explain the difference between checked and unchecked exceptions. Give two examples of each.
+Ans:	Java exceptions are divided into checked and unchecked exceptions.
+		Checked Exceptions:
+		Checked exceptions are exceptions that are checked by the compiler at compile time.
+		The programmer can handle them using the try-catch or declare them using throws.
+		A checked exception has a parent class called Exception (including RuntimeException) that is a predefined class in Java.
+		E.g., IOException, SQLException
+		
+		Unchecked Exception:
+		Unchecked exceptions are not checked at compile time. That are checked at runtime. It is not mandatory to handle it; it is optional.
+		The unchecked exception parent is RuntimeException.
+		e.g., NullPointerException, ArithmeticException
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 3: What is the purpose of the try, catch, and finally blocks in Java?
+Ans:	Using the blocks, we can detect and handle the exceptions so that the normal flow of the program can be maintained.
+		It is mandatory to have at least one catch or try block.
+		To detect the exception, or maybe the particular code throws exceptions. Also, for risky code, we are using the try block.
+		If an exception occurs, execution stops inside the try block and moves to catch.
+		Catch—the main purpose of the catch block is to handle the exception that occurs in the try block. It executes only if an exception occurs. 
+		Multiple catch blocks are allowed for one try block.
+		Finally—The finally blocks always execute whether an exception occurs or not. It is used for cleanup operations.
+
+***********************************************************************************************************************************************************************************************************************************
+		
+		
+Que 4. What happens if an exception is not handled in Java?How does the JVM respond?
+Ans: If an exception is not handled there is no try catch block in code. then exception will not be caught.
+	 On that JVM terminate the program when exception occurs and will it print the exception method with stack traces and line number where the exception is occured.
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 5. What is the difference between throw and throws in Java?
+Ans:  throw and throws are used in exception handling, but they have different purposes.
+	Throw: Used to explicitly throw an exception from a method or block. It can used inside a method or block.
+			throw can throw only one exception at a time.
+	Throws: It is used to declares exceptions a method may throw. 
+			It is in method signature. 
+			In throws method we can declare multiple exceptions.
+	
+***********************************************************************************************************************************************************************************************************************************
+Que 6. Can we use multiple catch blocks for a single try block?Explain with an example.
+Ans:	Yes, we can use the multiple catch block for single try block.
+		This allows a program to handle different types of exceptions separately.
+		Example:
+		
+		
+		public class Demo{
+			 public static void main(String[] args){
+			 
+			 try{
+			 	int[] arr= {10,20,30};
+			 	
+			 	system.out.println(arr[4]); //ArrayIndexOutOfBound
+			 	int x = 10/0;  //ArithmeticException		 
+			 }
+			 catch(ArithmeticException e)
+			 system.out.println(Arithmetic Exception handled);
+			 }
+			 catch(ArrayIndexOutOfBoundException e){
+			 system.out.println(Array Index out of bound exception handled);
+			 }
+			 catch(Exception e){
+			 system.out.println(General exception handled);
+			 }
+			 }
+		}
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 7. What is a finally block and when does it get executed?
+Ans:A finally block is used in exception handling to write perform any operation. 
+	The finally blocks always execute whether an exception occurs or not. 
+	It is used for cleanup operations.
+
+***********************************************************************************************************************************************************************************************************************************
+Que 8. Can a finally block be executed if System.exit() is called in the try block?Why or why not?
+Ans: 
+
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 9. Can you catch multiple exceptions in a single catch block in Java?How is it useful?
+Ans: Yes, Java allows catching multiple exceptions in single catch block using multi-catch(|) operators.
+	e.g.
+		
+		public class Demo{
+			 public static void main(String[] args){
+			 
+			 try{
+			 	int[] arr= {10,20,30};
+			 	
+			 	system.out.println(arr[4]); //ArrayIndexOutOfBound
+			 	int x = 10/0;  //ArithmeticException		 
+			 }
+			 catch(ArithmeticException | ArrayIndexOutOfBoundException  e){
+			 system.out.println( Exception handled + e);
+			 }
+			}
+		}
+	
+	
+***********************************************************************************************************************************************************************************************************************************
+
+Que 10. What is a custom exception and when should you use one?
+Ans: Custom exceptions is an exception created by programmer to represent application specific error conditions
+	Its also called a user-defined exception.
+	It can created by extending Exception or RuntimeException
+	
+	Use a custom exceptions when:
+		YOu want to clearly represent a domain-specific error.
+		Built-in exceptions are not expressive enough.
+		
+	class InvalidAgeException extends Exception {
+	public InvalidAgeException(String message) {
+		super(message);
+	}
+}
+
+public class CustomExceptionExample {
+	public static void main(String[] args) {
+		try {
+			try {
+				checkAge(15);
+			} catch (InvalidAgeException e) {
+				System.out.println("Exception caught: " + e.getMessage());
+			}
+			checkAge(24);
+		}
+		catch(Exception e) {
+
+		}
+	}
+
+	public static void checkAge(int age) throws InvalidAgeException {
+		if (age < 18) {
+			throw new InvalidAgeException("Age must be 18 or above.");
+		}
+		System.out.println("Age is valid.");
+	}
+}
+	
+***********************************************************************************************************************************************************************************************************************************
+
+	
+Que 11. How does exception handling differ in Java?(e.g., multi-catch, try-with-resources)			
+Ans : Exception handling is a mechanism to detect, handle and recover the runtime error.
+		Multi-catch:
+			It catches the multiple exception in one catch block using (|) operators.
+			
+			try{
+			int[] arr = {1,2};
+			system.out.println(arr[5]/0);
+			}catch(ArithmeticException | ArrayIndexOutOfBound e){
+			system.out.pritln(Exception handled);
+			}
+			
+		try-with-resources:
+			It is exception handling mechnasim that ensures that resources (like file streams, database connection) are automatically closed after they are used.
+			
+			try(FileReader fr = new FileReader(data.txt)){
+			 system.out.println(file opened);
+			 }
+			 
+***********************************************************************************************************************************************************************************************************************************
+			
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

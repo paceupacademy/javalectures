@@ -1,0 +1,239 @@
+Que 1. What is reflection in Java and when is it used?
+Ans: Reflection is an API that is used to examine or modify the behaviour of methods, classes, fields, constructor and interface at runtime.
+	 When it is used – used in frameworks, tools, libraries where the classes are unknown at compile time.
+	 
+*********************************************************************************************************************************************
+
+Que 2. How can you obtain metadata about a class at runtime?
+Ans: Metadata is a marker that provides information about other data.
+	 Metadata about a class at runtime can be obtained using Java Reflection. First, get the class object using '.class' and getClass(). 
+	 Then use methods like getDeclaredMethods(), getDeclaredFields(), getConstructors(), and getAnnotations() to retrieve class metadata.
+
+
+*********************************************************************************************************************************************
+
+Que 3. What is the use of Class.forName() method?
+Ans: Class.forName(String className) This method loads the class dynamically at runtime. 
+	 e.g.
+	 Class<?> clazz = Class.forName("java.lang.String");
+
+*********************************************************************************************************************************************
+
+Que 4. How do you access private methods using reflection?
+Ans: We can access the private methods of the class using  getDeclaredMethods. 
+	These methods return all methods returned in that particular class like public, private, protected, default(package private).
+	If you retrieve a private method using getDeclaredMethods, you must enable access.
+	method.setAccessible(true);
+	Otherwise, invoking it will throw an IllegalAccessException.
+	But this method does not include the inherited methods from superclass.
+	
+	Syntanx:
+	Method[] methods = clazz.getDeclaredMethods();
+	
+*********************************************************************************************************************************************
+
+Que 5. What is an annotation in Java?
+Ans: Annotations are special markers or metadata that can be added to java code elements such as classes, methods, fields, parameters and more.
+	They are used to provide supplemental information about a program.
+	OR
+	Annotation in java is a special marker or metadata that provides additional information about code (class, methods, fields).
+
+
+*********************************************************************************************************************************************
+
+Que 6. List and explain built-in annotations in Java.
+Ans: Java build-in annotation divided into two types:
+
+`	A. General Annotation:
+		1. @Override: Indicates that current method is overriding a superclass methods
+		Class Parent{
+			void show(){}
+		}
+		class child extends Parent{
+			@override
+			void show(){
+			System.out.println();
+			}	
+		}
+		
+	-----------------------------------------------------------------------------------------------------------------------
+		
+		2. Deprecated: Its mark is that the current class/method is outdated. It will give us compiler issues warning.
+		@Deprecated
+			public void OldMethod(){
+			system.out.println();
+			}
+			
+	-----------------------------------------------------------------------------------------------------------------------
+
+		3. SuppressWarnings: This annotation instructs the compiler to suppress specific warnings.
+		@SuppressWarnings("unchecked")
+		List<String> list = (List<String>) new ArrayList();
+		In the above example, a raw ArrayList is being cast to List<String>, and because java generics type information at runtime (because of type erasure), the compiler cannot make sure that the list really contains only String values.
+
+	-----------------------------------------------------------------------------------------------------------------------
+	
+		4. FunctionInterface: It indicates that the type declaration is intended to be a function interface.
+		@FunctionInterface
+		interface Parent{
+			void show(); // abstract method
+		}
+		
+	-----------------------------------------------------------------------------------------------------------------------
+
+		5. SafeVarargs: Indicates that a method does not perform  potentially unsafe operations on its varargs parameters. OR It suppresses warnings for unsafe generic varargs.
+		@SafeVarargs
+			public static <T> void display(T... items){
+			for(T item: items){
+			system.out.println();
+			}
+		}
+===========================================================================================
+
+	B.Meta Annotations (annotations used to define other annotations)
+		1. Retention: How long it is retained(in short life span of annotation)
+		@Retention(RetentionPolicy.Runtime)
+		@inteface Info()
+		{		}
+		
+		In above example Annotation retention  retains till the program runtime execution.
+	-----------------------------------------------------------------------------------------------------------------------
+		
+		2. Target: Where the annotation can be used (In short where it can be applicable)
+		@Target(ElementType.Method)
+		@inteface Info()
+		{		}
+		In above example annotation target is applicable on method.
+		
+	-----------------------------------------------------------------------------------------------------------------------
+
+		3. Documentated: Indicates that the annotations with the type should be documented by javadoc and similar tools.
+		@Documentated
+		@inteface Info{}
+
+	-----------------------------------------------------------------------------------------------------------------------
+		
+		4.Inherited: Indicates that an annotation type is automatically inherited.
+		@Inherited
+		@inteface Info{}
+
+	-----------------------------------------------------------------------------------------------------------------------
+	
+		5.Repeatable: This annotation indicate that it can be applied more than once to same declaration.
+		@Repeat(Today = "Monday")
+		@Repeat(Tomorrow = "Tuesday")
+		public void run(){}
+
+*********************************************************************************************************************************************
+
+Que 7. What is a custom annotation and how is it created?
+Ans: Custom annotation can be used to create annotate program elements, i.e. variables, constructors, methods etc.
+	 It can be created using @interface keyword.
+	 These annotations can be applied just before the declaration of an element (Constructor, method classes, etc)
+	
+	Creation:
+	@interface AnnotationName{
+		String Value();
+	}
+	
+	Usage: 
+	Class Test{
+		@AnnotaionName(value = "Hello Annotation")
+		public void display(){
+		System.out.println("Method executed");
+		}
+	}
+
+
+*********************************************************************************************************************************************
+
+Que 8. What is retention policy in annotations?
+Ans: How long it is retained(in short life span of annotation) means how long a annotation is available in program lifecycle.
+	 Type of Retention Policy:
+	 SOURCE : removed at compile-time
+	 CLASS: in .class file but not at runtime (Stays in bytecode only)
+	 RUNTIME: available during execution via Reflection
+
+
+*********************************************************************************************************************************************
+
+Que 9. Explain the use of @Target and @Retention.
+Ans: @Target specifies where an annotation can be applied, 
+	e.g. 
+		@Target(ElementType.TYPE)  //TYPE- Class, Interface, Enumeration
+		@inteface Info()
+		{		}
+	while @Retention specifies how long the annotation is retained in the program lifecycl
+		@Retention(RetentionPolicy.SOURCE)
+		@inteface Info()
+		{		}
+		
+*********************************************************************************************************************************************
+
+Que 10. What is the difference between marker and single-value annotations?
+Ans: Marker: A marker annotation is an annotation that does not contains any elements(Parameters).
+		It simply marks a class or method.
+			@interface MyMaker{}
+			
+			@MyMarker
+			Class Test{}
+			
+	 Single Value Annotation: Its contains on element.
+	 	@interface MySingle{
+	 		String value();
+	 	}
+	 	
+	 	@MySingle("Hii)
+		Class Test {}	 
+			 
+*********************************************************************************************************************************************
+
+Que 11. What is the use of reflection in frameworks like Spring?
+Ans: Reflection allows frameworks like Spring to dynamically create object, inject dependencies, process annotation and invoke methods at runtime.
+
+
+*********************************************************************************************************************************************
+
+Que 12. Can annotations be used at runtime? If yes, how?
+Ans: Yes, If they have RetentionPolicy.RUNTIME
+	Example:
+	A. Custom Annotation:
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.Method)
+		@interface MyAnnotation{
+			String value();
+		}
+		
+	B. Usage:
+		Class Test{
+			@MyAnnotation("Runtime Example")
+			public void display(){
+			System.out.println("Method executed")
+			}
+		}
+
+	 C. Access at Runtime:
+	 	 public class RuntimeAnnotation{
+	 	 	public static void main(String[] args){
+	 	 		Test t = new Test();
+	 	 		
+	 	 		Method method = t.getClass.getMethod("display");
+	 	 		
+	 	 		if(method.isAnnotationPresent(MyAnnotation.class)){
+	 	 		
+	 	 		MyAnnotation an = method.getAnnotation(MyAnnotation.class);
+	 	 		System.out.println("Annotation value: " + an.value());
+	 	 	}
+			t.display();
+	 	 }
+
+*********************************************************************************************************************************************
+
+
+
+
+
+
+
+
+

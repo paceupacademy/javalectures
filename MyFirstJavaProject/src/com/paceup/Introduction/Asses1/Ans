@@ -1,0 +1,15 @@
+1. Explain difference between JVM, JRE and JDK:
+    JVM (Java Virtual Machine) provides the runtime environment; it's used to run bytecode.     
+    JRE (Java Runtime Environment) is a set of tools that provide a runtime environment. JRE contains JVM, libraries, and supporting files.    
+    JDK (Java Development Kit) is a software environment that includes JRE. JDK includes tools like a compiler and debugger.
+
+2. Write steps to compile and run a Java file from command line
+    1. Install JDK.    
+    2. Write a Java program,    
+	3. Navigate the Java file from command prompt.    
+	4. Compile the Java file using javac [filename].    
+	5. To run the Java file using the java [filename] command.
+
+3. Explain how Java achieves platform independence
+	Java achieves platform independence through the bytecode that we can run anywhere; 
+	simply, we can write code one time and run it multiple times on any platform.

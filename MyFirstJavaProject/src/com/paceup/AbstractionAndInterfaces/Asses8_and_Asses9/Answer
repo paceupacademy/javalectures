@@ -1,0 +1,290 @@
+Que 1. What is abstraction in Java and how is it achieved?
+Ans: 	Abstraction is focus on hiding implementation details and showing only essential details to user.
+		Mainly focus on what to do not how to do.
+		
+		How is it achieved:
+		A. Abstract Class:
+			A class cannot initiated and it contain abstract method (without body) and concrete method (With body).
+			Using abstract class only partially abstraction is possible.
+			Declare using as 'abstract' name.
+			
+			abstract class Fruit{ //abstract method
+				abstract void color();
+				
+				void taste(); //concrete method 
+				system.out.println("Delicious...")
+			}
+			
+			class Mango extends Fruit{
+				@overide
+				 void color(){
+				 	System.out.println("COlor is yellow...")
+				 }
+			}
+			
+		B. Interface:
+			A interface is reference type in java. It only contain abstract method and default and static methods (in java 8+).
+			Using interface we can achieved 100% abstraction.
+			
+			inteface bike{
+				void ride();
+			}
+			
+			class Active implements bike{
+				@override
+				 public void ride(){
+				 		System.out.println("Riding Activa..");
+				 }
+			}
+			
+******************************************************************************************************************************
+					
+Que 2. Can we create an object of an abstract class? Why or why not?
+Ans:	No, we cannot create an object of an abstract class.
+		abstract class contains may contains the abstract methods,
+		abstract methods don not have body, for an object must be need a body to be useful.
+			 
+		class Animal{
+			abstract void sound();
+		}
+		
+		public class test{
+			public static void main(String[] args){
+				Animal a = new Animal(); //compile error
+			}
+		}
+
+******************************************************************************************************************************
+
+Que 3. How does method overriding work with abstract classes?
+Ans: 	Using method overriding only we have access the abstract class abstract method.
+		Abstract method declare only without body.
+		A subclass must be override the all abstract methods.
+		
+		class Animal{
+			abstract void sound(); //abstract method
+		}
+		class Dog extends Animal{
+		 @override
+		 public void sound (){
+		 system.out.println("Dog barks")
+		 }
+		}
+		public class test{
+			public static void main(String[] args){
+				Animal a = new Dog); 
+				a.sound();			
+				}
+		}
+		
+******************************************************************************************************************************
+
+Que 4. What’s the difference between abstract class and interface?
+Ans: Abstract Class:
+		Abstract declare using 'abstract' word.
+		Abstract class may contains the abstract method and concrete method.
+		class inherit from only one abstract class.
+		For methods and variable access modifier can be public, private and protected.
+		Using abstract class only partially abstraction is possible.
+		
+		
+		Example:
+			abstract class Fruit{ //abstract method
+				abstract void color();
+				
+				void taste(); //concrete method 
+				system.out.println("Delicious...")
+			}
+		
+		
+		
+	Interface: 
+		Interface declare using 'interface' word.
+		Interface by default include abstract method, In java 8+ version included the default and static methods as well.
+		Class implement from multiple interface. 
+		For methods and variable access modifier implicitly only public.
+		Using interface we can achieved 100% abstraction.
+		
+			inteface bike{
+				void ride();
+			}
+			
+			class Active implements bike{
+				@override
+				 public void ride(){
+				 		System.out.println("Riding Activa..");
+				 }
+			}
+		
+
+******************************************************************************************************************************
+
+Que 5. Explain the concept of call by value in Java with an example.
+Ans: Call by value only a copy of variable value is passed to methods.
+	 Change made inside the method do not affect the original variable.
+	 
+	 class CallByValueDemo{
+	 	void change(int x){
+	 		x = 50;
+	 	}
+	 	
+	 public static void main(String[] args){
+	 		int a = 10;
+	 		change(a);
+	 		system.out.println("a = " + a)
+	 	}
+	 }
+
+******************************************************************************************************************************
+Need to work
+6. Does Java support call by reference? Justify your answer.
+Ans: No, java does not support the call by reference. Java strictly call by value.
+	 But objects are passed by reference value. So modifications inside method affect the object.
+	 Java is always pass-by-value, but for objects, the value of reference (address) is passed.
+	 
+	 class Student {
+	    int marks;
+		}
+
+	class Test {
+	    void change(Student s) {
+	        s.marks = 90;   // modifies object field
+	    }
+	
+	    public static void main(String[] args) {
+	        Student st = new Student();
+	        st.marks = 50;
+	
+	        change(st);
+	        System.out.println(st.marks);
+	    }
+	}
+
+	
+	
+******************************************************************************************************************************
+
+Que 7. How are primitive data types passed to methods in Java?
+Ans: Primitive data types in java are passed by value.
+	 A copy of primitive value is passed to the method.
+
+	class Test{
+		void change(int x){
+		 x = 100;
+		}
+	}
+	
+	public static void main(String[] args){
+		int num = 10;
+		change(num);
+	}
+
+*****************************************************************************
+
+Que 8. What happens when we pass an object to a method in Java?
+Ans:	Java passes the a copy of the object reference(address), not object it self.
+		
+		class Student{
+			int marks;
+		}
+		 class test{
+		 	void change(Student s){
+		 		s.marks = 90;
+		 	}
+		 	
+		 	public statis void main(String[] args){
+		 		Student st = new Studen();
+		 		st.marks = 50;
+		 		
+		 		change(st);
+		 		system.out.println(st.marks)
+		 	}
+		 }
+		 
+******************************************************************************************************************************
+
+Que 9. Why do changes to an object’s field reflect outside the method?
+Ans: Java passes a copy of the object reference by value and both the caller and method point to the same object in memory.
+	 Java passes the a copy of the object reference(address), not object it self.
+	 
+		class Student {
+		    int marks;
+		}
+		
+		class Test {
+		    void change(Student s) {
+		        s.marks = 90;   // modifies object field
+		    }
+		
+		    public static void main(String[] args) {
+		        Student st = new Student();
+		        st.marks = 50;
+		
+		        change(st);
+		        System.out.println(st.marks);
+		    }
+		}
+	 
+******************************************************************************************************************************
+Que 10. Can an abstract class have a constructor or static block?
+Ans: Yes, abstract class have a constructor or static block.
+
+	  Constructor:
+	  
+	  abstract class Animal{
+	  	Animal(){ 		//class Constructor
+	  		system.out.println("Animal constructor.")
+	  	}
+	  	abstract void sound();
+	  }
+	  class Dog extends Animal{
+	  	@override
+	  	void sound(){
+	  		system.out.println("Dog barks.")
+	  	}
+	  }
+	public class AbstractConstructors{
+		public static void main(String[] args){
+			Animal an = new Dog()
+			an.sound();
+		}
+	}
+	
+	--------------------------------------------------------------------------------
+	
+	static block:
+	
+	abstract class Animal{
+		abstract void sound();
+		
+		static{
+			system.out.println("Animal static block..")
+		}
+	}
+	
+	class Dog extends Animal {
+	@override
+	void sound(){
+		system.out.println("Dog sound..")
+	}
+	}
+	
+	public class AbstractStatic{
+		public static void main(String[] args){
+			Animal a = new Dog();
+			a.sound();
+		}
+	}
+	
+	
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 /*1. Write a Java program that creates two threads using Runnable interface to print numbers from 1 to 5. 
 Each thread should print its own tag (e.g., Thread-1, Thread-2).
 */
-package com.paceup.MultiThreading.Asse16;
+package com.paceup.MultiThreading.Asse17;
 
 public class MultiThreading1 implements Runnable {
 	private String ThreadName;
