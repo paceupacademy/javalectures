@@ -1,0 +1,204 @@
+Que 1. What is the Lambda expression in Java? How is it used in Java 8?
+Ans: The Lambda expression in Java represents the instances of functional interfaces. It is a short anonymous function in Java.
+	It is introduced in Java to make code more concise and readable, especially when working in collections and streams.
+	Syntax: (parameters) -> {expression} or (parameters) -> {statement}
+		e.g., (a , b) -> (a + b);
+
+***********************************************************************************************************************************************************************************************************************************
+
+
+Que 2. Explain the concept of Function interface?
+Ans: In java a function interface has only one abstract method, but it can have multiple default and static methods but only one abstract method.
+  It is designed specifically to work with Lambda expressions in java 8.
+  It has built-in annotation to ensure it is a functional interface with one abstract method.
+   An abstract method in a functional interface is without a body that must be implemented by the subclass of the interface or implemented by the class using overriding.
+   
+   e.g.
+		@FunctionalInterface
+		interface MyInterface{
+			void sayHello();
+		}
+		
+	Java provides the built-in functional interfaces that are below:
+	1. Function,
+	2. Predicate,
+	3. Consumer,
+	4. Supplier
+	
+***********************************************************************************************************************************************************************************************************************************
+
+
+Que 3. Differentiate between map() and filter() in Java streams.
+Ans: map(): Using a map stream, we can transform the data.
+		It converts each element.
+	e.g.
+		List<Integer> list = Arrays.asList(1,2,3,4);
+		List<Integer> mul = list.stream()
+							.map(n -> n * 2)
+							.collect(Collectors.toList());
+		
+		
+  filter(): Using filter, we can select the data based on a condition.
+		It checks the each element based on the condition.
+		
+	e.g 
+		List<Integer> greater = list.stream()
+								.filter(n -> n > 2);
+								.collect(Collectors.toList());
+								
+***********************************************************************************************************************************************************************************************************************************
+								
+
+Que 4. What is method references, and how are they different from lambda expressions?
+Ans: Method References: It allows the method or constructors directly by their names using the '::' (double colon) operators.
+	These are some method references mentioned below:
+	1. Static method References (ClassName::staticMethod),
+	2. Instance method Reference (ObjectName:: instanceMethod or ClassName:: instanceMethod)
+	3. Constructor references (ClassName :: new)
+	
+	Method references is different from lambda expressions.
+	It does not define the new function; it refers to the existing method.
+	It is used when the method already exists. But lambda is used when we need custom logic.
+	It is more readable, but Lambda is more flexible.
+	
+***********************************************************************************************************************************************************************************************************************************
+
+
+Que 5. What is the difference between intermediate and terminal operations in Streams?
+Ans: Intermediate operations transform a stream into another stream. Its return type always a new stream.
+		Some common intermediate operation are include below:
+		filter(): It is filter the elements based on the specified conditions.
+			stream.filter(n -> n > 7)
+		map(): Transform each element in a stream to another value.
+			stream.map(n -> n + 2)
+		sorted(): It is sorted the elements of a stream.
+			stream.sorted()
+		distinct(): Its remove the duplicate element from the stream.
+			stream.distinct
+		peek(): its perform the action without changing stream.
+			stream.peek(Systen.out::println)
+			
+		
+		Terminal operations are the operations that on execution return a final result as an absolute value.
+		Once it is called, the stream is traversed and consumed.
+		We cannot reuse a stream after a terminal operation has been performed.
+		Common examples:
+			collect() - It is used to return the result of the intermediate operations performed on the stream.
+				stream.collect(Collection.toList())
+			forEach() - It iterates all the element in a stream.
+				stream.forEach(System.out::println)
+			reduce() - it is used to reduce the elements of a stream to a single value.
+				stream.reduce(0, Integer::sum)
+			count() - It is return the count of the element in stream.
+				stream.count()
+
+***********************************************************************************************************************************************************************************************************************************
+		
+Que 6: Explain the use of the reduce() method in Streams.
+Ans: Reduce method used to reduce the element of a stream to single stream.
+	 It is like folding operation it takes a sequence of values and repeatedly applies a combining function until only one value remains.
+	 The method typically takes two parameters:
+	 1. Identity: the initial value for the operation.
+	 2. Accumulator: A function that takes two parameters and returns a new result.
+	 
+	 Reduce method has three variants of reduce().
+	 1. reduce(accumulator) - when you don't have an identity and the stream might be empty.
+	  	return type - Optional<T>
+	  	
+	  	Optional<Integer> max = numbers.stream()
+	  									.reduce(Integer::max);
+	  	
+	  	
+	  2. reduce(identity, accumulator) - It takes the identity as initial value and binaryoperator and applies the accumulator repeatedly to combine the element.
+	  	e.g.Summming the numbers starting from 0.
+	  	
+	  		List<Intger> numbers = Arrays.asList(1,2,3,4);
+	  		int sum = numbers.stream()
+	  						 .reduce(0, (a,b) -> a+b);
+	  	
+	  3. reduce(identity, accumulator, combiner) - used in parallel streams to merge result from different threads.
+	  		List<String> words = Arrays.asList("Java", "is", "cool");
+	  		String s = words.stream()
+	  						.reduce("", (a, b) -> a + " " + b );
+	  
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 7. What is the purpose of Collectors.groupingBy()?
+Ans: Grouping is powerful features provided by the Collectors class, specifically through the Collectors.groupingBy() method.
+	 It allows the group of a stream based on the classification function.
+	 It is equivalent of the SQL GROUP BY clause.
+	 It takes a stream of objects and organizes them into a Map<K, List<T>>
+	  where K = key (result of the grouping function)
+	  		T = elements from stream
+	  		
+	  Collectors.groupBy() is used to group stream elements into a map based on a key function, making easier to analyze and organize.
+	  
+	  e.g. Map<String, List<Employee>> groupbyDept = employee.stream()
+	  														 .collect(Collectors.groupBy(Employee::getDepartment));
+	  	   key - department name
+	  	   value - list of employees in that dept.
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 8: List the types of method references available in Java 8.
+Ans: Method reference allow to refer to methods or constructors directly by their names using the '::' operator
+	making the code more concise and readable.
+	
+	There are four type method reference that are follows:
+	1. Static Method Reference
+		ClassName::staticMethodName
+		e.g. Math::sqrt
+		
+	2.Instance Method Reference of a particular object
+		ObjectName::instanceMethodName
+		e.g. System.out::println
+		
+	3.Instance Method Reference of an arbitrary object of a particular type
+		ClassName::instanceMehodName
+		e.g. String::toLowerCase
+		
+	4.Constructor Reference
+		ClassName::new
+		e.g. ArrayList::new
+		
+
+***********************************************************************************************************************************************************************************************************************************
+
+Que 9. Why is Stream API considered lazy in execution?
+Ans: The Java stream API is considered lazy in execution because it does not process data immediately when operations are called.
+	 Execution starts only with terminal operations.
+	 Elements are processed one by one(not all at once)
+	 When we create a stream and apply operations like:
+	 	filer()
+	 	map()
+	 	sorted()
+	 No actual computation happens at that moment,
+	 instead these operations are stored as pipeline of instructions, executed only when a terminal operation is called.
+	 
+***********************************************************************************************************************************************************************************************************************************
+
+Que 10: Can we use lambda expressions with any interface? Why or why not?
+Ans: No, lambda expressions cannot be used with any interfaces in Java 8.
+	Reason - Lambda expression can only be used with functional interfaces.
+			A functional inteface is an interface that has only one abstract method.
+	
+	Why not - A lambda expression provides implementation fpr a single method. 
+				So the complier needs, one clear method to map the lambda to,
+				If inteface has multiple absract methods, the complier cannot determines which method the lambda is meant for leads to ambiguity.
+
+
+***********************************************************************************************************************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+		
