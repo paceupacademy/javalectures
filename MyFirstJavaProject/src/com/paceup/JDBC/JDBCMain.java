@@ -59,11 +59,13 @@ public class JDBCMain {
 
     // Method to establish a connection
     public static Connection connect() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/student2";
+        String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
         String password = "root";
         Connection conn = DriverManager.getConnection(url, user, password);
 
+        String dbsql = "CREATE DATABASE IF NOT EXISTS Students";
+        String usedb =  "USE STUDENTS";
         String createTableQuery = "CREATE TABLE IF NOT EXISTS students (" +
                 "id INT PRIMARY KEY, " +
                 "name VARCHAR(100)" +
@@ -75,6 +77,13 @@ public class JDBCMain {
 
             // Create statement and execute query
             Statement stmt = conn.createStatement();
+            
+            stmt.executeUpdate(dbsql);
+            System.out.println("Database Students created");
+            
+            stmt.execute(usedb);
+            System.out.println("Database in use");
+            
             stmt.executeUpdate(createTableQuery);
 
             System.out.println("Table 'students' created successfully.");
@@ -101,11 +110,12 @@ public class JDBCMain {
 
     // READ operation
     public static void readStudents() {
-        String sql = "SELECT * FROM students WHERE id=?";
+        String sql =  "SELECT * FROM students";
+    	//String sql = "SELECT * FROM students WHERE id=?";
         try (Connection conn = connect();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, 2); // Example: fetch student with id=2
-            ResultSet rs = stmt.executeQuery();
+            Statement stmt = conn.createStatement()){
+            //stmt.setInt(1, 2); // Example: fetch student with id=2
+            ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 System.out.println("ID: " + rs.getInt("id") +
                                    ", Name: " + rs.getString("name"));
@@ -116,7 +126,15 @@ public class JDBCMain {
     }
 
     // UPDATE operation
+    /*
+     * newName = "Aishwarya Jadhav"
+     * name = newName => "Aishwarya Jadhav"
+     * String a = "Hi"
+     * String b = a => "Hi"
+     */
     public static void updateStudent(int id, String newName) {
+    	readStudents();
+    	System.out.println();
         String sql = "UPDATE students SET name = ? WHERE id = ?";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -132,6 +150,8 @@ public class JDBCMain {
 
     // DELETE operation
     public static void deleteStudent(int id) {
+    	readStudents();
+    	System.out.println();
         String sql = "DELETE FROM students WHERE id = ?";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -147,9 +167,13 @@ public class JDBCMain {
     // Main method to test JDBC operations
     public static void main(String[] args) {
         // Example usage
-        createStudent(3, "Aishwarya");
+        createStudent(15, "Aishwarya");
         readStudents();
-        updateStudent(3, "Aishwarya Jadhav");
-        deleteStudent(3);
+        updateStudent(15, "Aishwarya Jadhav");
+        deleteStudent(15);
+        createStudent(2, "Neha");
+        createStudent(3, "Shraddha");
+        System.out.println("\n");
+        readStudents();
     }
 }
