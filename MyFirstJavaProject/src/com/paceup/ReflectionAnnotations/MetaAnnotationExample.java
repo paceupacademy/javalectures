@@ -66,8 +66,8 @@ class B extends A {} // Class B inherits annotation from A because @Hint is @Inh
 }
 
 // Applying repeatable annotations
-@Hint("One")
-@Hint("Two")
+@Hint("One1")
+@Hint("Two2")
 class RepeatableExample {}
 
 //------------------ Demo Class ------------------

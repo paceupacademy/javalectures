@@ -1,6 +1,7 @@
 package com.paceup.ReflectionAnnotations;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.annotation.*;
 
@@ -80,26 +81,39 @@ public class ReflectionExample {
         // Create Person objects
         Person p = new Person("Aishwarya", 30);
         Person p1 = new Person("Neha", 35);
-
+        
+        Class<?> c1 = Person.class;
+        Constructor<Person> cons = Person.class.getDeclaredConstructor(String.class, int.class);
+        Person p3 = cons.newInstance("Sima",25);
+        
+        Field[] f = c1.getDeclaredFields();
+        
+        for(Field fields1 :f) {
+        	fields1.setAccessible(true);
+        	System.out.println(fields1.getName() + " "+ fields1.get(p3));
+        }
+        
+        System.out.println("");
+        
         // Access fields of Person using reflection
         Class<?> c = p.getClass();
         Field[] fields = c.getDeclaredFields();
 
         System.out.println("All fields of Person Class are: ");
-        for (Field f : fields) {
-            f.setAccessible(true); // allow access to private field
-            System.out.print("Name of field: " + f.getName());
-            System.out.print("\tValue for field: " + f.get(p) + "\n");
+        for (Field f1 : fields) {
+            f1.setAccessible(true); // allow access to private field
+            System.out.print("Name of field: " + f1.getName());
+            System.out.print("\tValue for field: " + f1.get(p) + "\n");
         }
 
         Class<?> cl = p1.getClass();
         Field[] fields1 = cl.getDeclaredFields();
 
         System.out.println("All fields of Person Class are: ");
-        for (Field f : fields1) {
-            f.setAccessible(true);
-            System.out.print("Name of field: " + f.getName());
-            System.out.print("\tValue for field: " + f.get(p1) + "\n");
+        for (Field f2 : fields1) {
+            f2.setAccessible(true);
+            System.out.print("Name of field: " + f2.getName());
+            System.out.print("\tValue for field: " + f2.get(p1) + "\n");
         }
 
         // Print methods of String class
@@ -113,7 +127,7 @@ public class ReflectionExample {
             System.out.print(method1.getName() + ", ");
             if (method1.getName().equals("compareTo")) {
                 Object result = method1.invoke(p.name, p1.name); // p.name.compareTo(p1.name)
-                // System.out.println("\nResult: " + result);
+                System.out.println("\nResult: " + result);
             }
         }
 

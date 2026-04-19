@@ -14,6 +14,7 @@ public class CollectionsExample {
 
 		List<String> names = Arrays.asList("Zara", "Mohan", "Aditi", "Avi","Zara");
 		System.out.println("List: " + names);
+		//names.add("abc");
 
 		Collections.sort(names); // Sort in natural order
 		System.out.println("Sorted List: " + names);
@@ -45,7 +46,7 @@ public class CollectionsExample {
 
 		//Collection<-List<-ArrayList
 		//List=ArrayList(List);
-		List<String> destination = new ArrayList<>(Arrays.asList("X", "Y", "Z","A","b","c"));
+		List<String> destination = new ArrayList<>(Arrays.asList("X", null, "Z",null,"b",null));
 		System.out.println("Destination List: " + destination);
 		Collections.copy(destination, source); // Copy source to destination
 		System.out.println("Destination List: " + destination);

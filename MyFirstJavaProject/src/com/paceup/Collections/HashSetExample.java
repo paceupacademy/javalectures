@@ -44,66 +44,97 @@ import java.util.List;
  */
 public class HashSetExample {
     public static void main(String[] args) {
-        
+
+        System.out.println("=========== HASHSET ===========");
+
         HashSet<String> set = new HashSet<>();
+
+        System.out.println("\n--- Initial State ---");
         System.out.println("Set is Empty: " + set.isEmpty());
-        
+
+        System.out.println("\n--- Adding Elements ---");
+
         // Add elements
         set.add("Apple"); 
         // hashCode("Apple") = 63476038 → 63476038 & 15 = 14 → bucket[14]
-        
+
         set.add("Banana");  
         // hashCode("Banana") = -1396355221 → (-1396355221 & 15) = 11 → bucket[11]
-        
-        System.out.println("Size of Set: " + set.size()); // 2
-        
+
+        System.out.println("Set after adding elements: " + set);
+        System.out.println("Size of Set: " + set.size());
+
+        System.out.println("\n--- Duplicate Handling ---");
+
         // Attempt to add duplicate
-        set.add("Apple"); // Duplicate ignored (already in bucket[14])
-        System.out.println("After adding duplicate: " + set);
-        
+        set.add("Apple"); // Duplicate ignored
+        System.out.println("After adding duplicate 'Apple': " + set);
+
+        System.out.println("\n--- Removing Elements ---");
+
         // Remove element
         set.remove("Apple"); // removes from bucket[14]
-        System.out.println("After removing Apple: " + set);
-        
+        System.out.println("After removing 'Apple': " + set);
+
+        System.out.println("\n--- Checking Elements ---");
+
         // Check membership
         System.out.println("Contains Apple? " + set.contains("Apple"));
         System.out.println("Contains Mango? " + set.contains("Mango"));
-        
-        // Add more elements
+
+        System.out.println("\n--- Adding More Elements ---");
+
         set.add("Apple");   // bucket[14]
-        
+
         set.add("Mango");   
         // hashCode("Mango") = 74127464 → 74127464 & 15 = 8 → bucket[8]
-        
-        System.out.println("After adding Apple & Mango: " + set);
-        
+
         set.add("Lemon");   
         // hashCode("Lemon") = 2331023 → 2331023 & 15 = 15 → bucket[15]
-        
+
         System.out.println("Final Set before iteration: " + set);
-        
-        // Traversing using Iterator
+
+        System.out.println("\n--- Iteration (with Hash Details) ---");
+
+        /**
+         * NOTE:
+         * - Order is NOT guaranteed
+         * - Bucket index depends on hashCode
+         */
         Iterator<String> iterator = set.iterator();
-        System.out.println("Iterating elements:");
         while (iterator.hasNext()) {
             String element = iterator.next();
             int hash = element.hashCode();
-            int bucketIndex = hash & (16 - 1); // capacity=16 initially
-            System.out.println("Element: " + element + 
-                               " | HashCode: " + hash + 
-                               " | Bucket Index: " + bucketIndex);
+            int bucketIndex = hash & (16 - 1); // capacity = 16 (default)
+
+            System.out.println(
+                "Element      : " + element +
+                "\nHashCode     : " + hash +
+                "\nBucket Index : " + bucketIndex +
+                "\n---------------------------"
+            );
         }
-        
+
+        System.out.println("\n--- Clearing Set ---");
+
         // Clear all elements
         set.clear();
         System.out.println("After clear: " + set);
-        
+
+        System.out.println("\n--- Creating HashSet from List ---");
+
         // Create HashSet from a List
         List<String> list = Arrays.asList("C", "Q", "A");
         HashSet<String> hs = new HashSet<>(list);
         System.out.println("HashSet created from List: " + hs);
-        
-        // Synchronized version (thread-safe)
+
+        System.out.println("\n--- Synchronized Set ---");
+
+        /**
+         * Thread-safe wrapper
+         * NOTE: Required in multi-threaded environment
+         */
         Collections.synchronizedSet(hs);
+        System.out.println("Synchronized Set created");
     }
 }

@@ -21,7 +21,7 @@ public class DatabaseDeserializationExample {
             );
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT data FROM PERSON LIMIT 1");
+            ResultSet rs = stmt.executeQuery("SELECT data FROM PERSON LIMIT 2");
 
             if (rs.next()) {
                 byte[] personBytes = rs.getBytes("data");

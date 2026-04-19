@@ -15,7 +15,7 @@ public class ArrayExample4 {
 			System.out.println("Sum value: "+sum+" = "+sum+"+"+number);
 			sum += number; //sum = sum + number			
 		}
-		System.out.println();
+		System.out.println("Array"+numbers);
 
 		// get the total number of elements
 		int arrayLength = numbers.length; //sum/size

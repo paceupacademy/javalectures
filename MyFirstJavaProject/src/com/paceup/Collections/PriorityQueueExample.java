@@ -52,10 +52,20 @@ class Student {
 public class PriorityQueueExample {
     public static void main(String[] args) {
 
-        // PriorityQueue with custom comparator (sort by priority field)
+        System.out.println("=========== PRIORITY QUEUE ===========");
+
+        /**
+         * PriorityQueue with custom comparator
+         * ------------------------------------
+         * Sorting logic:
+         * - Smaller priority value → Higher priority
+         * - Example: priority 1 > priority 3
+         */
         PriorityQueue<Student> pq = new PriorityQueue<>(
             (s1, s2) -> Integer.compare(s1.priority, s2.priority)
         );
+
+        System.out.println("\n--- Adding Elements ---");
 
         // Adding students
         pq.add(new Student("Alice", 3));
@@ -64,17 +74,29 @@ public class PriorityQueueExample {
         pq.add(new Student("Demon", 5));
         pq.add(new Student("Eva", 4));
 
-        // Print queue (heap order, not guaranteed sorted in toString)
-        System.out.println("PriorityQueue: " + pq);
+        /**
+         * NOTE:
+         * Printing PriorityQueue directly does NOT guarantee sorted order
+         * because internal structure is a heap, not a sorted list.
+         */
+        System.out.println("PriorityQueue (Heap View): " + pq);
 
-        // Peek at head element (highest priority, smallest number)
-        System.out.println("Peek (head element): " + pq.peek());
+        System.out.println("\n--- Peek Operation ---");
 
-        // Poll elements (removes head each time, ensures priority order)
-        System.out.println("\nPolling elements:");
+        // Peek at head element (highest priority)
+        System.out.println("Peek (highest priority): " + pq.peek());
+
+        System.out.println("\n--- Polling Elements (Sorted Output) ---");
+
+        /**
+         * Poll removes elements in correct priority order
+         * This is the ONLY way to guarantee sorted output
+         */
         while (!pq.isEmpty()) {
             System.out.println("Removed: " + pq.poll());
         }
+
+        System.out.println("\n--- Refill Queue ---");
 
         // Refill queue for iteration example
         pq.addAll(Arrays.asList(
@@ -83,18 +105,32 @@ public class PriorityQueueExample {
             new Student("Z", 8)
         ));
 
-        // Iterating using Iterator (order not guaranteed)
-        System.out.println("\nIterating elements (heap order, not sorted):");
+        System.out.println("Queue after refill: " + pq);
+
+        System.out.println("\n--- Iteration (Not Sorted) ---");
+
+        /**
+         * IMPORTANT:
+         * Iterator does NOT return elements in sorted order
+         * It returns elements in heap structure order
+         */
         Iterator<Student> itr = pq.iterator();
         while (itr.hasNext()) {
-            System.out.println(itr.next());
+            System.out.println("Element: " + itr.next());
         }
+
+        System.out.println("\n--- Queue Info ---");
 
         // Size of queue
         System.out.println("Size of queue: " + pq.size());
 
+        System.out.println("\n--- Clearing Queue ---");
+
         // Clear queue
         pq.clear();
-        System.out.println("After clear: " + pq + " | Is Empty? " + pq.isEmpty());
+        System.out.println("After clear: " + pq);
+        System.out.println("Is Empty? " + pq.isEmpty());
+
+        System.out.println("\n=========== END OF CLASS ===========");
     }
 }

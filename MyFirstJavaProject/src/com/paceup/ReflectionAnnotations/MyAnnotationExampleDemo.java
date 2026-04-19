@@ -40,7 +40,7 @@ import java.util.List;
  * [abc, xyz]
  * [null, asjsadkjhd]
  */
-class Personn {
+class MyAnnotationExampleDemo {
     @Deprecated
     public void oldMethod() {
         // @Deprecated marks this method as obsolete.
@@ -61,11 +61,17 @@ class Personn {
     public void demo() {
         // @SuppressWarnings disables compiler warnings for specific cases.
         // Here, we suppress the warning for calling a deprecated method.
-        Personn p = new Personn();
+    	MyAnnotationExampleDemo p = new MyAnnotationExampleDemo();
         p.oldMethod(); // Warning suppressed
 
         // Lambda expression inside Thread
         new Thread(() -> System.out.println("New Thread created")).start();
+        
+        List<String> list2 = new ArrayList<>();
+        list2.add(null);
+        list2.add("asjsadkjhd");
+        
+        printAll(list2);
     }
 
     @FunctionalInterface
@@ -75,7 +81,7 @@ class Personn {
 
     // Demo main method
     public static void main(String[] args) {
-        Personn p = new Personn();
+    	MyAnnotationExampleDemo p = new MyAnnotationExampleDemo();
 
         // Call demo() → internally calls deprecated method and starts a thread
         p.demo();
@@ -88,8 +94,12 @@ class Personn {
         List<String> list2 = new ArrayList<>();
         list2.add(null);
         list2.add("asjsadkjhd");
+        
+        List<String> list3 = new ArrayList<>();
+        list2.add(null);
+        list2.add("asjsadkjhd");
 
         // Call printAll() → prints both lists
-        p.printAll(list1, list2);
+        printAll(list1, list2,list3);
     }
 }

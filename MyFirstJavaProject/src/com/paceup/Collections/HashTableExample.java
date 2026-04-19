@@ -29,28 +29,53 @@ import java.util.Map;
  */
 public class HashTableExample {
     public static void main(String[] args) {
+
+        System.out.println("=========== HASHTABLE ===========");
+
         // Create a Hashtable
         Hashtable<Integer, String> table = new Hashtable<>();
+
+        System.out.println("\n--- Adding Elements ---");
 
         // Add key-value pairs
         table.put(1, "Java");
         table.put(2, "Spring");
         table.put(3, "Hibernate");
 
-        // Print entire table
-        System.out.println("Hashtable: " + table);
+        System.out.println("Hashtable contents: " + table);
 
-        // Iterate through entries
+        System.out.println("\n--- Iterating Entries ---");
+
+        /**
+         * Iteration using entrySet()
+         * - Provides both key and value together
+         * - Order is NOT guaranteed
+         */
         for (Map.Entry<Integer, String> entry : table.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+            System.out.println(
+                "Key   : " + entry.getKey() +
+                " | Value : " + entry.getValue()
+            );
         }
 
-        // Null keys/values not allowed
+        System.out.println("\n--- Null Handling ---");
+
+        /**
+         * Hashtable does NOT allow null keys or values
+         * Attempting to insert null will throw NullPointerException
+         */
         try {
-            table.put(5, null);   // Throws NullPointerException
-            table.put(null, null); // Throws NullPointerException
+            table.put(5, null);     // ❌ Null value not allowed
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            System.out.println("Error inserting null value: " + e);
         }
+
+        try {
+            table.put(null, "Test"); // ❌ Null key not allowed
+        } catch (Exception e) {
+            System.out.println("Error inserting null key: " + e);
+        }
+
+        System.out.println("\nFinal Hashtable: " + table);
     }
 }

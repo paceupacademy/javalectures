@@ -75,7 +75,7 @@ public class VectorExample {
         int i = 0;
         for (String fruit : vector) {
             System.out.print(fruit + ", ");
-            if (vector.get(i).equals("Banana")) {
+            if (vector.get(i).equals("Banana")) {	//Guava.equals("Banana")
                 System.out.println("Index of Banana: " + i);
             }
             i++;
@@ -94,6 +94,10 @@ public class VectorExample {
                 .collect(Collectors.toList());
 
         System.out.println("Indices of Banana: " + indexVal);
+        
+        vector.add("pineapple");
+        vector.add(null);
+        vector.add(null);
         System.out.println("Size of vector: " + vector.size());
         System.out.println("Capacity of vector: " + vector.capacity());
 
@@ -104,16 +108,22 @@ public class VectorExample {
          * - remove(Object o) → removes first occurrence.
          * - removeAll(Collection c) → removes all elements present in collection c.
          */
-        vector.remove("Banana"); // removes first occurrence
+        vector.contains("Banana"); // removes first occurrence
         System.out.println("Removed one Banana: " + vector);
 
         // removeAll with another collection
         System.out.println("All Banana removed? " + vector.removeAll(v)); // v is empty initially → false
+        System.out.println(vector);
         v.add("Banana");
-        v.add("Apple");
-        v.add("Watermelon");
-        System.out.println("All Banana removed? " + vector.removeAll(v)); // removes Banana & Apple if present
+        v.add("Orange");
+        v.add("Guava");
+        System.out.println("All Banana removed? " + vector.containsAll(v)); // removes Banana & Apple if present
 
+        System.out.println("Hashcode for v: "+v.hashCode());
         System.out.println("After Removal: " + vector);
+        
+        vector.clear();
+        
+        System.out.println(vector);
     }
 }

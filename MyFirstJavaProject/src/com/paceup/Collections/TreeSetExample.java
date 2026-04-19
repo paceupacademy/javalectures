@@ -65,7 +65,11 @@ class Employee implements Comparable<Employee> {
 
 public class TreeSetExample {
     public static void main(String[] args) {
-        
+
+        System.out.println("=========== TREESET ==========");
+
+        System.out.println("\n--- Natural Ordering (by id) ---");
+
         // TreeSet with natural ordering (by id)
         TreeSet<Employee> employees = new TreeSet<>();
 
@@ -79,27 +83,42 @@ public class TreeSetExample {
         // Duplicate id ignored (compareTo returns 0)
         employees.add(new Employee(101, "DuplicateBob"));
 
-        // Print TreeSet (sorted by id)
         System.out.println("Employees (sorted by id): " + employees);
+
+        System.out.println("\n--- First & Last ---");
 
         // Access first and last elements
         System.out.println("First Employee: " + employees.first());
-        System.out.println("Last Employee: " + employees.last());
+        System.out.println("Last Employee : " + employees.last());
 
-        // Navigation methods
-        System.out.println("Employee higher than id=102: " + employees.higher(new Employee(102, "Temp")));
-        System.out.println("Employee lower than id=104: " + employees.lower(new Employee(104, "Temp")));
-        System.out.println("Ceiling (>=102): " + employees.ceiling(new Employee(102, "Temp")));
-        System.out.println("Floor (<=104): " + employees.floor(new Employee(104, "Temp")));
+        System.out.println("\n--- Navigation Methods ---");
 
-        // Subset operations
-        System.out.println("HeadSet (id < 104): " + employees.headSet(new Employee(104, "Temp")));
-        System.out.println("TailSet (id >= 103): " + employees.tailSet(new Employee(103, "Temp")));
-        System.out.println("SubSet (102 <= id < 105): " + employees.subSet(new Employee(102, "Temp"), new Employee(105, "Temp")));
+        /**
+         * NOTE:
+         * Temporary objects are used only for comparison
+         * TreeSet compares using compareTo()
+         */
+        System.out.println("Higher than id=102 : " + employees.higher(new Employee(102, "Temp")));
+        System.out.println("Lower than id=104  : " + employees.lower(new Employee(104, "Temp")));
+        System.out.println("Ceiling (>=102)    : " + employees.ceiling(new Employee(102, "Temp")));
+        System.out.println("Floor (<=104)      : " + employees.floor(new Employee(104, "Temp")));
+
+        System.out.println("\n--- Subset Operations ---");
+
+        System.out.println("HeadSet (id < 104)        : " + employees.headSet(new Employee(104, "Temp")));
+        System.out.println("TailSet (id >= 103)       : " + employees.tailSet(new Employee(103, "Temp")));
+        System.out.println("SubSet (102 <= id < 105)  : " + employees.subSet(
+                new Employee(102, "Temp"),
+                new Employee(105, "Temp")
+        ));
+
+        System.out.println("\n--- Removal ---");
 
         // Remove element
         employees.remove(new Employee(103, "Alice"));
         System.out.println("After removal: " + employees);
+
+        System.out.println("\n--- Size & Clear ---");
 
         // Size of TreeSet
         System.out.println("Size: " + employees.size());
@@ -108,8 +127,15 @@ public class TreeSetExample {
         employees.clear();
         System.out.println("After clear: " + employees + " | Is Empty? " + employees.isEmpty());
 
-        // TreeSet with custom comparator (sort by name instead of id)
+        System.out.println("\n--- Custom Comparator (by name) ---");
+
+        /**
+         * Custom sorting:
+         * - Overrides natural ordering
+         * - Sorts employees based on name instead of id
+         */
         TreeSet<Employee> employeesByName = new TreeSet<>(Comparator.comparing(e -> e.name));
+
         employeesByName.addAll(Arrays.asList(
             new Employee(103, "Alice"),
             new Employee(101, "Bob"),
@@ -117,6 +143,7 @@ public class TreeSetExample {
             new Employee(102, "Demon"),
             new Employee(104, "Eva")
         ));
+
         System.out.println("Employees (sorted by name): " + employeesByName);
     }
 }

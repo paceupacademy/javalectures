@@ -32,9 +32,13 @@ public class StackExample {
 
         // Peek at the top element without removing it
         System.out.println("Top element (peek): " + stack.peek());
+        
+        System.out.println("After peek Stack: " + stack);
 
         // Pop removes and returns the top element
         System.out.println("Popped element: " + stack.pop());
+        
+        System.out.println("After pop Stack: " + stack);
 
         // Check if stack is empty
         System.out.println("Is stack empty? " + stack.isEmpty());
@@ -44,7 +48,8 @@ public class StackExample {
          * - Returns 1-based position from the top of stack.
          * - If element not found, returns -1.
          */
-        System.out.println("Position of 11: " + stack.search(11)); // not present → -1
+        Integer i =10;
+        System.out.println("Position of 11: " + stack.removeElement(i)); // not present → -1
         System.out.println("Position of 40: " + stack.search(40)); // not present → -1
 
         // Frequency of an element using Collections utility
