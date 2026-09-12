@@ -65,12 +65,15 @@ import java.util.stream.*;
 public class StreamOperations {
 
     public static void main(String[] args) {
+    	//List<List<String>> = {List1<String>,List2<String>,List3<String>}
         List<List<String>> listofLists = Arrays.asList(
             Arrays.asList("Reflection","Annotation","Stream"),
             Arrays.asList("String","Array","Object"),
             Arrays.asList("Sorting","Searching","Reduction","Stream")
         );
 
+        System.out.println(listofLists);
+        
         Set<String> intermediateResults = new HashSet<>();
 
         // Stream Intermediate Operations
@@ -78,7 +81,7 @@ public class StreamOperations {
          * Input: Nested lists of strings
          * Pipeline:
          * Stream<List<String>> 
-         *   → flatMap(List::stream) → Stream<String>
+         *   → flatMap(List::stream) → Stream<String> => Stream<String>
          *   → filter(s.startsWith("S"))
          *   → map(String::toUpperCase)
          *   → distinct()

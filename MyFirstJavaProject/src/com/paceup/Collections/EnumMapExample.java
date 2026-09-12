@@ -1,6 +1,7 @@
 package com.paceup.Collections;
 
 import java.util.EnumMap;
+
 import java.util.Map;
 
 /**
@@ -71,9 +72,11 @@ public class EnumMapExample {
         schedule1.putAll(schedule);
         System.out.println("Updated Schedule1: " + schedule1);
         
+        schedule1.put(Day.FRIDAY, null);
+        
         // Access values
         System.out.println("Activity on Monday: " + schedule.get(Day.MONDAY));
-        System.out.println("\nSchedule: " + schedule + "\n");
+        System.out.println("\nSchedule: " + schedule1 + "\n");
 
         // Iterate through the EnumMap (in enum order)
         for (Day day : schedule.keySet()) {

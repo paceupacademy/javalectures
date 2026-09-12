@@ -42,7 +42,7 @@ public class ConcurrentHashmapExample {
         
         // Add key-value pairs
         cmap.put(1, "Java");
-        cmap.put(2, "Spring");
+        cmap.put(2, "");
         cmap.put(5, "Hibernate");
         cmap.put(4, "Database");
         System.out.println("ConcurrentHashMap entries: " + cmap);
@@ -57,9 +57,9 @@ public class ConcurrentHashmapExample {
         for(Map.Entry<Integer, String> entry: cmap.entrySet()) {
         	System.out.println(entry.getKey()+" : "+entry.getValue());
         }
-        
+        String msg ="Null Value";
         // Safe concurrent update using compute()
-        cmap.compute(2, (key, value) -> value + " Boot"); // updates value for key 2
+        cmap.compute(2, (key, value) -> (value=="")?msg: value + " Spring"); // updates value for key 2
         System.out.println("Updated ConcurrentHashMap entries: " + cmap+"\n");
         
         // Null keys/values not allowed

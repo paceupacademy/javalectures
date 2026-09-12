@@ -13,6 +13,7 @@ import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.function.BiPredicate;
 
 /**
  * MethodReferenceExample:
@@ -22,6 +23,9 @@ import java.util.stream.Collectors;
  * -------------
  * 1. **Method References**:
  *    - Shorthand for lambda expressions.
+ *    	x -> Integer.toHexString(x)
+ *    	Function<Integer,String> f = Integer::toHexString;
+ *    	sysout(f.apply(25);
  *    - Types:
  *      a) Static Method Reference → ClassName::staticMethod
  *      b) Bound Instance Method Reference → object::instanceMethod
@@ -42,6 +46,10 @@ class Greet {
         this.name = name;
     }
 
+    public String getName() {
+		return name;
+    	
+    }
     public String greet() {
         return "Hello " + name;
     }
@@ -73,7 +81,7 @@ public class MethodReferenceExample {
          */
         System.out.println("\n=== 2. Bound Instance Method Reference ===");
         Supplier<String> s = g::greet;
-        System.out.println("Input: () → Output: " + s.get());
+        System.out.println("Input: ("+g.getName()+") → Output: " + s.get());
 
         /*** 3. Unbound Instance Method Reference ***/
         // String::length → unbound, takes any String
@@ -87,6 +95,11 @@ public class MethodReferenceExample {
         Function<String, Integer> len = String::length;
         System.out.println("Input: \"Java\" → Output: " + len.apply("Java"));
 
+        BiPredicate<String,String> eq = String::equals;
+        /* (str1,str2) -> str1.equals(str2);
+         */
+        System.out.println(eq.test("Java", "java"));
+        
         /*** 4. Comparator with Method Reference ***/
         List<String> names = Arrays.asList("Neha", "Ananaya", "PUJA", "akash", "AKASH");
         // String::compareToIgnoreCase → comparator
@@ -160,7 +173,7 @@ public class MethodReferenceExample {
          */
         System.out.println("\n=== 8. Constructor Reference (HashSet) ===");
         Set<Integer> uniqueIds = id.stream()
-                                   .map(Integer::valueOf)
+                                   .map(toInt)
                                    .collect(Collectors.toCollection(HashSet::new));
         System.out.println("Unique IDs (duplicates removed): " + uniqueIds);
 
@@ -177,14 +190,14 @@ public class MethodReferenceExample {
         System.out.println("\n=== 9. Constructor Reference (HashMap) ===");
         Map<String, Integer> nameLengthMap = names.stream()
                                                   .collect(java.util.stream.Collectors.toMap(
-                                                      Function.identity(),   // key = name 
-                                                      String::length,       // value = length
-                                                      (v1, v2) -> v1,       // merge function (keep first if duplicate)
+                                                      Function.identity(),   // key = name  KeyMapper
+                                                      String::length,       // value = length ValueMapper
+                                                      (v1, v2) -> v1,       // merge function (keep first if duplicate) Merge Function
                                                       TreeMap::new          // constructor reference
                                                   ));
         System.out.println("Name-Length Map: " + nameLengthMap);
         
-        List<String> source = Arrays.asList("Apple","Banana","Cherry","Dates");
+        List<String> source = Arrays.asList("Apple","Banana","Cherry","Dates","Date");
         
         LinkedList<String> linkedList = source.stream()
         									.filter(s1->s1.length()>4)

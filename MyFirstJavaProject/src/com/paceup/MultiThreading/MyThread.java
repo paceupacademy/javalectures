@@ -85,7 +85,7 @@ class MyThread extends Thread {
         System.out.println(t2.getName() + " Current State for main block is " + t2.getState());
 
         // Main thread continues execution in parallel
-        System.out.println(Thread.currentThread().getName() + " Current State is " + Thread.currentThread().getState());
+        System.out.println(Thread.currentThread().getName() + " Current State main block is " + Thread.currentThread().getState());
     }
 }
 

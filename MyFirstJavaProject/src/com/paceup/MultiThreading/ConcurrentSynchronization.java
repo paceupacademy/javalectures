@@ -81,7 +81,8 @@ public class ConcurrentSynchronization {
 
         // Writer threads → exclusive access
         for (int i = 0; i < 3; i++) {
-            new Thread(() -> resource.write(42)).start();
+        	int temp = i;
+            new Thread(() -> resource.write(42+temp)).start();
         }
 
         // Reader threads → can run in parallel

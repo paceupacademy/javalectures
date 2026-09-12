@@ -9,13 +9,13 @@ package com.paceup.MultiThreading;
  *   → It separates task logic (Runnable) from thread management (Thread).
  *   → It avoids the limitation of single inheritance (since we don’t extend Thread).
  */
-class PrintNumbers implements Runnable {
+class RunnableMultiThreadExample implements Runnable {
     private int number;
 
     // Constructor:
     // ------------
     // Accepts a number that this thread will print.
-    public PrintNumbers(int number) {
+    public RunnableMultiThreadExample(int number) {
         this.number = number;
     }
 
@@ -62,8 +62,8 @@ class PrintNumbers implements Runnable {
     // Entry point of the program.
     public static void main(String[] args) {
         // Creating Runnable tasks
-        PrintNumbers task1 = new PrintNumbers(3);
-        PrintNumbers task2 = new PrintNumbers(5);
+        RunnableMultiThreadExample task1 = new RunnableMultiThreadExample(3);
+        RunnableMultiThreadExample task2 = new RunnableMultiThreadExample(5);
 
         // Creating Thread objects with Runnable targets
         // NEW State:
@@ -71,6 +71,11 @@ class PrintNumbers implements Runnable {
         // When a Thread object is created but start() not yet called → NEW.
         Thread t1 = new Thread(task1, "Thread-1");
         Thread t2 = new Thread(task2, "Thread-2");
+        
+     // Checking states from main thread
+        System.out.println(t1.getName() + " State (main block): " + t1.getState());
+        System.out.println(t2.getName() + " State (main block): " + t2.getState());
+
 
         // Starting threads
         // ----------------
@@ -82,10 +87,7 @@ class PrintNumbers implements Runnable {
         t1.start();
         t2.start();
 
-        // Checking states from main thread
-        System.out.println(t1.getName() + " State (main block): " + t1.getState());
-        System.out.println(t2.getName() + " State (main block): " + t2.getState());
-
+        
         // Main thread continues execution in parallel
         System.out.println(Thread.currentThread().getName() + " State: " +
                            Thread.currentThread().getState());

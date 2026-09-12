@@ -49,6 +49,7 @@ class StudentData implements Comparable<StudentData> {
      * -1 -> first element should come before second
      * 0 -> both elements are equal
      * 1 -> first element should come after second
+     * this.age= 11 o.age=10
      */
     @Override
     public int compareTo(StudentData o) {
@@ -82,7 +83,7 @@ public class ComparableComparatorExample {
         List<StudentData> students = Arrays.asList(
             new StudentData(101, "Aishwarya", 28),
             new StudentData(102, "Suraj", 25),
-            new StudentData(103, "Bhavesh", 30),
+            new StudentData(102, "Bhavesh", 30),
             new StudentData(104, "Chirag", 22)
         );
 
@@ -90,7 +91,7 @@ public class ComparableComparatorExample {
         students.forEach(System.out::println);
 
         // Sorting using Comparable (by age) sort the list automatically using natural order defined in compareTo()
-        Collections.sort(students);
+        Collections.sort(students); //s1.compareTo(s2)
         System.out.println("\nSorted by Age (Comparable):");
         students.forEach(System.out::println);
 

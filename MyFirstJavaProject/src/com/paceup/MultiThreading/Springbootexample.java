@@ -20,6 +20,6 @@ public class Springbootexample {
         // These system threads run invisibly in the background.
         // The program ends when the main thread and all non-daemon threads finish.
 
-        System.out.println("Hello rom SpringBoot Example");
+        System.out.println("Hello from SpringBoot Example");
     }
 }

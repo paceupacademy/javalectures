@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 
@@ -44,6 +45,8 @@ import java.util.List;
  */
 public class HashSetExample {
     public static void main(String[] args) {
+    	
+    	Set<Integer> set1 = new HashSet<Integer>();
 
         System.out.println("=========== HASHSET ===========");
 
@@ -82,6 +85,11 @@ public class HashSetExample {
         System.out.println("Contains Apple? " + set.contains("Apple"));
         System.out.println("Contains Mango? " + set.contains("Mango"));
 
+        HashSet<String> demo =  new HashSet<String>();
+        demo.add("Mango");
+        demo.add("Lemon");
+        //demo.add("Cherry");
+        
         System.out.println("\n--- Adding More Elements ---");
 
         set.add("Apple");   // bucket[14]
@@ -90,6 +98,8 @@ public class HashSetExample {
         // hashCode("Mango") = 74127464 → 74127464 & 15 = 8 → bucket[8]
 
         set.add("Lemon");   
+        
+        
         // hashCode("Lemon") = 2331023 → 2331023 & 15 = 15 → bucket[15]
 
         System.out.println("Final Set before iteration: " + set);
@@ -115,6 +125,11 @@ public class HashSetExample {
             );
         }
 
+        System.out.println("First Hashset: "+set);
+        System.out.println("Demo Hashset: "+demo);
+        
+        System.out.println("Does set contains demo? "+set.removeAll(demo));
+        
         System.out.println("\n--- Clearing Set ---");
 
         // Clear all elements

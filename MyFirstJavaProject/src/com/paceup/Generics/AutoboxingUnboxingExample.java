@@ -40,7 +40,18 @@ public class AutoboxingUnboxingExample {
 		// Output: 50 (primitive int)
 		// Integer(30) ---> [Unboxing: intValue()] ---> 30 ---> +20 ---> 50
 		int result = boxedNum + 20; 
+		
+		Integer result1 = Integer.valueOf(result);
+		
+		String s="123456789";
+		int num = Integer.parseInt(s);
+		System.out.println("String is "+s+ "Parsed Int is "+num);
 
 		System.out.println("Result: " + result);
+		
+		Character c= '5';
+		
+		System.out.println(Character.isDigit(c));
+		
 	}
 }

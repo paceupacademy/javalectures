@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * ConsumerInterfaceExample:
@@ -40,12 +42,17 @@ public class ConsumerInterfaceExample {
 		.accept("Welcome to andThen methods in Consumer!");
 
 		//Consumer NullPointerException
+		/*
+		 * get(0) = 2*2 =4
+		 * get(1) = 2*1 =2
+		 * get(2) = 2*3 =6
+		 */
 		Consumer<List<Integer>> modify =  list-> {
 			for(int i=0; i<list.size();i++) {
 				list.set(i, 2 * list.get(i));
 			}
 		};
-		Consumer<List<Integer>> displayList =  list -> list.forEach(a->System.out.println(a+ " "));
+		Consumer<List<Integer>> displayList = list -> list.forEach(a->System.out.println(a+ " "));
 
 		List<Integer> list =  new ArrayList<Integer>();
 		list.add(2);
@@ -60,9 +67,15 @@ public class ConsumerInterfaceExample {
 		}
 
 		// Example 3: Using Consumer with a List (lambda inline)
-		List<String> names = Arrays.asList("Alice", "Charlie", "Bob", "David", "Arjun");
+		List<String> names = Arrays.asList("Alice", "", " " ,"Charlie", "Bob", "David", "Arjun");
 		System.out.println("\nUsing lambda with forEach:");
 		names.forEach(n -> System.out.print(n + " "));
+		
+		List<String> words = names.stream()
+									.filter(Predicate.not(String::isEmpty)) //s->!s.isEmpty() => (PRedicate<String>) String::isEmpty().negate()
+									.collect(Collectors.toList());
+		
+		System.out.println("\n\nPredicate Not:"+words);
 
 		// Example 4: Using Consumer explicitly
 		Consumer<String> display = n -> System.out.print(n + " ");

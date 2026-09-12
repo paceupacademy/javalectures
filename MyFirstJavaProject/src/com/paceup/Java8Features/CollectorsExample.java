@@ -66,9 +66,11 @@ public class CollectorsExample {
             new Employee("Neha", 30),
             new Employee("Puja", 30)
         );
+        
+        System.out.println(employees);
 
         /*** 1. Filtering Employees ***/
-        System.out.println("=== 1. Filtering Employees (age > 28) ===");
+        System.out.println("\n=== 1. Filtering Employees (age > 28) ===");
         List<Employee> filtered = employees.stream()
                                            .filter(e -> e.age > 28)
                                            .collect(Collectors.toList());
@@ -111,7 +113,7 @@ public class CollectorsExample {
         System.out.println("\n=== 8. Joining Names into String ===");
         String joinedNames = employees.stream()
                                       .map(e -> e.name)
-                                      .collect(Collectors.joining(", "));
+                                      .collect(Collectors.joining(", ", "|", "|"));
         System.out.println("Result: " + joinedNames);
         
         /*** 9.Counting ***/
@@ -122,9 +124,9 @@ public class CollectorsExample {
         
         /*** 3. Grouping Employees by Age ***/
         System.out.println("\n=== 3. Grouping Employees by Age ===");
-        Map<Integer, List<Employee>> groupedByAge = employees.stream()
-                                                             .collect(Collectors.groupingBy(e -> e.age));
-        System.out.println("Result: " + groupedByAge);
+        System.out.println(employees.stream()
+                                    .collect(Collectors.groupingBy(e -> e.age)));
+        //System.out.println("Result: " + groupedByAge);
 
         System.out.println("\n=== 3. Grouping Employees by Name and Mapping by Age ===");
         Map<String,List<Integer>> nameExtract = employees.stream()

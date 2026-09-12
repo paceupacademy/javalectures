@@ -85,6 +85,12 @@ public class TreeMapExample {
         tm.put(new StudentMap(111, "Aishwarya", "Pune"), 1);
         tm.put(new StudentMap(110, "Shraddha", "Mumbai"), 3);
         tm.put(new StudentMap(112, "Raj", "Delhi"), 2);
+        tm.put(new StudentMap(120, "Shraddha", "Mumbai"), 3);
+        tm.put(new StudentMap(122, "Raj", "Delhi"), 2);
+        tm.put(new StudentMap(130, "Shraddha", "Mumbai"), 3);
+        tm.put(new StudentMap(142, "Raj", "Delhi"), 2);
+        tm.put(new StudentMap(100, "Shraddha", "Mumbai"), 3);
+        tm.put(new StudentMap(102, "Raj", "Delhi"), 2);
         System.out.println("TreeMap of Students by rollNo:\n"+tm);
         
 
@@ -94,8 +100,8 @@ public class TreeMapExample {
 
         // Navigation methods
         System.out.println("Greatest key < 5: " + map.lowerKey(5));
-        System.out.println("Floor key ≤ 5: " + map.floorKey(5));
-        System.out.println("Ceiling key ≥ 5: " + map.ceilingKey(5));
+        System.out.println("Floor key ≤ 5: " + map.floorKey(100));
+        System.out.println("Ceiling key ≥ 5: " + map.ceilingKey(1));
         System.out.println("Higher key > 5: " + map.higherKey(5));
         
         // Entry methods

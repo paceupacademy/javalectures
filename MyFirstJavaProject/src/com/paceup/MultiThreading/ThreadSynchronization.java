@@ -35,13 +35,13 @@ class SharedResource {
 		for(int i = 0; i<=n; i++) {
 			System.out.println(Thread.currentThread().getName()+" executed "+i+ "times");
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			} catch(Exception e) {
 				System.out.println(e.toString());
 			}
 		} 
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		}
@@ -65,8 +65,8 @@ class MySynchronizedThread extends Thread {
 	// run() method: executed when thread starts
 	@Override
 	public void run() {
-		resource.display(message); // calls synchronized method
-		SharedResource.printMethod(n);
+		resource.display(this.message); // calls synchronized method
+		SharedResource.printMethod(this.n);
 	}
 }
 

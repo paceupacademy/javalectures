@@ -46,6 +46,8 @@ public class BoundedExample {
 		 * 0 ---> [putLast] ---> queue
 		 * 1 ---> [putLast] ---> queue
 		 * ...
+		 * 
+		 * deque=> [0,1,2]
 		 */
 		Thread producer = new Thread(() -> {
 			try {

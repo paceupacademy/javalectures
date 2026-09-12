@@ -25,7 +25,7 @@ import java.util.List;
  * prevents runtime ClassCastException. - Eliminates need for explicit casting
  * when retrieving values.
  */
-class Box1<T> {
+class Box1<T> { //Unbounded
 	private T value;
 
 	public T getValue() {
@@ -81,7 +81,7 @@ class MyList<E> {
 	}
 }
 
-class Calculator<N extends Number> {
+class Calculator<N extends Number & Comparable<N>> { //Upper Bound
 	public double square(N num) {
 		return num.doubleValue() * num.doubleValue();
 	}

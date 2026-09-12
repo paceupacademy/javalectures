@@ -10,16 +10,17 @@ package com.paceup.MultiThreading;
  */
 
 class SharedResource1 {
-    int j = 0; // shared counter
+    int j = 1; // shared counter
 
     void display(String message) {
+    	System.out.println("Inside Display Method "+Thread.currentThread().getName());
         // synchronized block:
         // -------------------
         // Ensures only one thread at a time can execute this block for the same object.
         // 'this' refers to the current instance of SharedResource1.
         synchronized (this) {
             for (int i = 0; i < 2; i++) {
-                System.out.print("[ " + message + " ] ");
+                System.out.println("[ " + message + " ] ");
                 try {
                     Thread.sleep(500); // pauses thread for 0.5 seconds
                 } catch (InterruptedException e) {

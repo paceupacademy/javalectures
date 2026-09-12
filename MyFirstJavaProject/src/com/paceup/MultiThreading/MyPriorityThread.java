@@ -9,6 +9,7 @@ class MyPriorityThread extends Thread {
     // When start() is called, JVM internally calls run().
     @Override
     public void run() {
+    	//Thread.currentThread().setPriority(MAX_PRIORITY);
         System.out.println("Thread running: " + Thread.currentThread().getName() +
                            " with priority " + Thread.currentThread().getPriority());
 

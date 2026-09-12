@@ -51,7 +51,7 @@ public class UpperBoundWildcardExample {
     // Unbounded Wildcard: unknown type, read as Object
     /* Read Everything , add nothing 
      * ? = Represents unknown type - could be anything(Object, Integer, String, etc.)
-     * <?> = "I don't know the type"
+     * <?> = "I don't know the type "
      */
     public static void printList(List<?> list) {
         for (Object obj : list) {
@@ -61,7 +61,7 @@ public class UpperBoundWildcardExample {
     }
 
     // Lower Bound Wildcard: consumer, allows adding Integers
-    /*
+    /* which should be superclass of Type T(Integer)
      * destination for T values
      * If a collections is consuming data ( you are adding to it)
      * 
@@ -71,8 +71,14 @@ public class UpperBoundWildcardExample {
         list.add(100);
         list.add(300);
         list.add(205);
+        //list.remove(0);
 
         printList(list); // prints added values
+        
+        /*
+         * Relation with lambdas
+         * void forEach(Consumer<? super T> action)
+         */
     }
 
     public static void main(String[] args) {
@@ -82,6 +88,7 @@ public class UpperBoundWildcardExample {
         // Output: "1 2 3"
         // [1,2,3] ---> [List<? extends Number>] ---> printNumbers
         List<Integer> intList = List.of(1, 2, 3, 4);
+        //intList.add(10);
         printNumbers(intList);
         //intList.remove(1);
 

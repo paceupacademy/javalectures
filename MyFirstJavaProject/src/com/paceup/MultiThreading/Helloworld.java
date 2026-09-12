@@ -21,5 +21,11 @@ public class Helloworld {
         // The program ends when the main thread and all non-daemon threads finish.
 
         System.out.println("Hello from another JVM!!!");
+        
+        System.out.println("Arguments count="+args.length);
+        
+        for(String arg : args) {
+        	System.out.println("Arg="+arg);
+        }
     }
 }

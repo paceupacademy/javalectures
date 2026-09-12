@@ -27,9 +27,10 @@ import java.util.Map;
  * -----------------------
  * HashMap<Integer, String> map = {1=Apple, 2=Banana, 3=Cherry}
  * Internally (capacity=16):
- * [bucketIndex for 1] → (1, Apple)
+ * [bucketIndex for 1] → (1, Apple) [1,"Apple"] -> (17,"H")=> collision
  * [bucketIndex for 2] → (2, Banana)
  * [bucketIndex for 3] → (3, Cherry)
+ * [bucketIndex for 17] -> 17-> 10001(Binary) -> 15-> 01111 => 17&15 => 17%16 => 1
  * Other buckets → null
  */
 public class HashMapExample {
@@ -49,6 +50,7 @@ public class HashMapExample {
         map.put(1, "Apple");   // bucket index based on hashCode(1)
         map.put(2, "Banana");  // bucket index based on hashCode(2)
         map.put(3, "Cherry");  // bucket index based on hashCode(3)
+        map.put(17, "H");
         System.out.println("Initial Map: " + map);
 
         // Accessing value by key
@@ -62,12 +64,12 @@ public class HashMapExample {
         Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<Integer, String> entry = it.next();
-            System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
-
+            System.out.println("Entry: "+entry+" [Key: " + entry.getKey() + " Value: " + entry.getValue()+"]");
+            
             // Removing entry safely during iteration
             if (entry.getValue().equals("Apple")) {
                 System.out.println("Removing Apple from HashMap");
-                it.remove(); // safe removal via iterator
+                //it.remove(); // safe removal via iterator
                 System.out.println("Map after removal: " + map);
             }
 
@@ -81,6 +83,27 @@ public class HashMapExample {
                 System.out.println("HashCode of entry (key+value): " + entry.hashCode());
             }
         }
+        
+        
+        
+        map.put(10, "Japan");
+        map.put(15, "India");
+        map.put(null, null);
+        map.put(12, "");
+        map.put(23, "Paris");
+        
+        System.out.println("Updated Map: "+map);
+        
+        System.out.println("Check key '23' present? "+map.containsKey(23));
+        
+        System.out.println("Check value 'null' present? "+map.containsValue(null));
+        
+        System.out.println("KeySet: "+map.keySet());
+        
+        System.out.println("All Values: "+map.values());
+        
+        //value to return if specified key is not present in map
+        System.out.println("Get or Default? "+map.getOrDefault(25, "H"));
 
         // Removing entry by key
         map.remove(3); // removes key 3 if present

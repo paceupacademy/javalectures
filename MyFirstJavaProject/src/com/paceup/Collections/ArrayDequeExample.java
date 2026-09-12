@@ -25,7 +25,9 @@ public class ArrayDequeExample {
 
         // Add elements (default adds at the tail)
         deque.add("P");
+        deque.add("a");
         deque.add("Q");
+        deque.add("a");
         deque.add("O");
         deque.add("a");
         System.out.println("Initial Deque: " + deque);
@@ -38,7 +40,7 @@ public class ArrayDequeExample {
         System.out.println("\n--- Offer Operations ---");
 
         // Offer methods return boolean (true if successful)
-        boolean flag = deque.offer("J"); // Adds at tail
+        boolean flag = deque.offer("X"); // Adds at tail
         System.out.println("After offer (tail) -> " + flag + ": " + deque);
 
         boolean flag2 = deque.offerLast("K"); // Adds at tail
@@ -70,14 +72,16 @@ public class ArrayDequeExample {
         for (String val : deque) {
             if (val.equals("a")) {
                 System.out.println("Index of 'a': " + index);
-                break;
+                //break;
             }
             index++;
         }
+        
+        System.out.println("Is 'a' present in deque? "+deque.contains("a"));
 
         System.out.println("\n--- Iteration ---");
 
-        // Iterating using Iterator
+        // Iterating using Iterator traversing
         Iterator<String> itr = deque.iterator();
         System.out.print("Elements: ");
         while (itr.hasNext()) {
@@ -103,9 +107,16 @@ public class ArrayDequeExample {
         // Removing elements from both ends
         deque.removeFirst();   // Removes head
         System.out.println("After removeFirst: " + deque);
+        
+        deque.removeFirstOccurrence("a");
+        System.out.println("After remove First 'a': " + deque);
 
         deque.removeLast();    // Removes tail
         System.out.println("After removeLast: " + deque);
+        
+        deque.add("P");
+        deque.add("Q");
+        System.out.println("\nUpdated Deque: " + deque);
 
         deque.pollLast();      // Safe remove tail (returns null if empty)
         System.out.println("After pollLast: " + deque);
@@ -117,6 +128,12 @@ public class ArrayDequeExample {
         System.out.println("After remove(\"P\"): " + deque);
 
         System.out.println("\n--- Clear Deque ---");
+        
+        deque.removeIf(n->(n.contains("a")));
+        System.out.println("Remove with Predicate filter"+deque);
+        
+        deque.removeAll(deque);
+        System.out.println("After removeAll: " + deque);
 
         // Clear deque
         deque.clear();
@@ -128,12 +145,14 @@ public class ArrayDequeExample {
         System.out.println("OfferFirst empty string: " + deque.offerFirst(""));
 
         System.out.println("\n--- Exception Handling Example ---");
+        
+        deque.clear();
 
         /**
          * getLast() throws exception if deque is empty
          */
         try {
-            System.out.println("Get Last: " + deque.getLast());
+            System.out.println("Get Last: " + deque.peekLast());
         } catch (Exception e) {
             System.out.println("Exception on getLast(): " + e);
         }

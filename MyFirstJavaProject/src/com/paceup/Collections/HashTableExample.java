@@ -1,5 +1,6 @@
 package com.paceup.Collections;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -28,54 +29,61 @@ import java.util.Map;
  * - HashMap is unsynchronized (faster), Hashtable is synchronized (slower).
  */
 public class HashTableExample {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        System.out.println("=========== HASHTABLE ===========");
+		System.out.println("=========== HASHTABLE ===========");
 
-        // Create a Hashtable
-        Hashtable<Integer, String> table = new Hashtable<>();
+		// Create a Hashtable
+		Hashtable<Integer, String> table = new Hashtable<>();
 
-        System.out.println("\n--- Adding Elements ---");
+		System.out.println("\n--- Adding Elements ---");
 
-        // Add key-value pairs
-        table.put(1, "Java");
-        table.put(2, "Spring");
-        table.put(3, "Hibernate");
+		// Add key-value pairs
+		table.put(1, "Java");
+		table.put(2, "Spring");
+		table.put(3, "Hibernate");
 
-        System.out.println("Hashtable contents: " + table);
+		System.out.println("Hashtable contents: " + table);
 
-        System.out.println("\n--- Iterating Entries ---");
+		System.out.println("\n--- Iterating Entries ---");
 
-        /**
-         * Iteration using entrySet()
-         * - Provides both key and value together
-         * - Order is NOT guaranteed
-         */
-        for (Map.Entry<Integer, String> entry : table.entrySet()) {
-            System.out.println(
-                "Key   : " + entry.getKey() +
-                " | Value : " + entry.getValue()
-            );
-        }
+		/**
+		 * Iteration using entrySet()
+		 * - Provides both key and value together
+		 * - Order is NOT guaranteed
+		 */
+		for (Map.Entry<Integer, String> entry : table.entrySet()) {
+		}
 
-        System.out.println("\n--- Null Handling ---");
+		System.out.println("\n--- Null Handling ---");
 
-        /**
-         * Hashtable does NOT allow null keys or values
-         * Attempting to insert null will throw NullPointerException
-         */
-        try {
-            table.put(5, null);     // ❌ Null value not allowed
-        } catch (Exception e) {
-            System.out.println("Error inserting null value: " + e);
-        }
+		/**
+		 * Hashtable does NOT allow null keys or values
+		 * Attempting to insert null will throw NullPointerException
+		 */
+		try {
+			table.put(5, null);     // ❌ Null value not allowed
+		} catch (Exception e) {
+			System.out.println("Error inserting null value: " + e);
+		}
 
-        try {
-            table.put(null, "Test"); // ❌ Null key not allowed
-        } catch (Exception e) {
-            System.out.println("Error inserting null key: " + e);
-        }
+		try {
+			table.put(null, "Test"); // ❌ Null key not allowed
+		} catch (Exception e) {
+			System.out.println("Error inserting null key: " + e);
+		}
 
-        System.out.println("\nFinal Hashtable: " + table);
-    }
+		System.out.println("\nFinal Hashtable: " + table);
+
+		Hashtable<String,Integer> ht = new Hashtable<String, Integer>();
+		ht.put("A", 1);
+		ht.put("B", 2);
+		ht.put("C", 3);
+
+		Enumeration<Integer> values = ht.elements(); 
+		while(values.hasMoreElements()) {
+			System.out.println("Elements: "+values.nextElement());
+		}
+
+	}
 }

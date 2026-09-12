@@ -89,6 +89,7 @@ public class BasicLambdaExample {
         // ------------------------------------------------------
         BasicLambdaExample example = new BasicLambdaExample();
         Greeting greetInstance = example::instanceHello;
+        Greeting g = message -> example.instanceHello(message);
         greetInstance.sayHello("Java Developer");
 
         // Example 6: Inline Lambda with more logic

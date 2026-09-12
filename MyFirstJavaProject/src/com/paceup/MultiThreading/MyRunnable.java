@@ -28,6 +28,7 @@ class MyRunnable implements Runnable {
                 // --------------------
                 // sleep() puts thread into TIMED_WAITING for given duration.
                 Thread.sleep(1000);
+                //Thread.currentThread().interrupt(); // re-set interrupt flag
                 System.out.println(Thread.currentThread().getName() + " Current State is " + Thread.currentThread().getState());
             } catch (InterruptedException e) {
                 // Interrupted State:
@@ -69,13 +70,18 @@ class MyRunnable implements Runnable {
         // After start() is called, thread enters RUNNABLE state (ready to run).
         t1.start();
         t2.start();
+        
+        t1.interrupt();
 
         // Checking states from main thread
         System.out.println(t1.getName() + " Current State for main block is " + t1.getState());
         System.out.println(t2.getName() + " Current State for main block is " + t2.getState());
 
+        
         // Main thread continues execution in parallel
         System.out.println(Thread.currentThread().getName() + " Current State is " + Thread.currentThread().getState());
+        System.out.println(t2.getName() + " Current State for main block after stop() is " + t2.getState());
+
     }
 }
 

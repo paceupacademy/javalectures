@@ -59,7 +59,14 @@ public class PredicateExample {
 
         // Example 5: Negating a Predicate
         Predicate<Integer> notEven = isEven.negate();
-        System.out.println("Is 7 not even? " + notEven.test(7)); // true
-        System.out.println("Is 4 not even? " + notEven.test(4)); // false
+        System.out.println("Is 7 odd? " + notEven.test(7)); // true
+        System.out.println("Is 4 not odd? " + notEven.test(4)); // false
+        
+        
+        Predicate<String> isPassword=Predicate.isEqual("Admin123");
+        
+        System.out.println(isPassword.test("admin123"));
+        
+        System.out.println(isPassword.test("Admin123"));
     }
 }

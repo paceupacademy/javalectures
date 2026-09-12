@@ -75,6 +75,8 @@ public class SupplierExample {
         // Output: Random double between 0.0–1.0
         DoubleSupplier doubleSupplier = () -> Math.random();
         System.out.println("Double Value: " + doubleSupplier.getAsDouble());
+        
+        
     }
 }
 

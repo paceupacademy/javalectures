@@ -81,7 +81,7 @@ public class TreeSetExample {
         employees.add(new Employee(104, "Eva"));
 
         // Duplicate id ignored (compareTo returns 0)
-        employees.add(new Employee(101, "DuplicateBob"));
+        employees.add(new Employee(106, null));
 
         System.out.println("Employees (sorted by id): " + employees);
 
@@ -90,6 +90,8 @@ public class TreeSetExample {
         // Access first and last elements
         System.out.println("First Employee: " + employees.first());
         System.out.println("Last Employee : " + employees.last());
+        
+        
 
         System.out.println("\n--- Navigation Methods ---");
 
@@ -138,10 +140,11 @@ public class TreeSetExample {
 
         employeesByName.addAll(Arrays.asList(
             new Employee(103, "Alice"),
+            new Employee(104, "Eva"),
             new Employee(101, "Bob"),
             new Employee(105, "Charlie"),
-            new Employee(102, "Demon"),
-            new Employee(104, "Eva")
+            new Employee(102, "Demon")
+            
         ));
 
         System.out.println("Employees (sorted by name): " + employeesByName);

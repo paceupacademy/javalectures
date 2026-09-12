@@ -8,6 +8,9 @@ package com.paceup.Generics;
  * 1. Generics:
  *    - Allow classes, interfaces, and methods to operate on types specified at runtime.
  *    - Provide type safety (compile-time checking) and eliminate the need for casting.
+ *    - class ClassName<T>{
+ *    		T value;
+ *    	}
  *
  * 2. Generic Class (Box<T>):
  *    - `T` is a type parameter (placeholder).

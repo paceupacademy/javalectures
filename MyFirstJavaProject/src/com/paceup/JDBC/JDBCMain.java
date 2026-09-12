@@ -81,7 +81,8 @@ public class JDBCMain {
 	 */
 	public static void createStudent(int id, String name) {
 		String sql = "INSERT INTO students (id, name) VALUES (?, ?)";
-		try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try (Connection conn = connect(); 
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			// Bind parameters
 			pstmt.setInt(1, id);
@@ -106,7 +107,8 @@ public class JDBCMain {
 		// Alternative PreparedStatement query (commented out)
 		// String sql = "SELECT * FROM students WHERE id=?";
 
-		try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
+		try (Connection conn = connect(); 
+				Statement stmt = conn.createStatement()) {
 
 			/*
 			 * PreparedStatement Example (commented): --------------------------------------

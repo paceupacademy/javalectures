@@ -4,6 +4,13 @@ import java.util.EnumSet;
 
 /**
  * 
+ * Enum:
+ * - Stands for Enumeration
+ * - Syntax: 
+ * 	enum EnumName{
+ * 		CONSTANT1, CONSTANT2, CONSTANT2, ...;
+ * }
+ * 
  * EnumSet:
  * - Specialized Set implementation for enum types.
  * - Stores only enum constants (no other objects allowed).
@@ -37,6 +44,10 @@ public class EnumSetExample {
          * - Here: TUESDAY → SATURDAY
          */
         EnumSet<Day> workDays = EnumSet.range(Day.TUESDAY, Day.SATURDAY);
+        
+        EnumSet<Day> demo = EnumSet.complementOf(workDays);
+        
+        System.out.println(demo);
 
         System.out.println("Work Days Set: " + workDays);
 

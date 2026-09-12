@@ -42,6 +42,10 @@ public class FunctionInterfaceExample {
          * Input: "Aishwarya"
          * Backend: apply() → calls s.length()
          * Output: Integer length = 9
+         * 
+         * int apply(String s){
+         *  return s.length;
+         * }
          *
          * "Aishwarya" ---> [Function: s.length()] ---> 9
          */
@@ -98,6 +102,10 @@ public class FunctionInterfaceExample {
          * 78 ---> [+10] ---> 88 ---> [*3] ---> 264
          */
         System.out.println("andThen (add10 -> multiBy3): " + add10.andThen(multiBy3).apply(78));
+        //g=multiply3 f=add10
+        
+        //multiply3(add10(78))
+        		
 
         // Example 4: Chaining Functions with compose()
         /*
@@ -108,6 +116,10 @@ public class FunctionInterfaceExample {
          * 78 ---> [+10] ---> 88 ---> [*3] ---> 264
          */
         System.out.println("compose (multiBy3 after add10): " + multiBy3.compose(add10).apply(78));
+        /*
+         * g= add10 f = multiply3
+         * multiply3(add10(78)
+         */
 
         // Half transformation example
         Function<Integer, Double> half = a -> a * 4.0;

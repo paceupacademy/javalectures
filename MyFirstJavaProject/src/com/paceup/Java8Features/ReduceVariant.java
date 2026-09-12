@@ -3,6 +3,7 @@ package com.paceup.Java8Features;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ForkJoinPool;
 
 /**
  * ReduceVariant:
@@ -42,6 +43,13 @@ class Employee2 {
     }
 }
 
+/*
+ * arr=[1,2,3,4,5,6]
+ * int sum =0;
+ * for(i=0;i<arr.length;i++){
+ * 	sum =sum+arr[i]
+ * }
+ */
 public class ReduceVariant {
     public static void main(String[] args) {
         // Example 1: reduce(identity, accumulator) → sum of integers
@@ -83,12 +91,25 @@ public class ReduceVariant {
          * acc = 473948 + 3874983 = 4348931
          * acc = 4348931 + 49837 = 4398768
          * 
-         * 473948+3874983+ 49837 =  
+         * 473948+3874983+ 49837 =  4398768
+         * 
+         * long acc = 0;
+         * for(Employee2 e;emp){
+         * 	acc = acc+e.salary;
+         * 
+         * Thread 1: ajay +Akash
+         * 
+         * thread2 Rahul
+         * 
+         * Combiner(4348931+49837)
+         * }
          */
         long totalSalary = emp.stream()
                               .reduce(0L,
                                       (acc, e) -> acc + e.salary, // accumulator
                                       Long::sum);                 // combiner
         System.out.println("Total Salary: " + totalSalary);
+        
+       
     }
 }
