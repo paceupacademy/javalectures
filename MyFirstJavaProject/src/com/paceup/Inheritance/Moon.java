@@ -18,5 +18,14 @@ public class Moon extends Earth {
         System.out.println(e instanceof Moon);
         System.out.println(m instanceof SolarSystem);
         System.out.println(m1 instanceof Moon);
+        
+        if(m instanceof SolarSystem) {
+        	System.out.println("M is instance of subclass");
+        }
+        
+        Object obj = new String();
+        if(obj instanceof Object) {
+        	System.out.println("Obj is instance");
+        }
     }
 }

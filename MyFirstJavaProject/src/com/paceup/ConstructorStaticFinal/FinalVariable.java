@@ -34,17 +34,21 @@ public class FinalVariable {
         fv.sum(7, 19);
 
         // Print local final variable and updated private variable
-        System.out.println("Value of PI: " + PI + "\n PVAR changed value is : " + fv.pvar);
+        System.out.println("Value of PI: " + PI + "\nPVAR changed value is : " + fv.pvar);
 
         // Demonstrating constructor call with AccessSpecifiers
         AccessSpecifiers as = new AccessSpecifiers(fv.pvar);
+        as.showScopes(fv.pvar);
     }
 }
 
-/*
- * class Demo extends AccessSpecifiers {
- *     void display() {
- *         System.out.println(" " + pubvar);
- *     }
- * }
- */
+
+  class Demo extends AccessSpecifiers {
+      void display() {
+          System.out.println(" " + pvar);
+          
+          showScopes(pvar);
+      }
+  }
+  
+ 

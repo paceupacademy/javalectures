@@ -8,7 +8,7 @@ public class SwitchExample {
 	      int i =2;
 	      //passing n to switch
 	      // it will check n and display output accordingly
-	      switch(i) {
+	      switch(n) {
 	          
 	        case 'a': 
 	          System.out.println("India");

@@ -53,6 +53,6 @@ public class RunTimePolymorphism {
         Animal ref = new Dog();
         ref.sound(); // Dog barks (runtime polymorphism)
         ref.age(2);
-        // ref.breed("Labrador"); // Not accessible via Animal reference
+        //ref.breed("Labrador"); // Not accessible via Animal reference
     }
 }

@@ -1,5 +1,7 @@
 package com.paceup.Encapsulation;
 
+import com.paceup.Encapsulation.AccessSpecifiers.DemoClass;
+
 // Java Program demonstrating Encapsulation
 // ----------------------------------------
 // Encapsulation = Wrapping data (variables) and code (methods) together
@@ -19,38 +21,7 @@ class Account {
     // Getter and Setter methods:
     // --------------------------
     // Provide controlled access to private variables.
-
-    public long getAccNo() {
-        return this.accNo;
-    }
-
-    public void setAccNo(long accNo) {
-        this.accNo = accNo;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public float getAmount() {
-        return this.amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
+    
 
     // Business logic method:
     // ----------------------
@@ -58,6 +29,62 @@ class Account {
     public void deposit(float d) {
         this.setAmount(this.getAmount() + d);
     }
+
+	/**
+	 * @return the accNo
+	 */
+	public long getAccNo() {
+		return accNo;
+	}
+
+	/**
+	 * @param accNo the accNo to set
+	 */
+	public void setAccNo(long accNo) {
+		this.accNo = accNo;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return the amount
+	 */
+	public float getAmount() {
+		return amount;
+	}
+
+	/**
+	 * @param amount the amount to set
+	 */
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
 }
 
 public class EncapsulationExample {
@@ -68,6 +95,9 @@ public class EncapsulationExample {
     public static void main(String[] args) {
         // Create first Account object
         Account acc = new Account();
+        
+        Special sp = new Special();
+        sp.printData();
 
         // Set values using setter methods (controlled access)
         acc.setAccNo(90482098491L);
@@ -100,4 +130,10 @@ public class EncapsulationExample {
         System.out.println("Email: " + acc1.getEmail());
         System.out.println("Amount: " + acc1.getAmount());
     }
+}
+
+class Special extends AccessSpecifiers.DemoClass{
+	void printData(){
+		training();
+	}
 }

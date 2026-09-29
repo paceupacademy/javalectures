@@ -7,7 +7,7 @@ class One { //Base Class 1
 		System.out.println("Week");
 	}
 	public void demo() {
-		System.out.println("Class1 demo method called");
+		System.out.println("Class 1 demo method called");
 	}
 	
 }
@@ -30,7 +30,7 @@ class Three extends Two { //Derived Class
 	// Method to print 
 	public void print3() {
 		System.out.println("Today");
-		//super.demo2();
+		super.demo2();
 	}
 }
 

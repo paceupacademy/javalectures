@@ -10,7 +10,7 @@ class LogicalOperatorsExample
         boolean y = true;
         boolean z = false;
       
-        System.out.println("x && y: " + (x && y)); //true
+        System.out.println("x && y: " + (x & y)); //true
         System.out.println("x && z: "+ (x && z)); //false
         System.out.println("x || z: " + (x || z)); //true
         System.out.println("!x: " + (!x)); //false

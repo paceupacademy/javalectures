@@ -45,6 +45,7 @@ class BitwiseOperatorsExample {
         // For positive numbers, same as >>.
         // For negative numbers, >>> fills with 0s instead of sign bit.
         // Here d=5, so result is 2 (same as >>).
+        d=-8;
         System.out.println("d >>> 1 : " + (d >>> 1));
     }
 }

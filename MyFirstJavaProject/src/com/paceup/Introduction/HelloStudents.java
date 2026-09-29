@@ -15,6 +15,11 @@ import java.util.Scanner;
  * - Every Java program must have at least one class.
  * - The class name should match the filename (HelloStudents.java).
  * - Classes are blueprints for objects, but here we just use it to hold main().
+ * 
+ * Compilation command 
+ * javac HelloStudents.java
+ * 
+ * java HelloStudents
  */
 public class HelloStudents {
 
@@ -87,3 +92,4 @@ public class HelloStudents {
 		System.out.println("================================");
 	}
 }
+

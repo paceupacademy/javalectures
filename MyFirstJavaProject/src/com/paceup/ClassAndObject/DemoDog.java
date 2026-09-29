@@ -3,7 +3,7 @@ package com.paceup.ClassAndObject;
 // Java Program to Demonstrate the use of a class with instance variables
 
 // Class Declaration
-public class Dog { 
+class Dog { 
     // public → accessible from other packages as well
 
     // Instance Variables (attributes of Dog objects)
@@ -59,4 +59,13 @@ public class Dog {
     public String getColor() {
         return this.color;
     }
+}
+
+public class DemoDog{
+	
+	public static void main(String[] args) {
+		Dog d = new Dog();
+		Dog d1 = new Dog("Tom","GS",7,"brown");
+		System.out.println(d.getBreed());
+	}
 }

@@ -48,6 +48,12 @@ public class JavaInheritance {
 		an.name="Animal";
 		an.eat();
 		//an.display();
+		
+		System.out.println("Float to int "+a);
+		
+		Animal an1= new Animal();
+		an1.name="Tom";
+		an1.eat();
 
 	}
 }

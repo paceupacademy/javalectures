@@ -22,7 +22,7 @@ public class WhileExample {
 		}
 		System.out.println("Summation of 1-10: " + s);
 
-		int c = -5;
+		int c = 4;
 
 		// Using do-while loop
 		do {

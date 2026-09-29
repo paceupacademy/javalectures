@@ -16,7 +16,8 @@ final class FinalClass {
 
         System.out.println("\nNum: " + num);
         System.out.println("Num1: " + a);
-
+        //num1 =67;
+        int a1= num1;
         int localVar = 60; // normal local variable (can be changed)
     }
 

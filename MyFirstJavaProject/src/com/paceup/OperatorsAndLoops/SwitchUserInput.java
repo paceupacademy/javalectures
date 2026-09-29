@@ -9,6 +9,7 @@ public class SwitchUserInput {
 		String day=null;
 		System.out.println("Enter one of first three day of week(Monday,Tuesday,Wednesday):");
 		day=sc.next();
+		System.out.println(day);
 		switch(day) {
 			case "monday":
 			case "Monday": 

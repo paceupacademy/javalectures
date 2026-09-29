@@ -3,22 +3,24 @@ package com.paceup.Encapsulation;
 // Example of protected access
 class ProtectedExample {
     protected int var = 54; // protected variable → accessible in same package + subclasses
-
+    private int data=60;
     protected void showInteger() {
         System.out.println("Protected method called!!!");
+        System.out.println("Private Variable is "+data);
     }
 }
 
 // Child class extending ProtectedExample
 class ChildClass extends ProtectedExample {
     public void accessMethod() {
-        // Accessing protected members from parent
+    	// Accessing protected members from parent
         System.out.println("Protected Variable value: " + var);
         showInteger();
     }
 }
 
 public class AccessSpecifiers {
+	
     // Public variable → accessible everywhere
     public int pubvar = 35;
 
@@ -29,7 +31,7 @@ public class AccessSpecifiers {
     private int instanceVar = 10;
 
     // Default (package-private) variable → accessible only within same package
-    int localVar2 = 20;
+    static int localVar2 = 20;
 
     // Static variable → shared among all instances
     static int staticVar = 100;
@@ -49,7 +51,6 @@ public class AccessSpecifiers {
     public void showScopes(int paramVar) {
         // Local variable → exists only inside this method
         int localVar = 20;
-
         System.out.println("Instance Variable: " + instanceVar);
         System.out.println("Static Variable: " + staticVar);
         System.out.println("Method Parameter: " + paramVar);
@@ -63,6 +64,12 @@ public class AccessSpecifiers {
 
         // Uncommenting below line would cause error (blockVar out of scope)
         // System.out.println(blockVar);
+    }
+    
+    protected static class DemoClass{
+    	void training() {
+    		System.out.println("Protected class called!!");
+    	}
     }
 
     public static void main(String[] args) {
@@ -89,8 +96,11 @@ public class AccessSpecifiers {
         System.out.println();
 
         // Demonstrating default access via subclass
-        DemoClass dc = new DemoClass();
-        dc.displayVar();
+        
+         ProtectedExample pe = new ProtectedExample();
+         System.out.println("Private Variable is "+pe.var);
+         
+        
     }
 }
 
@@ -98,5 +108,6 @@ public class AccessSpecifiers {
 class DemoClass extends AccessSpecifiers {
     public void displayVar() {
         System.out.println("Local Variable (default access): " + localVar2);
+        showScopes(pvar);
     }
 }

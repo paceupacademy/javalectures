@@ -11,6 +11,10 @@ public class ForLoop {
         
         System.out.println("Loop has ended.");
         
+        //For Loop with False Condition
+        for ( int i =10; i<5;i++) {
+        	System.out.println("This is never executed");
+        }
         
         
         int s = 0;
@@ -49,12 +53,21 @@ public class ForLoop {
 
         // for loop begins
         // and runs till x <= 20
-        //s=0;
+        s=0;
         for (int x = 1; x <= 20; x++) {
             s = s + x; 
         }
         System.out.println("Sum: " + s);
         
+        /*
+         * s = (n(a+b))/2
+         * n=b-a+1
+         * 
+         * 1-10
+         * S = ((10-1+1)(1+10))/2 = (10*11)/2 = 55
+         */
+        
+        //Enhanced For Loop
         String[] names= {"Om","Raj","Kiran"};
         for(String name:names) {
         	System.out.println("Name:"+name);

@@ -36,6 +36,19 @@ public class StaticClassExample {
     static class Example {
         void display() {
             System.out.println("Outer static variable: " + outerstaticVariable);
+            int data = outerstaticVariable;
+        }
+        static int m1() {
+            System.out.println("from m1");
+            int data = outerstaticVariable;
+                    
+            return 20+data;
+            
+        }
+        static {
+            System.out.println("Inside static block");
+            int data = outerstaticVariable;
+            
         }
     }
 
@@ -58,5 +71,7 @@ public class StaticClassExample {
         
         // Displaying outer static variable from nested class
         stobj.display(); // Outer static variable: 8 (5 initial + 3 increments)
+        
+        StaticClassExample.Example.m1();
     }
 }

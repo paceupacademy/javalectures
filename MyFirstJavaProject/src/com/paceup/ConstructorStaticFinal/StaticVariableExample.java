@@ -5,8 +5,9 @@ public class StaticVariableExample {
     // ----------------
     // Belongs to the class, not to individual objects.
     // Initialized by calling static method m1().
-    static int a = m1(); // a = 20
+    static int a; // a = 20
 
+    static int m;
     // Instance variable:
     // ------------------
     // Each object of StaticVariableExample will have its own copy.
@@ -27,6 +28,7 @@ public class StaticVariableExample {
     // Runs once when the class is loaded into memory, before main() or constructor.
     static {
         System.out.println("Inside static block");
+        a= m1();
     }
 
     // Instance method:
@@ -43,6 +45,7 @@ public class StaticVariableExample {
     static int m1() {
         System.out.println("from m1");
         return 20;
+        
     }
 
     // Main method:
@@ -54,6 +57,7 @@ public class StaticVariableExample {
 
         // First object creation
         StaticVariableExample s = new StaticVariableExample();
+        s.a= 25;
         System.out.println("Value of a: " + s.a + " Num: " + s.num + "\n");
 
         // Second object creation
@@ -64,7 +68,7 @@ public class StaticVariableExample {
         int a = 7;
 
         // Calling static method
-        int m = m1();
+        m = m1();
         System.out.println("\nValue for static m1(): " + m);
     }
 }

@@ -22,6 +22,7 @@ class CopyConstructorExample {
     // It copies values from the existing object into the new one.
     CopyConstructorExample(CopyConstructorExample obj) {
         x = obj.x; // copy value of x from passed object
+        //y=obj.y;
         // Note: y is not copied here, so it retains its default value (25)
         System.out.println("Copy Constructor called!!! X value is " 
                            + x + " and Y value is: " + y);

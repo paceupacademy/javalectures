@@ -22,4 +22,6 @@ public class InterfaceFullAbstractionExample2 {
         System.out.println("Rectangle Area: " + rectangle.calculateArea());
         System.out.println("Rectangle Perimeter: " + rectangle.calculatePerimeter());
     }
+    
+    
 }

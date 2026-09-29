@@ -24,6 +24,7 @@ class FinalStaticVariable {
     // Used to initialize blank final instance variables.
     {
         CAPACITY = 25;
+        System.out.println("Initializer Block Executed");
     }
 
     // Static initializer block:
@@ -31,6 +32,7 @@ class FinalStaticVariable {
     // Used to initialize blank final static variables.
     static {
         EULERCONSTANT = 2.3;
+        System.out.println("Static Block");
     }
 
     // Constructor:
@@ -38,17 +40,20 @@ class FinalStaticVariable {
     // Used to initialize blank final variables.
     // If there are multiple constructors, each must initialize MINIMUM.
     public FinalStaticVariable() {
+    	System.out.println("Constructor Called");
         MINIMUM = -1;
     }
 
     public static void main(String[] args) {
+    	System.out.println("Main Method Execution Started");
         FinalStaticVariable fsv = new FinalStaticVariable();
 
+        FinalStaticVariable fsv2 = new FinalStaticVariable();
         // fsv.MINIMUM = 1; // ❌ Error: cannot assign a value to final variable
 
         System.out.println(fsv.MINIMUM); // Prints -1
 
         // Calling another class’s static method (example)
-        StaticVariableExample.m1();
+        //StaticVariableExample.m1();
     }
 }
