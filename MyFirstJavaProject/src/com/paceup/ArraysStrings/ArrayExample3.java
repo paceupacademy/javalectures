@@ -16,7 +16,31 @@ public class ArrayExample3 {
 		 */
 				
 		for(int a : age) {
-			System.out.println(a);
+			System.out.print(a+" ");
 		}
+		
+		int[] uarr=incrementData(age);
+		System.out.println("\nUpdated array: ");
+		for(int a:uarr) {
+			System.out.print(a+" ");
+		}
+		System.out.println();
+		avg(age);
 	}
+		
+		public static void avg(int[] arr) {
+			int sum = 0;
+			for(int i=0;i<arr.length;i++) {
+				sum += arr[i];				
+			}
+			System.out.println("Average age is "+(sum/arr.length));
+		}
+		
+		public static int[] incrementData(int[] arr) {
+			for(int i=0; i<arr.length;i++) {
+				arr[i]+=5;
+			}
+			return arr;
+			
+		}
 }

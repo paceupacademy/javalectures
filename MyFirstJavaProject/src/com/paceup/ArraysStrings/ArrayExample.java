@@ -1,5 +1,11 @@
 package com.paceup.ArraysStrings;
-
+/*
+ * dataType[] arrayName
+ * dataType arrayName[]
+ * dataType arrayName[]=new dataType[size]
+ * 
+ * 0 <= index <= (size-1) 
+ */
 public class ArrayExample {
 	public static void main(String[] args) {
 		Integer i = 78;
@@ -7,6 +13,8 @@ public class ArrayExample {
 		int[] age = {12, 4, 5, 2, 5};
 		
 		int arr[] = {2,5,343,343};
+		
+		age[4] = 56;
 		
 		int arr1[]= new int[56]; //size
 

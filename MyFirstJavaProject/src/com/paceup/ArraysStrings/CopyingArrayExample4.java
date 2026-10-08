@@ -12,7 +12,7 @@ public class CopyingArrayExample4 {
         System.out.println("destination1 = " + Arrays.toString(destination1)); 
       
         // copying from index 2 to 5 (5 is not included) 
-        int[] destination2 = Arrays.copyOfRange(source, 2, 5); 
+        int[] destination2 = Arrays.copyOfRange(source, 2, 7); 
         System.out.println("destination2 = " + Arrays.toString(destination2));   
     }
 }
