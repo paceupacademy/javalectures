@@ -49,6 +49,7 @@ public class BufferedOutputStreamExample {
              * Write bytes to file starting from index 5
              * and write (bytes.length - 5) bytes.
              * This means the first 5 characters are skipped.
+             * Otherwise it throws ArrayIndexOutOfBoundsException
              */
             bos.write(bytes, 5, bytes.length - 5);
 

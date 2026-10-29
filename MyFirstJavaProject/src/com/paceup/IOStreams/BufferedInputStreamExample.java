@@ -37,7 +37,7 @@ import java.io.IOException;
  */
 public class BufferedInputStreamExample {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // try-with-resources ensures streams are closed automatically
         try (FileInputStream fin = new FileInputStream("file.txt");
              BufferedInputStream bis = new BufferedInputStream(fin)) {
@@ -60,8 +60,9 @@ public class BufferedInputStreamExample {
             int ch;
             while ((ch = bis.read()) != -1) {
                 System.out.print((char) ch);
+                Thread.sleep(50);
                 // Uncomment below line to also print ASCII values
-                // System.out.print("\tASCII value: " + ch);
+                //System.out.print("\tASCII value: " + ch);
             }
 
             // Reset back to the marked position (before skip)
@@ -73,6 +74,14 @@ public class BufferedInputStreamExample {
                 while ((ch = bis.read()) != -1) {
                     System.out.print((char) ch);
                 }
+            }
+            
+            System.out.println("\n\nFile Input Stream started");
+            
+            int count;
+            System.out.println(fin.read());
+            while((count = fin.read())!=-1) {
+            	System.out.println((char)count);
             }
 
         } catch (IOException e) {

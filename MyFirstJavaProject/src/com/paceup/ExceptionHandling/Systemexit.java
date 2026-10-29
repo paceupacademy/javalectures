@@ -1,46 +1,192 @@
 package com.paceup.ExceptionHandling;
 
-/**
- * Systemexit:
- * -----------
- * Demonstrates the behavior of `System.exit()` inside a try-finally block.
+/*
+ * =============================================================================
+ * SYSTEM.EXIT() EXAMPLE
+ * =============================================================================
  *
- * Key Concepts:
- * -------------
- * 1. **finally block**:
- *    - Normally executes after try/catch, regardless of whether an exception occurs.
- *    - Ensures cleanup code (closing resources, releasing locks).
+ * Purpose:
+ * --------
+ * Demonstrates what happens when System.exit()
+ * is invoked inside a try block that also contains
+ * a finally block.
  *
- * 2. **System.exit()**:
- *    - Terminates the JVM immediately.
- *    - Does not throw an exception or return normally.
- *    - Bypasses the normal try/finally execution path.
+ * =============================================================================
+ * FINALLY BLOCK
+ * =============================================================================
  *
- * 3. **Why finally is skipped**:
- *    - The JVM halts before it can reach the finally block.
- *    - No further instructions are executed once `System.exit()` is called.
+ * In normal situations:
  *
- * Backend Working:
+ * try
+ *   |
+ *   V
+ * catch (optional)
+ *   |
+ *   V
+ * finally
+ *
+ * The finally block executes regardless of:
+ *
+ * ✓ Exception occurs
+ * ✓ Exception does not occur
+ * ✓ Return statement executes
+ *
+ * Common Uses:
+ * ------------
+ * 1. Closing files
+ * 2. Closing database connections
+ * 3. Releasing locks
+ * 4. Resource cleanup
+ *
+ * =============================================================================
+ * SYSTEM.EXIT()
+ * =============================================================================
+ *
+ * Syntax:
+ *
+ * System.exit(statusCode);
+ *
+ * Example:
+ *
+ * System.exit(0);
+ *
+ * Purpose:
+ * --------
+ * Immediately terminates the Java Virtual Machine (JVM).
+ *
+ * =============================================================================
+ * EXIT STATUS CODES
+ * =============================================================================
+ *
+ * System.exit(0)
  * ----------------
- * - JVM starts executing the try block.
- * - `System.out.println("In try block")` executes.
- * - `System.exit(0)` is called → JVM shutdown sequence begins.
- * - JVM halts immediately → finally block is **not executed**.
+ * Normal termination.
  *
- * Expected Output:
+ * System.exit(1)
  * ----------------
- * In try block
+ * Abnormal termination.
  *
- * (The line "In finally block" will NOT appear because JVM terminates before reaching it.)
+ * System.exit(anyNonZeroValue)
+ * ----------------------------
+ * Indicates an error condition.
+ *
+ * =============================================================================
+ * IMPORTANT BEHAVIOR
+ * =============================================================================
+ *
+ * Normally:
+ *
+ * try
+ *   |
+ *   V
+ * finally executes
+ *
+ * But:
+ *
+ * System.exit()
+ *      |
+ *      V
+ * JVM Shutdown Initiated
+ *      |
+ *      V
+ * Program Stops
+ *      |
+ *      V
+ * finally Block Skipped
+ *
+ * =============================================================================
  */
 public class Systemexit {
+
     public static void main(String[] args) {
+
+        /*
+         * =====================================================================
+         * TRY BLOCK
+         * =====================================================================
+         *
+         * JVM Execution Sequence:
+         *
+         * main()
+         *    |
+         *    V
+         * try block
+         *    |
+         *    V
+         * println()
+         *    |
+         *    V
+         * System.exit(0)
+         *    |
+         *    V
+         * JVM Shutdown
+         *
+         * =====================================================================
+         */
         try {
+
+            /*
+             * Executed successfully.
+             */
             System.out.println("In try block");
-            System.exit(0); // Terminates JVM immediately
-        } finally {
-            // This will NOT execute because JVM halts before reaching here
+
+            /*
+             * =================================================================
+             * TERMINATE JVM
+             * =================================================================
+             *
+             * Exit code = 0
+             *
+             * Indicates normal termination.
+             *
+             * JVM immediately begins shutdown sequence.
+             *
+             * No exception is thrown.
+             *
+             * Method does NOT return.
+             *
+             * Any statements after this point
+             * are never executed.
+             *
+             * =================================================================
+             */
+            //System.exit(0);
+
+            /*
+             * Unreachable Code Example
+             *
+             * This line would never execute
+             * if uncommented.
+             *
+             * System.out.println("Never Executes");
+             */
+        }
+
+        /*
+         * =====================================================================
+         * FINALLY BLOCK
+         * =====================================================================
+         *
+         * Normally guaranteed to execute.
+         *
+         * EXCEPTION:
+         *
+         * JVM termination through:
+         *
+         * System.exit()
+         *
+         * causes JVM shutdown before
+         * finally can execute.
+         *
+         * =====================================================================
+         */
+        finally {
+
+            /*
+             * This statement never executes.
+             */
             System.out.println("In finally block");
+            System.exit(0);
         }
     }
 }

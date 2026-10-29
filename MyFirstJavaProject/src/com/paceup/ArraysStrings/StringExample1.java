@@ -41,16 +41,18 @@ public class StringExample1 {
         s = s.concat(" but corrupted"); // concat(): appends text to the string
         System.out.println(s);
 
-        String original = "  Hello Java Developers!  ";
+        String original = "  Hello Java Developers! Welcome Java Developers!!  ";
         String test = " JaVa";
         String test2 = "java";
+        System.out.println(test+" "+test2);
         String str = new String("Welcome to Java!!");
 
         str = "World";
+        System.out.println(str);
         String str1 = str.concat(" Universe"); // concat(): appends " Universe"
         System.out.println("String: " + str1);
 
-        System.out.println("Length of string is " + str1.length()); // length(): returns string length
+        System.out.println("Length of string is " + original.length()); // length(): returns string length
 
         System.out.println("Contains 'Java': " + original.contains("Java")); // contains(): checks substring
 
@@ -108,18 +110,19 @@ public class StringExample1 {
         System.out.println("StartsWith 'Hello': " + original.trim().startsWith("Hello")); // startsWith(): prefix check
         System.out.println("EndsWith 'Developers!': " + original.trim().endsWith("Developers!")); // endsWith(): suffix check
 
-        String emptyStr = "";
-        System.out.println("Is empty string empty? " + emptyStr.isEmpty()); // isEmpty(): check empty
+        String emptyStr = " ";
+        System.out.println("Is empty string empty? " + emptyStr.trim().isEmpty()); // isEmpty(): check empty
 
         StringBuffer sb = new StringBuffer("Hello Java Developers!");
-        System.out.println("ContentEquals StringBuffer: " + original.trim().contentEquals(sb)); // contentEquals(): compare with StringBuffer
+        String str3 = " Hello Java Developers!";
+        System.out.println("ContentEquals StringBuffer: " + str3.trim().contentEquals(sb)); // contentEquals(): compare with StringBuffer
 
-        System.out.println("HashCode of original: " + original.hashCode()); // hashCode(): returns hash code
+        System.out.println("HashCode of original: " + original.trim().hashCode()); // hashCode(): returns hash code
 
         CharSequence subSeq = original.subSequence(2, 7); // subSequence(): extract subsequence
         System.out.println("SubSequence (2, 7): " + subSeq);
 
-        subSeq = original.subSequence(9, 15);
+        subSeq = original.subSequence(8, 13);
         System.out.println(subSeq);
     }
 }

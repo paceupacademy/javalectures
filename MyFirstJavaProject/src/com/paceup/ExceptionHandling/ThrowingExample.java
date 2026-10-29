@@ -1,52 +1,235 @@
 package com.paceup.ExceptionHandling;
 
-/**
- * ThrowingExample:
- * ----------------
- * 
- * Key Concepts:
- * -------------
- * 1. **throw**:
- *    - Used inside a method or block to actually throw an exception object.
- *    - Example: `throw new IllegalArgumentException("Message");`
- * 
- * 2. **Unchecked Exception**:
- *    - IllegalArgumentException is an unchecked exception (subclass of RuntimeException).
- *    - It does not need to be declared with `throws` in the method signature.
- * 
- * 3. **Exception Handling**:
- *    - The caller must handle exceptions using try-catch.
- *    - Once an exception is thrown, normal execution stops and control jumps to the catch block.
- * 
- * In this example:
- * - The method `validateNumber()` throws IllegalArgumentException if the number is negative.
- * - The main method calls `validateNumber(-5)` which throws an exception.
- * - The catch block handles it and then calls `validateNumber(90)` successfully.
+/*
+ * =============================================================================
+ * THROWING EXAMPLE
+ * =============================================================================
+ *
+ * Purpose:
+ * --------
+ * Demonstrates how to explicitly generate (throw) exceptions in Java
+ * using the 'throw' keyword.
+ *
+ * =============================================================================
+ * WHAT IS AN EXCEPTION?
+ * =============================================================================
+ *
+ * An Exception is an abnormal condition that interrupts
+ * the normal flow of program execution.
+ *
+ * Example:
+ *
+ * User enters invalid data
+ *              OR
+ * File not found
+ *              OR
+ * Invalid argument passed
+ *
+ * =============================================================================
+ * THROW KEYWORD
+ * =============================================================================
+ *
+ * Syntax:
+ *
+ * throw new ExceptionType("Message");
+ *
+ * Example:
+ *
+ * throw new IllegalArgumentException(
+ *      "Number must be non-negative");
+ *
+ * Purpose:
+ * --------
+ * Manually create and throw an exception object.
+ *
+ * =============================================================================
+ * THROW vs THROWS
+ * =============================================================================
+ *
+ * throw
+ * -----
+ * Used to actually throw an exception object.
+ *
+ * Example:
+ *
+ * throw new IllegalArgumentException();
+ *
+ * -----------------------------------------------------------------------------
+ *
+ * throws
+ * ------
+ * Used in method declaration.
+ *
+ * Indicates responsibility is delegated to caller.
+ *
+ * Example:
+ *
+ * public void readFile() throws IOException
+ *
+ * =============================================================================
+ *
+ * Exception Hierarchy Used Here
+ *
+ * Object
+ *   |
+ *   V
+ * Throwable
+ *   |
+ *   V
+ * Exception
+ *   |
+ *   V
+ * RuntimeException
+ *   |
+ *   V
+ * IllegalArgumentException
+ *
+ * Since IllegalArgumentException is unchecked,
+ * compiler does not force handling.
+ *
+ * =============================================================================
  */
 public class ThrowingExample {
-    public static void main(String[] args) {
-        try {
-            // This call throws an exception because number < 0
-            validateNumber(-5);
-        } catch (IllegalArgumentException e) {
-            // Exception is caught here
-            System.out.println("Exception caught: " + e.getMessage());
 
-            // Second call with valid number → no exception
+    public static void main(String[] args) {
+
+        /*
+         * =====================================================================
+         * EXCEPTION HANDLING FLOW
+         * =====================================================================
+         *
+         * try
+         *  |
+         *  V
+         * validateNumber(-5)
+         *  |
+         *  V
+         * Exception Generated?
+         *  |
+         * YES
+         *  |
+         *  V
+         * catch Block Executes
+         *  |
+         *  V
+         * validateNumber(90)
+         *  |
+         *  V
+         * Program Continues
+         *
+         * =====================================================================
+         */
+
+        try {
+
+            /*
+             * Invalid input
+             *
+             * Number is less than zero.
+             *
+             * Method will throw:
+             *
+             * IllegalArgumentException
+             */
+            validateNumber(-5);
+
+        }
+        catch (IllegalArgumentException e) {
+
+            /*
+             * Exception handling block.
+             *
+             * getMessage()
+             * returns custom exception message.
+             */
+            System.out.println(
+                    "Exception caught: "
+                            + e.getMessage()
+            );
+
+            /*
+             * Valid input.
+             *
+             * No exception generated.
+             */
             validateNumber(90);
         }
+        System.out.println("Main Method Executed");
     }
 
-    /**
-     * Validates that the number is non-negative.
-     * @param number The number to validate
-     * @throws IllegalArgumentException if number < 0
+
+    /*
+     * =========================================================================
+     * VALIDATION METHOD
+     * =========================================================================
+     *
+     * Business Rule:
+     *
+     * Number must be >= 0
+     *
+     * If invalid:
+     *      Throw Exception
+     *
+     * If valid:
+     *      Continue Execution
+     *
+     * =========================================================================
+     *
+     * @param number
+     *         number to validate
+     *
+     * @throws IllegalArgumentException
+     *         when number < 0
+     *
+     * =========================================================================
      */
     public static void validateNumber(int number) {
+
+        /*
+         * =====================================================================
+         * VALIDATION CHECK
+         * =====================================================================
+         *
+         * Input Value
+         *      |
+         *      V
+         * number < 0 ?
+         *      |
+         *  +---+---+
+         *  |       |
+         * YES      NO
+         *  |       |
+         *  V       V
+         * throw   Valid Number
+         *
+         * =====================================================================
+         */
         if (number < 0) {
-            // Actually throwing an exception object
-            throw new IllegalArgumentException("Number must be non-negative.");
+
+            /*
+             * Explicitly create Exception Object.
+             *
+             * JVM creates:
+             *
+             * IllegalArgumentException object
+             *
+             * then immediately throws it.
+             *
+             * After this statement:
+             *
+             * Remaining code inside method
+             * will NOT execute.
+             */
+            throw new IllegalArgumentException(
+                    "Number must be non-negative."
+            );
         }
-        System.out.println("Valid number: " + number);
+
+        /*
+         * Executes only when validation succeeds.
+         */
+        System.out.println(
+                "Valid number: " + number
+        );
     }
 }

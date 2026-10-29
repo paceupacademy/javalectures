@@ -51,13 +51,13 @@ public class ObjectInputStreamExample {
 
         try {
             // Step 1: Serialize the object
-            FileOutputStream file = new FileOutputStream("file.txt");
+            FileOutputStream file = new FileOutputStream("file4.txt");
             ObjectOutputStream output = new ObjectOutputStream(file);
             output.writeObject(dog); // write Dog object
             output.close();
 
             // Step 2: Deserialize the object
-            FileInputStream fileStream = new FileInputStream("file.txt");
+            FileInputStream fileStream = new FileInputStream("file4.txt");
             ObjectInputStream input = new ObjectInputStream(fileStream);
             Dog newDog = (Dog) input.readObject(); // typecasting required
             input.close();

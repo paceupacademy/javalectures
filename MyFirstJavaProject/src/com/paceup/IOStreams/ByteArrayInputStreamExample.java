@@ -1,7 +1,9 @@
 package com.paceup.IOStreams;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * ByteArrayInputStreamExample:
@@ -37,7 +39,9 @@ public class ByteArrayInputStreamExample {
         byte[] buffer = {72, 64, 69, 75, 83, 76, 84, 90}; 
         // 72 = 'H', 64 = '@', 69 = 'E', 75 = 'K', 83 = 'S', 76 = 'L', 84 = 'T', 90 = 'Z'
 
+        byte[] input = "Hello".getBytes(StandardCharsets.UTF_8);
         // Create ByteArrayInputStream from the byte array
+        
         try (ByteArrayInputStream bais = new ByteArrayInputStream(buffer)) {
 
             // Print how many bytes are available initially
@@ -87,6 +91,17 @@ public class ByteArrayInputStreamExample {
             while ((ch = bais.read()) != -1) {
                 System.out.print((char) ch + " ");
             }
+            
+            System.out.println("\nByteArrayOutputStream started\n");
+            
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            baos.write(65);
+            baos.write(66);
+            baos.write(67);
+            
+            byte[] result = baos.toByteArray();
+            
+            System.out.println(new String(result,StandardCharsets.UTF_8));
             
         } catch (IOException e) {
 			// TODO Auto-generated catch block

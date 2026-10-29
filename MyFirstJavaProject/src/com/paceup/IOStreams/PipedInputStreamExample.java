@@ -40,8 +40,13 @@ public class PipedInputStreamExample {
         // Writer thread: writes data into the PipedOutputStream
         Thread writer = new Thread(() -> {
             try {
+            	
             	System.out.println("Writing data to pipe");
                 pos.write("Hello Students!!!".getBytes()); // write string as bytes
+                pos.write(65);
+                pos.write("Welcome to Java".getBytes());
+                
+                
                 pos.close(); // close output stream after writing
             } catch (Exception e) {
                 e.printStackTrace();
@@ -54,11 +59,21 @@ public class PipedInputStreamExample {
         	t.start();
             try {
             	System.out.println("Reading data from pipe!!\n");
-                int data;
+            	/*int size = pis.available();
+            	System.out.println("USe of available "+pis.available());
+                */int data;
                 while ((data = pis.read()) != -1) { // read until end of stream
-                	t.sleep(500);
+                	t.sleep(50);
                     System.out.print((char) data); // convert byte to char and print
                 }
+                
+                //pis.connect(pos);
+                //pos.write(66);
+                byte[] buffer = new byte[1024];
+                pis.read(buffer);
+                String str = new String(buffer);
+                System.out.println(str);
+                //pos.close();
                 pis.close(); // close input stream after reading
             } catch (Exception e) {
                 e.printStackTrace();

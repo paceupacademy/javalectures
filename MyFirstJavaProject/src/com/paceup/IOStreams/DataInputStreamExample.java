@@ -40,11 +40,13 @@ public class DataInputStreamExample {
             dos.writeInt(65);         // write integer
             dos.writeBoolean(false);  // write boolean
             dos.writeChar('$');       // write character
-        } catch (FileNotFoundException f) {
-            System.out.println("Cannot find the file");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
         
         // Reading the data back
         try (DataInputStream dis = new DataInputStream(new FileInputStream("file1.txt"))) {

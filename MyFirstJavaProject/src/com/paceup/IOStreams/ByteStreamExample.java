@@ -33,17 +33,27 @@ import java.io.*;
 public class ByteStreamExample {
     public static void main(String[] args) throws IOException, InterruptedException { 
         // try-with-resources ensures streams are closed automatically
-        try (FileInputStream fis = new FileInputStream("input.txt");
+        try (BufferedInputStream fis = new BufferedInputStream(new FileInputStream("input.txt"));
              FileOutputStream fos = new FileOutputStream("output2.txt")) { 
-
+        	
+        	boolean resetDone = false;
+        	System.out.println("File Input Stream supports mark? "+fis.markSupported());
             int data;
             // Read one byte at a time until end of file (-1)
             while ((data = fis.read()) != -1) { 
                 // Write byte to output file
                 fos.write(data);
-
+                
+                if((char)data== '#') {
+                	fis.mark(data);
+                }
+                
+                if((char)data== 'J' && !resetDone) {
+                	fis.reset();
+                	resetDone=true;
+                }
                 // Print character representation of byte to console
-                System.out.print(" " + (char) data);
+                System.out.print(" " + (char)data);
                 
                 Thread.sleep(50);
             }

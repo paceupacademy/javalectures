@@ -83,17 +83,17 @@ public class PrintStreamExample {
         out.println();
 
         // Format without specifying locale
-        out.format("Welcome to India %s", s);
+        out.format("Welcome to India %s\n", s);
         out.println();
 
         // Print a string (may stay in buffer until flushed)
-        out.print("Hello Aishwarya");
+        out.print("Hello Aishwarya\n");
         
         // Force flush to ensure data is written immediately
         out.flush();
 
         // Pause for 10 seconds to demonstrate delayed writing
-        //Thread.sleep(10000);
+        Thread.sleep(5000);
 
         // Print after flush
         out.println("Printed after flush");
